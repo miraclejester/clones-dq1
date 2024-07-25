@@ -1,0 +1,2 @@
+extends BattleUpdate
+class_name HeroCommandBattleUpdate

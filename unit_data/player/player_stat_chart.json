@@ -1,0 +1,182 @@
+{
+  "1": {
+	"Strength": 4,
+	"Agility": 4,
+	"HP": 15,
+	"MP": 0
+  },
+  "2": {
+	"Strength": 5,
+	"Agility": 4,
+	"HP": 22,
+	"MP": 0
+  },
+  "3": {
+	"Strength": 7,
+	"Agility": 6,
+	"HP": 24,
+	"MP": 5
+  },
+  "4": {
+	"Strength": 7,
+	"Agility": 8,
+	"HP": 31,
+	"MP": 16
+  },
+  "5": {
+	"Strength": 12,
+	"Agility": 10,
+	"HP": 35,
+	"MP": 20
+  },
+  "6": {
+	"Strength": 16,
+	"Agility": 10,
+	"HP": 38,
+	"MP": 24
+  },
+  "7": {
+	"Strength": 18,
+	"Agility": 17,
+	"HP": 40,
+	"MP": 26
+  },
+  "8": {
+	"Strength": 22,
+	"Agility": 20,
+	"HP": 46,
+	"MP": 29
+  },
+  "9": {
+	"Strength": 30,
+	"Agility": 22,
+	"HP": 50,
+	"MP": 36
+  },
+  "10": {
+	"Strength": 35,
+	"Agility": 31,
+	"HP": 54,
+	"MP": 40
+  },
+  "11": {
+	"Strength": 40,
+	"Agility": 35,
+	"HP": 62,
+	"MP": 50
+  },
+  "12": {
+	"Strength": 48,
+	"Agility": 40,
+	"HP": 63,
+	"MP": 58
+  },
+  "13": {
+	"Strength": 52,
+	"Agility": 48,
+	"HP": 70,
+	"MP": 64
+  },
+  "14": {
+	"Strength": 60,
+	"Agility": 55,
+	"HP": 78,
+	"MP": 70
+  },
+  "15": {
+	"Strength": 68,
+	"Agility": 64,
+	"HP": 86,
+	"MP": 72
+  },
+  "16": {
+	"Strength": 72,
+	"Agility": 70,
+	"HP": 92,
+	"MP": 95
+  },
+  "17": {
+	"Strength": 72,
+	"Agility": 78,
+	"HP": 100,
+	"MP": 100
+  },
+  "18": {
+	"Strength": 85,
+	"Agility": 84,
+	"HP": 115,
+	"MP": 108
+  },
+  "19": {
+	"Strength": 87,
+	"Agility": 86,
+	"HP": 130,
+	"MP": 115
+  },
+  "20": {
+	"Strength": 92,
+	"Agility": 88,
+	"HP": 138,
+	"MP": 128
+  },
+  "21": {
+	"Strength": 95,
+	"Agility": 90,
+	"HP": 149,
+	"MP": 135
+  },
+  "22": {
+	"Strength": 97,
+	"Agility": 90,
+	"HP": 158,
+	"MP": 146
+  },
+  "23": {
+	"Strength": 99,
+	"Agility": 94,
+	"HP": 165,
+	"MP": 153
+  },
+  "24": {
+	"Strength": 103,
+	"Agility": 98,
+	"HP": 170,
+	"MP": 161
+  },
+  "25": {
+	"Strength": 113,
+	"Agility": 100,
+	"HP": 174,
+	"MP": 161
+  },
+  "26": {
+	"Strength": 117,
+	"Agility": 105,
+	"HP": 180,
+	"MP": 168
+  },
+  "27": {
+	"Strength": 125,
+	"Agility": 107,
+	"HP": 189,
+	"MP": 175
+  },
+  "28": {
+	"Strength": 130,
+	"Agility": 115,
+	"HP": 195,
+	"MP": 180
+  },
+  "29": {
+	"Strength": 135,
+	"Agility": 120,
+	"HP": 200,
+	"MP": 190
+  },
+  "30": {
+	"Strength": 140,
+	"Agility": 130,
+	"HP": 210,
+	"MP": 200
+  }
+}

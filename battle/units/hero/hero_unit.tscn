@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bexx735kyj077"]
+
+[ext_resource type="Script" path="res://battle/units/hero/hero_unit.gd" id="1_ac0mu"]
+[ext_resource type="PackedScene" uid="uid://bu6gxutcim5rv" path="res://battle/units/unit_stats.tscn" id="2_rpp7s"]
+
+[node name="Hero" type="Node"]
+script = ExtResource("1_ac0mu")
+level_chart_path = "res://unit_data/player/player_stat_chart.json"
+letter_values_path = "res://unit_data/player/player_letter_values.json"
+
+[node name="UnitStats" parent="." instance=ExtResource("2_rpp7s")]
+unique_name_in_owner = true
