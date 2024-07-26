@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfrqiiuaymu8u"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_paragraph.gd" id="1_rf267"]
+[ext_resource type="PackedScene" uid="uid://v0040sydcj0c" path="res://ui/dialogue/dialogue_line.tscn" id="2_6bpt0"]
+
+[node name="DialogueParagraph" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_rf267")
+dialogue_line_scene = ExtResource("2_6bpt0")

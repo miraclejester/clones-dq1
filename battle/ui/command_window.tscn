@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://b11wr6262jxgm"]
+
+[ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="1_f0syu"]
+[ext_resource type="Script" path="res://battle/ui/command_window.gd" id="1_o5prq"]
+[ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="2_73vel"]
+[ext_resource type="PackedScene" uid="uid://dtwpqn5rj6oxt" path="res://ui/command_label.tscn" id="3_xswym"]
+
+[node name="CommandWindow" type="Control" node_paths=PackedStringArray("commands")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -128.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5prq")
+commands = [NodePath("MarginContainer/MainRow/Col1/FightCommand"), NodePath("MarginContainer/MainRow/Col2/SpellCommand"), NodePath("MarginContainer/MainRow/Col1/RunCommand"), NodePath("MarginContainer/MainRow/Col2/ItemCommand")]
+
+[node name="UIWindow" parent="." instance=ExtResource("1_f0syu")]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 48.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_right = 88.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" parent="." instance=ExtResource("2_73vel")]
+layout_mode = 0
+offset_left = 31.0
+offset_right = 87.0
+offset_bottom = 23.0
+text = "COMMAND"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 48.0
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+
+[node name="MainRow" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Col1" type="VBoxContainer" parent="MarginContainer/MainRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="FightCommand" parent="MarginContainer/MainRow/Col1" instance=ExtResource("3_xswym")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RunCommand" parent="MarginContainer/MainRow/Col1" instance=ExtResource("3_xswym")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelText" parent="MarginContainer/MainRow/Col1/RunCommand" index="1"]
+text = "RUN"
+
+[node name="Col2" type="VBoxContainer" parent="MarginContainer/MainRow"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SpellCommand" parent="MarginContainer/MainRow/Col2" instance=ExtResource("3_xswym")]
+layout_mode = 2
+
+[node name="LabelText" parent="MarginContainer/MainRow/Col2/SpellCommand" index="1"]
+text = "SPELL"
+
+[node name="ItemCommand" parent="MarginContainer/MainRow/Col2" instance=ExtResource("3_xswym")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelText" parent="MarginContainer/MainRow/Col2/ItemCommand" index="1"]
+text = "ITEM"
+
+[editable path="MarginContainer/MainRow/Col1/RunCommand"]
+[editable path="MarginContainer/MainRow/Col2/SpellCommand"]
+[editable path="MarginContainer/MainRow/Col2/ItemCommand"]

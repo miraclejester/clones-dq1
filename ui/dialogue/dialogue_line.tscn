@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://v0040sydcj0c"]
+
+[ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="1_3ey7h"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_line.gd" id="1_efevw"]
+
+[node name="DialogueLine" type="Control"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_efevw")
+
+[node name="LineLabel" parent="." instance=ExtResource("1_3ey7h")]
+layout_mode = 0
+offset_bottom = 23.0
+text = "~Half a year now hath"
+
+[node name="LetterTimer" type="Timer" parent="."]
+one_shot = true

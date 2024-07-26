@@ -1,6 +1,12 @@
 extends BattleUnit
 class_name HeroUnit
 
+signal hp_changed(new_val: int)
+signal mp_changed(new_val: int)
+signal level_changed(new_val: int)
+signal gold_changed(new_val: int)
+signal exp_changed(new_val: int)
+
 @export_file var level_chart_path: String
 @export_file var letter_values_path: String
 
@@ -10,12 +16,20 @@ var growth_value: int
 var growth_sum: int
 var hero_name: String
 
+var level: int = 1
+var gold: int = 0
+var experience: int = 0
+
+
 func _ready() -> void:
 	level_chart = FileUtils.load_json_dict(level_chart_path)
 	letter_values = FileUtils.load_json_dict(letter_values_path)
 	crit_chance = 1.0 / 32.0
 	set_hero_name("Erdrick")
-	set_stats_from_level(1)
+	set_stats_from_level(level)
+	
+	stats.hp_changed.connect(on_hp_changed)
+	stats.mp_changed.connect(on_mp_changed)
 
 
 func get_attack_damage(defender: BattleUnit) -> int:
@@ -32,8 +46,8 @@ func set_hero_name(new_name: String) -> void:
 	process_growth_value()
 
 
-func set_stats_from_level(level: int) -> void:
-	var level_str = str(level)
+func set_stats_from_level(l: int) -> void:
+	var level_str = str(l)
 	var level_data: Dictionary = level_chart.get(level_str) as Dictionary
 	var st: int = level_data.get("Strength") as int
 	var ag: int = level_data.get("Agility") as int
@@ -78,3 +92,35 @@ func get_short_stat_value(orig: int) -> int:
 	var round_down: int = floor(float(growth_sum) / 4.0)
 	var rem: int = round_down % 4
 	return rem + int(orig * 9 / 10.0)
+
+
+func set_hp(val: int) -> void:
+	stats.hp = val
+
+
+func set_mp(val: int) -> void:
+	stats.mp = val
+
+
+func on_hp_changed(val: int) -> void:
+	hp_changed.emit(val)
+
+
+func on_mp_changed(val: int) -> void:
+	mp_changed.emit(val)
+
+
+func level_up() -> void:
+	level += 1
+	set_stats_from_level(level)
+	level_changed.emit(level)
+
+
+func add_gold(val: int) -> void:
+	gold = clampi(gold + val, 0, 9999)
+	gold_changed.emit(gold)
+
+
+func add_exp(val: int) -> void:
+	experience += val
+	exp_changed.emit(experience)

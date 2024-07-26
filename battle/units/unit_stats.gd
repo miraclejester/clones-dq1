@@ -1,6 +1,9 @@
 extends Node
 class_name UnitStats
 
+signal hp_changed(val: int)
+signal mp_changed(val: int)
+
 var strength: int
 var agility: int
 var max_hp: int
@@ -11,11 +14,13 @@ var hp: int:
 		return hp
 	set(value):
 		hp = clampi(value, 0, max_hp)
+		hp_changed.emit(hp)
 var mp: int:
 	get:
 		return mp
 	set(value):
 		mp = clampi(value, 0, max_mp)
+		mp_changed.emit(mp)
 
 func set_strength(val: int) -> void:
 	strength = val

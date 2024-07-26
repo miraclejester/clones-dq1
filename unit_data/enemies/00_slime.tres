@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://kndwdhgbjq1r"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://kndwdhgbjq1r"]
 
 [ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_kuifi"]
 [ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="2_b5oqg"]
+[ext_resource type="Texture2D" uid="uid://cn2vlnjsg5iql" path="res://unit_data/monster_sheet.png" id="3_ral7e"]
 
 [sub_resource type="Resource" id="Resource_bkcpj"]
 script = ExtResource("2_b5oqg")
@@ -17,8 +18,14 @@ xp = 1
 max_gp = 1
 min_gp = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxa7c"]
+atlas = ExtResource("3_ral7e")
+region = Rect2(5, 2, 19, 18)
+
 [resource]
 script = ExtResource("1_kuifi")
 enemy_name = "Slime"
+texture = SubResource("AtlasTexture_vxa7c")
 stats = SubResource("Resource_bkcpj")
 initiative_group = 1
+position_group = 0

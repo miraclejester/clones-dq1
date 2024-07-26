@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtwpqn5rj6oxt"]
+
+[ext_resource type="Texture2D" uid="uid://dg4fese738qr3" path="res://ui/selector.png" id="1_bk3kr"]
+[ext_resource type="Script" path="res://ui/command_label.gd" id="1_ij4n5"]
+[ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="2_hgc78"]
+
+[node name="CommandLabel" type="HBoxContainer"]
+theme_override_constants/separation = 2
+script = ExtResource("1_ij4n5")
+
+[node name="Selector" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_bk3kr")
+
+[node name="LabelText" parent="." instance=ExtResource("2_hgc78")]
+layout_mode = 2
+text = "FIGHT"
+
+[node name="BlinkTimer" type="Timer" parent="."]
+one_shot = true

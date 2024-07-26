@@ -19,10 +19,6 @@ func _ready() -> void:
 	var e: EnemyUnit = enemy_scene.instantiate() as EnemyUnit
 	add_child(h)
 	add_child(e)
-	var s = start_battle(h, e)
-	var n = fight_action(hero, enemy)
-	var m = next_turn()
-	pass
 
 
 func start_battle(h: HeroUnit, e: EnemyUnit) -> Array[BattleUpdate]:

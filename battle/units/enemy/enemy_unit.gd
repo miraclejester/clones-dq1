@@ -8,11 +8,11 @@ var data: EnemyData
 func _ready() -> void:
 	set_stats_from_data(enemy_data)
 
-func set_stats_from_data(enemy_data: EnemyData) -> void:
-	data = enemy_data
-	stats.set_strength(enemy_data.stats.strength)
-	stats.set_agility(enemy_data.stats.agility)
-	stats.set_max_hp(randi_range(enemy_data.stats.min_hp, enemy_data.stats.max_hp))
+func set_stats_from_data(ed: EnemyData) -> void:
+	data = ed
+	stats.set_strength(ed.stats.strength)
+	stats.set_agility(ed.stats.agility)
+	stats.set_max_hp(randi_range(ed.stats.min_hp, ed.stats.max_hp))
 	stats.set_max_mp(0)
 
 
