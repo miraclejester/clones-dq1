@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://8mmvb346f7pf"]
+[gd_scene load_steps=14 format=3 uid="uid://8mmvb346f7pf"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_window.gd" id="1_1u2te"]
 [ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="1_7k6lt"]
 [ext_resource type="PackedScene" uid="uid://bfrqiiuaymu8u" path="res://ui/dialogue/dialogue_paragraph.tscn" id="2_h0wcq"]
+[ext_resource type="Resource" uid="uid://ddc6nk2tcqr22" path="res://battle/data/dialogues/battle_dialogue_command.tres" id="3_wr8yr"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/wait_seconds_dialogue_event.gd" id="4_68r6l"]
+[ext_resource type="Resource" uid="uid://dejd05hymi3xq" path="res://battle/data/dialogues/battle_dialogue_unit_attacks.tres" id="5_5wfat"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/newline_dialogue_event.gd" id="5_j7shr"]
+[ext_resource type="Resource" uid="uid://mx0yydcrxstg" path="res://battle/data/dialogues/battle_dialogue_enemy_hurt.tres" id="6_s1hyf"]
+[ext_resource type="Resource" uid="uid://dt2er8rg87ill" path="res://battle/data/dialogues/battle_dialogue_enemy_defeated.tres" id="7_euffm"]
+[ext_resource type="Resource" uid="uid://cftcst53l8jfg" path="res://battle/data/dialogues/battle_dialogue_exp_gain.tres" id="9_v1j56"]
+[ext_resource type="Resource" uid="uid://bn4yh2anumy7d" path="res://battle/data/dialogues/battle_dialogue_gold_gain.tres" id="10_fqv36"]
+
+[sub_resource type="Resource" id="Resource_ly1p2"]
+script = ExtResource("4_68r6l")
+wait_seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_c0xcu"]
+script = ExtResource("5_j7shr")
 
 [node name="DialogueWindow" type="Control"]
 layout_mode = 3
@@ -15,6 +30,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1u2te")
 paragraph_scene = ExtResource("2_h0wcq")
+command_event = ExtResource("3_wr8yr")
+attack_wait_event = SubResource("Resource_ly1p2")
+newline_event = SubResource("Resource_c0xcu")
+hero_attack_event = ExtResource("5_5wfat")
+enemy_hurt_event = ExtResource("6_s1hyf")
+enemy_defeat_event = ExtResource("7_euffm")
+exp_gain_event = ExtResource("9_v1j56")
+gold_gain_event = ExtResource("10_fqv36")
 
 [node name="UIWindow" parent="." instance=ExtResource("1_7k6lt")]
 layout_mode = 0
@@ -28,9 +51,10 @@ offset_bottom = 80.0
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 17
+theme_override_constants/margin_bottom = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://mx0yydcrxstg"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_yll5b"]
+
+[resource]
+script = ExtResource("1_yll5b")
+text = "The %s`s Hit Points have been reduced by %d."
+in_quotes = false
+word_wrap_length = 177
+continuation = false

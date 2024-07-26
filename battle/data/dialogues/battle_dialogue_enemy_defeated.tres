@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://dt2er8rg87ill"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_21jce"]
+
+[resource]
+script = ExtResource("1_21jce")
+text = "Thou hast done well in defeating the %s."
+in_quotes = false

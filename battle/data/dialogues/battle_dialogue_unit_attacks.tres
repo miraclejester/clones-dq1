@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://dejd05hymi3xq"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_apj7u"]
+
+[resource]
+script = ExtResource("1_apj7u")
+text = "%s attacks!"
+in_quotes = false
+word_wrap_length = 177
+continuation = false
