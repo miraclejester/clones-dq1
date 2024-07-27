@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_ttpwf")
-text = "Thy Gold increases by %d."
+text = "Thy GOLD increases by %d."
 in_quotes = false

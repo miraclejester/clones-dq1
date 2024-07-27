@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq5qja8mmbrpu"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_line.gd" id="1_55fx2"]
+[ext_resource type="PackedScene" uid="uid://c0ydsa3gv7bfv" path="res://ui/dialogue/variants/dq_label_black.tscn" id="2_i4gqg"]
+[ext_resource type="FontFile" uid="uid://bqgyjfp0gph2p" path="res://ui/font.png" id="3_dgksj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r0hlf"]
+resource_local_to_scene = true
+line_spacing = 0.0
+font = ExtResource("3_dgksj")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogueLineBlack" type="Control"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55fx2")
+
+[node name="LineLabel" parent="." instance=ExtResource("2_i4gqg")]
+layout_mode = 0
+label_settings = SubResource("LabelSettings_r0hlf")
+
+[node name="LetterTimer" type="Timer" parent="."]
+one_shot = true

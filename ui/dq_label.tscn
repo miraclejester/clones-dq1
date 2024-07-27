@@ -1,15 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bocskjsydt86j"]
+[gd_scene load_steps=2 format=3 uid="uid://bocskjsydt86j"]
 
-[ext_resource type="FontFile" uid="uid://bqgyjfp0gph2p" path="res://ui/font.png" id="1_rajwv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7d04a"]
-line_spacing = 0.0
-font = ExtResource("1_rajwv")
-font_size = 8
+[ext_resource type="LabelSettings" uid="uid://cu3fsnbm6ymbv" path="res://ui/data/standard_label_settings.tres" id="1_f5l8h"]
 
 [node name="DQLabel" type="Label"]
 custom_minimum_size = Vector2(8, 8)
 offset_right = 32.0
 offset_bottom = 8.0
 text = "HERO"
-label_settings = SubResource("LabelSettings_7d04a")
+label_settings = ExtResource("1_f5l8h")

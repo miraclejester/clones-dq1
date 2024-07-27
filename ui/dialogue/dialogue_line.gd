@@ -11,6 +11,7 @@ signal line_finished()
 
 var letter_index: int = 0
 var current_text: String
+var custom_label_settings: LabelSettings
 
 func _ready() -> void:
 	letter_timer.timeout.connect(letter_timeout)
@@ -20,6 +21,8 @@ func play_line(text: String) -> void:
 	current_text = text
 	letter_index = 0
 	line_label.text = ""
+	if custom_label_settings:
+		line_label.label_settings = custom_label_settings
 	letter_timeout()
 
 

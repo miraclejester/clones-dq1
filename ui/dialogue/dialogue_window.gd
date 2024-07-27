@@ -4,15 +4,8 @@ class_name DialogueWindow
 signal current_dialogue_finished()
 
 @export var paragraph_scene: PackedScene
-
-@export var command_event: DialogueEvent
-@export var attack_wait_event: WaitSecondsDialogueEvent
-@export var newline_event: NewlineDialogueEvent
-@export var hero_attack_event: DialogueEvent
-@export var enemy_hurt_event: DialogueEvent
-@export var enemy_defeat_event: DialogueEvent
-@export var exp_gain_event: DialogueEvent
-@export var gold_gain_event: DialogueEvent
+@export var newline_settings: LabelSettings
+@export var standard_settings: LabelSettings
 
 @onready var paragraph_container: VBoxContainer = %ParagraphContainer
 @onready var scroll_container: ScrollContainer = %ScrollContainer
@@ -26,31 +19,6 @@ var current_paragraph: DialogueParagraph
 
 func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
-	
-	var queue: Array[DialogueEventParams] = []
-	queue.append(DialogueEventParams.fromData(command_event))
-	queue.append(DialogueEventParams.fromData(attack_wait_event))
-	queue.append(DialogueEventParams.fromData(hero_attack_event, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: ["LOTO"],
-		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING: true
-	}))
-	queue.append(DialogueEventParams.fromData(attack_wait_event))
-	queue.append(DialogueEventParams.fromData(enemy_hurt_event, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: ["Slime", 3],
-		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING: true
-	}))
-	queue.append(DialogueEventParams.fromData(enemy_defeat_event, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: ["Slime"]
-	}))
-	queue.append(DialogueEventParams.fromData(exp_gain_event, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [4]
-	}))
-	queue.append(DialogueEventParams.fromData(gold_gain_event, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [10],
-		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING: true
-	}))
-	
-	start_dialogue(queue)
 
 
 func start_dialogue(initial_queue: Array[DialogueEventParams]) -> void:
@@ -71,7 +39,14 @@ func create_paragraph() -> DialogueParagraph:
 	var paragraph: DialogueParagraph = paragraph_scene.instantiate() as DialogueParagraph
 	paragraph_container.add_child(paragraph)
 	current_paragraph = paragraph
+	paragraph.custom_label_settings = standard_settings
 	return paragraph
+
+
+func create_newline() -> DialogueParagraph:
+	var p: DialogueParagraph = create_paragraph()
+	p.custom_label_settings = newline_settings
+	return p
 
 
 func scroll_to_bottom():

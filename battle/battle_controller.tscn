@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3pdkdcgcir3x"]
+[gd_scene load_steps=9 format=3 uid="uid://b3pdkdcgcir3x"]
 
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
-[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="3_hqsus"]
+[ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
 [ext_resource type="Texture2D" uid="uid://cn2vlnjsg5iql" path="res://unit_data/monster_sheet.png" id="4_c36if"]
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="5_46jj8"]
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="6_45mo6"]
+[ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="7_7e03b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljg1a"]
 atlas = ExtResource("4_c36if")
@@ -16,16 +17,16 @@ script = ExtResource("1_l0qdc")
 
 [node name="Battle" parent="." instance=ExtResource("2_rs3lt")]
 
-[node name="BattleBG" type="Sprite2D" parent="."]
+[node name="BattleBG" parent="." instance=ExtResource("3_jflq8")]
 position = Vector2(80, 56)
-texture = ExtResource("3_hqsus")
-centered = false
 
 [node name="Enemy" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(137, 113)
 texture = SubResource("AtlasTexture_ljg1a")
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PlayerHud" parent="BattleUI" instance=ExtResource("5_46jj8")]
 offset_left = 16.0
@@ -38,3 +39,9 @@ offset_left = 96.0
 offset_top = 8.0
 offset_right = -32.0
 offset_bottom = -168.0
+
+[node name="DialogueWindow" parent="BattleUI" instance=ExtResource("7_7e03b")]
+offset_left = 32.0
+offset_top = 136.0
+offset_right = -32.0
+offset_bottom = -8.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl6v6yue35hf1"]
+
+[ext_resource type="Script" path="res://battle/bgs/battle_bg.gd" id="1_6mnd3"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="1_lxspq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_te4g3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i6syw"]
+blend_mode = 3
+
+[node name="BattleBG" type="CanvasGroup"]
+script = ExtResource("1_6mnd3")
+
+[node name="BG" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_te4g3")
+texture = ExtResource("1_lxspq")
+offset = Vector2(56, 56)
+
+[node name="MaskPiece" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_i6syw")
+position = Vector2(48, 48)
+offset = Vector2(8, 8)
+region_rect = Rect2(288, -160, 64, 176)

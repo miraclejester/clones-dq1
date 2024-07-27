@@ -1,6 +1,5 @@
-extends DialogueEvent
+extends PlayParagraphDialogueEvent
 class_name NewlineDialogueEvent
 
-func execute(window: DialogueWindow, _params: Dictionary) -> void:
-	window.add_line()
-	finish()
+func post_paragraph_create(w: DialogueWindow, p: DialogueParagraph) -> void:
+	p.custom_label_settings = w.newline_settings

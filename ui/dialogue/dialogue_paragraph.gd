@@ -9,6 +9,7 @@ var word_index: int = 0
 var split_text: Array[String]
 var data: PlayParagraphDialogueEvent
 var wrap_length: int
+var custom_label_settings: LabelSettings
 
 
 func play_paragraph(d: PlayParagraphDialogueEvent, format_vars: Array = [], word_wrap_length: int = 177) -> void:
@@ -33,6 +34,8 @@ func play_next_line() -> void:
 		return
 	var line: DialogueLine = dialogue_line_scene.instantiate() as DialogueLine
 	add_child(line)
+	if custom_label_settings:
+		line.custom_label_settings = custom_label_settings
 	line.line_finished.connect(play_next_line, CONNECT_ONE_SHOT)
 	line.play_line(get_next_line_text())
 	

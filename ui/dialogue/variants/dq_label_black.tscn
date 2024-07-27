@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ydsa3gv7bfv"]
+
+[ext_resource type="FontFile" uid="uid://bqgyjfp0gph2p" path="res://ui/font.png" id="1_8fqm0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7d04a"]
+resource_local_to_scene = true
+line_spacing = 0.0
+font = ExtResource("1_8fqm0")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="DQLabelBlack" type="Label"]
+custom_minimum_size = Vector2(8, 8)
+offset_right = 32.0
+offset_bottom = 8.0
+text = "HERO"
+label_settings = SubResource("LabelSettings_7d04a")
