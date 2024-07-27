@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dvmif5oo6alos"]
+
+[ext_resource type="Texture2D" uid="uid://o8gxhl5ic31w" path="res://unit_data/enemies/03_drackee/03_drackee_palette.png" id="1_m0l1j"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="2_47xy8"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_n0kke"]
+[ext_resource type="Texture2D" uid="uid://rep8wlm1asr0" path="res://unit_data/enemies/03_drackee/03_drackee.png" id="4_o7rhn"]
+
+[sub_resource type="Resource" id="Resource_bkcpj"]
+script = ExtResource("3_n0kke")
+strength = 9
+agility = 6
+max_hp = 6
+min_hp = 5
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.016
+xp = 2
+max_gp = 2
+min_gp = 2
+
+[resource]
+script = ExtResource("2_47xy8")
+enemy_name = "Drackee"
+texture = ExtResource("4_o7rhn")
+stats = SubResource("Resource_bkcpj")
+initiative_group = 1
+position_group = 1
+appear_palette = ExtResource("1_m0l1j")

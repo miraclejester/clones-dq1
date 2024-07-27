@@ -8,3 +8,7 @@
 script = ExtResource("1_t0ffk")
 hero_scene = ExtResource("2_gwad0")
 enemy_scene = ExtResource("3_hkiy5")
+
+[node name="Hero" parent="." instance=ExtResource("2_gwad0")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_hkiy5")]

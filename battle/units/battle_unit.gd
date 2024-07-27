@@ -26,3 +26,7 @@ func get_attack() -> int:
 
 func get_dodge() -> float:
 	return 0
+
+
+func get_unit_name() -> String:
+	return "Generic Unit"

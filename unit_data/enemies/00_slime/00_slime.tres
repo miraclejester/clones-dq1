@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://kndwdhgbjq1r"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_7j5e2"]
+[ext_resource type="Texture2D" uid="uid://jfk61m7r1y8y" path="res://unit_data/enemies/00_slime/00_slime_palette.png" id="1_gla7k"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="2_2swlm"]
+[ext_resource type="Texture2D" uid="uid://b4nhyb5x3r3y8" path="res://unit_data/enemies/00_slime/00_slime.png" id="3_18g2l"]
+
+[sub_resource type="Resource" id="Resource_bkcpj"]
+script = ExtResource("2_2swlm")
+strength = 5
+agility = 3
+max_hp = 3
+min_hp = 3
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.016
+xp = 1
+max_gp = 1
+min_gp = 1
+
+[resource]
+script = ExtResource("1_7j5e2")
+enemy_name = "Slime"
+texture = ExtResource("3_18g2l")
+stats = SubResource("Resource_bkcpj")
+initiative_group = 1
+position_group = 0
+appear_palette = ExtResource("1_gla7k")

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bptid15xe2s11"]
+
+[ext_resource type="Shader" path="res://materials/index_palette_swap.gdshader" id="1_ys4ne"]
+[ext_resource type="Texture2D" uid="uid://jfk61m7r1y8y" path="res://unit_data/enemies/00_slime/00_slime_palette.png" id="2_58awm"]
+
+[resource]
+shader = ExtResource("1_ys4ne")
+shader_parameter/color_index = 0
+shader_parameter/palette = ExtResource("2_58awm")

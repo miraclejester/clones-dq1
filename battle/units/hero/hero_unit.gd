@@ -25,8 +25,6 @@ func _ready() -> void:
 	level_chart = FileUtils.load_json_dict(level_chart_path)
 	letter_values = FileUtils.load_json_dict(letter_values_path)
 	crit_chance = 1.0 / 32.0
-	set_hero_name("Erdrick")
-	set_stats_from_level(level)
 	
 	stats.hp_changed.connect(on_hp_changed)
 	stats.mp_changed.connect(on_mp_changed)
@@ -47,6 +45,7 @@ func set_hero_name(new_name: String) -> void:
 
 
 func set_stats_from_level(l: int) -> void:
+	set_level(l)
 	var level_str = str(l)
 	var level_data: Dictionary = level_chart.get(level_str) as Dictionary
 	var st: int = level_data.get("Strength") as int
@@ -116,6 +115,11 @@ func level_up() -> void:
 	level_changed.emit(level)
 
 
+func set_level(l: int) -> void:
+	level = l
+	level_changed.emit(level)
+
+
 func add_gold(val: int) -> void:
 	gold = clampi(gold + val, 0, 9999)
 	gold_changed.emit(gold)
@@ -124,3 +128,7 @@ func add_gold(val: int) -> void:
 func add_exp(val: int) -> void:
 	experience += val
 	exp_changed.emit(experience)
+
+
+func get_unit_name() -> String:
+	return hero_name

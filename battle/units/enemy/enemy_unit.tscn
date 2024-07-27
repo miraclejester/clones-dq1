@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5412o7l61hep"]
+[gd_scene load_steps=3 format=3 uid="uid://c5412o7l61hep"]
 
 [ext_resource type="Script" path="res://battle/units/enemy/enemy_unit.gd" id="1_d5eun"]
-[ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime.tres" id="2_42pyk"]
 [ext_resource type="PackedScene" uid="uid://bu6gxutcim5rv" path="res://battle/units/unit_stats.tscn" id="2_t6ils"]
 
 [node name="EnemyUnit" type="Node"]
 script = ExtResource("1_d5eun")
-enemy_data = ExtResource("2_42pyk")
 
 [node name="UnitStats" parent="." instance=ExtResource("2_t6ils")]
 unique_name_in_owner = true

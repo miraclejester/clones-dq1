@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbkfjldfklook"]
+
+[ext_resource type="Material" uid="uid://bptid15xe2s11" path="res://materials/index_palette_swap.tres" id="1_hjkqu"]
+[ext_resource type="Texture2D" uid="uid://b4nhyb5x3r3y8" path="res://unit_data/enemies/00_slime/00_slime.png" id="1_s6g5a"]
+[ext_resource type="Script" path="res://battle/controllers/enemy_controller.gd" id="3_w4iwb"]
+
+[sub_resource type="Animation" id="Animation_rsudv"]
+resource_name = "appear"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/color_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_uybkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/color_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwiig"]
+_data = {
+"RESET": SubResource("Animation_uybkm"),
+"appear": SubResource("Animation_rsudv")
+}
+
+[node name="EnemyController" type="Sprite2D"]
+material = ExtResource("1_hjkqu")
+texture = ExtResource("1_s6g5a")
+script = ExtResource("3_w4iwb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwiig")
+}

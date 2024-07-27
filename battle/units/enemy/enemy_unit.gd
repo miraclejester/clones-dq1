@@ -1,12 +1,11 @@
 extends BattleUnit
 class_name EnemyUnit
 
-@export var enemy_data: EnemyData
-
 var data: EnemyData
 
-func _ready() -> void:
-	set_stats_from_data(enemy_data)
+func set_data(d: EnemyData) -> void:
+	set_stats_from_data(d)
+
 
 func set_stats_from_data(ed: EnemyData) -> void:
 	data = ed
@@ -32,6 +31,10 @@ func get_xp() -> int:
 
 func get_gp() -> int:
 	return randi_range(data.stats.min_gp, data.stats.max_gp)
+
+
+func get_unit_name() -> String:
+	return data.enemy_name
 
 
 func get_group_factor() -> float:

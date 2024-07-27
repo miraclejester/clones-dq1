@@ -9,23 +9,19 @@ enum BattleState {
 	ENEMY_TURN
 }
 
-var hero: HeroUnit
-var enemy: EnemyUnit
+@onready var hero: HeroUnit = $Hero
+@onready var enemy: EnemyUnit = $Enemy
+
 var turn_order: Array[BattleUnit] = []
 var turn_index: int = 0
 
-func _ready() -> void:
-	var h: HeroUnit = hero_scene.instantiate() as HeroUnit
-	var e: EnemyUnit = enemy_scene.instantiate() as EnemyUnit
-	add_child(h)
-	add_child(e)
-
-
-func start_battle(h: HeroUnit, e: EnemyUnit) -> Array[BattleUpdate]:
-	hero = h
-	enemy = e
+func init_battle(hero_state: HeroState, e: EnemyData) -> void:
+	hero.set_hero_name(hero_state.hero_name)
+	hero.set_stats_from_level(hero_state.level)
+	hero.set_hp(hero_state.hp)
+	hero.set_mp(hero_state.mp)
+	enemy.set_data(e)
 	roll_initiative()
-	return next_turn()
 
 
 func next_turn() -> Array[BattleUpdate]:

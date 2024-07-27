@@ -19,3 +19,8 @@ static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int) 
 	res.defender = def
 	res.damage = dmg
 	return res
+
+
+func execute(controller: BattleController) -> void:
+	await controller.battle_ui.show_attack_dialogue(attacker.get_unit_name()).current_dialogue_finished
+	finish(controller)

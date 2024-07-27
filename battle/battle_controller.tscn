@@ -1,47 +1,27 @@
 [gd_scene load_steps=9 format=3 uid="uid://b3pdkdcgcir3x"]
 
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
+[ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime/00_slime.tres" id="2_j625b"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
-[ext_resource type="Texture2D" uid="uid://cn2vlnjsg5iql" path="res://unit_data/monster_sheet.png" id="4_c36if"]
-[ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="5_46jj8"]
-[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="6_45mo6"]
-[ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="7_7e03b"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljg1a"]
-atlas = ExtResource("4_c36if")
-region = Rect2(5, 2, 19, 18)
+[ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
+[ext_resource type="PackedScene" uid="uid://bte60ddj418ss" path="res://battle/ui/battle_ui.tscn" id="6_wgrpo"]
+[ext_resource type="Resource" uid="uid://ddc6nk2tcqr22" path="res://battle/data/dialogues/battle_dialogue_command.tres" id="7_2i4v7"]
+[ext_resource type="Resource" uid="uid://dejd05hymi3xq" path="res://battle/data/dialogues/battle_dialogue_unit_attacks.tres" id="8_ytnbd"]
 
 [node name="BattleController" type="Node2D"]
 script = ExtResource("1_l0qdc")
+enemy_data = ExtResource("2_j625b")
 
 [node name="Battle" parent="." instance=ExtResource("2_rs3lt")]
 
 [node name="BattleBG" parent="." instance=ExtResource("3_jflq8")]
 position = Vector2(80, 56)
 
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="Enemy" parent="." instance=ExtResource("4_7jigr")]
 visible = false
-position = Vector2(137, 113)
-texture = SubResource("AtlasTexture_ljg1a")
+position = Vector2(136, 105)
 
-[node name="BattleUI" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="PlayerHud" parent="BattleUI" instance=ExtResource("5_46jj8")]
-offset_left = 16.0
-offset_top = 24.0
-offset_right = -176.0
-offset_bottom = -104.0
-
-[node name="CommandWindow" parent="BattleUI" instance=ExtResource("6_45mo6")]
-offset_left = 96.0
-offset_top = 8.0
-offset_right = -32.0
-offset_bottom = -168.0
-
-[node name="DialogueWindow" parent="BattleUI" instance=ExtResource("7_7e03b")]
-offset_left = 32.0
-offset_top = 136.0
-offset_right = -32.0
-offset_bottom = -8.0
+[node name="BattleUI" parent="." instance=ExtResource("6_wgrpo")]
+command_dialogue_data = ExtResource("7_2i4v7")
+attack_dialogue = ExtResource("8_ytnbd")

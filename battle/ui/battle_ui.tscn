@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bte60ddj418ss"]
+
+[ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_m88t5"]
+[ext_resource type="Script" path="res://battle/ui/battle_ui.gd" id="1_yq6lc"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="2_j82m1"]
+[ext_resource type="Resource" uid="uid://c53j4f57uv1lj" path="res://battle/data/dialogues/battle_dialogue_start.tres" id="2_kgjf4"]
+[ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="3_1s2h0"]
+
+[node name="BattleUI" type="CanvasLayer"]
+script = ExtResource("1_yq6lc")
+battle_start_dialogue_data = ExtResource("2_kgjf4")
+
+[node name="PlayerHud" parent="." instance=ExtResource("1_m88t5")]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = -176.0
+offset_bottom = -104.0
+
+[node name="CommandWindow" parent="." instance=ExtResource("2_j82m1")]
+offset_left = 96.0
+offset_top = 8.0
+offset_right = -32.0
+offset_bottom = -168.0
+
+[node name="DialogueWindow" parent="." instance=ExtResource("3_1s2h0")]
+offset_left = 32.0
+offset_top = 136.0
+offset_right = -32.0
+offset_bottom = -8.0

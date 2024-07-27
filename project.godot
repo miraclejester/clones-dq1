@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FileUtils="*res://singleton/file_utils.gd"
+MenuStack="*res://singleton/menu_stack.gd"
 
 [display]
 
