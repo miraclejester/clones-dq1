@@ -8,6 +8,7 @@ signal dialogue_finished()
 @export var battle_start_dialogue_data: DialogueEvent
 @export var command_dialogue_data: DialogueEvent
 @export var attack_dialogue: DialogueEvent
+@export var enemy_hurt_dialogue: DialogueEvent
 
 @onready var player_hud: PlayerHUD = $PlayerHud
 @onready var command_window: CommandWindow = $CommandWindow
@@ -47,30 +48,8 @@ func hide_command_window() -> void:
 	MenuStack.pop_stack()
 
 
-func show_initial_dialogue(enemy_name: String) -> DialogueWindow:
-	var queue: Array[DialogueEventParams] = []
-	queue.append(DialogueEventParams.fromData(battle_start_dialogue_data, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [enemy_name]
-	}))
-	dialogue_window.start_dialogue(queue)
-	return dialogue_window
-
-
-func show_command_dialogue() -> DialogueWindow:
-	var queue: Array[DialogueEventParams] = []
-	queue.append(DialogueEventParams.fromData(command_dialogue_data))
-	dialogue_window.start_dialogue(queue)
-	return dialogue_window
-
-
-func show_attack_dialogue(attacker_name: String) -> DialogueWindow:
-	var queue: Array[DialogueEventParams] = []
-	queue.append(DialogueEventParams.fromData(attack_dialogue, {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [attacker_name],
-		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING: true
-	}))
-	dialogue_window.start_dialogue(queue)
-	return dialogue_window
+func show_battle_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = [], continuing: bool = false) -> void:
+	await dialogue_window.show_paragraph(id, format_vars, continuing).current_dialogue_finished
 
 
 func current_dialogue_finished() -> void:

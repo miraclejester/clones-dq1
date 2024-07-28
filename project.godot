@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 FileUtils="*res://singleton/file_utils.gd"
 MenuStack="*res://singleton/menu_stack.gd"
+GeneralDialogueProvider="*res://singleton/general_dialogue_provider.gd"
 
 [display]
 
@@ -73,4 +74,4 @@ start={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"

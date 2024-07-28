@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3pdkdcgcir3x"]
+[gd_scene load_steps=7 format=3 uid="uid://b3pdkdcgcir3x"]
 
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
 [ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime/00_slime.tres" id="2_j625b"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
 [ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
 [ext_resource type="PackedScene" uid="uid://bte60ddj418ss" path="res://battle/ui/battle_ui.tscn" id="6_wgrpo"]
-[ext_resource type="Resource" uid="uid://ddc6nk2tcqr22" path="res://battle/data/dialogues/battle_dialogue_command.tres" id="7_2i4v7"]
-[ext_resource type="Resource" uid="uid://dejd05hymi3xq" path="res://battle/data/dialogues/battle_dialogue_unit_attacks.tres" id="8_ytnbd"]
 
 [node name="BattleController" type="Node2D"]
 script = ExtResource("1_l0qdc")
@@ -23,5 +21,3 @@ visible = false
 position = Vector2(136, 105)
 
 [node name="BattleUI" parent="." instance=ExtResource("6_wgrpo")]
-command_dialogue_data = ExtResource("7_2i4v7")
-attack_dialogue = ExtResource("8_ytnbd")

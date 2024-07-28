@@ -36,7 +36,10 @@ func start_battle() -> void:
 	enemy_controller.visible = true
 	await enemy_controller.play_appear_animation().animation_finished
 	battle_ui.show_dialogue_window()
-	await battle_ui.show_initial_dialogue(enemy_data.enemy_name).current_dialogue_finished
+	await battle_ui.show_battle_paragraph(
+		GeneralDialogueProvider.DialogueID.BattleStart,
+		[enemy_data.enemy_name]
+	)
 	battle_ui.show_hud()
 	
 	battle_update_queue = battle.next_turn()
@@ -54,7 +57,7 @@ func process_update_queue() -> void:
 
 
 func ask_command() -> void:
-	await battle_ui.show_command_dialogue().current_dialogue_finished
+	await battle_ui.show_battle_paragraph(GeneralDialogueProvider.DialogueID.BattleCommand)
 	battle_ui.show_command_window()
 
 

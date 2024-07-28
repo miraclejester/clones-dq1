@@ -22,5 +22,15 @@ static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int) 
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_attack_dialogue(attacker.get_unit_name()).current_dialogue_finished
+	await controller.battle_ui.show_battle_paragraph(
+		GeneralDialogueProvider.DialogueID.BattleUnitAttacks,
+		[attacker.get_unit_name()],
+		true
+	)
+	await controller.get_tree().create_timer(0.5).timeout
+	await controller.battle_ui.show_battle_paragraph(
+		GeneralDialogueProvider.DialogueID.BattleEnemyHurt,
+		[defender.get_unit_name(), damage],
+		true
+	)
 	finish(controller)

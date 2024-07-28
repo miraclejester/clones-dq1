@@ -21,6 +21,16 @@ func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
 
 
+func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array, continuing: bool) -> DialogueWindow:
+	var queue: Array[DialogueEventParams] = []
+	queue.append(DialogueEventParams.fromData(GeneralDialogueProvider.get_dialogue(id), {
+		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : format_vars,
+		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING : continuing
+	}))
+	start_dialogue(queue)
+	return self
+
+
 func start_dialogue(initial_queue: Array[DialogueEventParams]) -> void:
 	event_queue = initial_queue
 	process_next_event()

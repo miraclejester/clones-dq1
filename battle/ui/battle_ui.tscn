@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bte60ddj418ss"]
+[gd_scene load_steps=9 format=3 uid="uid://bte60ddj418ss"]
 
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_m88t5"]
 [ext_resource type="Script" path="res://battle/ui/battle_ui.gd" id="1_yq6lc"]
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="2_j82m1"]
 [ext_resource type="Resource" uid="uid://c53j4f57uv1lj" path="res://battle/data/dialogues/battle_dialogue_start.tres" id="2_kgjf4"]
 [ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="3_1s2h0"]
+[ext_resource type="Resource" uid="uid://ddc6nk2tcqr22" path="res://battle/data/dialogues/battle_dialogue_command.tres" id="3_lo8cw"]
+[ext_resource type="Resource" uid="uid://dejd05hymi3xq" path="res://battle/data/dialogues/battle_dialogue_unit_attacks.tres" id="4_5xrpo"]
+[ext_resource type="Resource" uid="uid://mx0yydcrxstg" path="res://battle/data/dialogues/battle_dialogue_enemy_hurt.tres" id="5_ip3l8"]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_yq6lc")
 battle_start_dialogue_data = ExtResource("2_kgjf4")
+command_dialogue_data = ExtResource("3_lo8cw")
+attack_dialogue = ExtResource("4_5xrpo")
+enemy_hurt_dialogue = ExtResource("5_ip3l8")
 
 [node name="PlayerHud" parent="." instance=ExtResource("1_m88t5")]
 offset_left = 16.0

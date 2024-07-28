@@ -3,6 +3,5 @@ class_name HeroCommandBattleUpdate
 
 
 func execute(controller: BattleController) -> void:
-	controller.ask_command()
-	await controller.get_tree().process_frame
+	await controller.ask_command()
 	finish(controller)
