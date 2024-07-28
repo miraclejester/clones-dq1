@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://cd8bx0sig1m43"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_u1mtp"]
+
+[resource]
+script = ExtResource("1_u1mtp")
+text = "Excellent move!"
+in_quotes = false

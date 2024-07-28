@@ -5,6 +5,10 @@ class_name BattleUnit
 
 var crit_chance: float = 0
 
+func deal_damage(damage: int) -> void:
+	stats.hp -= damage
+
+
 func get_attack_damage(defender: BattleUnit) -> int:
 	var diff: int = (get_attack() - floor(defender.get_defense() / 2.0))
 	var min_damage: int = floor(diff / 4.0)
@@ -26,6 +30,10 @@ func get_attack() -> int:
 
 func get_dodge() -> float:
 	return 0
+
+
+func is_dead() -> bool:
+	return stats.hp <= 0 
 
 
 func get_unit_name() -> String:

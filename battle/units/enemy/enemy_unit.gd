@@ -13,6 +13,8 @@ func set_stats_from_data(ed: EnemyData) -> void:
 	stats.set_agility(ed.stats.agility)
 	stats.set_max_hp(randi_range(ed.stats.min_hp, ed.stats.max_hp))
 	stats.set_max_mp(0)
+	stats.hp = stats.max_hp
+	stats.mp = stats.max_mp
 
 
 func get_attack_damage(defender: BattleUnit) -> int:

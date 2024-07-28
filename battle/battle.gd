@@ -24,7 +24,7 @@ func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 	roll_initiative()
 
 
-func next_turn() -> Array[BattleUpdate]:
+func start_battle() -> Array[BattleUpdate]:
 	var unit: BattleUnit = turn_order[turn_index]
 	turn_index = (turn_index + 1) % 2
 	var res: Array[BattleUpdate] = []
@@ -32,8 +32,39 @@ func next_turn() -> Array[BattleUpdate]:
 		res.append(HeroCommandBattleUpdate.new())
 	else:
 		res.append(fight_action(enemy, hero))
-		res.append_array(next_turn())
+		res.append_array(check_battle_end())
+		if not is_battle_finished():
+			res.append(HeroCommandBattleUpdate.new())
 	return res
+
+
+func player_fight() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	res.append(fight_action(hero, enemy))
+	res.append_array(check_battle_end())
+	
+	if not is_battle_finished():
+		res.append(fight_action(enemy, hero))
+		res.append_array(check_battle_end())
+	
+	if not is_battle_finished():
+		res.append(HeroCommandBattleUpdate.new())
+	return res
+
+
+func check_battle_end() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	if enemy.is_dead():
+		var exp_gain: int = enemy.get_xp()
+		var gold_gain: int = enemy.get_gp()
+		hero.add_exp(exp_gain)
+		hero.add_gold(gold_gain)
+		res.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
+	return res
+
+
+func is_battle_finished() -> bool:
+	return hero.is_dead() or enemy.is_dead()
 
 
 func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
@@ -45,12 +76,21 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 		
 	var crit_roll: float = randf_range(0, 1)
 	if crit_roll < attacker.crit_chance:
+		var d: int = attacker.get_crit_damage()
+		defender.deal_damage(d)
 		return AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, attacker.get_crit_damage()
+			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d
 		)
-		
+	
+	var dmg: int = attacker.get_attack_damage(defender)
+	defender.deal_damage(dmg)
+	
+	if dmg < 1:
+		return AttackBattleUpdate.fromData(
+			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0
+		)
 	return AttackBattleUpdate.fromData(
-		AttackBattleUpdate.AttackResult.HIT, attacker, defender, attacker.get_attack_damage(defender)
+		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg
 	)
 
 

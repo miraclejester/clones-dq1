@@ -56,6 +56,10 @@ func current_dialogue_finished() -> void:
 	dialogue_finished.emit()
 
 
+func update_hud() -> void:
+	player_hud.update_from_hero()
+
+
 func command_selected(idx: int) -> void:
 	match idx:
 		0:

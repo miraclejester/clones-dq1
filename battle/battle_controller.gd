@@ -21,9 +21,9 @@ func _ready() -> void:
 func start_battle() -> void:
 	var hero_state: HeroState = HeroState.new()
 	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 15
+	hero_state.hp = 20
 	hero_state.mp = 0
-	hero_state.level = 1
+	hero_state.level = 3
 	
 	battle_update_queue = []
 	battle.init_battle(hero_state, enemy_data)
@@ -42,18 +42,19 @@ func start_battle() -> void:
 	)
 	battle_ui.show_hud()
 	
-	battle_update_queue = battle.next_turn()
-	process_update_queue()
+	add_updates(battle.start_battle())
+	process_updates()
 
 
-func process_update_queue() -> void:
-	if battle_update_queue.size() == 0:
-		battle_update_queue = battle.next_turn()
-		return
+func process_updates() -> void:
 	while battle_update_queue.size() > 0:
 		var update: BattleUpdate = battle_update_queue.pop_front()
 		update.execute(self)
 		await battle_update_finished
+
+
+func add_updates(updates: Array[BattleUpdate]) -> void:
+	battle_update_queue.append_array(updates)
 
 
 func ask_command() -> void:
@@ -63,5 +64,5 @@ func ask_command() -> void:
 
 func fight_selected() -> void:
 	battle_ui.hide_command_window()
-	battle_update_queue.append(battle.fight_action(battle.hero, battle.enemy))
-	process_update_queue()
+	add_updates(battle.player_fight())
+	process_updates()

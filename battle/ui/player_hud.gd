@@ -11,6 +11,8 @@ class_name PlayerHUD
 @onready var gold_text: Label = %GoldText
 @onready var exp_text: Label = %ExpText
 
+var hero: HeroUnit
+
 func _ready() -> void:
 	debug_hero.hero_name = "Debug"
 	if is_debug:
@@ -22,19 +24,18 @@ func _process(_delta: float) -> void:
 		debug_update()
 
 
-func set_hero(hero: HeroUnit) -> void:
+func set_hero(h: HeroUnit) -> void:
+	hero = h
 	player_name.text = hero.hero_name.substr(0, 4)
+	update_from_hero()
+
+
+func update_from_hero() -> void:
 	on_hp_changed(hero.stats.hp)
 	on_mp_changed(hero.stats.mp)
 	on_level_changed(hero.level)
 	on_gold_changed(hero.gold)
 	on_exp_changed(hero.experience)
-	
-	hero.hp_changed.connect(on_hp_changed)
-	hero.mp_changed.connect(on_mp_changed)
-	hero.level_changed.connect(on_level_changed)
-	hero.gold_changed.connect(on_gold_changed)
-	hero.exp_changed.connect(on_exp_changed)
 
 
 func on_hp_changed(val: int) -> void:
