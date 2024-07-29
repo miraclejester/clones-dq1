@@ -19,6 +19,8 @@ debug_hero = NodePath("DebugHero")
 
 [node name="UIWindow" parent="." instance=ExtResource("1_1wahw")]
 layout_mode = 0
+offset_right = 64.0
+offset_bottom = 96.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

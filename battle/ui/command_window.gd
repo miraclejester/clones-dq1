@@ -8,8 +8,15 @@ signal cancelled()
 @export var rows: int = 2
 @export var columns: int = 2
 
+@onready var ui_window: NinePatchRect = $UIWindow
+@onready var margin_container: MarginContainer = $MarginContainer
+
+
 var selection_index: int = 0
 var menu_active: bool = false
+
+func _ready() -> void:
+	margin_container.resized.connect(on_main_container_resized)
 
 func _process(_delta: float) -> void:
 	if not menu_active:
@@ -76,3 +83,7 @@ func activate() -> void:
 func deactivate() -> void:
 	commands[selection_index].move_away()
 	menu_active = false
+
+
+func on_main_container_resized() -> void:
+	ui_window.size = margin_container.size

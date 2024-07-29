@@ -18,7 +18,7 @@ script = ExtResource("1_o5prq")
 commands = [NodePath("MarginContainer/MainRow/Col1/FightCommand"), NodePath("MarginContainer/MainRow/Col2/SpellCommand"), NodePath("MarginContainer/MainRow/Col1/RunCommand"), NodePath("MarginContainer/MainRow/Col2/ItemCommand")]
 
 [node name="UIWindow" parent="." instance=ExtResource("1_f0syu")]
-layout_mode = 0
+layout_mode = 2
 offset_right = 128.0
 offset_bottom = 48.0
 
