@@ -21,15 +21,16 @@ func _ready() -> void:
 func start_battle() -> void:
 	var hero_state: HeroState = HeroState.new()
 	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 20
+	hero_state.hp = 15
 	hero_state.mp = 0
-	hero_state.level = 3
+	hero_state.level = 1
 	
 	battle_update_queue = []
 	battle.init_battle(hero_state, enemy_data)
 	enemy_controller.set_data(enemy_data)
 	battle_ui.initialize()
 	battle_ui.set_hero_data(battle.hero)
+	battle_ui.determine_ui_colors(hero_state.hp, battle.hero.stats.max_hp)
 	
 	await battle_bg.start_appear_animation()
 	

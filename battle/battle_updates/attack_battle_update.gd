@@ -41,6 +41,10 @@ func execute(controller: BattleController) -> void:
 
 
 func hit(controller: BattleController) -> void:
+	if defender is EnemyUnit:
+		await controller.enemy_controller.play_hurt_animation()
+	else:
+		controller.battle_ui.determine_ui_colors(defender.stats.hp, defender.stats.max_hp)
 	var dialogue_id: GeneralDialogueProvider.DialogueID
 	var format_vars: Array
 	if defender is EnemyUnit:
@@ -60,8 +64,11 @@ func hit(controller: BattleController) -> void:
 
 
 func miss(controller: BattleController) -> void:
+	var dialogue_id = GeneralDialogueProvider.DialogueID.BattleMiss
+	if defender is EnemyUnit:
+		dialogue_id = GeneralDialogueProvider.DialogueID.BattleEnemyDodge
 	await controller.battle_ui.show_battle_paragraph(
-		GeneralDialogueProvider.DialogueID.BattleMiss, [], true
+		dialogue_id, [], true
 	)
 
 

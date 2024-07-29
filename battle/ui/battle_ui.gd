@@ -5,10 +5,7 @@ signal fight_selected()
 
 signal dialogue_finished()
 
-@export var battle_start_dialogue_data: DialogueEvent
-@export var command_dialogue_data: DialogueEvent
-@export var attack_dialogue: DialogueEvent
-@export var enemy_hurt_dialogue: DialogueEvent
+@export var low_health_color: Color
 
 @onready var player_hud: PlayerHUD = $PlayerHud
 @onready var command_window: CommandWindow = $CommandWindow
@@ -50,6 +47,7 @@ func hide_command_window() -> void:
 
 func show_battle_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = [], continuing: bool = false) -> void:
 	await dialogue_window.show_paragraph(id, format_vars, continuing).current_dialogue_finished
+	await get_tree().create_timer(0.2).timeout
 
 
 func current_dialogue_finished() -> void:
@@ -58,6 +56,25 @@ func current_dialogue_finished() -> void:
 
 func update_hud() -> void:
 	player_hud.update_from_hero()
+
+
+func set_to_low_health() -> void:
+	player_hud.modulate = low_health_color
+	command_window.modulate = low_health_color
+	dialogue_window.modulate = low_health_color
+
+
+func set_to_normal_health() -> void:
+	player_hud.modulate = Color.WHITE
+	command_window.modulate = Color.WHITE
+	dialogue_window.modulate = Color.WHITE
+
+
+func determine_ui_colors(hp: int, max_hp: int) -> void:
+	if hp <= floor(max_hp / 5.0):
+		set_to_low_health()
+	else:
+		set_to_normal_health()
 
 
 func command_selected(idx: int) -> void:

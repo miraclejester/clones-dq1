@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="NewlineDialogueEvent" load_steps=2 format=3 uid="uid://ci2mxeu26hcib"]
+[gd_resource type="Resource" script_class="NewlineDialogueEvent" load_steps=2 format=3 uid="uid://d0hqkarifs8p8"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/newline_dialogue_event.gd" id="1_p7fj5"]
 
 [resource]
 script = ExtResource("1_p7fj5")
-text = "A"
+text = "AA"
 in_quotes = false

@@ -31,6 +31,7 @@ func start_battle() -> Array[BattleUpdate]:
 	if unit is HeroUnit:
 		res.append(HeroCommandBattleUpdate.new())
 	else:
+		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
 		res.append(fight_action(enemy, hero))
 		res.append_array(check_battle_end())
 		if not is_battle_finished():
@@ -60,6 +61,8 @@ func check_battle_end() -> Array[BattleUpdate]:
 		hero.add_exp(exp_gain)
 		hero.add_gold(gold_gain)
 		res.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
+	elif hero.is_dead():
+		res.append(DefeatBattleUpdate.new())
 	return res
 
 

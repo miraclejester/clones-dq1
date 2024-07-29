@@ -18,6 +18,7 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleEnemyDefeated,
 		[enemy_name]
 	)
+	controller.enemy_controller.visible = false
 	await controller.battle_ui.show_battle_paragraph(
 		GeneralDialogueProvider.DialogueID.BattleExpGain,
 		[xp],

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://kndwdhgbjq1r"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://kndwdhgbjq1r"]
 
 [ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_7j5e2"]
 [ext_resource type="Texture2D" uid="uid://jfk61m7r1y8y" path="res://unit_data/enemies/00_slime/00_slime_palette.png" id="1_gla7k"]
 [ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="2_2swlm"]
+[ext_resource type="Texture2D" uid="uid://hqyohyprsk04" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_slime.png" id="2_4pg06"]
 [ext_resource type="Texture2D" uid="uid://b4nhyb5x3r3y8" path="res://unit_data/enemies/00_slime/00_slime.png" id="3_18g2l"]
 
 [sub_resource type="Resource" id="Resource_bkcpj"]
@@ -23,6 +24,7 @@ min_gp = 1
 script = ExtResource("1_7j5e2")
 enemy_name = "Slime"
 texture = ExtResource("3_18g2l")
+hurt_texture = ExtResource("2_4pg06")
 stats = SubResource("Resource_bkcpj")
 initiative_group = 1
 position_group = 0

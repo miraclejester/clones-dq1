@@ -10,7 +10,11 @@ enum DialogueID {
 	BattleStart,
 	BattleUnitAttacks,
 	BattlePlayerHurt,
-	BattleExcellentMove
+	BattleExcellentMove,
+	BattleEnemyDodge,
+	BattlePlayerDeath,
+	BattleEnemyFirst,
+	Newline
 }
 
 const dialogue_dict: Dictionary = {
@@ -23,7 +27,11 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleStart : preload("res://battle/data/dialogues/battle_dialogue_start.tres"),
 	DialogueID.BattleUnitAttacks : preload("res://battle/data/dialogues/battle_dialogue_unit_attacks.tres"),
 	DialogueID.BattlePlayerHurt : preload("res://battle/data/dialogues/battle_dialogue_player_hurt.tres"),
-	DialogueID.BattleExcellentMove : preload("res://battle/data/dialogues/battle_dialogue_excellent_move.tres")
+	DialogueID.BattleExcellentMove : preload("res://battle/data/dialogues/battle_dialogue_excellent_move.tres"),
+	DialogueID.BattleEnemyDodge : preload("res://battle/data/dialogues/battle_dialogue_enemy_dodge.tres"),
+	DialogueID.BattlePlayerDeath : preload("res://battle/data/dialogues/battle_dialogue_player_death.tres"),
+	DialogueID.BattleEnemyFirst : preload("res://battle/data/dialogues/battle_dialogue_enemy_first.tres"),
+	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 
 func get_dialogue(id: DialogueID) -> DialogueEvent:

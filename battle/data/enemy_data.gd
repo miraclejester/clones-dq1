@@ -16,6 +16,7 @@ const POSITION_GROUP_MAP: Dictionary = {
 
 @export var enemy_name: String
 @export var texture: Texture2D
+@export var hurt_texture: Texture2D
 @export var stats: EnemyStatData
 @export var initiative_group: int
 @export var position_group: BattlePositionGroup

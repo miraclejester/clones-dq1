@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://ch7dla5ty127y"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_7l6j3"]
+
+[resource]
+script = ExtResource("1_7l6j3")
+text = "It is dodging!"
+in_quotes = false
