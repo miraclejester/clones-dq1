@@ -4,7 +4,8 @@ class_name AttackBattleUpdate
 enum AttackResult {
 	DODGE,
 	HIT,
-	CRIT
+	CRIT,
+	NO_DAMAGE
 }
 
 var result: AttackResult
@@ -36,6 +37,8 @@ func execute(controller: BattleController) -> void:
 			await miss(controller)
 		AttackResult.CRIT:
 			await crit(controller)
+		AttackResult.NO_DAMAGE:
+			await no_damage(controller)
 
 	finish(controller)
 
@@ -69,6 +72,12 @@ func miss(controller: BattleController) -> void:
 		dialogue_id = GeneralDialogueProvider.DialogueID.BattleEnemyDodge
 	await controller.battle_ui.show_battle_paragraph(
 		dialogue_id, [], true
+	)
+
+
+func no_damage(controller: BattleController) -> void:
+	await controller.battle_ui.show_battle_paragraph(
+		GeneralDialogueProvider.DialogueID.BattleEnemyNoDamage, [], true
 	)
 
 

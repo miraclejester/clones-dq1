@@ -14,6 +14,7 @@ enum DialogueID {
 	BattleEnemyDodge,
 	BattlePlayerDeath,
 	BattleEnemyFirst,
+	BattleEnemyNoDamage,
 	Newline
 }
 
@@ -31,6 +32,7 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleEnemyDodge : preload("res://battle/data/dialogues/battle_dialogue_enemy_dodge.tres"),
 	DialogueID.BattlePlayerDeath : preload("res://battle/data/dialogues/battle_dialogue_player_death.tres"),
 	DialogueID.BattleEnemyFirst : preload("res://battle/data/dialogues/battle_dialogue_enemy_first.tres"),
+	DialogueID.BattleEnemyNoDamage : preload("res://battle/data/dialogues/battle_dialogue_enemy_no_damage.tres"),
 	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 

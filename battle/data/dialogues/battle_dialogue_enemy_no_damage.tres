@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://hsp64k1vujla"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_okk6i"]
+
+[resource]
+script = ExtResource("1_okk6i")
+text = "The attack failed and there was no loss of Hit Points!"
+in_quotes = false

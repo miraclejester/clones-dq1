@@ -88,9 +88,10 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 	var dmg: int = attacker.get_attack_damage(defender)
 	defender.deal_damage(dmg)
 	
+	dmg = 0
 	if dmg < 1:
 		return AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0
+			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0
 		)
 	return AttackBattleUpdate.fromData(
 		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg
