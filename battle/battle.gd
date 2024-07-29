@@ -29,13 +29,12 @@ func start_battle() -> Array[BattleUpdate]:
 	turn_index = (turn_index + 1) % 2
 	var res: Array[BattleUpdate] = []
 	if unit is HeroUnit:
-		res.append(HeroCommandBattleUpdate.new())
+		res.append_array(player_turn())
 	else:
 		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
-		res.append(fight_action(enemy, hero))
-		res.append_array(check_battle_end())
+		res.append_array(enemy_turn())
 		if not is_battle_finished():
-			res.append(HeroCommandBattleUpdate.new())
+			res.append_array(player_turn())
 	return res
 
 
@@ -45,11 +44,36 @@ func player_fight() -> Array[BattleUpdate]:
 	res.append_array(check_battle_end())
 	
 	if not is_battle_finished():
-		res.append(fight_action(enemy, hero))
-		res.append_array(check_battle_end())
+		res.append_array(enemy_turn())
 	
 	if not is_battle_finished():
-		res.append(HeroCommandBattleUpdate.new())
+		res.append_array(player_turn())
+	return res
+
+
+func player_run() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	if speed_roll():
+		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
+		res.append(FinishBattleUpdate.new())
+	else:
+		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
+		res.append_array(enemy_turn())
+		if not is_battle_finished():
+			res.append_array(player_turn())
+	return res
+
+
+func enemy_turn() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	res.append(fight_action(enemy, hero))
+	res.append_array(check_battle_end())
+	return res
+
+
+func player_turn() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	res.append(HeroCommandBattleUpdate.new())
 	return res
 
 
@@ -61,8 +85,10 @@ func check_battle_end() -> Array[BattleUpdate]:
 		hero.add_exp(exp_gain)
 		hero.add_gold(gold_gain)
 		res.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
+		res.append(FinishBattleUpdate.new())
 	elif hero.is_dead():
 		res.append(DefeatBattleUpdate.new())
+		res.append(FinishBattleUpdate.new())
 	return res
 
 
@@ -88,7 +114,6 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 	var dmg: int = attacker.get_attack_damage(defender)
 	defender.deal_damage(dmg)
 	
-	dmg = 0
 	if dmg < 1:
 		return AttackBattleUpdate.fromData(
 			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0
@@ -99,9 +124,13 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 
 
 func roll_initiative() -> void:
+	if speed_roll():
+		turn_order = [hero, enemy]
+	else:
+		turn_order = [enemy, hero]
+
+
+func speed_roll() -> bool:
 	var hero_roll: int = hero.stats.agility * randi_range(0, 255)
 	var enemy_roll: int = floor(enemy.stats.agility * randi_range(0, 255) * enemy.get_group_factor())
-	if hero_roll < enemy_roll:
-		turn_order = [enemy, hero]
-	else:
-		turn_order = [hero, enemy]
+	return enemy_roll <= hero_roll

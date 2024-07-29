@@ -2,6 +2,7 @@ extends Node2D
 class_name BattleController
 
 signal battle_update_finished()
+signal battle_finished()
 
 @export var enemy_data: EnemyData
 
@@ -15,6 +16,7 @@ var battle_update_queue: Array[BattleUpdate] = []
 
 func _ready() -> void:
 	battle_ui.fight_selected.connect(fight_selected)
+	battle_ui.run_selected.connect(run_selected)
 	start_battle()
 
 
@@ -67,3 +69,13 @@ func fight_selected() -> void:
 	battle_ui.hide_command_window()
 	add_updates(battle.player_fight())
 	process_updates()
+
+
+func run_selected() -> void:
+	battle_ui.hide_command_window()
+	add_updates(battle.player_run())
+	process_updates()
+
+
+func finish_battle() -> void:
+	battle_finished.emit()

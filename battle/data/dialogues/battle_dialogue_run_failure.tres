@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://cg7jtbbc8mfkj"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_yb8ft"]
+
+[resource]
+script = ExtResource("1_yb8ft")
+text = "But was blocked in front."
+in_quotes = false

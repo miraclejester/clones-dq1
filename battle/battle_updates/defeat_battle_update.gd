@@ -9,7 +9,5 @@ func execute(controller: BattleController) -> void:
 	await controller.battle_ui.show_battle_paragraph(
 		GeneralDialogueProvider.DialogueID.BattlePlayerDeath, [], true
 	)
-	await controller.battle_ui.show_battle_paragraph(
-		GeneralDialogueProvider.DialogueID.Newline, [], true
-	)
+	await controller.battle_ui.show_newline(true)
 	finish(controller)

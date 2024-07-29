@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name BattleUI
 
 signal fight_selected()
+signal run_selected()
 
 signal dialogue_finished()
 
@@ -49,6 +50,11 @@ func show_battle_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: 
 	await dialogue_window.show_paragraph(id, format_vars, continuing).current_dialogue_finished
 	await get_tree().create_timer(0.2).timeout
 
+func show_newline(continuing: bool) -> void:
+	await show_battle_paragraph(
+		GeneralDialogueProvider.DialogueID.Newline, [], continuing
+	)
+
 
 func current_dialogue_finished() -> void:
 	dialogue_finished.emit()
@@ -81,3 +87,5 @@ func command_selected(idx: int) -> void:
 	match idx:
 		0:
 			fight_selected.emit()
+		2:
+			run_selected.emit()

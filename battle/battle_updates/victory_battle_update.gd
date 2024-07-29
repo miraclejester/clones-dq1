@@ -30,4 +30,5 @@ func execute(controller: BattleController) -> void:
 		true
 	)
 	controller.battle_ui.update_hud()
+	await controller.battle_ui.show_newline(true)
 	finish(controller)
