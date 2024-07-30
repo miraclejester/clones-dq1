@@ -16,6 +16,8 @@ signal dialogue_finished()
 func _ready() -> void:
 	command_window.selected.connect(command_selected)
 	dialogue_window.current_dialogue_finished.connect(current_dialogue_finished)
+	
+	command_window.initialize_commands(["FIGHT", "SPELL", "RUN", "ITEM"], 2)
 
 
 func initialize() -> void:

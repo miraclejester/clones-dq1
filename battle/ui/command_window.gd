@@ -4,19 +4,28 @@ class_name CommandWindow
 signal selected(index: int)
 signal cancelled()
 
-@export var commands: Array[CommandLabel]
-@export var rows: int = 2
-@export var columns: int = 2
+@export var command_label_scene: PackedScene
 
 @onready var ui_window: NinePatchRect = $UIWindow
 @onready var margin_container: MarginContainer = $MarginContainer
+@onready var grid_container: GridContainer = %GridContainer
 
 
 var selection_index: int = 0
 var menu_active: bool = false
 
+var left_margin: int
+var right_margin: int
+var top_margin: int
+var bottom_margin: int
+
 func _ready() -> void:
-	margin_container.resized.connect(on_main_container_resized)
+	grid_container.resized.connect(on_main_container_resized)
+	left_margin = margin_container.get_theme_constant("margin_left")
+	right_margin = margin_container.get_theme_constant("margin_right")
+	top_margin = margin_container.get_theme_constant("margin_top")
+	bottom_margin = margin_container.get_theme_constant("margin_bottom")
+
 
 func _process(_delta: float) -> void:
 	if not menu_active:
@@ -37,34 +46,50 @@ func _process(_delta: float) -> void:
 		cancel()
 
 
+func initialize_commands(commands: Array[String], columns: int) -> void:
+	for child in grid_container.get_children():
+		grid_container.remove_child(child)
+		child.queue_free()
+	for command in commands:
+		add_command(command)
+	grid_container.columns = columns
+
+
+func add_command(command_text: String) -> void:
+	var command_label: CommandLabel = command_label_scene.instantiate()
+	grid_container.add_child(command_label)
+	command_label.label_text.text = command_text
+	command_label.move_away()
+
+
 func move_left() -> void:
-	if selection_index % columns == 0:
+	if selection_index % grid_container.columns == 0:
 		return
 	set_selection(selection_index - 1)
 
 
 func move_right() -> void:
-	if (selection_index + 1) % columns == 0:
+	if (selection_index + 1) % grid_container.columns == 0:
 		return
 	set_selection(selection_index + 1)
 
 
 func move_down() -> void:
-	if selection_index + columns >= commands.size():
+	if selection_index + grid_container.columns >= grid_container.get_child_count():
 		return
-	set_selection(selection_index + columns)
+	set_selection(selection_index + grid_container.columns)
 
 
 func move_up() -> void:
-	if selection_index - columns < 0:
+	if selection_index - grid_container.columns < 0:
 		return
-	set_selection(selection_index - columns)
+	set_selection(selection_index - grid_container.columns)
 
 
 func set_selection(idx: int) -> void:
-	commands[selection_index].move_away()
+	get_command(selection_index).move_away()
 	selection_index = idx
-	commands[selection_index].highlight()
+	get_command(selection_index).highlight()
 
 
 func select() -> void:
@@ -76,14 +101,20 @@ func cancel() -> void:
 
 
 func activate() -> void:
-	commands[selection_index].highlight()
+	get_command(selection_index).highlight()
 	menu_active = true
 
 
 func deactivate() -> void:
-	commands[selection_index].move_away()
+	get_command(selection_index).move_away()
 	menu_active = false
 
 
+func get_command(idx: int) -> CommandLabel:
+	return grid_container.get_child(idx) as CommandLabel
+
+
 func on_main_container_resized() -> void:
-	ui_window.size = margin_container.size
+	var width: int = int(grid_container.size.x) + left_margin + right_margin
+	var height: int = int(grid_container.size.y) + top_margin + bottom_margin
+	ui_window.size = Vector2(width, height)
