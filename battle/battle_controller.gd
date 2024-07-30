@@ -16,6 +16,7 @@ var battle_update_queue: Array[BattleUpdate] = []
 
 func _ready() -> void:
 	battle_ui.fight_selected.connect(fight_selected)
+	battle_ui.spell_selected.connect(spell_selected)
 	battle_ui.run_selected.connect(run_selected)
 	start_battle()
 
@@ -75,6 +76,12 @@ func fight_selected() -> void:
 func run_selected() -> void:
 	battle_ui.hide_command_window()
 	add_updates(battle.player_run())
+	process_updates()
+
+
+func spell_selected() -> void:
+	battle_ui.hide_command_window()
+	add_updates(battle.player_spell())
 	process_updates()
 
 

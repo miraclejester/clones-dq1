@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://bscyc5aswyaat"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_sl51m"]
+
+[resource]
+script = ExtResource("1_sl51m")
+text = "%s cannot yet use the spell."
+in_quotes = false

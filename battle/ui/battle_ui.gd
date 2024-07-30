@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name BattleUI
 
 signal fight_selected()
+signal spell_selected()
 signal run_selected()
 
 signal dialogue_finished()
@@ -90,5 +91,7 @@ func command_selected(idx: int) -> void:
 	match idx:
 		0:
 			fight_selected.emit()
+		1:
+			spell_selected.emit()
 		2:
 			run_selected.emit()

@@ -64,6 +64,14 @@ func player_run() -> Array[BattleUpdate]:
 	return res
 
 
+func player_spell() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	if hero.spells.size() == 0:
+		res.append(NoSpellBattleUpdate.from_data(hero.get_unit_name()))
+		res.append_array(player_turn())
+	return res
+
+
 func enemy_turn() -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
 	res.append(fight_action(enemy, hero))
