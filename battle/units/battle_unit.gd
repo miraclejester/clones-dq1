@@ -4,6 +4,7 @@ class_name BattleUnit
 @onready var stats: UnitStats = %UnitStats
 
 var crit_chance: float = 0
+var spells: Array[SpellData] = []
 
 func deal_damage(damage: int) -> void:
 	stats.hp -= damage

@@ -48,13 +48,14 @@ func hide_command_window() -> void:
 	MenuStack.pop_stack()
 
 
-func show_battle_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = [], continuing: bool = false) -> void:
-	await dialogue_window.show_paragraph(id, format_vars, continuing).current_dialogue_finished
+func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
+	await dialogue_window.show_paragraph(id, format_vars).current_dialogue_finished
 	await get_tree().create_timer(0.2).timeout
 
-func show_newline(continuing: bool) -> void:
-	await show_battle_paragraph(
-		GeneralDialogueProvider.DialogueID.Newline, [], continuing
+
+func show_newline() -> void:
+	await show_line(
+		GeneralDialogueProvider.DialogueID.Newline
 	)
 
 

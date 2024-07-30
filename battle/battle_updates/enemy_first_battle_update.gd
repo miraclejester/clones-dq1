@@ -12,8 +12,9 @@ static func from_data(e: String, h: String) -> EnemyFirstBattleUpdate:
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleEnemyFirst,
 		[enemy_name, hero_name]
 	)
+	await controller.battle_ui.show_newline()
 	finish(controller)

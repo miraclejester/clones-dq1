@@ -23,10 +23,9 @@ static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int) 
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleUnitAttacks,
-		[attacker.get_unit_name()],
-		attacker is HeroUnit
+		[attacker.get_unit_name()]
 	)
 	await controller.get_tree().create_timer(0.5).timeout
 	
@@ -39,7 +38,8 @@ func execute(controller: BattleController) -> void:
 			await crit(controller)
 		AttackResult.NO_DAMAGE:
 			await no_damage(controller)
-
+	
+	await controller.battle_ui.show_newline()
 	finish(controller)
 
 
@@ -57,10 +57,9 @@ func hit(controller: BattleController) -> void:
 		dialogue_id = GeneralDialogueProvider.DialogueID.BattlePlayerHurt
 		format_vars = [damage]
 	
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		dialogue_id,
-		format_vars,
-		true
+		format_vars
 	)
 	if attacker is EnemyUnit:
 		controller.battle_ui.update_hud()
@@ -70,19 +69,19 @@ func miss(controller: BattleController) -> void:
 	var dialogue_id = GeneralDialogueProvider.DialogueID.BattleMiss
 	if defender is EnemyUnit:
 		dialogue_id = GeneralDialogueProvider.DialogueID.BattleEnemyDodge
-	await controller.battle_ui.show_battle_paragraph(
-		dialogue_id, [], true
+	await controller.battle_ui.show_line(
+		dialogue_id
 	)
 
 
 func no_damage(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
-		GeneralDialogueProvider.DialogueID.BattleEnemyNoDamage, [], true
+	await controller.battle_ui.show_line(
+		GeneralDialogueProvider.DialogueID.BattleEnemyNoDamage
 	)
 
 
 func crit(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
-		GeneralDialogueProvider.DialogueID.BattleExcellentMove, [], true
+	await controller.battle_ui.show_line(
+		GeneralDialogueProvider.DialogueID.BattleExcellentMove
 	)
 	await hit(controller)

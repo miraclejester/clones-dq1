@@ -19,13 +19,13 @@ var current_paragraph: DialogueParagraph
 
 func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
+	create_paragraph()
 
 
-func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array, continuing: bool) -> DialogueWindow:
+func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array) -> DialogueWindow:
 	var queue: Array[DialogueEventParams] = []
 	queue.append(DialogueEventParams.fromData(GeneralDialogueProvider.get_dialogue(id), {
-		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : format_vars,
-		PlayParagraphDialogueEvent.ParagraphEventKeys.CONTINUING : continuing
+		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : format_vars
 	}))
 	start_dialogue(queue)
 	return self

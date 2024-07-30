@@ -39,10 +39,11 @@ func start_battle() -> void:
 	enemy_controller.visible = true
 	await enemy_controller.play_appear_animation().animation_finished
 	battle_ui.show_dialogue_window()
-	await battle_ui.show_battle_paragraph(
+	await battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleStart,
 		[enemy_data.enemy_name]
 	)
+	await battle_ui.show_newline()
 	battle_ui.show_hud()
 	
 	add_updates(battle.start_battle())
@@ -61,7 +62,7 @@ func add_updates(updates: Array[BattleUpdate]) -> void:
 
 
 func ask_command() -> void:
-	await battle_ui.show_battle_paragraph(GeneralDialogueProvider.DialogueID.BattleCommand)
+	await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCommand)
 	battle_ui.show_command_window()
 
 

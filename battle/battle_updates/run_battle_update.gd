@@ -18,14 +18,15 @@ static func from_data(n: String, r: RunResult) -> RunBattleUpdate:
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleAttemptRun,
 		[hero_name]
 	)
 	match result:
 		RunResult.FAILURE:
-			await controller.battle_ui.show_battle_paragraph(
+			await controller.battle_ui.show_line(
 				GeneralDialogueProvider.DialogueID.BattleRunFailure,
-				[], true
+				[]
 			)
+			await controller.battle_ui.show_newline()
 	finish(controller)

@@ -14,21 +14,20 @@ static func from_data(n: String, e: int, g: int) -> VictoryBattleUpdate:
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleEnemyDefeated,
 		[enemy_name]
 	)
+	await controller.battle_ui.show_newline()
 	controller.enemy_controller.visible = false
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleExpGain,
 		[xp],
-		true
 	)
-	await controller.battle_ui.show_battle_paragraph(
+	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleGoldGain,
 		[gold],
-		true
 	)
 	controller.battle_ui.update_hud()
-	await controller.battle_ui.show_newline(true)
+	await controller.battle_ui.show_newline()
 	finish(controller)
