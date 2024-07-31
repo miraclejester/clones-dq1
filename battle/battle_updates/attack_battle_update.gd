@@ -18,14 +18,15 @@ var type: AttackType
 var attacker: BattleUnit
 var defender: BattleUnit
 var damage: int
+var new_hp: int
 
-static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int, at: AttackType = AttackType.BASIC) -> AttackBattleUpdate:
+static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int, h: int) -> AttackBattleUpdate:
 	var res: AttackBattleUpdate = AttackBattleUpdate.new()
 	res.result = r
 	res.attacker = a
 	res.defender = def
 	res.damage = dmg
-	res.type = at
+	res.new_hp = h
 	return res
 
 
@@ -50,7 +51,7 @@ func execute(controller: BattleController) -> void:
 
 
 func hit(controller: BattleController) -> void:
-	await defender.get_deal_damage_update(damage).execute(controller)
+	await defender.get_deal_damage_update(damage, new_hp).execute(controller)
 
 
 func miss(controller: BattleController) -> void:

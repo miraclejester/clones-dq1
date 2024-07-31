@@ -10,7 +10,7 @@ func deal_damage(damage: int) -> void:
 	stats.hp -= damage
 
 
-func get_deal_damage_update(_damage: int) -> BattleUpdate:
+func get_deal_damage_update(_damage: int, _new_hp: int) -> BattleUpdate:
 	return null
 
 

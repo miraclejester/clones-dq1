@@ -3,11 +3,13 @@ class_name PlayerHurtBattleUpdate
 
 var hero_unit: HeroUnit
 var damage: int
+var hp_value: int
 
 
-func _init(u: HeroUnit, d: int) -> void:
+func _init(u: HeroUnit, d: int, h: int) -> void:
 	hero_unit = u
 	damage = d
+	hp_value = h
 
 
 func execute(controller: BattleController) -> void:
@@ -16,4 +18,4 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattlePlayerHurt,
 		[damage]
 	)
-	controller.battle_ui.update_hud()
+	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.HP, hp_value)

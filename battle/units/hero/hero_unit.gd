@@ -30,8 +30,8 @@ func _ready() -> void:
 	stats.mp_changed.connect(on_mp_changed)
 
 
-func get_deal_damage_update(damage: int) -> BattleUpdate:
-	return PlayerHurtBattleUpdate.new(self, damage)
+func get_deal_damage_update(damage: int, new_hp: int) -> BattleUpdate:
+	return PlayerHurtBattleUpdate.new(self, damage, new_hp)
 
 
 func get_attack_damage(defender: BattleUnit) -> int:
@@ -92,6 +92,8 @@ func process_stats_from_growth(st: int, ag: int, hp: int, mp: int) -> void:
 
 
 func get_short_stat_value(orig: int) -> int:
+	if orig == 0:
+		return orig
 	var round_down: int = floor(float(growth_sum) / 4.0)
 	var rem: int = round_down % 4
 	return rem + int(orig * 9 / 10.0)

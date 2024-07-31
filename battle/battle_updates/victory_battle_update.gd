@@ -28,5 +28,6 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleGoldGain,
 		[gold],
 	)
-	controller.battle_ui.update_hud()
+	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.XP, xp)
+	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.GP, gold)
 	await controller.battle_ui.show_newline()

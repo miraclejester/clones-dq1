@@ -82,8 +82,8 @@ func current_dialogue_finished() -> void:
 	dialogue_finished.emit()
 
 
-func update_hud() -> void:
-	player_hud.update_from_hero()
+func update_player_stat(key: PlayerHUD.HUDStatKey, val: int) -> void:
+	player_hud.update_stat(key, val)
 
 
 func set_to_low_health() -> void:

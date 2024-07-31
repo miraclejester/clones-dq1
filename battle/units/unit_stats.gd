@@ -1,6 +1,11 @@
 extends Node
 class_name UnitStats
 
+enum StatKey {
+	STR, AGI, MAX_HP, MAX_MP,
+	HP, MP
+}
+
 signal hp_changed(val: int)
 signal mp_changed(val: int)
 
@@ -21,6 +26,7 @@ var mp: int:
 	set(value):
 		mp = clampi(value, 0, max_mp)
 		mp_changed.emit(mp)
+
 
 func set_strength(val: int) -> void:
 	strength = val

@@ -1,7 +1,16 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3 uid="uid://da5tkr6g8bc2j"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://da5tkr6g8bc2j"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_23kr8"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/deal_damage_spell_effect.gd" id="2_b4nek"]
+
+[sub_resource type="Resource" id="Resource_gi80m"]
+script = ExtResource("2_b4nek")
+min_damage = 5
+max_damage = 12
 
 [resource]
 script = ExtResource("1_23kr8")
 spell_name = "HURT"
+target_type = 1
+mp_cost = 2
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_gi80m")])

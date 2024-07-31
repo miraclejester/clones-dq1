@@ -26,9 +26,9 @@ func _ready() -> void:
 func start_battle() -> void:
 	var hero_state: HeroState = HeroState.new()
 	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 15
-	hero_state.mp = 0
-	hero_state.level = 1
+	hero_state.hp = 13
+	hero_state.mp = 8
+	hero_state.level = 3
 	
 	battle_update_queue = []
 	battle.init_battle(hero_state, enemy_data)
@@ -95,7 +95,12 @@ func spell_selected() -> void:
 func spell_selected_from_menu(data: SpellData) -> void:
 	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
-	add_updates(battle.player_spell(data))
+	if battle.hero.stats.mp < data.mp_cost:
+		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleLowMP)
+		await battle_ui.show_newline()
+		add_updates(battle.player_turn())
+	else:
+		add_updates(battle.player_spell(data))
 	process_updates()
 
 

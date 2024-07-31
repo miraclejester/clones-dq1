@@ -34,8 +34,6 @@ func start_battle() -> Array[BattleUpdate]:
 	else:
 		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
 		res.append_array(enemy_turn())
-		if not is_battle_finished():
-			res.append_array(player_turn())
 	return res
 
 
@@ -46,9 +44,6 @@ func player_fight() -> Array[BattleUpdate]:
 	
 	if not is_battle_finished():
 		res.append_array(enemy_turn())
-	
-	if not is_battle_finished():
-		res.append_array(player_turn())
 	return res
 
 
@@ -60,14 +55,18 @@ func player_run() -> Array[BattleUpdate]:
 	else:
 		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
 		res.append_array(enemy_turn())
-		if not is_battle_finished():
-			res.append_array(player_turn())
 	return res
 
 
 func player_spell(spell: SpellData) -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
-	res.append_array(spell_action(spell, hero, enemy))
+	var target: BattleUnit
+	match spell.target_type:
+		SpellData.TargetType.SELF:
+			target = hero
+		SpellData.TargetType.ENEMY:
+			target = enemy
+	res.append_array(spell_action(spell, hero, target))
 	res.append_array(check_battle_end())
 	if not is_battle_finished():
 		res.append_array(enemy_turn())
@@ -78,6 +77,8 @@ func enemy_turn() -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
 	res.append(fight_action(enemy, hero))
 	res.append_array(check_battle_end())
+	if not is_battle_finished():
+		res.append_array(player_turn())
 	return res
 
 
@@ -110,7 +111,7 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 	var dodge_roll: float = randf_range(0, 1)
 	if dodge_roll < defender.get_dodge():
 		return AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0
+			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0, defender.stats.hp
 		)
 		
 	var crit_roll: float = randf_range(0, 1)
@@ -118,7 +119,7 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 		var d: int = attacker.get_crit_damage()
 		defender.deal_damage(d)
 		return AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d
+			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d, defender.stats.hp
 		)
 	
 	var dmg: int = attacker.get_attack_damage(defender)
@@ -126,16 +127,20 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 	
 	if dmg < 1:
 		return AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0
+			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0, defender.stats.hp
 		)
 	return AttackBattleUpdate.fromData(
-		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg
+		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg, defender.stats.hp
 	)
 
 
 func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
-	res.append(SpellBattleUpdate.new(spell.spell_name, user, target, []))
+	var spell_updates: Array[BattleUpdate] = []
+	user.stats.mp -= spell.mp_cost
+	for effect in spell.spell_effects:
+		spell_updates.append_array(effect.execute_battle(self, user, target))
+	res.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
 	return res
 
 
