@@ -7,6 +7,10 @@ func set_data(d: EnemyData) -> void:
 	set_stats_from_data(d)
 
 
+func get_deal_damage_update(damage: int) -> BattleUpdate:
+	return EnemyHurtBattleUpdate.new(get_unit_name(), damage)
+
+
 func set_stats_from_data(ed: EnemyData) -> void:
 	data = ed
 	stats.set_strength(ed.stats.strength)

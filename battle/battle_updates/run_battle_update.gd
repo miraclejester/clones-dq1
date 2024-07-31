@@ -29,4 +29,3 @@ func execute(controller: BattleController) -> void:
 				[]
 			)
 			await controller.battle_ui.show_newline()
-	finish(controller)

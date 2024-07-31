@@ -8,17 +8,24 @@ enum AttackResult {
 	NO_DAMAGE
 }
 
+enum AttackType {
+	BASIC,
+	SPELL
+}
+
 var result: AttackResult
+var type: AttackType
 var attacker: BattleUnit
 var defender: BattleUnit
 var damage: int
 
-static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int) -> AttackBattleUpdate:
+static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int, at: AttackType = AttackType.BASIC) -> AttackBattleUpdate:
 	var res: AttackBattleUpdate = AttackBattleUpdate.new()
 	res.result = r
 	res.attacker = a
 	res.defender = def
 	res.damage = dmg
+	res.type = at
 	return res
 
 
@@ -40,29 +47,10 @@ func execute(controller: BattleController) -> void:
 			await no_damage(controller)
 	
 	await controller.battle_ui.show_newline()
-	finish(controller)
 
 
 func hit(controller: BattleController) -> void:
-	if defender is EnemyUnit:
-		await controller.enemy_controller.play_hurt_animation()
-	else:
-		controller.battle_ui.determine_ui_colors(defender.stats.hp, defender.stats.max_hp)
-	var dialogue_id: GeneralDialogueProvider.DialogueID
-	var format_vars: Array
-	if defender is EnemyUnit:
-		dialogue_id = GeneralDialogueProvider.DialogueID.BattleEnemyHurt
-		format_vars = [defender.get_unit_name(), damage]
-	else:
-		dialogue_id = GeneralDialogueProvider.DialogueID.BattlePlayerHurt
-		format_vars = [damage]
-	
-	await controller.battle_ui.show_line(
-		dialogue_id,
-		format_vars
-	)
-	if attacker is EnemyUnit:
-		controller.battle_ui.update_hud()
+	await defender.get_deal_damage_update(damage).execute(controller)
 
 
 func miss(controller: BattleController) -> void:

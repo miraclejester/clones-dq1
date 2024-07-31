@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3 uid="uid://da5tkr6g8bc2j"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_23kr8"]
+
+[resource]
+script = ExtResource("1_23kr8")
+spell_name = "HURT"

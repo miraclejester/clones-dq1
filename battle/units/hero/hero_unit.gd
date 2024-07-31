@@ -30,6 +30,10 @@ func _ready() -> void:
 	stats.mp_changed.connect(on_mp_changed)
 
 
+func get_deal_damage_update(damage: int) -> BattleUpdate:
+	return PlayerHurtBattleUpdate.new(self, damage)
+
+
 func get_attack_damage(defender: BattleUnit) -> int:
 	var damage: int = super(defender)
 	if damage < 1:

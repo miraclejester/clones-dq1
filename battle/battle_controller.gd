@@ -1,7 +1,6 @@
 extends Node2D
 class_name BattleController
 
-signal battle_update_finished()
 signal battle_finished()
 
 @export var enemy_data: EnemyData
@@ -18,6 +17,9 @@ func _ready() -> void:
 	battle_ui.fight_selected.connect(fight_selected)
 	battle_ui.spell_selected.connect(spell_selected)
 	battle_ui.run_selected.connect(run_selected)
+	
+	battle_ui.spell_data_selected.connect(spell_selected_from_menu)
+	battle_ui.spell_cancelled.connect(spell_menu_cancelled)
 	start_battle()
 
 
@@ -54,8 +56,9 @@ func start_battle() -> void:
 func process_updates() -> void:
 	while battle_update_queue.size() > 0:
 		var update: BattleUpdate = battle_update_queue.pop_front()
-		update.execute(self)
-		await battle_update_finished
+		await update.execute(self)
+	if battle.is_battle_finished():
+		finish_battle()
 
 
 func add_updates(updates: Array[BattleUpdate]) -> void:
@@ -80,8 +83,27 @@ func run_selected() -> void:
 
 
 func spell_selected() -> void:
+	if battle.hero.spells.size() == 0:
+		battle_ui.hide_command_window()
+		add_updates([NoSpellBattleUpdate.from_data(battle.hero.get_unit_name())])
+		add_updates(battle.player_turn())
+	else:
+		battle_ui.show_spell_window()
+	process_updates()
+
+
+func spell_selected_from_menu(data: SpellData) -> void:
+	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
-	add_updates(battle.player_spell())
+	add_updates(battle.player_spell(data))
+	process_updates()
+
+
+func spell_menu_cancelled() -> void:
+	await battle_ui.hide_spell_window()
+	battle_ui.hide_command_window()
+	await battle_ui.show_newline()
+	add_updates(battle.player_turn())
 	process_updates()
 
 

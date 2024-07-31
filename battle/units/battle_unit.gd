@@ -10,6 +10,10 @@ func deal_damage(damage: int) -> void:
 	stats.hp -= damage
 
 
+func get_deal_damage_update(_damage: int) -> BattleUpdate:
+	return null
+
+
 func get_attack_damage(defender: BattleUnit) -> int:
 	var diff: int = (get_attack() - floor(defender.get_defense() / 2.0))
 	var min_damage: int = floor(diff / 4.0)

@@ -20,6 +20,7 @@ func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 	hero.set_stats_from_level(hero_state.level)
 	hero.set_hp(hero_state.hp)
 	hero.set_mp(hero_state.mp)
+	hero.spells = DebugUtils.debug_spells
 	enemy.set_data(e)
 	roll_initiative()
 
@@ -64,11 +65,12 @@ func player_run() -> Array[BattleUpdate]:
 	return res
 
 
-func player_spell() -> Array[BattleUpdate]:
+func player_spell(spell: SpellData) -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
-	if hero.spells.size() == 0:
-		res.append(NoSpellBattleUpdate.from_data(hero.get_unit_name()))
-		res.append_array(player_turn())
+	res.append_array(spell_action(spell, hero, enemy))
+	res.append_array(check_battle_end())
+	if not is_battle_finished():
+		res.append_array(enemy_turn())
 	return res
 
 
@@ -129,6 +131,12 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
 	return AttackBattleUpdate.fromData(
 		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg
 	)
+
+
+func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	res.append(SpellBattleUpdate.new(spell.spell_name, user, target, []))
+	return res
 
 
 func roll_initiative() -> void:

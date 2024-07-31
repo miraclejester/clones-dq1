@@ -5,30 +5,38 @@ signal fight_selected()
 signal spell_selected()
 signal run_selected()
 
+signal spell_data_selected()
+signal spell_cancelled()
+
 signal dialogue_finished()
 
 @export var low_health_color: Color
 
-@onready var player_hud: PlayerHUD = $PlayerHud
-@onready var command_window: CommandWindow = $CommandWindow
-@onready var dialogue_window: DialogueWindow = $DialogueWindow
+@onready var visuals_parent: Control = $VisualsParent
+@onready var player_hud: PlayerHUD = %PlayerHud
+@onready var command_window: CommandWindow = %CommandWindow
+@onready var dialogue_window: DialogueWindow = %DialogueWindow
+@onready var spell_window: SpellWindow = %SpellWindow
+
 
 
 func _ready() -> void:
 	command_window.selected.connect(command_selected)
 	dialogue_window.current_dialogue_finished.connect(current_dialogue_finished)
+	spell_window.spell_selected.connect(spell_selected_from_menu)
+	spell_window.cancelled.connect(spell_menu_cancelled)
 	
 	command_window.initialize_commands(["FIGHT", "SPELL", "RUN", "ITEM"], 2)
 
 
 func initialize() -> void:
-	player_hud.visible = false
-	command_window.visible = false
-	dialogue_window.visible = false
+	for child in visuals_parent.get_children():
+		(child as Control).visible = false
 
 
 func set_hero_data(hero: BattleUnit) -> void:
 	player_hud.set_hero(hero)
+	spell_window.set_spells(hero.spells)
 
 
 func show_dialogue_window() -> void:
@@ -47,6 +55,16 @@ func show_command_window() -> void:
 func hide_command_window() -> void:
 	command_window.visible = false
 	MenuStack.pop_stack()
+
+
+func show_spell_window() -> void:
+	spell_window.visible = true
+	await MenuStack.push_stack(spell_window, spell_window.activate, spell_window.deactivate)
+
+
+func hide_spell_window() -> void:
+	spell_window.visible = false
+	await MenuStack.pop_stack()
 
 
 func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
@@ -69,15 +87,11 @@ func update_hud() -> void:
 
 
 func set_to_low_health() -> void:
-	player_hud.modulate = low_health_color
-	command_window.modulate = low_health_color
-	dialogue_window.modulate = low_health_color
+	visuals_parent.modulate = low_health_color
 
 
 func set_to_normal_health() -> void:
-	player_hud.modulate = Color.WHITE
-	command_window.modulate = Color.WHITE
-	dialogue_window.modulate = Color.WHITE
+	visuals_parent.modulate = Color.WHITE
 
 
 func determine_ui_colors(hp: int, max_hp: int) -> void:
@@ -95,3 +109,11 @@ func command_selected(idx: int) -> void:
 			spell_selected.emit()
 		2:
 			run_selected.emit()
+
+
+func spell_selected_from_menu(spell: SpellData) -> void:
+	spell_data_selected.emit(spell)
+
+
+func spell_menu_cancelled() -> void:
+	spell_cancelled.emit()

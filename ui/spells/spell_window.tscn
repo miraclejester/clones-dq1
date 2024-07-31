@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1hhhv63dbcv"]
+
+[ext_resource type="Script" path="res://ui/spells/spell_window.gd" id="1_daxvo"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="1_nay6n"]
+
+[node name="SpellWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -160.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_daxvo")
+
+[node name="CommandWindow" parent="." instance=ExtResource("1_nay6n")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="UIWindow" parent="CommandWindow" index="0"]
+offset_right = 96.0
+offset_bottom = 8.0
+
+[node name="ColorRect" parent="CommandWindow" index="1"]
+offset_right = 72.0
+
+[node name="Title" parent="CommandWindow" index="2"]
+text = "SPELL"
+
+[node name="MarginContainer" parent="CommandWindow" index="3"]
+offset_right = 96.0
+offset_bottom = 24.0
+
+[editable path="CommandWindow"]

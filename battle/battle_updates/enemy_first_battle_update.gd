@@ -17,4 +17,3 @@ func execute(controller: BattleController) -> void:
 		[enemy_name, hero_name]
 	)
 	await controller.battle_ui.show_newline()
-	finish(controller)

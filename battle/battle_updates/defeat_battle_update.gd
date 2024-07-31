@@ -10,4 +10,3 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattlePlayerDeath
 	)
 	await controller.battle_ui.show_newline()
-	finish(controller)

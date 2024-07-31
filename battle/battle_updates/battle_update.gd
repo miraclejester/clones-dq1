@@ -2,9 +2,5 @@ extends RefCounted
 class_name BattleUpdate
 
 
-func execute(_controller: BattleController) -> void:
-	pass
-
-
-func finish(controller: BattleController) -> void:
-	controller.battle_update_finished.emit()
+func execute(controller: BattleController) -> void:
+	await controller.get_tree().process_frame

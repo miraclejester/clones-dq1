@@ -18,6 +18,7 @@ enum DialogueID {
 	BattleAttemptRun,
 	BattleRunFailure,
 	BattleNoSpells,
+	BattleChantSpell,
 	Newline
 }
 
@@ -39,6 +40,7 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleAttemptRun : preload("res://battle/data/dialogues/battle_dialogue_attempt_run.tres"),
 	DialogueID.BattleRunFailure : preload("res://battle/data/dialogues/battle_dialogue_run_failure.tres"),
 	DialogueID.BattleNoSpells : preload("res://battle/data/dialogues/battle_dialogue_no_spells.tres"),
+	DialogueID.BattleChantSpell : preload("res://battle/data/dialogues/battle_dialogue_chant_spell.tres"),
 	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 
