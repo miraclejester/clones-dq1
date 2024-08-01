@@ -1,10 +1,18 @@
 extends Node
 class_name BattleUnit
 
+enum StatusEffect {
+	OK, SLEEP
+}
+
+@export var sleep_started_dialogue: DialogueEvent
+
 @onready var stats: UnitStats = %UnitStats
 
 var crit_chance: float = 0
 var spells: Array[SpellData] = []
+var status: StatusEffect = StatusEffect.OK
+
 
 func deal_damage(damage: int) -> void:
 	stats.hp -= damage
@@ -12,6 +20,14 @@ func deal_damage(damage: int) -> void:
 
 func get_deal_damage_update(_damage: int, _new_hp: int) -> BattleUpdate:
 	return null
+
+
+func get_sleep_started_format_vars() -> Array:
+	return []
+
+
+func sleep_hit_check() -> bool:
+	return true
 
 
 func get_attack_damage(defender: BattleUnit) -> int:

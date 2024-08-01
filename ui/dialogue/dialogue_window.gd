@@ -22,9 +22,13 @@ func _ready() -> void:
 	create_paragraph()
 
 
-func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array) -> DialogueWindow:
+func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> DialogueWindow:
+	return await show_paragraph_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars).current_dialogue_finished
+
+
+func show_paragraph_from_data(data: DialogueEvent, format_vars: Array = []) -> DialogueWindow:
 	var queue: Array[DialogueEventParams] = []
-	queue.append(DialogueEventParams.fromData(GeneralDialogueProvider.get_dialogue(id), {
+	queue.append(DialogueEventParams.fromData(data, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : format_vars
 	}))
 	start_dialogue(queue)

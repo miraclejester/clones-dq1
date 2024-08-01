@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bexx735kyj077"]
+[gd_scene load_steps=5 format=3 uid="uid://bexx735kyj077"]
 
 [ext_resource type="Script" path="res://battle/units/hero/hero_unit.gd" id="1_ac0mu"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_4esps"]
 [ext_resource type="PackedScene" uid="uid://bu6gxutcim5rv" path="res://battle/units/unit_stats.tscn" id="2_rpp7s"]
+
+[sub_resource type="Resource" id="Resource_b7db2"]
+script = ExtResource("2_4esps")
+text = "Thou art asleep."
+in_quotes = false
 
 [node name="Hero" type="Node"]
 script = ExtResource("1_ac0mu")
 level_chart_path = "res://unit_data/player/player_stat_chart.json"
 letter_values_path = "res://unit_data/player/player_letter_values.json"
+sleep_started_dialogue = SubResource("Resource_b7db2")
 
 [node name="UnitStats" parent="." instance=ExtResource("2_rpp7s")]
 unique_name_in_owner = true

@@ -68,7 +68,11 @@ func hide_spell_window() -> void:
 
 
 func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
-	await dialogue_window.show_paragraph(id, format_vars).current_dialogue_finished
+	await show_line_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars)
+
+
+func show_line_from_data(data: DialogueEvent, format_vars: Array = []) -> void:
+	await dialogue_window.show_paragraph_from_data(data, format_vars).current_dialogue_finished
 	await get_tree().create_timer(0.2).timeout
 
 

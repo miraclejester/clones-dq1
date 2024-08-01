@@ -11,6 +11,15 @@ func get_deal_damage_update(damage: int, _new_hp: int) -> BattleUpdate:
 	return EnemyHurtBattleUpdate.new(get_unit_name(), damage)
 
 
+func get_sleep_started_format_vars() -> Array:
+	return [get_unit_name()]
+
+
+func sleep_hit_check() -> bool:
+	var roll: float = randf_range(0.0, 1.0)
+	return roll < (1.0 - data.stats.sleep_resist)
+
+
 func set_stats_from_data(ed: EnemyData) -> void:
 	data = ed
 	stats.set_strength(ed.stats.strength)

@@ -21,7 +21,8 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleChantSpell,
 		[user.get_unit_name(), spell.spell_name]
 	)
-	await controller.battle_ui.show_newline()
+	await controller.get_tree().create_timer(1.0).timeout
 	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.MP, new_mp)
 	for update in spell_updates:
 		await update.execute(controller)
+	await controller.battle_ui.show_newline()

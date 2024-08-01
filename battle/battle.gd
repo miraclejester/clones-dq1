@@ -26,24 +26,29 @@ func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 
 
 func start_battle() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	if turn_order[0] is EnemyUnit:
+		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
+	res.append_array(next_turn())
+	return res
+
+
+func next_turn() -> Array[BattleUpdate]:
 	var unit: BattleUnit = turn_order[turn_index]
 	turn_index = (turn_index + 1) % 2
-	var res: Array[BattleUpdate] = []
-	if unit is HeroUnit:
-		res.append_array(player_turn())
-	else:
-		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
-		res.append_array(enemy_turn())
+	var res: Array[BattleUpdate] = check_battle_end()
+	if not is_battle_finished():
+		if unit is HeroUnit:
+			res.append_array(player_turn())
+		else:
+			res.append_array(enemy_turn())
 	return res
 
 
 func player_fight() -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
 	res.append(fight_action(hero, enemy))
-	res.append_array(check_battle_end())
-	
-	if not is_battle_finished():
-		res.append_array(enemy_turn())
+	res.append_array(next_turn())
 	return res
 
 
@@ -54,7 +59,7 @@ func player_run() -> Array[BattleUpdate]:
 		res.append(FinishBattleUpdate.new())
 	else:
 		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
-		res.append_array(enemy_turn())
+		res.append_array(next_turn())
 	return res
 
 
@@ -67,18 +72,14 @@ func player_spell(spell: SpellData) -> Array[BattleUpdate]:
 		SpellData.TargetType.ENEMY:
 			target = enemy
 	res.append_array(spell_action(spell, hero, target))
-	res.append_array(check_battle_end())
-	if not is_battle_finished():
-		res.append_array(enemy_turn())
+	res.append_array(next_turn())
 	return res
 
 
 func enemy_turn() -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
 	res.append(fight_action(enemy, hero))
-	res.append_array(check_battle_end())
-	if not is_battle_finished():
-		res.append_array(player_turn())
+	res.append_array(next_turn())
 	return res
 
 
