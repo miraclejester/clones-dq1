@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bywwhlicehhq"]
+[gd_scene load_steps=6 format=3 uid="uid://bywwhlicehhq"]
 
 [ext_resource type="Script" path="res://singleton/debug_utils.gd" id="1_kx7i5"]
 [ext_resource type="Resource" uid="uid://3q37agavxk4d" path="res://unit_data/spells/spell_heal.tres" id="2_868nv"]
 [ext_resource type="Resource" uid="uid://da5tkr6g8bc2j" path="res://unit_data/spells/spell_hurt.tres" id="3_vy5qd"]
 [ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/spell_sleep.tres" id="4_yo33i"]
+[ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/spell_stopspell.tres" id="5_em1i4"]
 
 [node name="DebugUtils" type="Node"]
 script = ExtResource("1_kx7i5")
-debug_spells = Array[Resource("res://unit_data/spells/spell_data.gd")]([ExtResource("2_868nv"), ExtResource("3_vy5qd"), ExtResource("4_yo33i")])
+debug_spells = Array[Resource("res://unit_data/spells/spell_data.gd")]([ExtResource("2_868nv"), ExtResource("3_vy5qd"), ExtResource("4_yo33i"), ExtResource("5_em1i4")])

@@ -47,6 +47,10 @@ func get_attack_damage(defender: BattleUnit) -> int:
 	return damage
 
 
+func stopspell_hit_check() -> bool:
+	return randf_range(0.0, 1.0) < 0.5
+
+
 func set_hero_name(new_name: String) -> void:
 	hero_name = new_name
 	process_growth_value()

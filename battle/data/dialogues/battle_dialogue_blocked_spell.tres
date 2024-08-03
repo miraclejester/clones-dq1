@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://b2nae77x7x3tk"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_1e4nh"]
+
+[resource]
+script = ExtResource("1_1e4nh")
+text = "But that spell hath been blocked."
+in_quotes = false

@@ -21,6 +21,7 @@ enum DialogueID {
 	BattleChantSpell,
 	BattleLowMP,
 	BattleSpellWillNotWork,
+	BattleSpellBlocked,
 	Newline
 }
 
@@ -45,6 +46,7 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleChantSpell : preload("res://battle/data/dialogues/battle_dialogue_chant_spell.tres"),
 	DialogueID.BattleLowMP : preload("res://battle/data/dialogues/battle_dialogue_low_mp.tres"),
 	DialogueID.BattleSpellWillNotWork : preload("res://battle/data/dialogues/battle_dialogue_spell_will_not_work.tres"),
+	DialogueID.BattleSpellBlocked : preload("res://battle/data/dialogues/battle_dialogue_blocked_spell.tres"),
 	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 

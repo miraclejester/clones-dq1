@@ -8,6 +8,7 @@ enum StatusEffect {
 @export var sleep_started_dialogue: DialogueEvent
 @export var sleep_continues_dialogue: DialogueEvent
 @export var awake_dialogue: DialogueEvent
+@export var stopspell_dialogue: DialogueEvent
 
 @onready var stats: UnitStats = %UnitStats
 
@@ -57,6 +58,10 @@ func clear_status() -> void:
 
 
 func sleep_hit_check() -> bool:
+	return true
+
+
+func stopspell_hit_check() -> bool:
 	return true
 
 

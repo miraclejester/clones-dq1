@@ -143,8 +143,11 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> void:
 	var spell_updates: Array[BattleUpdate] = []
 	user.stats.mp -= spell.mp_cost
-	for effect in spell.spell_effects:
-		spell_updates.append_array(effect.execute_battle(self, user, target))
+	if user.has_status(BattleUnit.StatusEffect.STOPSPELL):
+		spell_updates.append(StopSpellBattleUpdate.new(target, false))
+	else:
+		for effect in spell.spell_effects:
+			spell_updates.append_array(effect.execute_battle(self, user, target))
 	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
 
 

@@ -29,6 +29,10 @@ func sleep_hit_check() -> bool:
 	return roll < (1.0 - data.stats.sleep_resist)
 
 
+func stopspell_hit_check() -> bool:
+	return randf_range(0.0, 1.0) < (1.0 - data.stats.stop_spell_resist)
+
+
 func sleep_wake_check(turns: int) -> bool:
 	return turns > 1 and randf_range(0.0, 1.0) < 0.33
 
