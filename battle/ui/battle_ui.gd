@@ -8,6 +8,8 @@ signal run_selected()
 signal spell_data_selected()
 signal spell_cancelled()
 
+signal command_menu_cancelled()
+
 signal dialogue_finished()
 
 @export var low_health_color: Color
@@ -26,6 +28,7 @@ func _ready() -> void:
 	spell_window.spell_selected.connect(spell_selected_from_menu)
 	spell_window.cancelled.connect(spell_menu_cancelled)
 	
+	command_window.cancelled.connect(on_command_menu_cancelled)
 	command_window.initialize_commands(["FIGHT", "SPELL", "RUN", "ITEM"], 2)
 
 
@@ -121,3 +124,7 @@ func spell_selected_from_menu(spell: SpellData) -> void:
 
 func spell_menu_cancelled() -> void:
 	spell_cancelled.emit()
+
+
+func on_command_menu_cancelled() -> void:
+	command_menu_cancelled.emit()

@@ -20,6 +20,8 @@ func _ready() -> void:
 	
 	battle_ui.spell_data_selected.connect(spell_selected_from_menu)
 	battle_ui.spell_cancelled.connect(spell_menu_cancelled)
+	
+	battle_ui.command_menu_cancelled.connect(command_menu_cancelled)
 	start_battle()
 
 
@@ -63,6 +65,7 @@ func process_updates() -> void:
 
 func ask_command() -> void:
 	await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCommand)
+	await battle_ui.show_newline()
 	battle_ui.show_command_window()
 
 
@@ -104,6 +107,11 @@ func spell_menu_cancelled() -> void:
 	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
 	await battle_ui.show_newline()
+	battle.do_turn()
+	process_updates()
+
+
+func command_menu_cancelled() -> void:
 	battle.do_turn()
 	process_updates()
 
