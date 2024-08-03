@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_0qroc")
-text = "The %s hath recovered."
+text = "%s hath woken up."
 in_quotes = false

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://5m0qcirywe8w"]
+
+[ext_resource type="Script" path="res://battle/data/items/item_data.gd" id="1_8b1jm"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_capw0"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_fgywj"]
+
+[sub_resource type="Resource" id="Resource_i118o"]
+script = ExtResource("2_fgywj")
+min_heal = 20
+max_heal = 35
+
+[sub_resource type="Resource" id="Resource_xulle"]
+script = ExtResource("2_capw0")
+text = "%s used the Herb."
+in_quotes = false
+
+[resource]
+script = ExtResource("1_8b1jm")
+item_name = "Herb"
+item_id = 1
+target_type = 0
+consumable = true
+use_dialogue = SubResource("Resource_xulle")
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_i118o")])

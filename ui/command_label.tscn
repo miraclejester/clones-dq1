@@ -10,11 +10,26 @@ script = ExtResource("1_ij4n5")
 
 [node name="Selector" type="TextureRect" parent="."]
 layout_mode = 2
+size_flags_vertical = 0
 texture = ExtResource("1_bk3kr")
 
-[node name="LabelText" parent="." instance=ExtResource("2_hgc78")]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LabelText" parent="VBoxContainer" instance=ExtResource("2_hgc78")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "FIGHT"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="SecondLine" parent="VBoxContainer/MarginContainer" instance=ExtResource("2_hgc78")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FLUTE"
 
 [node name="BlinkTimer" type="Timer" parent="."]
 one_shot = true

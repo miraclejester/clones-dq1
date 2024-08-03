@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl07w4uuaew7u"]
+
+[ext_resource type="Script" path="res://ui/items/item_window.gd" id="1_rtwly"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="2_2bn6t"]
+
+[node name="ItemWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -160.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtwly")
+
+[node name="CommandWindow" parent="." instance=ExtResource("2_2bn6t")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = -48.0
+
+[node name="UIWindow" parent="CommandWindow" index="0"]
+offset_right = 96.0
+offset_bottom = 16.0
+
+[node name="ColorRect" parent="CommandWindow" index="1"]
+visible = false
+
+[node name="Title" parent="CommandWindow" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="CommandWindow" index="3"]
+offset_right = 96.0
+offset_bottom = 16.0
+theme_override_constants/margin_top = 8
+
+[editable path="CommandWindow"]

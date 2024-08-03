@@ -22,6 +22,8 @@ enum DialogueID {
 	BattleLowMP,
 	BattleSpellWillNotWork,
 	BattleSpellBlocked,
+	BattleCannotUseItem,
+	FieldNoItems,
 	Newline
 }
 
@@ -47,6 +49,8 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleLowMP : preload("res://battle/data/dialogues/battle_dialogue_low_mp.tres"),
 	DialogueID.BattleSpellWillNotWork : preload("res://battle/data/dialogues/battle_dialogue_spell_will_not_work.tres"),
 	DialogueID.BattleSpellBlocked : preload("res://battle/data/dialogues/battle_dialogue_blocked_spell.tres"),
+	DialogueID.FieldNoItems : preload("res://ui/data/field_dialogues/field_dialogue_no_items.tres"),
+	DialogueID.BattleCannotUseItem : preload("res://battle/data/dialogues/battle_dialogue_cannot_use_item.tres"),
 	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 

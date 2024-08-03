@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_1dt2i"]
 script = ExtResource("2_u853e")
-text = "The %s is asleep."
+text = "Thou hast put the %s to sleep."
 in_quotes = false
 
 [sub_resource type="Resource" id="Resource_ky18k"]

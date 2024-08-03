@@ -93,6 +93,17 @@ func player_spell(spell: SpellData) -> void:
 	next_turn()
 
 
+func player_item(item: ItemData) -> void:
+	var target: BattleUnit
+	match item.target_type:
+		SpellData.TargetType.SELF:
+			target = hero
+		SpellData.TargetType.ENEMY:
+			target = enemy
+	item_action(item, hero, target)
+	next_turn()
+
+
 func check_battle_end() -> void:
 	if enemy.is_dead():
 		var exp_gain: int = enemy.get_xp()
@@ -149,6 +160,13 @@ func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> voi
 		for effect in spell.spell_effects:
 			spell_updates.append_array(effect.execute_battle(self, user, target))
 	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
+
+
+func item_action(item: ItemData, user: BattleUnit, target: BattleUnit) -> void:
+	var item_updates: Array[BattleUpdate] = []
+	for effect in item.spell_effects:
+		item_updates.append_array(effect.execute_battle(self, user, target))
+	updates.append(ItemBattleUpdate.new(item, user, item_updates))
 
 
 func roll_initiative() -> void:

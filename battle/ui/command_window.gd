@@ -50,15 +50,18 @@ func initialize_commands(commands: Array[String], columns: int) -> void:
 	for child in grid_container.get_children():
 		grid_container.remove_child(child)
 		child.queue_free()
-	for command in commands:
-		add_command(command)
 	grid_container.columns = columns
+	var last_row_index: int = commands.size() - grid_container.columns
+	var idx: int = 0
+	for command in commands:
+		add_command(command, idx < last_row_index)
+		idx += 1
 
 
-func add_command(command_text: String) -> void:
+func add_command(command_text: String, show_second_line: bool) -> void:
 	var command_label: CommandLabel = command_label_scene.instantiate()
 	grid_container.add_child(command_label)
-	command_label.label_text.text = command_text
+	command_label.set_text(command_text, show_second_line)
 	command_label.move_away()
 
 

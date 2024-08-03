@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://ct36qwfu4qy3k"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_h3fry"]
+
+[resource]
+script = ExtResource("1_h3fry")
+text = "Nothing of use has yet been given to thee."
+in_quotes = false

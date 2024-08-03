@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bte60ddj418ss"]
+[gd_scene load_steps=7 format=3 uid="uid://bte60ddj418ss"]
 
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_m88t5"]
 [ext_resource type="Script" path="res://battle/ui/battle_ui.gd" id="1_yq6lc"]
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="2_j82m1"]
 [ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="3_1s2h0"]
 [ext_resource type="PackedScene" uid="uid://h1hhhv63dbcv" path="res://ui/spells/spell_window.tscn" id="5_bkogb"]
+[ext_resource type="PackedScene" uid="uid://cl07w4uuaew7u" path="res://ui/items/item_window.tscn" id="6_0y6tv"]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_yq6lc")
@@ -47,3 +48,11 @@ offset_left = 145.0
 offset_top = 24.0
 offset_right = 105.0
 offset_bottom = -16.0
+
+[node name="ItemWindow" parent="VisualsParent" instance=ExtResource("6_0y6tv")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 145.0
+offset_top = 40.0
+offset_right = 105.0
+offset_bottom = 40.0

@@ -4,9 +4,13 @@ class_name BattleUI
 signal fight_selected()
 signal spell_selected()
 signal run_selected()
+signal item_selected()
 
 signal spell_data_selected()
 signal spell_cancelled()
+
+signal item_data_selected()
+signal item_cancelled()
 
 signal command_menu_cancelled()
 
@@ -19,6 +23,7 @@ signal dialogue_finished()
 @onready var command_window: CommandWindow = %CommandWindow
 @onready var dialogue_window: DialogueWindow = %DialogueWindow
 @onready var spell_window: SpellWindow = %SpellWindow
+@onready var item_window: ItemWindow = %ItemWindow
 
 
 
@@ -27,6 +32,9 @@ func _ready() -> void:
 	dialogue_window.current_dialogue_finished.connect(current_dialogue_finished)
 	spell_window.spell_selected.connect(spell_selected_from_menu)
 	spell_window.cancelled.connect(spell_menu_cancelled)
+	
+	item_window.item_selected.connect(item_selected_from_menu)
+	item_window.cancelled.connect(item_menu_cancelled)
 	
 	command_window.cancelled.connect(on_command_menu_cancelled)
 	command_window.initialize_commands(["FIGHT", "SPELL", "RUN", "ITEM"], 2)
@@ -40,6 +48,10 @@ func initialize() -> void:
 func set_hero_data(hero: BattleUnit) -> void:
 	player_hud.set_hero(hero)
 	spell_window.set_spells(hero.spells)
+
+
+func refresh_hero_state(state: HeroState) -> void:
+	item_window.set_items(state.inventory)
 
 
 func show_dialogue_window() -> void:
@@ -67,6 +79,16 @@ func show_spell_window() -> void:
 
 func hide_spell_window() -> void:
 	spell_window.visible = false
+	await MenuStack.pop_stack()
+
+
+func show_item_window() -> void:
+	item_window.visible = true
+	await MenuStack.push_stack(item_window, item_window.activate, item_window.deactivate)
+
+
+func hide_item_window() -> void:
+	item_window.visible = false
 	await MenuStack.pop_stack()
 
 
@@ -116,6 +138,8 @@ func command_selected(idx: int) -> void:
 			spell_selected.emit()
 		2:
 			run_selected.emit()
+		3:
+			item_selected.emit()
 
 
 func spell_selected_from_menu(spell: SpellData) -> void:
@@ -124,6 +148,14 @@ func spell_selected_from_menu(spell: SpellData) -> void:
 
 func spell_menu_cancelled() -> void:
 	spell_cancelled.emit()
+
+
+func item_selected_from_menu(item: ItemData) -> void:
+	item_data_selected.emit(item)
+
+
+func item_menu_cancelled() -> void:
+	item_cancelled.emit()
 
 
 func on_command_menu_cancelled() -> void:

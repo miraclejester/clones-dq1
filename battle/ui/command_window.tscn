@@ -49,5 +49,5 @@ theme_override_constants/margin_bottom = 8
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 8
+theme_override_constants/v_separation = 0
 columns = 2

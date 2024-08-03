@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://7d7eis141jc5"]
+
+[ext_resource type="Script" path="res://battle/data/items/item_data.gd" id="1_3cw71"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_n7h4e"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/silver_harp_spell_effect.gd" id="3_g5131"]
+
+[sub_resource type="Resource" id="Resource_qhqdc"]
+script = ExtResource("2_n7h4e")
+text = "%s looks happy."
+in_quotes = false
+
+[sub_resource type="Resource" id="Resource_7kjco"]
+script = ExtResource("3_g5131")
+enemy_react_dialogue = SubResource("Resource_qhqdc")
+
+[sub_resource type="Resource" id="Resource_1bqbu"]
+script = ExtResource("2_n7h4e")
+text = "%s played a sweet melody on the harp."
+in_quotes = false
+
+[resource]
+script = ExtResource("1_3cw71")
+item_name = "Silver Harp"
+item_id = 3
+target_type = 1
+consumable = false
+use_dialogue = SubResource("Resource_1bqbu")
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_7kjco")])

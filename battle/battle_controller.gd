@@ -11,26 +11,34 @@ signal battle_finished()
 @onready var battle_ui: BattleUI = $BattleUI
 
 var battle_update_queue: Array[BattleUpdate] = []
+var hero_state: HeroState
 
 
 func _ready() -> void:
 	battle_ui.fight_selected.connect(fight_selected)
 	battle_ui.spell_selected.connect(spell_selected)
 	battle_ui.run_selected.connect(run_selected)
+	battle_ui.item_selected.connect(item_selected)
 	
 	battle_ui.spell_data_selected.connect(spell_selected_from_menu)
 	battle_ui.spell_cancelled.connect(spell_menu_cancelled)
+	
+	battle_ui.item_data_selected.connect(item_selected_from_menu)
+	battle_ui.item_cancelled.connect(item_menu_cancelled)
 	
 	battle_ui.command_menu_cancelled.connect(command_menu_cancelled)
 	start_battle()
 
 
 func start_battle() -> void:
-	var hero_state: HeroState = HeroState.new()
+	hero_state = HeroState.new()
 	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 30
+	hero_state.hp = 14
 	hero_state.mp = 12
 	hero_state.level = 4
+	hero_state.inventory =  []
+	for item in DebugUtils.debug_items:
+		hero_state.add_item(item)
 	
 	battle_update_queue = []
 	battle.init_battle(hero_state, enemy_data)
@@ -91,6 +99,18 @@ func spell_selected() -> void:
 		battle_ui.show_spell_window()
 
 
+func item_selected() -> void:
+	if hero_state.inventory.size() == 0:
+		battle_ui.hide_command_window()
+		await NoItemBattleUpdate.new().execute(self)
+		battle.do_turn()
+		process_updates()
+	else:
+		battle_ui.refresh_hero_state(hero_state)
+		battle_ui.show_item_window()
+		
+
+
 func spell_selected_from_menu(data: SpellData) -> void:
 	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
@@ -103,8 +123,30 @@ func spell_selected_from_menu(data: SpellData) -> void:
 	process_updates()
 
 
+func item_selected_from_menu(data: ItemData) -> void:
+	await battle_ui.hide_item_window()
+	battle_ui.hide_command_window()
+	if data.spell_effects.size() == 0:
+		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCannotUseItem)
+		await battle_ui.show_newline()
+		battle.do_turn()
+	else:
+		if data.consumable:
+			hero_state.remove_item(data)
+		battle.player_item(data)
+	process_updates()
+
+
 func spell_menu_cancelled() -> void:
 	await battle_ui.hide_spell_window()
+	battle_ui.hide_command_window()
+	await battle_ui.show_newline()
+	battle.do_turn()
+	process_updates()
+
+
+func item_menu_cancelled() -> void:
+	await battle_ui.hide_item_window()
 	battle_ui.hide_command_window()
 	await battle_ui.show_newline()
 	battle.do_turn()
