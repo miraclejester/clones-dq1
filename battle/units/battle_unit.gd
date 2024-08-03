@@ -57,6 +57,10 @@ func clear_status() -> void:
 	status_dict.clear()
 
 
+func hurt_hit_check() -> bool:
+	return true
+
+
 func sleep_hit_check() -> bool:
 	return true
 

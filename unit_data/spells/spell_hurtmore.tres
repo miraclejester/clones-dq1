@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=6 format=3 uid="uid://ct1rikw1mdsrm"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_dfv2r"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/deal_damage_spell_effect.gd" id="2_ui2jq"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/hurt_spell_effect.gd" id="3_e6iow"]
+
+[sub_resource type="Resource" id="Resource_8xb0j"]
+script = ExtResource("2_ui2jq")
+min_damage = 58
+max_damage = 65
+
+[sub_resource type="Resource" id="Resource_rdts6"]
+script = ExtResource("3_e6iow")
+damage_deal_effect = SubResource("Resource_8xb0j")
+
+[resource]
+script = ExtResource("1_dfv2r")
+spell_name = "HURTMORE"
+target_type = 1
+mp_cost = 5
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_rdts6")])

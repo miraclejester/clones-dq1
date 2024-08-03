@@ -24,6 +24,11 @@ func get_sleep_continues_format_vars() -> Array:
 	return [get_unit_name()]
 
 
+func hurt_hit_check() -> bool:
+	var roll: float = randf_range(0.0, 1.0)
+	return roll < (1.0 - data.stats.hurt_resist)
+	
+
 func sleep_hit_check() -> bool:
 	var roll: float = randf_range(0.0, 1.0)
 	return roll < (1.0 - data.stats.sleep_resist)
