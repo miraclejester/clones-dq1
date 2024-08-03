@@ -2,20 +2,22 @@ extends Node
 class_name BattleUnit
 
 enum StatusEffect {
-	OK, SLEEP
+	SLEEP, STOPSPELL
 }
 
 @export var sleep_started_dialogue: DialogueEvent
+@export var sleep_continues_dialogue: DialogueEvent
+@export var awake_dialogue: DialogueEvent
 
 @onready var stats: UnitStats = %UnitStats
 
 var crit_chance: float = 0
 var spells: Array[SpellData] = []
-var status: StatusEffect = StatusEffect.OK
+var status_dict: Dictionary = {} #StatusEffect to bool
+var sleep_turns: int = 0
 
-
-func deal_damage(damage: int) -> void:
-	stats.hp -= damage
+func process_turn(_battle: Battle) -> void:
+	pass
 
 
 func get_deal_damage_update(_damage: int, _new_hp: int) -> BattleUpdate:
@@ -26,8 +28,40 @@ func get_sleep_started_format_vars() -> Array:
 	return []
 
 
+func get_sleep_continues_format_vars() -> Array:
+	return []
+
+
+func get_awake_format_vars() -> Array:
+	return [get_unit_name()]
+
+
+func deal_damage(damage: int) -> void:
+	stats.hp -= damage
+
+
+func has_status(key: StatusEffect) -> bool:
+	return status_dict.has(key)
+
+
+func add_status(key: StatusEffect) -> void:
+	status_dict[key] = true
+
+
+func remove_status(key: StatusEffect) -> void:
+	status_dict.erase(key)
+
+
+func clear_status() -> void:
+	status_dict.clear()
+
+
 func sleep_hit_check() -> bool:
 	return true
+
+
+func sleep_wake_check(turns: int) -> bool:
+	return turns >= 6 or randf_range(0.0, 1.0) < 0.5 
 
 
 func get_attack_damage(defender: BattleUnit) -> int:

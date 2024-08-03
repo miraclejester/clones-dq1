@@ -14,6 +14,8 @@ enum BattleState {
 
 var turn_order: Array[BattleUnit] = []
 var turn_index: int = 0
+var updates: Array[BattleUpdate]
+
 
 func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 	hero.set_hero_name(hero_state.hero_name)
@@ -22,127 +24,128 @@ func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 	hero.set_mp(hero_state.mp)
 	hero.spells = DebugUtils.debug_spells
 	enemy.set_data(e)
+	updates = []
+	
+	hero.clear_status()
+	enemy.clear_status()
+	
 	roll_initiative()
 
 
-func start_battle() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
+func start_battle() -> void:
 	if turn_order[0] is EnemyUnit:
-		res.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
-	res.append_array(next_turn())
+		updates.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
+	do_turn()
+
+
+func flush_updates() -> Array[BattleUpdate]:
+	var res: Array[BattleUpdate] = []
+	res.assign(updates)
+	updates = []
 	return res
 
 
-func next_turn() -> Array[BattleUpdate]:
-	var unit: BattleUnit = turn_order[turn_index]
+func next_turn() -> void:
 	turn_index = (turn_index + 1) % 2
-	var res: Array[BattleUpdate] = check_battle_end()
+	do_turn()
+
+
+func do_turn() -> void:
+	var unit: BattleUnit = turn_order[turn_index]
+	check_battle_end()
 	if not is_battle_finished():
-		if unit is HeroUnit:
-			res.append_array(player_turn())
-		else:
-			res.append_array(enemy_turn())
-	return res
+		if unit.has_status(BattleUnit.StatusEffect.SLEEP):
+			unit.sleep_turns += 1
+			if unit.sleep_wake_check(unit.sleep_turns):
+				unit.sleep_turns = 0
+				unit.remove_status(BattleUnit.StatusEffect.SLEEP)
+				updates.append(SleepBattleUpdate.new(unit, false))
+				unit.process_turn(self)
+			else:
+				updates.append(SleepBattleUpdate.new(unit, false))
+				next_turn()
+			return
+		unit.process_turn(self)
 
 
-func player_fight() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
-	res.append(fight_action(hero, enemy))
-	res.append_array(next_turn())
-	return res
+func player_fight() -> void:
+	fight_action(hero, enemy)
+	next_turn()
 
 
-func player_run() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
-	if speed_roll():
-		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
-		res.append(FinishBattleUpdate.new())
+func player_run() -> void:
+	if enemy.has_status(BattleUnit.StatusEffect.SLEEP) or speed_roll():
+		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
+		updates.append(FinishBattleUpdate.new())
 	else:
-		res.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
-		res.append_array(next_turn())
-	return res
+		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
+		next_turn()
 
 
-func player_spell(spell: SpellData) -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
+func player_spell(spell: SpellData) -> void:
 	var target: BattleUnit
 	match spell.target_type:
 		SpellData.TargetType.SELF:
 			target = hero
 		SpellData.TargetType.ENEMY:
 			target = enemy
-	res.append_array(spell_action(spell, hero, target))
-	res.append_array(next_turn())
-	return res
+	spell_action(spell, hero, target)
+	next_turn()
 
 
-func enemy_turn() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
-	res.append(fight_action(enemy, hero))
-	res.append_array(next_turn())
-	return res
-
-
-func player_turn() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
-	res.append(HeroCommandBattleUpdate.new())
-	return res
-
-
-func check_battle_end() -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
+func check_battle_end() -> void:
 	if enemy.is_dead():
 		var exp_gain: int = enemy.get_xp()
 		var gold_gain: int = enemy.get_gp()
 		hero.add_exp(exp_gain)
 		hero.add_gold(gold_gain)
-		res.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
-		res.append(FinishBattleUpdate.new())
+		updates.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
+		updates.append(FinishBattleUpdate.new())
 	elif hero.is_dead():
-		res.append(DefeatBattleUpdate.new())
-		res.append(FinishBattleUpdate.new())
-	return res
+		updates.append(DefeatBattleUpdate.new())
+		updates.append(FinishBattleUpdate.new())
 
 
 func is_battle_finished() -> bool:
 	return hero.is_dead() or enemy.is_dead()
 
 
-func fight_action(attacker: BattleUnit, defender: BattleUnit) -> BattleUpdate:
+func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 	var dodge_roll: float = randf_range(0, 1)
 	if dodge_roll < defender.get_dodge():
-		return AttackBattleUpdate.fromData(
+		updates.append(AttackBattleUpdate.fromData(
 			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0, defender.stats.hp
-		)
+		))
+		return
 		
 	var crit_roll: float = randf_range(0, 1)
 	if crit_roll < attacker.crit_chance:
 		var d: int = attacker.get_crit_damage()
 		defender.deal_damage(d)
-		return AttackBattleUpdate.fromData(
+		updates.append(AttackBattleUpdate.fromData(
 			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d, defender.stats.hp
-		)
+		))
+		return
 	
 	var dmg: int = attacker.get_attack_damage(defender)
 	defender.deal_damage(dmg)
 	
 	if dmg < 1:
-		return AttackBattleUpdate.fromData(
+		updates.append(AttackBattleUpdate.fromData(
 			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0, defender.stats.hp
-		)
-	return AttackBattleUpdate.fromData(
+		))
+		return
+	updates.append(AttackBattleUpdate.fromData(
 		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg, defender.stats.hp
-	)
+	))
 
 
-func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> Array[BattleUpdate]:
-	var res: Array[BattleUpdate] = []
+func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> void:
 	var spell_updates: Array[BattleUpdate] = []
 	user.stats.mp -= spell.mp_cost
 	for effect in spell.spell_effects:
 		spell_updates.append_array(effect.execute_battle(self, user, target))
-	res.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
-	return res
+	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
 
 
 func roll_initiative() -> void:

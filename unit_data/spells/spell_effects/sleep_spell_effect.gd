@@ -5,8 +5,8 @@ func execute_battle(_battle: Battle, _user: BattleUnit, target: BattleUnit) -> A
 	var res: Array[BattleUpdate] = []
 	var sleep_hits: bool = target.sleep_hit_check()
 	if sleep_hits:
-		target.status = BattleUnit.StatusEffect.SLEEP
-		res.append(SleepHitBattleUpdate.new(target))
+		target.add_status(BattleUnit.StatusEffect.SLEEP)
+		res.append(SleepBattleUpdate.new(target, true))
 	else:
 		res.append(SpellFailBattleUpdate.new())
 	return res

@@ -30,6 +30,10 @@ func _ready() -> void:
 	stats.mp_changed.connect(on_mp_changed)
 
 
+func process_turn(battle: Battle) -> void:
+	battle.updates.append(HeroCommandBattleUpdate.new())
+
+
 func get_deal_damage_update(damage: int, new_hp: int) -> BattleUpdate:
 	return PlayerHurtBattleUpdate.new(self, damage, new_hp)
 

@@ -28,7 +28,7 @@ func start_battle() -> void:
 	hero_state.hero_name = "Erdrick"
 	hero_state.hp = 30
 	hero_state.mp = 12
-	hero_state.level = 6
+	hero_state.level = 4
 	
 	battle_update_queue = []
 	battle.init_battle(hero_state, enemy_data)
@@ -49,20 +49,16 @@ func start_battle() -> void:
 	await battle_ui.show_newline()
 	battle_ui.show_hud()
 	
-	add_updates(battle.start_battle())
+	battle.start_battle()
 	process_updates()
 
 
 func process_updates() -> void:
-	while battle_update_queue.size() > 0:
-		var update: BattleUpdate = battle_update_queue.pop_front()
+	while battle.updates.size() > 0:
+		var update: BattleUpdate = battle.updates.pop_front()
 		await update.execute(self)
 	if battle.is_battle_finished():
 		finish_battle()
-
-
-func add_updates(updates: Array[BattleUpdate]) -> void:
-	battle_update_queue.append_array(updates)
 
 
 func ask_command() -> void:
@@ -72,24 +68,24 @@ func ask_command() -> void:
 
 func fight_selected() -> void:
 	battle_ui.hide_command_window()
-	add_updates(battle.player_fight())
+	battle.player_fight()
 	process_updates()
 
 
 func run_selected() -> void:
 	battle_ui.hide_command_window()
-	add_updates(battle.player_run())
+	battle.player_run()
 	process_updates()
 
 
 func spell_selected() -> void:
 	if battle.hero.spells.size() == 0:
 		battle_ui.hide_command_window()
-		add_updates([NoSpellBattleUpdate.from_data(battle.hero.get_unit_name())])
-		add_updates(battle.player_turn())
+		await NoSpellBattleUpdate.from_data(battle.hero.get_unit_name()).execute(self)
+		battle.do_turn()
+		process_updates()
 	else:
 		battle_ui.show_spell_window()
-	process_updates()
 
 
 func spell_selected_from_menu(data: SpellData) -> void:
@@ -98,9 +94,9 @@ func spell_selected_from_menu(data: SpellData) -> void:
 	if battle.hero.stats.mp < data.mp_cost:
 		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleLowMP)
 		await battle_ui.show_newline()
-		add_updates(battle.player_turn())
+		battle.do_turn()
 	else:
-		add_updates(battle.player_spell(data))
+		battle.player_spell(data)
 	process_updates()
 
 
@@ -108,7 +104,7 @@ func spell_menu_cancelled() -> void:
 	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
 	await battle_ui.show_newline()
-	add_updates(battle.player_turn())
+	battle.do_turn()
 	process_updates()
 
 
