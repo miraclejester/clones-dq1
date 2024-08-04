@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://3q37agavxk4d"]
 
-[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_ic7rx"]
-[ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_a7ory"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_cgq2r"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_5q1dj"]
 
 [sub_resource type="Resource" id="Resource_6iqml"]
-script = ExtResource("2_a7ory")
-min_heal = 20
-max_heal = 27
+script = ExtResource("2_5q1dj")
+min_heal = 10
+max_heal = 17
 
 [resource]
-script = ExtResource("1_ic7rx")
+script = ExtResource("1_cgq2r")
 spell_name = "HEAL"
-target_type = 0
 mp_cost = 4
+target_type = 0
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_6iqml")])

@@ -1,24 +1,30 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://cd43nkk22kbkh"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://cd43nkk22kbkh"]
 
 [ext_resource type="Script" path="res://battle/data/items/item_data.gd" id="1_nnuie"]
+[ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_waq84"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/fairy_flute_spell_effect.gd" id="2_1ecwu"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_u03bu"]
 
-[sub_resource type="Resource" id="Resource_hjp57"]
+[sub_resource type="Resource" id="Resource_cb8fa"]
 script = ExtResource("2_u03bu")
-text = "But nothing happened."
+text = "But nothing happened"
 in_quotes = false
 
-[sub_resource type="Resource" id="Resource_jtver"]
+[sub_resource type="Resource" id="Resource_qg7r4"]
 script = ExtResource("2_u03bu")
 text = "Quietly Golem closes his eyes and settles into sleep."
 in_quotes = false
 
-[sub_resource type="Resource" id="Resource_ombkv"]
+[sub_resource type="Resource" id="Resource_kimxg"]
 script = ExtResource("2_1ecwu")
 target_enemy_name = "Golem"
-success_dialogue = SubResource("Resource_jtver")
-failure_dialogue = SubResource("Resource_hjp57")
+success_dialogue = SubResource("Resource_qg7r4")
+failure_dialogue = SubResource("Resource_cb8fa")
+
+[sub_resource type="Resource" id="Resource_t8ysl"]
+script = ExtResource("1_waq84")
+target_type = 1
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_kimxg")])
 
 [sub_resource type="Resource" id="Resource_vn8vv"]
 script = ExtResource("2_u03bu")
@@ -29,7 +35,6 @@ in_quotes = false
 script = ExtResource("1_nnuie")
 item_name = "Fairy Flute"
 item_id = 2
-target_type = 1
 consumable = false
 use_dialogue = SubResource("Resource_vn8vv")
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_ombkv")])
+battle_action = SubResource("Resource_t8ysl")

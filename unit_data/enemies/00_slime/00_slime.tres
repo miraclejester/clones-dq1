@@ -29,3 +29,4 @@ stats = SubResource("Resource_bkcpj")
 initiative_group = 1
 position_group = 0
 appear_palette = ExtResource("1_gla7k")
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

@@ -3,7 +3,7 @@ class_name BattleController
 
 signal battle_finished()
 
-@export var enemy_data: EnemyData
+@export var encounter_data: EncounterData
 
 @onready var battle = $Battle
 @onready var battle_bg: BattleBG = $BattleBG
@@ -33,20 +33,21 @@ func _ready() -> void:
 func start_battle() -> void:
 	hero_state = HeroState.new()
 	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 14
-	hero_state.mp = 12
-	hero_state.level = 4
+	hero_state.hp = 200
+	hero_state.mp = 34
+	hero_state.level = 23
 	hero_state.inventory =  []
 	for item in DebugUtils.debug_items:
 		hero_state.add_item(item)
 	
 	battle_update_queue = []
-	battle.init_battle(hero_state, enemy_data)
-	enemy_controller.set_data(enemy_data)
+	battle.init_battle(hero_state, encounter_data.enemy)
+	enemy_controller.set_data(encounter_data.enemy)
 	battle_ui.initialize()
 	battle_ui.set_hero_data(battle.hero)
 	battle_ui.determine_ui_colors(hero_state.hp, battle.hero.stats.max_hp)
 	
+	battle_bg.set_bg_texture(encounter_data.battle_bg)
 	await battle_bg.start_appear_animation()
 	
 	enemy_controller.visible = true
@@ -54,7 +55,7 @@ func start_battle() -> void:
 	battle_ui.show_dialogue_window()
 	await battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleStart,
-		[enemy_data.enemy_name]
+		[encounter_data.enemy.enemy_name]
 	)
 	await battle_ui.show_newline()
 	battle_ui.show_hud()
@@ -126,7 +127,7 @@ func spell_selected_from_menu(data: SpellData) -> void:
 func item_selected_from_menu(data: ItemData) -> void:
 	await battle_ui.hide_item_window()
 	battle_ui.hide_command_window()
-	if data.spell_effects.size() == 0:
+	if (not data.battle_action) or (data.battle_action.spell_effects.size() == 0):
 		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCannotUseItem)
 		await battle_ui.show_newline()
 		battle.do_turn()

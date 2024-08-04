@@ -11,7 +11,9 @@ enum BattlePositionGroup {
 
 const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.SLIME: Vector2(137, 106),
-	EnemyData.BattlePositionGroup.DRACKY: Vector2(136, 105)
+	EnemyData.BattlePositionGroup.DRACKY: Vector2(136, 105),
+	EnemyData.BattlePositionGroup.SORCERER: Vector2(135, 104),
+	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105)
 }
 
 @export var enemy_name: String
@@ -21,6 +23,7 @@ const POSITION_GROUP_MAP: Dictionary = {
 @export var initiative_group: int
 @export var position_group: BattlePositionGroup
 @export var appear_palette: Texture2D
+@export var patterns: Array[EnemyPatternEntry]
 
 
 func get_position_from_group() -> Vector2:

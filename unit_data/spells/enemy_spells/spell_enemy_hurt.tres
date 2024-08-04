@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=6 format=3 uid="uid://bqvmxue2vhuad"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_br7hp"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/deal_damage_spell_effect.gd" id="2_wbe4e"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/hurt_spell_effect.gd" id="3_vkxls"]
+
+[sub_resource type="Resource" id="Resource_y47qd"]
+script = ExtResource("2_wbe4e")
+min_damage = 3
+max_damage = 10
+
+[sub_resource type="Resource" id="Resource_4rhpd"]
+script = ExtResource("3_vkxls")
+damage_deal_effect = SubResource("Resource_y47qd")
+
+[resource]
+script = ExtResource("1_br7hp")
+spell_name = "HURT"
+mp_cost = 0
+target_type = 1
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_4rhpd")])

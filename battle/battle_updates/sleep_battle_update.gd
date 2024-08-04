@@ -2,15 +2,17 @@ extends BattleUpdate
 class_name SleepBattleUpdate
 
 var target: BattleUnit
+var awakened: bool = false
 var just_hit: bool = false
 
-func _init(t: BattleUnit, j: bool) -> void:
+func _init(t: BattleUnit, a: bool, j: bool) -> void:
 	target = t
+	awakened = a
 	just_hit = j
 
 
 func execute(controller: BattleController) -> void:
-	if not target.has_status(BattleUnit.StatusEffect.SLEEP):
+	if awakened:
 		await controller.battle_ui.show_line_from_data(
 			target.awake_dialogue,
 			target.get_awake_format_vars()
@@ -26,5 +28,4 @@ func execute(controller: BattleController) -> void:
 			target.sleep_continues_dialogue,
 			target.get_sleep_continues_format_vars()
 		)
-	await controller.battle_ui.show_newline()
 	

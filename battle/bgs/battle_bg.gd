@@ -4,6 +4,8 @@ class_name BattleBG
 signal bg_appear_finished()
 
 @onready var mask_piece: Sprite2D = $MaskPiece
+@onready var bg: Sprite2D = $BG
+
 
 
 var image: Image
@@ -14,7 +16,10 @@ var cur_size: int = 1
 
 func _ready() -> void:
 	create_initial_texture()
-	start_appear_animation()
+
+
+func set_bg_texture(t: Texture2D) -> void:
+	bg.texture = t
 
 
 func start_appear_animation() -> void:
@@ -22,7 +27,6 @@ func start_appear_animation() -> void:
 	await show_outline(3, 3, 4)
 	await show_outline(5, 4, 5)
 	await show_outline(7, 5, 6)
-	bg_appear_finished.emit()
 
 
 func show_outline(size: int, start_x: int, start_y) -> void:

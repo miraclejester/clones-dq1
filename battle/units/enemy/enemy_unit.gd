@@ -8,8 +8,27 @@ func set_data(d: EnemyData) -> void:
 
 
 func process_turn(battle: Battle) -> void:
-	battle.fight_action(self, battle.hero)
+	process_patterns(battle)
 	battle.next_turn()
+
+
+func process_patterns(battle: Battle) -> void:
+	for pattern_entry in data.patterns:
+		if pattern_entry.roll(self, battle.hero):
+			if pattern_entry.action is SpellData:
+				battle.spell_action(
+					pattern_entry.action as SpellData,
+					self,
+					pattern_entry.action.get_target(self, battle.hero)
+				)
+			elif pattern_entry.action is AbilityData:
+				battle.ability_action(
+					pattern_entry.action as AbilityData,
+					self,
+					pattern_entry.action.get_target(self, battle.hero)
+				)
+			return
+	battle.fight_action(self, battle.hero)
 
 
 func get_deal_damage_update(damage: int, _new_hp: int) -> BattleUpdate:

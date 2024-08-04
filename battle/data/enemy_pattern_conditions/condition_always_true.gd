@@ -1,0 +1,2 @@
+extends EnemyPatternCondition
+class_name ConditionAlwaysTrue

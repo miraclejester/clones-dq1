@@ -22,7 +22,8 @@ func execute(controller: BattleController) -> void:
 		[user.get_unit_name(), spell.spell_name]
 	)
 	await controller.get_tree().create_timer(1.0).timeout
-	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.MP, new_mp)
+	if user is HeroUnit:
+		controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.MP, new_mp)
 	for update in spell_updates:
 		await update.execute(controller)
 	await controller.battle_ui.show_newline()

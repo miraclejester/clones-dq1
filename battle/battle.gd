@@ -59,10 +59,10 @@ func do_turn() -> void:
 			if unit.sleep_wake_check(unit.sleep_turns):
 				unit.sleep_turns = 0
 				unit.remove_status(BattleUnit.StatusEffect.SLEEP)
-				updates.append(SleepBattleUpdate.new(unit, false))
+				updates.append(SleepBattleUpdate.new(unit, true, false))
 				unit.process_turn(self)
 			else:
-				updates.append(SleepBattleUpdate.new(unit, false))
+				updates.append(SleepBattleUpdate.new(unit, false, false))
 				next_turn()
 			return
 		unit.process_turn(self)
@@ -83,23 +83,13 @@ func player_run() -> void:
 
 
 func player_spell(spell: SpellData) -> void:
-	var target: BattleUnit
-	match spell.target_type:
-		SpellData.TargetType.SELF:
-			target = hero
-		SpellData.TargetType.ENEMY:
-			target = enemy
+	var target: BattleUnit = spell.get_target(hero, enemy)
 	spell_action(spell, hero, target)
 	next_turn()
 
 
 func player_item(item: ItemData) -> void:
-	var target: BattleUnit
-	match item.target_type:
-		SpellData.TargetType.SELF:
-			target = hero
-		SpellData.TargetType.ENEMY:
-			target = enemy
+	var target: BattleUnit = item.battle_action.get_target(hero, enemy)
 	item_action(item, hero, target)
 	next_turn()
 
@@ -162,9 +152,16 @@ func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> voi
 	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
 
 
+func ability_action(ability: AbilityData, user: BattleUnit, target: BattleUnit) -> void:
+	var spell_updates: Array[BattleUpdate] = []
+	for effect in ability.spell_effects:
+		spell_updates.append_array(effect.execute_battle(self, user, target))
+	updates.append(AbilityBattleUpdate.new(ability, user, target, spell_updates))
+
+
 func item_action(item: ItemData, user: BattleUnit, target: BattleUnit) -> void:
 	var item_updates: Array[BattleUpdate] = []
-	for effect in item.spell_effects:
+	for effect in item.battle_action.spell_effects:
 		item_updates.append_array(effect.execute_battle(self, user, target))
 	updates.append(ItemBattleUpdate.new(item, user, item_updates))
 

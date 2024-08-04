@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=12 format=3 uid="uid://crwbr5k6ypthd"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_mleyv"]
+[ext_resource type="Texture2D" uid="uid://csucjc82dmw5q" path="res://unit_data/enemies/30_green_dragon/30_green_dragon_palette.png" id="1_uqog7"]
+[ext_resource type="Texture2D" uid="uid://byny81a8t3d8t" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_dragon.png" id="2_wh7mb"]
+[ext_resource type="Resource" uid="uid://bfr1403fsjxn8" path="res://unit_data/abilities/ability_weak_breath.tres" id="3_yp6rn"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="4_jlqsi"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="5_84xge"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="7_rjxt7"]
+[ext_resource type="Texture2D" uid="uid://c6br46siub3t5" path="res://unit_data/enemies/30_green_dragon/30_green_dragon.png" id="8_11bki"]
+
+[sub_resource type="Resource" id="Resource_2pol0"]
+script = ExtResource("4_jlqsi")
+
+[sub_resource type="Resource" id="Resource_n48yi"]
+script = ExtResource("5_84xge")
+chance = 0.25
+condition = SubResource("Resource_2pol0")
+action = ExtResource("3_yp6rn")
+
+[sub_resource type="Resource" id="Resource_6e1x8"]
+script = ExtResource("7_rjxt7")
+strength = 88
+agility = 74
+max_hp = 65
+min_hp = 49
+sleep_resist = 0.438
+stop_spell_resist = 0.938
+hurt_resist = 0.125
+dodge = 0.031
+xp = 45
+max_gp = 159
+min_gp = 120
+
+[resource]
+script = ExtResource("1_mleyv")
+enemy_name = "Green Dragon"
+texture = ExtResource("8_11bki")
+hurt_texture = ExtResource("2_wh7mb")
+stats = SubResource("Resource_6e1x8")
+initiative_group = 3
+position_group = 12
+appear_palette = ExtResource("1_uqog7")
+patterns = Array[ExtResource("5_84xge")]([SubResource("Resource_n48yi")])
