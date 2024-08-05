@@ -11,6 +11,6 @@ enum ComparisonType {
 func evaluate(user: EnemyUnit, _target: BattleUnit) -> bool:
 	match comparison_type:
 		ComparisonType.LESS_THAN:
-			return user.stats.hp < floor(float(user.stats.max_hp) * multiplier)
+			return user.stats.get_stat(UnitStats.StatKey.HP) < floor(float(user.stats.get_base(UnitStats.StatKey.HP)) * multiplier)
 		_:
 			return false

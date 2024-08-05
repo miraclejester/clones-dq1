@@ -1,66 +1,60 @@
 extends Node
 class_name UnitStats
 
+@export var stat_scene: PackedScene
+
 enum StatKey {
-	STR, AGI, MAX_HP, MAX_MP,
-	HP, MP, LVL
+	STR, AGI, HP, MP
 }
 
 signal hp_changed(val: int)
 signal mp_changed(val: int)
 
-var GET_STAT_DICT: Dictionary = {
-	StatKey.STR : get_strength,
-	StatKey.HP : get_hp,
-	StatKey.MAX_HP : get_max_hp
-}
+var stat_dict: Dictionary = {}
 
-var strength: int
-var agility: int
-var max_hp: int
-var max_mp: int
 
-var hp: int:
-	get:
-		return hp
-	set(value):
-		hp = clampi(value, 0, max_hp)
-		hp_changed.emit(hp)
-var mp: int:
-	get:
-		return mp
-	set(value):
-		mp = clampi(value, 0, max_mp)
-		mp_changed.emit(mp)
+func _ready() -> void:
+	create_stat(StatKey.STR)
+	create_stat(StatKey.AGI)
+	create_stat(StatKey.HP)
+	create_stat(StatKey.MP)
+
+
+func create_stat(key: StatKey) -> void:
+	var s: Stat = stat_scene.instantiate() as Stat
+	add_child(s)
+	stat_dict[key] = s
 
 
 func get_stat(key: StatKey) -> int:
-	return (GET_STAT_DICT.get(key, func(): return 0) as Callable).call()
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat == null:
+		return 0
+	return stat.current_value
 
 
-func get_strength() -> int:
-	return strength
+func modify_stat(key: StatKey, amount: int) -> void:
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat != null:
+		stat.set_current_value(stat.current_value + amount)
 
 
-func set_strength(val: int) -> void:
-	strength = val
-
-func set_agility(val: int) -> void:
-	agility = val
-
-
-func get_hp() -> int:
-	return hp
+func get_base(key: StatKey) -> int:
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat == null:
+		return 0
+	return stat.value
 
 
-func get_max_hp() -> int:
-	return max_hp
+func set_base(key: StatKey, val: int, go_max: bool = true) -> void:
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat != null:
+		stat.set_value(val)
+		if go_max:
+			maximize(key)
 
 
-func set_max_hp(val: int) -> void:
-	max_hp = val
-	hp = clampi(hp, 0, max_hp)
-
-func set_max_mp(val: int) -> void:
-	max_mp = val
-	mp = clampi(mp, 0, max_mp)
+func maximize(key: StatKey) -> void:
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat != null:
+		stat.set_current_value(stat.value)

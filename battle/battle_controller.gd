@@ -39,7 +39,7 @@ func start_battle() -> void:
 	battle_ui.set_hero_data(battle.hero)
 	battle_ui.determine_ui_colors(
 		hero.stats.get_stat(UnitStats.StatKey.HP),
-		hero.stats.get_stat(UnitStats.StatKey.MAX_HP)
+		hero.stats.get_base(UnitStats.StatKey.HP)
 	)
 	
 	battle_bg.set_bg_texture(encounter_data.battle_bg)
@@ -110,7 +110,7 @@ func item_selected() -> void:
 func spell_selected_from_menu(data: SpellData) -> void:
 	await battle_ui.hide_spell_window()
 	battle_ui.hide_command_window()
-	if battle.hero.stats.mp < data.mp_cost:
+	if battle.hero.stats.get_stat(UnitStats.StatKey.MP) < data.mp_cost:
 		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleLowMP)
 		await battle_ui.show_newline()
 		battle.do_turn()

@@ -124,7 +124,7 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 	var dodge_roll: float = randf_range(0, 1)
 	if dodge_roll < defender.get_dodge():
 		updates.append(AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0, defender.stats.hp
+			AttackBattleUpdate.AttackResult.DODGE, attacker, defender, 0, defender.stats.get_stat(UnitStats.StatKey.HP)
 		))
 		return
 		
@@ -133,7 +133,7 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 		var d: int = attacker.get_crit_damage()
 		defender.deal_damage(d)
 		updates.append(AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d, defender.stats.hp
+			AttackBattleUpdate.AttackResult.CRIT, attacker, defender, d, defender.stats.get_stat(UnitStats.StatKey.HP)
 		))
 		return
 	
@@ -142,23 +142,23 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 	
 	if dmg < 1:
 		updates.append(AttackBattleUpdate.fromData(
-			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0, defender.stats.hp
+			AttackBattleUpdate.AttackResult.NO_DAMAGE, attacker, defender, 0, defender.stats.get_stat(UnitStats.StatKey.HP)
 		))
 		return
 	updates.append(AttackBattleUpdate.fromData(
-		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg, defender.stats.hp
+		AttackBattleUpdate.AttackResult.HIT, attacker, defender, dmg, defender.stats.get_stat(UnitStats.StatKey.HP)
 	))
 
 
 func spell_action(spell: SpellData, user: BattleUnit, target: BattleUnit) -> void:
 	var spell_updates: Array[BattleUpdate] = []
-	user.stats.mp -= spell.mp_cost
+	user.stats.modify_stat(UnitStats.StatKey.MP, -spell.mp_cost)
 	if user.has_status(BattleUnit.StatusEffect.STOPSPELL):
 		spell_updates.append(StopSpellBattleUpdate.new(target, false))
 	else:
 		for effect in spell.spell_effects:
 			spell_updates.append_array(effect.execute_battle(self, user, target))
-	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.mp))
+	updates.append(SpellBattleUpdate.new(spell, user, target, spell_updates, user.stats.get_stat(UnitStats.StatKey.MP)))
 
 
 func ability_action(ability: AbilityData, user: BattleUnit, target: BattleUnit) -> void:
@@ -183,6 +183,6 @@ func roll_initiative() -> void:
 
 
 func speed_roll() -> bool:
-	var hero_roll: int = hero.stats.agility * randi_range(0, 255)
-	var enemy_roll: int = floor(enemy.stats.agility * randi_range(0, 255) * enemy.get_group_factor())
+	var hero_roll: int = hero.stats.get_stat(UnitStats.StatKey.AGI) * randi_range(0, 255)
+	var enemy_roll: int = floor(enemy.stats.get_stat(UnitStats.StatKey.AGI) * randi_range(0, 255) * enemy.get_group_factor())
 	return enemy_roll <= hero_roll

@@ -58,7 +58,7 @@ func set_hero_name(new_name: String) -> void:
 	process_growth_value()
 
 
-func set_stats_from_level(l: int) -> void:
+func set_stats_from_level(l: int, go_max: bool = false) -> void:
 	set_level(l)
 	var level_str = str(l)
 	var level_data: Dictionary = level_chart.get(level_str) as Dictionary
@@ -66,7 +66,7 @@ func set_stats_from_level(l: int) -> void:
 	var ag: int = level_data.get("Agility") as int
 	var hp: int = level_data.get("HP") as int
 	var mp: int = level_data.get("MP") as int
-	process_stats_from_growth(st, ag, hp, mp)
+	process_stats_from_growth(st, ag, hp, mp, go_max)
 
 
 func process_growth_value() -> void:
@@ -77,28 +77,28 @@ func process_growth_value() -> void:
 	growth_sum = sum
 
 
-func process_stats_from_growth(st: int, ag: int, hp: int, mp: int) -> void:
+func process_stats_from_growth(st: int, ag: int, hp: int, mp: int, go_max: bool) -> void:
 	match growth_value:
 		0:
-			stats.set_max_hp(hp)
-			stats.set_max_mp(mp)
-			stats.set_strength(get_short_stat_value(st))
-			stats.set_agility(get_short_stat_value(ag))
+			stats.set_base(UnitStats.StatKey.HP, hp, go_max)
+			stats.set_base(UnitStats.StatKey.MP, mp, go_max)
+			stats.set_base(UnitStats.StatKey.STR, get_short_stat_value(st))
+			stats.set_base(UnitStats.StatKey.AGI, get_short_stat_value(ag))
 		1:
-			stats.set_max_hp(hp)
-			stats.set_max_mp(get_short_stat_value(mp))
-			stats.set_strength(st)
-			stats.set_agility(get_short_stat_value(ag))
+			stats.set_base(UnitStats.StatKey.HP, hp, go_max)
+			stats.set_base(UnitStats.StatKey.MP, get_short_stat_value(mp), go_max)
+			stats.set_base(UnitStats.StatKey.STR, st)
+			stats.set_base(UnitStats.StatKey.AGI, get_short_stat_value(ag))
 		2:
-			stats.set_max_hp(get_short_stat_value(hp))
-			stats.set_max_mp(mp)
-			stats.set_strength(get_short_stat_value(st))
-			stats.set_agility(ag)
+			stats.set_base(UnitStats.StatKey.HP, get_short_stat_value(hp), go_max)
+			stats.set_base(UnitStats.StatKey.MP, mp, go_max)
+			stats.set_base(UnitStats.StatKey.STR, get_short_stat_value(st))
+			stats.set_base(UnitStats.StatKey.AGI, ag)
 		3:
-			stats.set_max_hp(get_short_stat_value(hp))
-			stats.set_max_mp(get_short_stat_value(mp))
-			stats.set_strength(st)
-			stats.set_agility(ag)
+			stats.set_base(UnitStats.StatKey.HP, get_short_stat_value(hp), go_max)
+			stats.set_base(UnitStats.StatKey.MP, get_short_stat_value(mp), go_max)
+			stats.set_base(UnitStats.StatKey.STR, st)
+			stats.set_base(UnitStats.StatKey.AGI, ag)
 
 
 func get_short_stat_value(orig: int) -> int:
@@ -108,13 +108,6 @@ func get_short_stat_value(orig: int) -> int:
 	var rem: int = round_down % 4
 	return rem + int(orig * 9 / 10.0)
 
-
-func set_hp(val: int) -> void:
-	stats.hp = val
-
-
-func set_mp(val: int) -> void:
-	stats.mp = val
 
 
 func on_hp_changed(val: int) -> void:
@@ -127,19 +120,19 @@ func on_mp_changed(val: int) -> void:
 
 func level_up() -> LevelUpResult:
 	var res: LevelUpResult = LevelUpResult.new()
-	var old_strength: int = stats.strength
-	var old_agility: int = stats.agility
-	var old_max_hp: int = stats.max_hp
-	var old_max_mp: int = stats.max_mp
+	var old_strength: int = stats.get_base(UnitStats.StatKey.STR)
+	var old_agility: int = stats.get_base(UnitStats.StatKey.AGI)
+	var old_max_hp: int = stats.get_base(UnitStats.StatKey.HP)
+	var old_max_mp: int = stats.get_base(UnitStats.StatKey.MP)
 	var spell: SpellData = PlayerManager.get_next_level_entry().learned_spell
-	set_stats_from_level(level + 1)
+	set_stats_from_level(level + 1, false)
 	if spell != null:
 		spells.append(spell)
 	
-	res.strength_gain = stats.strength - old_strength
-	res.agility_gain = stats.agility - old_agility
-	res.hp_gain = stats.max_hp - old_max_hp
-	res.mp_gain = stats.max_mp - old_max_mp
+	res.strength_gain = stats.get_base(UnitStats.StatKey.STR) - old_strength
+	res.agility_gain = stats.get_base(UnitStats.StatKey.AGI) - old_agility
+	res.hp_gain = stats.get_base(UnitStats.StatKey.HP) - old_max_hp
+	res.mp_gain = stats.get_base(UnitStats.StatKey.MP) - old_max_mp
 	res.spell_learned = spell != null
 	return res
 

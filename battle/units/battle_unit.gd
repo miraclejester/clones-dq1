@@ -38,7 +38,7 @@ func get_awake_format_vars() -> Array:
 
 
 func deal_damage(damage: int) -> void:
-	stats.hp -= damage
+	stats.modify_stat(UnitStats.StatKey.HP, -damage)
 
 
 func has_status(key: StatusEffect) -> bool:
@@ -85,11 +85,11 @@ func get_crit_damage() -> int:
 
 
 func get_defense() -> int:
-	return floor(stats.agility / 2.0)
+	return floor(stats.get_stat(UnitStats.StatKey.AGI) / 2.0)
 
 
 func get_attack() -> int:
-	return stats.strength
+	return stats.get_stat(UnitStats.StatKey.STR)
 
 
 func get_dodge() -> float:
@@ -97,7 +97,7 @@ func get_dodge() -> float:
 
 
 func is_dead() -> bool:
-	return stats.hp <= 0 
+	return stats.get_stat(UnitStats.StatKey.HP) <= 0 
 
 
 func get_unit_name() -> String:

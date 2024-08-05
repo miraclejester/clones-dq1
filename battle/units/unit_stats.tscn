@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu6gxutcim5rv"]
+[gd_scene load_steps=3 format=3 uid="uid://bu6gxutcim5rv"]
 
 [ext_resource type="Script" path="res://battle/units/unit_stats.gd" id="1_ray4d"]
+[ext_resource type="PackedScene" uid="uid://don4qwt01036t" path="res://battle/units/stats/stat.tscn" id="2_fqoe2"]
 
 [node name="UnitStats" type="Node"]
 script = ExtResource("1_ray4d")
+stat_scene = ExtResource("2_fqoe2")

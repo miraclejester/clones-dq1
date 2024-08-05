@@ -13,6 +13,9 @@ func _init(k: PlayerHUD.HUDStatKey, n: int, u: BattleUnit) -> void:
 
 func execute(controller: BattleController) -> void:
 	if user is HeroUnit:
-		controller.battle_ui.determine_ui_colors(user.stats.hp, user.stats.max_hp)
+		controller.battle_ui.determine_ui_colors(
+			user.stats.get_stat(UnitStats.StatKey.HP),
+			user.stats.get_base(UnitStats.StatKey.HP)
+		)
 	controller.battle_ui.update_player_stat(hud_key, new_val)
 	await controller.get_tree().process_frame

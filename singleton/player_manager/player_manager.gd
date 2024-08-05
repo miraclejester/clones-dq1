@@ -9,9 +9,7 @@ func _ready() -> void:
 	for item in DebugUtils.debug_items:
 		hero.inventory.add_item(item)
 	hero.set_hero_name("Erdrick")
-	hero.set_stats_from_level(2)
-	hero.set_hp(200)
-	hero.set_mp(34)
+	hero.set_stats_from_level(2, true)
 
 
 func get_next_level_entry() -> ExperienceChartEntry:

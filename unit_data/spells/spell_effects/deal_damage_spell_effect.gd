@@ -9,5 +9,5 @@ func execute_battle(_battle: Battle, _user: BattleUnit, target: BattleUnit) -> A
 	var res: Array[BattleUpdate] = []
 	var damage: int = randi_range(min_damage, max_damage)
 	target.deal_damage(damage)
-	res.append(target.get_deal_damage_update(damage, target.stats.hp))
+	res.append(target.get_deal_damage_update(damage, target.stats.get_stat(UnitStats.StatKey.HP)))
 	return res

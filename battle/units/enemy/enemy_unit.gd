@@ -71,17 +71,16 @@ func sleep_wake_check(turns: int) -> bool:
 
 func set_stats_from_data(ed: EnemyData) -> void:
 	data = ed
-	stats.set_strength(ed.stats.strength)
-	stats.set_agility(ed.stats.agility)
-	stats.set_max_hp(randi_range(ed.stats.min_hp, ed.stats.max_hp))
-	stats.set_max_mp(0)
-	stats.hp = stats.max_hp
-	stats.mp = stats.max_mp
+	stats.set_base(UnitStats.StatKey.STR, ed.stats.strength)
+	stats.set_base(UnitStats.StatKey.AGI, ed.stats.agility)
+	stats.set_base(UnitStats.StatKey.HP, randi_range(ed.stats.min_hp, ed.stats.max_hp))
+	stats.set_base(UnitStats.StatKey.MP, 0)
 
 
 func get_attack_damage(defender: BattleUnit) -> int:
-	if defender.get_defense() >= stats.strength:
-		return randi_range(0, floor((stats.strength + 4) / 6.0))
+	var st: int = stats.get_stat(UnitStats.StatKey.STR)
+	if defender.get_defense() >= st:
+		return randi_range(0, floor((st + 4) / 6.0))
 	return super(defender)
 
 

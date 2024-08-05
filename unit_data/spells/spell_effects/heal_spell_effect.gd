@@ -8,5 +8,5 @@ func execute_battle(_battle: Battle, user: BattleUnit, target: BattleUnit) -> Ar
 	var res: Array[BattleUpdate] = []
 	var heal: int = randi_range(min_heal, max_heal)
 	target.deal_damage(-heal)
-	res.append(UpdateHUDBattleUpdate.new(PlayerHUD.HUDStatKey.HP, target.stats.hp, user))
+	res.append(UpdateHUDBattleUpdate.new(PlayerHUD.HUDStatKey.HP, target.stats.get_stat(UnitStats.StatKey.HP), user))
 	return res

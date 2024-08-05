@@ -17,5 +17,8 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattlePlayerHurt,
 		[damage]
 	)
-	controller.battle_ui.determine_ui_colors(hero_unit.stats.hp, hero_unit.stats.max_hp)
+	controller.battle_ui.determine_ui_colors(
+		hero_unit.stats.get_stat(UnitStats.StatKey.HP),
+		hero_unit.stats.get_base(UnitStats.StatKey.HP)
+	)
 	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.HP, hp_value)

@@ -22,8 +22,8 @@ func set_hero(h: HeroUnit) -> void:
 
 
 func update_from_hero() -> void:
-	on_hp_changed(hero.stats.hp)
-	on_mp_changed(hero.stats.mp)
+	on_hp_changed(hero.stats.get_stat(UnitStats.StatKey.HP))
+	on_mp_changed(hero.stats.get_stat(UnitStats.StatKey.MP))
 	on_level_changed(hero.level)
 	on_gold_changed(hero.gold)
 	on_exp_changed(hero.experience)
