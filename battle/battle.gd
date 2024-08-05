@@ -33,6 +33,8 @@ func init_battle(hero_state: HeroState, e: EnemyData) -> void:
 
 
 func start_battle() -> void:
+	if enemy_run_check():
+		return
 	if turn_order[0] is EnemyUnit:
 		updates.append(EnemyFirstBattleUpdate.from_data(enemy.get_unit_name(), hero.get_unit_name()))
 	do_turn()
@@ -92,6 +94,14 @@ func player_item(item: ItemData) -> void:
 	var target: BattleUnit = item.battle_action.get_target(hero, enemy)
 	item_action(item, hero, target)
 	next_turn()
+
+
+func enemy_run_check() -> bool:
+	if enemy.is_running_away(hero):
+		updates.append(EnemyRunBattleUpdate.new(enemy))
+		updates.append(FinishBattleUpdate.new())
+		return true
+	return false
 
 
 func check_battle_end() -> void:

@@ -9,6 +9,10 @@ enum StatKey {
 signal hp_changed(val: int)
 signal mp_changed(val: int)
 
+var GET_STAT_DICT: Dictionary = {
+	StatKey.STR : get_strength
+}
+
 var strength: int
 var agility: int
 var max_hp: int
@@ -26,6 +30,14 @@ var mp: int:
 	set(value):
 		mp = clampi(value, 0, max_mp)
 		mp_changed.emit(mp)
+
+
+func get_stat(key: StatKey) -> int:
+	return (GET_STAT_DICT.get(key, func(): return 0) as Callable).call()
+
+
+func get_strength() -> int:
+	return strength
 
 
 func set_strength(val: int) -> void:

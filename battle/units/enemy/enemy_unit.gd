@@ -8,6 +8,8 @@ func set_data(d: EnemyData) -> void:
 
 
 func process_turn(battle: Battle) -> void:
+	if battle.enemy_run_check():
+		return
 	process_patterns(battle)
 	battle.next_turn()
 
@@ -29,6 +31,12 @@ func process_patterns(battle: Battle) -> void:
 				)
 			return
 	battle.fight_action(self, battle.hero)
+
+
+func is_running_away(hero: HeroUnit) -> bool:
+	var hero_str: int = hero.stats.get_stat(UnitStats.StatKey.STR)
+	var e_str: int = stats.get_stat(UnitStats.StatKey.STR)
+	return (hero_str >= e_str * 2) and (randf_range(0.0, 1.0) < 0.25)
 
 
 func get_deal_damage_update(damage: int, _new_hp: int) -> BattleUpdate:
