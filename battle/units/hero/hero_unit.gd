@@ -15,6 +15,7 @@ var letter_values: Dictionary
 var growth_value: int
 var growth_sum: int
 var hero_name: String
+var inventory: HeroInventory
 
 var level: int = 1
 var gold: int = 0
@@ -25,6 +26,7 @@ func _ready() -> void:
 	level_chart = FileUtils.load_json_dict(level_chart_path)
 	letter_values = FileUtils.load_json_dict(letter_values_path)
 	crit_chance = 1.0 / 32.0
+	inventory = HeroInventory.new()
 	
 	stats.hp_changed.connect(on_hp_changed)
 	stats.mp_changed.connect(on_mp_changed)
@@ -123,10 +125,28 @@ func on_mp_changed(val: int) -> void:
 	mp_changed.emit(val)
 
 
-func level_up() -> void:
-	level += 1
-	set_stats_from_level(level)
-	level_changed.emit(level)
+func level_up() -> LevelUpResult:
+	var res: LevelUpResult = LevelUpResult.new()
+	var old_strength: int = stats.strength
+	var old_agility: int = stats.agility
+	var old_max_hp: int = stats.max_hp
+	var old_max_mp: int = stats.max_mp
+	var spell: SpellData = PlayerManager.get_next_level_entry().learned_spell
+	set_stats_from_level(level + 1)
+	if spell != null:
+		spells.append(spell)
+	
+	res.strength_gain = stats.strength - old_strength
+	res.agility_gain = stats.agility - old_agility
+	res.hp_gain = stats.max_hp - old_max_hp
+	res.mp_gain = stats.max_mp - old_max_mp
+	res.spell_learned = spell != null
+	return res
+
+
+func has_leveled_up() -> bool:
+	var entry: ExperienceChartEntry = PlayerManager.get_next_level_entry()
+	return experience >= entry.experience
 
 
 func set_level(l: int) -> void:
@@ -134,14 +154,14 @@ func set_level(l: int) -> void:
 	level_changed.emit(level)
 
 
+func add_exp(val: int) -> void:
+	experience = clampi(experience + val, 0, 65535)
+	exp_changed.emit(experience)
+
+
 func add_gold(val: int) -> void:
 	gold = clampi(gold + val, 0, 9999)
 	gold_changed.emit(gold)
-
-
-func add_exp(val: int) -> void:
-	experience += val
-	exp_changed.emit(experience)
 
 
 func get_unit_name() -> String:

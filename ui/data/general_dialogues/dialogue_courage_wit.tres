@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://c7eju6ffn1k1o"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_m8tq3"]
+
+[resource]
+script = ExtResource("1_m8tq3")
+text = "Courage and wit have served thee well."
+in_quotes = false

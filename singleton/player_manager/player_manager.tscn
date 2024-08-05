@@ -1,0 +1,173 @@
+[gd_scene load_steps=40 format=3 uid="uid://b1phrxbcr5gde"]
+
+[ext_resource type="Script" path="res://singleton/player_manager/player_manager.gd" id="1_xsi76"]
+[ext_resource type="Script" path="res://unit_data/player/experience/experience_chart_entry.gd" id="2_2ottu"]
+[ext_resource type="Resource" uid="uid://3q37agavxk4d" path="res://unit_data/spells/player_spells/spell_heal.tres" id="3_u0sis"]
+[ext_resource type="Resource" uid="uid://da5tkr6g8bc2j" path="res://unit_data/spells/player_spells/spell_hurt.tres" id="4_y3xgr"]
+[ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/player_spells/spell_sleep.tres" id="5_btvlr"]
+[ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="6_ujtoh"]
+[ext_resource type="Resource" uid="uid://1jojbmgi1bmq" path="res://unit_data/spells/player_spells/spell_healmore.tres" id="7_pea0l"]
+[ext_resource type="Resource" uid="uid://ct1rikw1mdsrm" path="res://unit_data/spells/player_spells/spell_hurtmore.tres" id="8_fbhrf"]
+[ext_resource type="PackedScene" uid="uid://bexx735kyj077" path="res://battle/units/hero/hero_unit.tscn" id="9_b5840"]
+
+[sub_resource type="Resource" id="Resource_ds7s3"]
+script = ExtResource("2_2ottu")
+level = 1
+experience = 0
+
+[sub_resource type="Resource" id="Resource_o3hrf"]
+script = ExtResource("2_2ottu")
+level = 2
+experience = 7
+
+[sub_resource type="Resource" id="Resource_pqdrc"]
+script = ExtResource("2_2ottu")
+level = 3
+experience = 23
+learned_spell = ExtResource("3_u0sis")
+
+[sub_resource type="Resource" id="Resource_n81qb"]
+script = ExtResource("2_2ottu")
+level = 4
+experience = 47
+learned_spell = ExtResource("4_y3xgr")
+
+[sub_resource type="Resource" id="Resource_181s8"]
+script = ExtResource("2_2ottu")
+level = 5
+experience = 110
+
+[sub_resource type="Resource" id="Resource_jaqam"]
+script = ExtResource("2_2ottu")
+level = 6
+experience = 220
+
+[sub_resource type="Resource" id="Resource_jjk2q"]
+script = ExtResource("2_2ottu")
+level = 7
+experience = 450
+learned_spell = ExtResource("5_btvlr")
+
+[sub_resource type="Resource" id="Resource_x8vbv"]
+script = ExtResource("2_2ottu")
+level = 8
+experience = 800
+
+[sub_resource type="Resource" id="Resource_5raom"]
+script = ExtResource("2_2ottu")
+level = 9
+experience = 1300
+
+[sub_resource type="Resource" id="Resource_wrwcp"]
+script = ExtResource("2_2ottu")
+level = 10
+experience = 2000
+learned_spell = ExtResource("6_ujtoh")
+
+[sub_resource type="Resource" id="Resource_hub6s"]
+script = ExtResource("2_2ottu")
+level = 11
+experience = 2900
+
+[sub_resource type="Resource" id="Resource_skysr"]
+script = ExtResource("2_2ottu")
+level = 12
+experience = 4000
+
+[sub_resource type="Resource" id="Resource_k4uxf"]
+script = ExtResource("2_2ottu")
+level = 13
+experience = 5500
+
+[sub_resource type="Resource" id="Resource_4a70h"]
+script = ExtResource("2_2ottu")
+level = 14
+experience = 7500
+
+[sub_resource type="Resource" id="Resource_8b7as"]
+script = ExtResource("2_2ottu")
+level = 15
+experience = 10000
+
+[sub_resource type="Resource" id="Resource_kcrfp"]
+script = ExtResource("2_2ottu")
+level = 16
+experience = 13000
+
+[sub_resource type="Resource" id="Resource_wcx5u"]
+script = ExtResource("2_2ottu")
+level = 17
+experience = 16000
+learned_spell = ExtResource("7_pea0l")
+
+[sub_resource type="Resource" id="Resource_ybmnb"]
+script = ExtResource("2_2ottu")
+level = 18
+experience = 19000
+
+[sub_resource type="Resource" id="Resource_sqs2p"]
+script = ExtResource("2_2ottu")
+level = 19
+experience = 22000
+learned_spell = ExtResource("8_fbhrf")
+
+[sub_resource type="Resource" id="Resource_e03b4"]
+script = ExtResource("2_2ottu")
+level = 20
+experience = 26000
+
+[sub_resource type="Resource" id="Resource_r6opo"]
+script = ExtResource("2_2ottu")
+level = 21
+experience = 30000
+
+[sub_resource type="Resource" id="Resource_qofgi"]
+script = ExtResource("2_2ottu")
+level = 22
+experience = 34000
+
+[sub_resource type="Resource" id="Resource_igc5b"]
+script = ExtResource("2_2ottu")
+level = 23
+experience = 38000
+
+[sub_resource type="Resource" id="Resource_u27rd"]
+script = ExtResource("2_2ottu")
+level = 24
+experience = 42000
+
+[sub_resource type="Resource" id="Resource_8f4jp"]
+script = ExtResource("2_2ottu")
+level = 25
+experience = 46000
+
+[sub_resource type="Resource" id="Resource_s6mds"]
+script = ExtResource("2_2ottu")
+level = 26
+experience = 50000
+
+[sub_resource type="Resource" id="Resource_hqq5r"]
+script = ExtResource("2_2ottu")
+level = 27
+experience = 54000
+
+[sub_resource type="Resource" id="Resource_4vsqc"]
+script = ExtResource("2_2ottu")
+level = 28
+experience = 58000
+
+[sub_resource type="Resource" id="Resource_but8p"]
+script = ExtResource("2_2ottu")
+level = 29
+experience = 62000
+
+[sub_resource type="Resource" id="Resource_dtioh"]
+script = ExtResource("2_2ottu")
+level = 30
+experience = 65535
+
+[node name="PlayerManager" type="Node"]
+script = ExtResource("1_xsi76")
+experience_chart = Array[ExtResource("2_2ottu")]([SubResource("Resource_ds7s3"), SubResource("Resource_o3hrf"), SubResource("Resource_pqdrc"), SubResource("Resource_n81qb"), SubResource("Resource_181s8"), SubResource("Resource_jaqam"), SubResource("Resource_jjk2q"), SubResource("Resource_x8vbv"), SubResource("Resource_5raom"), SubResource("Resource_wrwcp"), SubResource("Resource_hub6s"), SubResource("Resource_skysr"), SubResource("Resource_k4uxf"), SubResource("Resource_4a70h"), SubResource("Resource_8b7as"), SubResource("Resource_kcrfp"), SubResource("Resource_wcx5u"), SubResource("Resource_ybmnb"), SubResource("Resource_sqs2p"), SubResource("Resource_e03b4"), SubResource("Resource_r6opo"), SubResource("Resource_qofgi"), SubResource("Resource_igc5b"), SubResource("Resource_u27rd"), SubResource("Resource_8f4jp"), SubResource("Resource_s6mds"), SubResource("Resource_hqq5r"), SubResource("Resource_4vsqc"), SubResource("Resource_but8p"), SubResource("Resource_dtioh")])
+
+[node name="Hero" parent="." instance=ExtResource("9_b5840")]

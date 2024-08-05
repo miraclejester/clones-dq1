@@ -1,28 +1,21 @@
 extends Node
 class_name Battle
 
-@export var hero_scene: PackedScene
-@export var enemy_scene: PackedScene
-
 enum BattleState {
 	HERO_TURN,
 	ENEMY_TURN
 }
 
-@onready var hero: HeroUnit = $Hero
 @onready var enemy: EnemyUnit = $Enemy
 
 var turn_order: Array[BattleUnit] = []
 var turn_index: int = 0
 var updates: Array[BattleUpdate]
+var hero: HeroUnit
 
 
-func init_battle(hero_state: HeroState, e: EnemyData) -> void:
-	hero.set_hero_name(hero_state.hero_name)
-	hero.set_stats_from_level(hero_state.level)
-	hero.set_hp(hero_state.hp)
-	hero.set_mp(hero_state.mp)
-	hero.spells = DebugUtils.debug_spells
+func init_battle(e: EnemyData) -> void:
+	hero = PlayerManager.hero
 	enemy.set_data(e)
 	updates = []
 	
@@ -108,9 +101,15 @@ func check_battle_end() -> void:
 	if enemy.is_dead():
 		var exp_gain: int = enemy.get_xp()
 		var gold_gain: int = enemy.get_gp()
-		hero.add_exp(exp_gain)
-		hero.add_gold(gold_gain)
 		updates.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
+		
+		hero.add_exp(exp_gain)
+		if hero.has_leveled_up():
+			var result: LevelUpResult = hero.level_up()
+			updates.append(LevelUpBattleUpdate.new(result))
+			updates.append(UpdateHUDBattleUpdate.new(PlayerHUD.HUDStatKey.LVL, hero.level, hero))
+		
+		hero.add_gold(gold_gain)
 		updates.append(FinishBattleUpdate.new())
 	elif hero.is_dead():
 		updates.append(DefeatBattleUpdate.new())

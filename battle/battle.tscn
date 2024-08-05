@@ -6,8 +6,6 @@
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_t0ffk")
-hero_scene = ExtResource("2_gwad0")
-enemy_scene = ExtResource("3_hkiy5")
 
 [node name="Hero" parent="." instance=ExtResource("2_gwad0")]
 

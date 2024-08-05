@@ -3,14 +3,16 @@ class_name UnitStats
 
 enum StatKey {
 	STR, AGI, MAX_HP, MAX_MP,
-	HP, MP
+	HP, MP, LVL
 }
 
 signal hp_changed(val: int)
 signal mp_changed(val: int)
 
 var GET_STAT_DICT: Dictionary = {
-	StatKey.STR : get_strength
+	StatKey.STR : get_strength,
+	StatKey.HP : get_hp,
+	StatKey.MAX_HP : get_max_hp
 }
 
 var strength: int
@@ -45,6 +47,15 @@ func set_strength(val: int) -> void:
 
 func set_agility(val: int) -> void:
 	agility = val
+
+
+func get_hp() -> int:
+	return hp
+
+
+func get_max_hp() -> int:
+	return max_hp
+
 
 func set_max_hp(val: int) -> void:
 	max_hp = val

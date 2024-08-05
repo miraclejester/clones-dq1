@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://b5n2av343m06g"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_15bow"]
+
+[resource]
+script = ExtResource("1_15bow")
+text = "Thou hast learned a new spell."
+in_quotes = false

@@ -25,6 +25,10 @@ enum DialogueID {
 	BattleCannotUseItem,
 	BattleEnemyRun,
 	FieldNoItems,
+	CourageWit,
+	NewSpell,
+	PromotedLevel,
+	StatIncrease,
 	Newline
 }
 
@@ -53,6 +57,10 @@ const dialogue_dict: Dictionary = {
 	DialogueID.BattleCannotUseItem : preload("res://battle/data/dialogues/battle_dialogue_cannot_use_item.tres"),
 	DialogueID.BattleEnemyRun : preload("res://battle/data/dialogues/battle_dialogue_enemy_run.tres"),
 	DialogueID.FieldNoItems : preload("res://ui/data/field_dialogues/field_dialogue_no_items.tres"),
+	DialogueID.CourageWit : preload("res://ui/data/general_dialogues/dialogue_courage_wit.tres"),
+	DialogueID.NewSpell : preload("res://ui/data/general_dialogues/dialogue_new_spell.tres"),
+	DialogueID.PromotedLevel : preload("res://ui/data/general_dialogues/dialogue_promoted_level.tres"),
+	DialogueID.StatIncrease : preload("res://ui/data/general_dialogues/dialogue_stat_increase.tres"),
 	DialogueID.Newline : preload("res://ui/data/dialogue_newline.tres")
 }
 

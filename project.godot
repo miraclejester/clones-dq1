@@ -20,6 +20,7 @@ FileUtils="*res://singleton/file_utils.gd"
 MenuStack="*res://singleton/menu_stack.gd"
 GeneralDialogueProvider="*res://singleton/general_dialogue_provider.gd"
 DebugUtils="*res://singleton/debug_utils.tscn"
+PlayerManager="*res://singleton/player_manager/player_manager.tscn"
 
 [display]
 

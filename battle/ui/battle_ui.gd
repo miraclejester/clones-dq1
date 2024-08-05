@@ -50,8 +50,8 @@ func set_hero_data(hero: BattleUnit) -> void:
 	spell_window.set_spells(hero.spells)
 
 
-func refresh_hero_state(state: HeroState) -> void:
-	item_window.set_items(state.inventory)
+func refresh_inventory(hero: HeroUnit) -> void:
+	item_window.set_items(hero.inventory.items)
 
 
 func show_dialogue_window() -> void:

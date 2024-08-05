@@ -11,7 +11,7 @@ signal battle_finished()
 @onready var battle_ui: BattleUI = $BattleUI
 
 var battle_update_queue: Array[BattleUpdate] = []
-var hero_state: HeroState
+var hero: HeroUnit
 
 
 func _ready() -> void:
@@ -31,21 +31,16 @@ func _ready() -> void:
 
 
 func start_battle() -> void:
-	hero_state = HeroState.new()
-	hero_state.hero_name = "Erdrick"
-	hero_state.hp = 200
-	hero_state.mp = 34
-	hero_state.level = 23
-	hero_state.inventory =  []
-	for item in DebugUtils.debug_items:
-		hero_state.add_item(item)
-	
+	hero = PlayerManager.hero
 	battle_update_queue = []
-	battle.init_battle(hero_state, encounter_data.enemy)
+	battle.init_battle(encounter_data.enemy)
 	enemy_controller.set_data(encounter_data.enemy)
 	battle_ui.initialize()
 	battle_ui.set_hero_data(battle.hero)
-	battle_ui.determine_ui_colors(hero_state.hp, battle.hero.stats.max_hp)
+	battle_ui.determine_ui_colors(
+		hero.stats.get_stat(UnitStats.StatKey.HP),
+		hero.stats.get_stat(UnitStats.StatKey.MAX_HP)
+	)
 	
 	battle_bg.set_bg_texture(encounter_data.battle_bg)
 	await battle_bg.start_appear_animation()
@@ -101,13 +96,13 @@ func spell_selected() -> void:
 
 
 func item_selected() -> void:
-	if hero_state.inventory.size() == 0:
+	if hero.inventory.stack_count() == 0:
 		battle_ui.hide_command_window()
 		await NoItemBattleUpdate.new().execute(self)
 		battle.do_turn()
 		process_updates()
 	else:
-		battle_ui.refresh_hero_state(hero_state)
+		battle_ui.refresh_inventory(hero)
 		battle_ui.show_item_window()
 		
 
@@ -133,7 +128,7 @@ func item_selected_from_menu(data: ItemData) -> void:
 		battle.do_turn()
 	else:
 		if data.consumable:
-			hero_state.remove_item(data)
+			hero.inveotory.remove_item(data)
 		battle.player_item(data)
 	process_updates()
 
