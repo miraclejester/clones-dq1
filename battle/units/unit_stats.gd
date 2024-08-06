@@ -33,6 +33,12 @@ func get_stat(key: StatKey) -> int:
 	return stat.current_value
 
 
+func set_stat(key: StatKey, val: int) -> void:
+	var stat: Stat = stat_dict.get(key, null) as Stat
+	if stat != null:
+		stat.set_current_value(val)
+
+
 func modify_stat(key: StatKey, amount: int) -> void:
 	var stat: Stat = stat_dict.get(key, null) as Stat
 	if stat != null:

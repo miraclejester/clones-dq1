@@ -13,7 +13,10 @@ func _init(u: HeroUnit, d: int, h: int) -> void:
 
 
 func execute(controller: BattleController) -> void:
+	if hp_value <= 0:
+		controller.battle_bg.show_death_colors()
 	await GlobalVisuals.player_hurt_shake()
+	controller.battle_bg.show_standard_colors()
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattlePlayerHurt,
 		[damage]

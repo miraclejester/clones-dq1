@@ -7,9 +7,8 @@ var shake_step: int = 2
 func player_hurt_shake() -> void:
 	var nodes: Array[Node] = [] 
 	nodes.assign(get_tree().get_nodes_in_group("player_hurt_shake"))
-	await shake_cycle(nodes)
-	await shake_cycle(nodes)
-	await shake_cycle(nodes)
+	for i in range(4):
+		await shake_cycle(nodes)
 
 
 func shake_cycle(nodes: Array[Node]) -> void:

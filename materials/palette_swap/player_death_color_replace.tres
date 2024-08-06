@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cvvj6sehd80"]
+
+[ext_resource type="Shader" path="res://materials/palette_swap/black_white_palette_swap.gdshader" id="1_np3p1"]
+
+[resource]
+shader = ExtResource("1_np3p1")
+shader_parameter/highlight_color = Color(0.988235, 0.988235, 0.988235, 1)
+shader_parameter/highlight_replace = Color(0.988235, 0.454902, 0.376471, 1)
+shader_parameter/general_replace = Color(0.847059, 0.156863, 0, 1)
