@@ -92,6 +92,11 @@ func hide_item_window() -> void:
 	await MenuStack.pop_stack()
 
 
+func wait_for_dialogue_continuation(cont_visible: bool = true) -> void:
+	await MenuStack.push_stack(dialogue_window, dialogue_window.activate.bind(cont_visible), dialogue_window.deactivate)
+	await dialogue_window.continued
+
+
 func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
 	await show_line_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars)
 

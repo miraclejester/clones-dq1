@@ -2,8 +2,10 @@ extends Control
 class_name DialogueWindow
 
 signal current_dialogue_finished()
+signal continued()
 
 @export var paragraph_scene: PackedScene
+@export var continuator_scene: PackedScene
 @export var newline_settings: LabelSettings
 @export var standard_settings: LabelSettings
 
@@ -15,11 +17,32 @@ var num_lines: int = 0
 var lines_to_transition: int = 8
 var event_queue: Array[DialogueEventParams] = []
 var current_paragraph: DialogueParagraph
+var current_continuator: DialogueContinuator = null
 
 
 func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
+	set_process(false)
 	create_paragraph()
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("A"):
+		deactivate()
+
+
+func activate(cont_visible: bool = true) -> void:
+	create_continuator(cont_visible)
+	set_process(true)
+
+
+func deactivate() -> void:
+	if current_continuator != null:
+		paragraph_container.remove_child(current_continuator)
+		current_continuator.queue_free()
+		await show_paragraph(GeneralDialogueProvider.DialogueID.Newline)
+	set_process(false)
+	continued.emit()
 
 
 func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> DialogueWindow:
@@ -55,6 +78,16 @@ func create_paragraph() -> DialogueParagraph:
 	current_paragraph = paragraph
 	paragraph.custom_label_settings = standard_settings
 	return paragraph
+
+
+func create_continuator(vis: bool = true) -> void:
+	var cont: DialogueContinuator = continuator_scene.instantiate() as DialogueContinuator
+	paragraph_container.add_child(cont)
+	if vis:
+		cont.blink()
+	else:
+		cont.off()
+	current_continuator = cont
 
 
 func create_newline() -> DialogueParagraph:

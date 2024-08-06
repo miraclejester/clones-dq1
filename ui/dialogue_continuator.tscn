@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk14nc2tsvtn5"]
+
+[ext_resource type="Texture2D" uid="uid://bbbekcs7h7kuf" path="res://ui/continuator.png" id="1_8xh51"]
+[ext_resource type="Script" path="res://ui/dialogue_continuator.gd" id="2_gft6m"]
+
+[sub_resource type="Animation" id="Animation_hq1mr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qpf26"]
+resource_name = "blink"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tlott"]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3cdl"]
+_data = {
+"RESET": SubResource("Animation_hq1mr"),
+"blink": SubResource("Animation_qpf26"),
+"off": SubResource("Animation_tlott")
+}
+
+[node name="DialogueContinuator" type="TextureRect"]
+texture = ExtResource("1_8xh51")
+stretch_mode = 3
+script = ExtResource("2_gft6m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q3cdl")
+}
