@@ -23,7 +23,7 @@ encounter_data = SubResource("Resource_en83b")
 [node name="BattleBG" parent="." groups=["player_hurt_shake"] instance=ExtResource("3_jflq8")]
 position = Vector2(80, 56)
 
-[node name="BG" parent="BattleBG" index="0" groups=["spell_effect"]]
+[node name="BG" parent="BattleBG" index="0" groups=["ambient_hurt", "spell_effect"]]
 
 [node name="Enemy" parent="." groups=["spell_effect"] instance=ExtResource("4_7jigr")]
 visible = false

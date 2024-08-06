@@ -131,8 +131,10 @@ func set_to_normal_health() -> void:
 
 func determine_ui_colors(hp: int, max_hp: int) -> void:
 	if hp <= floor(max_hp / 5.0):
+		GlobalVisuals.set_ambient_hurt_enabled(true)
 		set_to_low_health()
 	else:
+		GlobalVisuals.set_ambient_hurt_enabled(false)
 		set_to_normal_health()
 
 

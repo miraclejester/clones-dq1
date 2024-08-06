@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2oxir5rcqcn1"]
+[gd_scene load_steps=4 format=3 uid="uid://d2oxir5rcqcn1"]
 
 [ext_resource type="Script" path="res://singleton/global_visuals/global_visuals.gd" id="1_lpqev"]
 [ext_resource type="Material" uid="uid://br6gicj3a81o0" path="res://materials/palette_swap/spell_effect.tres" id="2_t8dn0"]
+[ext_resource type="Material" uid="uid://b87plluf4uhb" path="res://materials/palette_swap/ambient_hurt.tres" id="3_8mr3j"]
 
 [node name="GlobalVisuals" type="Node"]
 script = ExtResource("1_lpqev")
 spell_effect_material = ExtResource("2_t8dn0")
+ambient_hurt_material = ExtResource("3_8mr3j")

@@ -1,6 +1,7 @@
 extends Node
 
 @export var spell_effect_material: ShaderMaterial
+@export var ambient_hurt_material: ShaderMaterial
 
 var step_wait: float = 0.03
 var shake_step: int = 2
@@ -31,6 +32,11 @@ func player_hurt_shake() -> void:
 
 func spell_effect() -> void:
 	await play_effect(spell_effect_callables, get_tree().get_nodes_in_group("spell_effect"))
+
+
+func set_ambient_hurt_enabled(enabled: bool) -> void:
+	for node in get_tree().get_nodes_in_group("ambient_hurt"):
+		(node as CanvasItem).material = ambient_hurt_material if enabled else null
 
 
 func cycle(nodes: Array[Node], callables: Array[Callable]) -> void:

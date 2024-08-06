@@ -69,4 +69,5 @@ func show_death_colors() -> void:
 
 func show_standard_colors() -> void:
 	animation_player.play("standard_color")
+	await animation_player.animation_finished
 	
