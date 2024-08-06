@@ -58,10 +58,23 @@ func initialize_commands(commands: Array[String], columns: int) -> void:
 		idx += 1
 
 
-func add_command(command_text: String, show_second_line: bool) -> void:
+func initialize_stacks(stacks: Array[ItemStack], columns: int) -> void:
+	for child in grid_container.get_children():
+		grid_container.remove_child(child)
+		child.queue_free()
+	grid_container.columns = columns
+	var last_row_index: int = stacks.size() - grid_container.columns
+	var idx: int = 0
+	for stack in stacks:
+		add_command(stack.item.item_name, idx < last_row_index, stack.amount)
+		idx += 1
+
+
+func add_command(command_text: String, show_second_line: bool, amount: int = 0) -> void:
 	var command_label: CommandLabel = command_label_scene.instantiate()
 	grid_container.add_child(command_label)
 	command_label.set_text(command_text, show_second_line)
+	command_label.set_amount(amount)
 	command_label.move_away()
 
 

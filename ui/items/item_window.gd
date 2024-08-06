@@ -15,9 +15,7 @@ func _ready() -> void:
 
 func set_items(inv: Array[ItemStack]) -> void:
 	inventory.assign(inv)
-	var item_names: Array[String] = []
-	item_names.assign(inventory.map(func (stack: ItemStack): return stack.item.item_name))
-	command_window.initialize_commands(item_names, 1)
+	command_window.initialize_stacks(inventory, 1)
 
 
 func command_selected(idx: int) -> void:

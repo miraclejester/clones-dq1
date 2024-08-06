@@ -11,7 +11,7 @@ func add_item(item: ItemData) -> void:
 	if stack == null:
 		items.append(ItemStack.new(item, 1))
 	else:
-		stack.add_item(1)
+		stack.add_to_stack(1)
 
 
 func remove_item(item: ItemData) -> void:
@@ -22,7 +22,7 @@ func remove_item(item: ItemData) -> void:
 	if stack.amount == 1:
 		items.erase(stack)
 	else:
-		stack.add_item(-1)
+		stack.add_to_stack(-1)
 
 
 func find_stack(id: int) -> ItemStack:

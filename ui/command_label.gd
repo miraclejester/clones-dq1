@@ -9,6 +9,8 @@ signal selected(option: String)
 @onready var blink_timer: Timer = $BlinkTimer
 @onready var label_text: Label = %LabelText
 @onready var second_line: Label = %SecondLine
+@onready var item_amount: Label = %ItemAmount
+
 
 var max_line_length: int = 9
 
@@ -50,6 +52,11 @@ func set_text(t: String, include_second_line: bool = true) -> void:
 			second_line.visible = true
 		_:
 			label_text.text = t
+
+
+func set_amount(amount: int) -> void:
+	item_amount.visible = amount > 1
+	item_amount.text = str(amount)
 
 
 func blink() -> void:

@@ -128,7 +128,7 @@ func item_selected_from_menu(data: ItemData) -> void:
 		battle.do_turn()
 	else:
 		if data.consumable:
-			hero.inveotory.remove_item(data)
+			hero.inventory.remove_item(data)
 		battle.player_item(data)
 	process_updates()
 

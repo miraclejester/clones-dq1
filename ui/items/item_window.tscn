@@ -21,7 +21,7 @@ offset_bottom = -48.0
 
 [node name="UIWindow" parent="CommandWindow" index="0"]
 offset_right = 96.0
-offset_bottom = 16.0
+offset_bottom = 40.0
 
 [node name="ColorRect" parent="CommandWindow" index="1"]
 visible = false

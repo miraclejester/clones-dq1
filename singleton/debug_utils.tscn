@@ -17,5 +17,5 @@
 [node name="DebugUtils" type="Node"]
 script = ExtResource("1_kx7i5")
 debug_spells = Array[Resource("res://unit_data/spells/spell_data.gd")]([ExtResource("2_868nv"), ExtResource("3_vy5qd"), ExtResource("4_yo33i"), ExtResource("5_em1i4"), ExtResource("6_g0bov"), ExtResource("7_slv8u")])
-debug_items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("8_rx5dw"), ExtResource("9_t5tx1"), ExtResource("10_baanb")])
+debug_items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("8_rx5dw"), ExtResource("9_t5tx1"), ExtResource("10_baanb"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw")])
 debug_equipment = Array[Resource("res://unit_data/equipment/equipment_data.gd")]([ExtResource("11_3k4x6"), ExtResource("12_2ow1q"), ExtResource("13_1qqb6")])
