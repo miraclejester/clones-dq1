@@ -35,7 +35,6 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleUnitAttacks,
 		[attacker.get_unit_name()]
 	)
-	await controller.get_tree().create_timer(0.5).timeout
 	
 	match result:
 		AttackResult.HIT:

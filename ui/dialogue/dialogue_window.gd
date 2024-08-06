@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("A"):
-		deactivate()
+		continue_input()
 
 
 func activate(cont_visible: bool = true) -> void:
@@ -37,11 +37,14 @@ func activate(cont_visible: bool = true) -> void:
 
 
 func deactivate() -> void:
+	set_process(false)
+
+
+func continue_input() -> void:
 	if current_continuator != null:
 		paragraph_container.remove_child(current_continuator)
 		current_continuator.queue_free()
 		await show_paragraph(GeneralDialogueProvider.DialogueID.Newline)
-	set_process(false)
 	continued.emit()
 
 

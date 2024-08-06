@@ -13,6 +13,7 @@ func _init(u: HeroUnit, d: int, h: int) -> void:
 
 
 func execute(controller: BattleController) -> void:
+	await GlobalVisuals.player_hurt_shake()
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattlePlayerHurt,
 		[damage]

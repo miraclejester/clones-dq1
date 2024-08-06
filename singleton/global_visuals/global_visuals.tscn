@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2oxir5rcqcn1"]
+
+[ext_resource type="Script" path="res://singleton/global_visuals/global_visuals.gd" id="1_lpqev"]
+
+[node name="GlobalVisuals" type="Node"]
+script = ExtResource("1_lpqev")

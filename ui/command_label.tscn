@@ -38,6 +38,7 @@ one_shot = true
 
 [node name="ItemAmount" parent="." instance=ExtResource("2_hgc78")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "5"
