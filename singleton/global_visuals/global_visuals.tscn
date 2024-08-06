@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2oxir5rcqcn1"]
+[gd_scene load_steps=3 format=3 uid="uid://d2oxir5rcqcn1"]
 
 [ext_resource type="Script" path="res://singleton/global_visuals/global_visuals.gd" id="1_lpqev"]
+[ext_resource type="Material" uid="uid://br6gicj3a81o0" path="res://materials/palette_swap/spell_effect.tres" id="2_t8dn0"]
 
 [node name="GlobalVisuals" type="Node"]
 script = ExtResource("1_lpqev")
+spell_effect_material = ExtResource("2_t8dn0")

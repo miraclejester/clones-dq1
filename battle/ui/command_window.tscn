@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b11wr6262jxgm"]
+[gd_scene load_steps=6 format=3 uid="uid://b11wr6262jxgm"]
 
 [ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="1_f0syu"]
 [ext_resource type="Script" path="res://battle/ui/command_window.gd" id="1_o5prq"]
 [ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="2_73vel"]
 [ext_resource type="PackedScene" uid="uid://dtwpqn5rj6oxt" path="res://ui/command_label.tscn" id="3_xswym"]
+[ext_resource type="Texture2D" uid="uid://b6b6v4y470v2e" path="res://ui/header_block.png" id="4_458kf"]
 
 [node name="CommandWindow" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,12 +24,13 @@ layout_mode = 2
 offset_right = 128.0
 offset_bottom = 48.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 31.0
 offset_right = 88.0
 offset_bottom = 8.0
-color = Color(0, 0, 0, 1)
+texture = ExtResource("4_458kf")
 
 [node name="Title" parent="." instance=ExtResource("2_73vel")]
 layout_mode = 0
@@ -37,6 +40,7 @@ offset_bottom = 23.0
 text = "COMMAND"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 48.0
@@ -47,6 +51,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 0

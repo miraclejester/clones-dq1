@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bn4pahgs4f4g3" path="res://ui/window.png" id="1_0jkh1"]
 
 [node name="UIWindow" type="NinePatchRect"]
+use_parent_material = true
 offset_right = 16.0
 offset_bottom = 16.0
 texture = ExtResource("1_0jkh1")

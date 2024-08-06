@@ -59,6 +59,7 @@ _data = {
 }
 
 [node name="DialogueContinuator" type="TextureRect"]
+use_parent_material = true
 texture = ExtResource("1_8xh51")
 stretch_mode = 3
 script = ExtResource("2_gft6m")

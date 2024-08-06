@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_line.gd" id="1_efevw"]
 
 [node name="DialogueLine" type="Control"]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 3
 anchors_preset = 15

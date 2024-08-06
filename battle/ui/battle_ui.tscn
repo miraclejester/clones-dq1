@@ -11,7 +11,7 @@
 script = ExtResource("1_yq6lc")
 low_health_color = Color(1, 0.458824, 0.380392, 1)
 
-[node name="VisualsParent" type="Control" parent="."]
+[node name="VisualsParent" type="Control" parent="." groups=["spell_effect"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

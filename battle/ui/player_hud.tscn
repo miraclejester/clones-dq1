@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="1_1wahw"]
 [ext_resource type="Script" path="res://battle/ui/player_hud.gd" id="1_lvbxi"]
 [ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="2_7qtje"]
-[ext_resource type="PackedScene" uid="uid://bexx735kyj077" path="res://battle/units/hero/hero_unit.tscn" id="4_x06xe"]
+[ext_resource type="Texture2D" uid="uid://b6b6v4y470v2e" path="res://ui/header_block.png" id="3_bgdq4"]
 
-[node name="PlayerHud" type="Control" node_paths=PackedStringArray("debug_hero")]
+[node name="PlayerHud" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,22 +16,24 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvbxi")
-debug_hero = NodePath("DebugHero")
 
 [node name="UIWindow" parent="." instance=ExtResource("1_1wahw")]
+use_parent_material = true
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 96.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_right = 49.0
 offset_bottom = 8.0
-color = Color(0, 0, 0, 1)
+texture = ExtResource("3_bgdq4")
 
 [node name="PlayerName" parent="." instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_right = 48.0
@@ -38,6 +41,7 @@ offset_bottom = 23.0
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 96.0
@@ -46,77 +50,91 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 8
 
 [node name="Stats" type="VBoxContainer" parent="MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="Level" type="HBoxContainer" parent="MarginContainer/Stats"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="LVHeader" parent="MarginContainer/Stats/Level" instance=ExtResource("2_7qtje")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LV"
 
 [node name="LevelText" parent="MarginContainer/Stats/Level" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 text = "1"
 horizontal_alignment = 2
 
 [node name="HP" type="HBoxContainer" parent="MarginContainer/Stats"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HPHeader" parent="MarginContainer/Stats/HP" instance=ExtResource("2_7qtje")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "HP"
 
 [node name="HPText" parent="MarginContainer/Stats/HP" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 text = "11"
 horizontal_alignment = 2
 
 [node name="MP" type="HBoxContainer" parent="MarginContainer/Stats"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="MPHeader" parent="MarginContainer/Stats/MP" instance=ExtResource("2_7qtje")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MP"
 
 [node name="MPText" parent="MarginContainer/Stats/MP" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
 [node name="Gold" type="HBoxContainer" parent="MarginContainer/Stats"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="GoldHeader" parent="MarginContainer/Stats/Gold" instance=ExtResource("2_7qtje")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "G"
 
 [node name="GoldText" parent="MarginContainer/Stats/Gold" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 text = "44"
 horizontal_alignment = 2
 
 [node name="Experience" type="HBoxContainer" parent="MarginContainer/Stats"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="ExpHeader" parent="MarginContainer/Stats/Experience" instance=ExtResource("2_7qtje")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "E"
 
 [node name="ExpText" parent="MarginContainer/Stats/Experience" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 text = "2"
 horizontal_alignment = 2
-
-[node name="DebugHero" parent="." instance=ExtResource("4_x06xe")]
