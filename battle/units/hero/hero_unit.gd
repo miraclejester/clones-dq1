@@ -16,6 +16,7 @@ var growth_value: int
 var growth_sum: int
 var hero_name: String
 var inventory: HeroInventory
+var equipment: HeroEquipment
 
 var level: int = 1
 var gold: int = 0
@@ -27,6 +28,7 @@ func _ready() -> void:
 	letter_values = FileUtils.load_json_dict(letter_values_path)
 	crit_chance = 1.0 / 32.0
 	inventory = HeroInventory.new()
+	equipment = HeroEquipment.new()
 	
 	stats.hp_changed.connect(on_hp_changed)
 	stats.mp_changed.connect(on_mp_changed)
@@ -47,6 +49,14 @@ func get_attack_damage(defender: BattleUnit) -> int:
 		if roll == 1:
 			return 1
 	return damage
+
+
+func get_attack() -> int:
+	return stats.get_stat(UnitStats.StatKey.STR) + equipment.get_attack_power()
+
+
+func get_defense() -> int:
+	return floor(stats.get_stat(UnitStats.StatKey.AGI) / 2.0) + equipment.get_defense_power()
 
 
 func stopspell_hit_check() -> bool:

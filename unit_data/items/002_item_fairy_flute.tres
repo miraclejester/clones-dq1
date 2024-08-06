@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://cd43nkk22kbkh"]
 
-[ext_resource type="Script" path="res://battle/data/items/item_data.gd" id="1_nnuie"]
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_nnuie"]
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_waq84"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/fairy_flute_spell_effect.gd" id="2_1ecwu"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_u03bu"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://5m0qcirywe8w"]
 
-[ext_resource type="Script" path="res://battle/data/items/item_data.gd" id="1_8b1jm"]
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_8b1jm"]
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_hf3c3"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_capw0"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_fgywj"]

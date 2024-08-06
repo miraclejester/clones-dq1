@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://vyoynukxbod5"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_7oo5l"]
+
+[resource]
+script = ExtResource("1_7oo5l")
+equipment_type = 0
+attack_power = 4
+defense_power = 0
+item_name = "Club"
+item_id = 51
+consumable = false

@@ -8,8 +8,10 @@ func _ready() -> void:
 	hero.spells = DebugUtils.debug_spells
 	for item in DebugUtils.debug_items:
 		hero.inventory.add_item(item)
+	for equipment in DebugUtils.debug_equipment:
+		hero.equipment.equip(equipment)
 	hero.set_hero_name("Erdrick")
-	hero.set_stats_from_level(2, true)
+	hero.set_stats_from_level(12, true)
 
 
 func get_next_level_entry() -> ExperienceChartEntry:
