@@ -42,6 +42,8 @@ func start_battle() -> void:
 		hero.stats.get_base(UnitStats.StatKey.HP)
 	)
 	
+	AudioManager.play_bgm(encounter_data.bgm_key)
+	
 	battle_bg.set_bg_texture(encounter_data.battle_bg)
 	await battle_bg.start_appear_animation()
 	
@@ -155,4 +157,5 @@ func command_menu_cancelled() -> void:
 
 
 func finish_battle() -> void:
+	AudioManager.play_bgm(BGMEntry.BGMKey.Overworld)
 	battle_finished.emit()

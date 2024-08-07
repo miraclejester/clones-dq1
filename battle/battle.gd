@@ -71,7 +71,7 @@ func player_fight() -> void:
 func player_run() -> void:
 	if enemy.has_status(BattleUnit.StatusEffect.SLEEP) or speed_roll():
 		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
-		updates.append(FinishBattleUpdate.new())
+		updates.append(FinishBattleUpdate.new(false))
 	else:
 		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
 		next_turn()

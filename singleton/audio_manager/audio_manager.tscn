@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq3shd6mqx2vi"]
+
+[ext_resource type="Script" path="res://singleton/audio_manager/audio_manager.gd" id="1_rp44a"]
+[ext_resource type="AudioStream" uid="uid://bn6cj122hmq6e" path="res://audio/bgm/battle.ogg" id="2_sjt2i"]
+[ext_resource type="Script" path="res://singleton/audio_manager/bgm_entry.gd" id="3_xda6v"]
+[ext_resource type="AudioStream" uid="uid://byd2jmx6of08f" path="res://audio/bgm/overworld.ogg" id="4_ei2vo"]
+
+[sub_resource type="Resource" id="Resource_38b51"]
+script = ExtResource("3_xda6v")
+key = 0
+bgm = ExtResource("2_sjt2i")
+
+[sub_resource type="Resource" id="Resource_rp6jq"]
+script = ExtResource("3_xda6v")
+key = 1
+bgm = ExtResource("4_ei2vo")
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_rp44a")
+bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq")])
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -12.18
