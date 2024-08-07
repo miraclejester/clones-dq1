@@ -12,6 +12,7 @@ signal battle_finished()
 
 var battle_update_queue: Array[BattleUpdate] = []
 var hero: HeroUnit
+var reprise_key: BGMEntry.BGMKey
 
 
 func _ready() -> void:
@@ -43,6 +44,7 @@ func start_battle() -> void:
 	)
 	
 	AudioManager.play_bgm(encounter_data.bgm_key)
+	reprise_key = encounter_data.reprise_key
 	
 	battle_bg.set_bg_texture(encounter_data.battle_bg)
 	await battle_bg.start_appear_animation()
@@ -157,5 +159,8 @@ func command_menu_cancelled() -> void:
 
 
 func finish_battle() -> void:
-	AudioManager.play_bgm(BGMEntry.BGMKey.Overworld)
 	battle_finished.emit()
+
+
+func reprise_battle_bgm() -> void:
+	AudioManager.play_bgm(reprise_key)

@@ -20,6 +20,7 @@ func execute(controller: BattleController) -> void:
 	)
 	await controller.battle_ui.show_newline()
 	controller.enemy_controller.visible = false
+	AudioManager.play_bgm_one_shot(BGMEntry.BGMKey.Victory)
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleExpGain,
 		[xp],

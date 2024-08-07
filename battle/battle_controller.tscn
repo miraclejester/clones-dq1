@@ -14,6 +14,7 @@ script = ExtResource("4_45u81")
 enemy = ExtResource("3_4bcb7")
 battle_bg = ExtResource("2_kkk8p")
 bgm_key = 0
+reprise_key = 5
 
 [node name="BattleController" type="Node2D"]
 script = ExtResource("1_l0qdc")

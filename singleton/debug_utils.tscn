@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bywwhlicehhq"]
+[gd_scene load_steps=12 format=3 uid="uid://bywwhlicehhq"]
 
 [ext_resource type="Script" path="res://singleton/debug_utils.gd" id="1_kx7i5"]
 [ext_resource type="Resource" uid="uid://3q37agavxk4d" path="res://unit_data/spells/player_spells/spell_heal.tres" id="2_868nv"]
@@ -10,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://5m0qcirywe8w" path="res://unit_data/items/001_item_herb.tres" id="8_rx5dw"]
 [ext_resource type="Resource" uid="uid://cd43nkk22kbkh" path="res://unit_data/items/002_item_fairy_flute.tres" id="9_t5tx1"]
 [ext_resource type="Resource" uid="uid://7d7eis141jc5" path="res://unit_data/items/003_item_silver_harp.tres" id="10_baanb"]
+[ext_resource type="Resource" uid="uid://vyoynukxbod5" path="res://unit_data/equipment/weapons/051_weapon_club.tres" id="11_arbaq"]
 
 [node name="DebugUtils" type="Node"]
 script = ExtResource("1_kx7i5")
 debug_spells = Array[Resource("res://unit_data/spells/spell_data.gd")]([ExtResource("2_868nv"), ExtResource("3_vy5qd"), ExtResource("4_yo33i"), ExtResource("5_em1i4"), ExtResource("6_g0bov"), ExtResource("7_slv8u")])
 debug_items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("8_rx5dw"), ExtResource("9_t5tx1"), ExtResource("10_baanb"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw")])
+debug_equipment = Array[Resource("res://unit_data/equipment/equipment_data.gd")]([ExtResource("11_arbaq")])

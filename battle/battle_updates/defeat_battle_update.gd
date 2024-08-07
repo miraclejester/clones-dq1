@@ -5,7 +5,7 @@ func execute(controller: BattleController) -> void:
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.Newline
 	)
-	await controller.get_tree().create_timer(3).timeout
+	await AudioManager.play_bgm_one_shot(BGMEntry.BGMKey.Defeat)
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattlePlayerDeath
 	)

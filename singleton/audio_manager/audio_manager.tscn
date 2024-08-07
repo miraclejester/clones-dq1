@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq3shd6mqx2vi"]
+[gd_scene load_steps=15 format=3 uid="uid://dq3shd6mqx2vi"]
 
 [ext_resource type="Script" path="res://singleton/audio_manager/audio_manager.gd" id="1_rp44a"]
 [ext_resource type="AudioStream" uid="uid://bn6cj122hmq6e" path="res://audio/bgm/battle.ogg" id="2_sjt2i"]
 [ext_resource type="Script" path="res://singleton/audio_manager/bgm_entry.gd" id="3_xda6v"]
 [ext_resource type="AudioStream" uid="uid://byd2jmx6of08f" path="res://audio/bgm/overworld.ogg" id="4_ei2vo"]
+[ext_resource type="AudioStream" uid="uid://gk0qr3c0ahpd" path="res://audio/bgm/victory.ogg" id="5_4gkx8"]
+[ext_resource type="AudioStream" uid="uid://bjegv6ijc6o36" path="res://audio/bgm/defeat.ogg" id="6_to5vb"]
+[ext_resource type="AudioStream" uid="uid://c3a0m08pdi773" path="res://audio/bgm/fairy_flute.ogg" id="7_souqx"]
+[ext_resource type="AudioStream" uid="uid://vhlq665684cn" path="res://audio/bgm/battle_reprise.ogg" id="8_hpxp6"]
 
 [sub_resource type="Resource" id="Resource_38b51"]
 script = ExtResource("3_xda6v")
@@ -15,9 +19,29 @@ script = ExtResource("3_xda6v")
 key = 1
 bgm = ExtResource("4_ei2vo")
 
+[sub_resource type="Resource" id="Resource_pw2ep"]
+script = ExtResource("3_xda6v")
+key = 2
+bgm = ExtResource("5_4gkx8")
+
+[sub_resource type="Resource" id="Resource_doxpq"]
+script = ExtResource("3_xda6v")
+key = 3
+bgm = ExtResource("6_to5vb")
+
+[sub_resource type="Resource" id="Resource_yn1wc"]
+script = ExtResource("3_xda6v")
+key = 4
+bgm = ExtResource("7_souqx")
+
+[sub_resource type="Resource" id="Resource_ivuaa"]
+script = ExtResource("3_xda6v")
+key = 5
+bgm = ExtResource("8_hpxp6")
+
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_rp44a")
-bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq")])
+bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa")])
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
