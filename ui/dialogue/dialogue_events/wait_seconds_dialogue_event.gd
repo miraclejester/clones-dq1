@@ -5,4 +5,3 @@ class_name WaitSecondsDialogueEvent
 
 func execute(window: DialogueWindow, _params: Dictionary) -> void:
 	await window.get_tree().create_timer(wait_seconds).timeout
-	finish()

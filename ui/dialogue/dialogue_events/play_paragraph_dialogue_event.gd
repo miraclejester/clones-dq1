@@ -15,8 +15,8 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 	paragraph = window.current_paragraph
 	paragraph.custom_label_settings = window.standard_settings
 	post_paragraph_create(window, paragraph)
-	paragraph.paragraph_finished.connect(finish, CONNECT_ONE_SHOT)
-	paragraph.play_paragraph(self, params.get(ParagraphEventKeys.FORMAT_VARS, []), word_wrap_length)
+	await paragraph.play_paragraph(self, params.get(ParagraphEventKeys.FORMAT_VARS, []), word_wrap_length)
+	await window.get_tree().create_timer(0.2).timeout
 
 
 func post_paragraph_create(w: DialogueWindow, p: DialogueParagraph) -> void:

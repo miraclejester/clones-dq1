@@ -102,3 +102,7 @@ func is_dead() -> bool:
 
 func get_unit_name() -> String:
 	return "Generic Unit"
+
+
+func get_attack_sfx_key() -> SFXEntry.SFXKey:
+	return SFXEntry.SFXKey.Attack

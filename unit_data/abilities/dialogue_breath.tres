@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=5 format=3 uid="uid://dml4r2no8oo30"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="1_4hb7q"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="1_8w2pc"]
+[ext_resource type="Resource" uid="uid://cxcgv1rjalde1" path="res://unit_data/abilities/dialogue_ability_breath.tres" id="2_yoeo4"]
+
+[sub_resource type="Resource" id="Resource_758jw"]
+script = ExtResource("1_8w2pc")
+sfx_key = 2
+
+[resource]
+script = ExtResource("1_4hb7q")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_758jw"), ExtResource("2_yoeo4")])

@@ -15,11 +15,9 @@ func _init(a: AbilityData, u: BattleUnit, t: BattleUnit, su: Array[BattleUpdate]
 
 
 func execute(controller: BattleController) -> void:
-	await controller.battle_ui.show_line_from_data(
-		ability.use_dialogue,
-		[user.get_unit_name()]
-	)
-	await controller.get_tree().create_timer(1.0).timeout
+	await controller.battle_ui.play_dialogue(ability.use_dialogue, {
+		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [user.get_unit_name()]
+	})
 	for update in spell_updates:
 		await update.execute(controller)
 	await controller.battle_ui.show_newline()

@@ -103,8 +103,11 @@ func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) 
 
 
 func show_line_from_data(data: DialogueEvent, format_vars: Array = []) -> void:
-	await dialogue_window.show_paragraph_from_data(data, format_vars).current_dialogue_finished
-	await get_tree().create_timer(0.2).timeout
+	await dialogue_window.show_paragraph_from_data(data, format_vars)
+
+
+func play_dialogue(data: DialogueEvent, params: Dictionary) -> void:
+	await dialogue_window.start_dialogue([DialogueEventParams.fromData(data, params)])
 
 
 func show_newline() -> void:

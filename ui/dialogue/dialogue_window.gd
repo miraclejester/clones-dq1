@@ -48,22 +48,21 @@ func continue_input() -> void:
 	continued.emit()
 
 
-func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> DialogueWindow:
-	return await show_paragraph_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars).current_dialogue_finished
+func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
+	await show_paragraph_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars)
 
 
-func show_paragraph_from_data(data: DialogueEvent, format_vars: Array = []) -> DialogueWindow:
+func show_paragraph_from_data(data: DialogueEvent, format_vars: Array = []) -> void:
 	var queue: Array[DialogueEventParams] = []
 	queue.append(DialogueEventParams.fromData(data, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : format_vars
 	}))
-	start_dialogue(queue)
-	return self
+	await start_dialogue(queue)
 
 
 func start_dialogue(initial_queue: Array[DialogueEventParams]) -> void:
 	event_queue = initial_queue
-	process_next_event()
+	await process_next_event()
 
 
 func process_next_event() -> void:
@@ -71,8 +70,8 @@ func process_next_event() -> void:
 		current_dialogue_finished.emit()
 		return
 	var cur_event: DialogueEventParams = event_queue.pop_front() as DialogueEventParams
-	cur_event.event.event_finished.connect(process_next_event, CONNECT_ONE_SHOT)
-	cur_event.event.execute(self, cur_event.params)
+	await cur_event.event.execute(self, cur_event.params)
+	await process_next_event()
 
 
 func create_paragraph() -> DialogueParagraph:

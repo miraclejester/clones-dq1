@@ -10,7 +10,8 @@ func _init(r: LevelUpResult) -> void:
 
 
 func execute(controller: BattleController) -> void:
-	await controller.get_tree().create_timer(2).timeout
+	await AudioManager.play_bgm_one_shot(BGMEntry.BGMKey.LevelUp)
+	AudioManager.play_bgm(BGMEntry.BGMKey.Overworld)
 	await controller.battle_ui.wait_for_dialogue_continuation()
 	await controller.battle_ui.show_line(GeneralDialogueProvider.DialogueID.CourageWit)
 	await controller.battle_ui.show_line(

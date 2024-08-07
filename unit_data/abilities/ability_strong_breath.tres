@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://unit_data/abilities/ability_data.gd" id="1_kn71j"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/deal_damage_spell_effect.gd" id="2_k8b0e"]
-[ext_resource type="Resource" uid="uid://cxcgv1rjalde1" path="res://unit_data/abilities/dialogue_ability_breath.tres" id="3_xany2"]
+[ext_resource type="Resource" uid="uid://dml4r2no8oo30" path="res://unit_data/abilities/dialogue_breath.tres" id="3_h20fy"]
 
 [sub_resource type="Resource" id="Resource_6nkkl"]
 script = ExtResource("2_k8b0e")
@@ -11,6 +11,6 @@ max_damage = 72
 
 [resource]
 script = ExtResource("1_kn71j")
-use_dialogue = ExtResource("3_xany2")
+use_dialogue = ExtResource("3_h20fy")
 target_type = 1
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_6nkkl")])

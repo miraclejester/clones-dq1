@@ -100,6 +100,10 @@ func get_unit_name() -> String:
 	return data.enemy_name
 
 
+func get_attack_sfx_key() -> SFXEntry.SFXKey:
+	return SFXEntry.SFXKey.EnemyAttack
+
+
 func get_group_factor() -> float:
 	match data.initiative_group:
 		1:

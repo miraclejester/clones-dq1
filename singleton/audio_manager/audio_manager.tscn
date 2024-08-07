@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq3shd6mqx2vi"]
+[gd_scene load_steps=24 format=3 uid="uid://dq3shd6mqx2vi"]
 
 [ext_resource type="Script" path="res://singleton/audio_manager/audio_manager.gd" id="1_rp44a"]
 [ext_resource type="AudioStream" uid="uid://bn6cj122hmq6e" path="res://audio/bgm/battle.ogg" id="2_sjt2i"]
@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://bjegv6ijc6o36" path="res://audio/bgm/defeat.ogg" id="6_to5vb"]
 [ext_resource type="AudioStream" uid="uid://c3a0m08pdi773" path="res://audio/bgm/fairy_flute.ogg" id="7_souqx"]
 [ext_resource type="AudioStream" uid="uid://vhlq665684cn" path="res://audio/bgm/battle_reprise.ogg" id="8_hpxp6"]
+[ext_resource type="AudioStream" uid="uid://crh5utbyuv3da" path="res://audio/bgm/level_up.ogg" id="9_766h6"]
+[ext_resource type="Script" path="res://singleton/audio_manager/sfx_entry.gd" id="10_63mfy"]
+[ext_resource type="AudioStream" uid="uid://bpvd2lx581hef" path="res://audio/sfx/sfx_attack.wav" id="11_2moji"]
+[ext_resource type="AudioStream" uid="uid://5jhj2jj37y8q" path="res://audio/sfx/sfx_enemy_attack.wav" id="12_7b2f8"]
+[ext_resource type="AudioStream" uid="uid://4joj4sx6ljni" path="res://audio/sfx/sfx_breathing.wav" id="13_yhob2"]
 
 [sub_resource type="Resource" id="Resource_38b51"]
 script = ExtResource("3_xda6v")
@@ -39,10 +44,35 @@ script = ExtResource("3_xda6v")
 key = 5
 bgm = ExtResource("8_hpxp6")
 
+[sub_resource type="Resource" id="Resource_3nnqg"]
+script = ExtResource("3_xda6v")
+key = 6
+bgm = ExtResource("9_766h6")
+
+[sub_resource type="Resource" id="Resource_40om7"]
+script = ExtResource("10_63mfy")
+key = 0
+sfx = ExtResource("11_2moji")
+
+[sub_resource type="Resource" id="Resource_3osdq"]
+script = ExtResource("10_63mfy")
+key = 1
+sfx = ExtResource("12_7b2f8")
+
+[sub_resource type="Resource" id="Resource_v3dqi"]
+script = ExtResource("10_63mfy")
+key = 2
+sfx = ExtResource("13_yhob2")
+
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_rp44a")
-bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa")])
+bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa"), SubResource("Resource_3nnqg")])
+sfxs = Array[ExtResource("10_63mfy")]([SubResource("Resource_40om7"), SubResource("Resource_3osdq"), SubResource("Resource_v3dqi")])
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -12.18
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 volume_db = -12.18

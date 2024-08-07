@@ -31,6 +31,7 @@ static func fromData(r: AttackResult, a: BattleUnit, def: BattleUnit, dmg: int, 
 
 
 func execute(controller: BattleController) -> void:
+	AudioManager.play_sfx(attacker.get_attack_sfx_key())
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleUnitAttacks,
 		[attacker.get_unit_name()]
