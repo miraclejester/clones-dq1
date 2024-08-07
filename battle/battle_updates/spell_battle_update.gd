@@ -21,6 +21,7 @@ func execute(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleChantSpell,
 		[user.get_unit_name(), spell.spell_name]
 	)
+	AudioManager.play_sfx(SFXEntry.SFXKey.Spell)
 	await GlobalVisuals.spell_effect()
 	if user is HeroUnit:
 		controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.MP, new_mp)

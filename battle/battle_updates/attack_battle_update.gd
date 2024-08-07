@@ -55,6 +55,7 @@ func hit(controller: BattleController) -> void:
 
 
 func miss(controller: BattleController) -> void:
+	play_miss_sfx()
 	var dialogue_id = GeneralDialogueProvider.DialogueID.BattleMiss
 	if defender is EnemyUnit:
 		dialogue_id = GeneralDialogueProvider.DialogueID.BattleEnemyDodge
@@ -64,13 +65,20 @@ func miss(controller: BattleController) -> void:
 
 
 func no_damage(controller: BattleController) -> void:
+	play_miss_sfx()
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleEnemyNoDamage
 	)
 
 
 func crit(controller: BattleController) -> void:
+	await AudioManager.play_sfx(SFXEntry.SFXKey.ExcellentMove)
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleExcellentMove
 	)
 	await hit(controller)
+
+
+func play_miss_sfx() -> void:
+	var keys: Array[SFXEntry.SFXKey] = [SFXEntry.SFXKey.Miss1, SFXEntry.SFXKey.Miss2]
+	AudioManager.play_sfx(keys.pick_random())

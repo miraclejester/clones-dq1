@@ -109,6 +109,7 @@ func set_selection(idx: int) -> void:
 
 
 func select() -> void:
+	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
 	selected.emit(selection_index)
 
 

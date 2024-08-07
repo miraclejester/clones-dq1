@@ -11,6 +11,7 @@ func _init(e: String, d: int) -> void:
 
 
 func execute(controller: BattleController) -> void:
+	AudioManager.play_sfx(SFXEntry.SFXKey.Hit)
 	await controller.enemy_controller.play_hurt_animation()
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleEnemyHurt,

@@ -15,6 +15,7 @@ func _ready() -> void:
 		bgm_dict[entry.key] = entry.bgm
 	for entry in sfxs:
 		sfx_dict[entry.key] = entry.sfx
+	sfx_player.play()
 
 
 func play_bgm(key: BGMEntry.BGMKey) -> void:
@@ -31,6 +32,5 @@ func play_bgm_one_shot(key: BGMEntry.BGMKey) -> void:
 
 
 func play_sfx(key: SFXEntry.SFXKey) -> void:
-	sfx_player.stop()
-	sfx_player.stream = sfx_dict.get(key, null)
-	sfx_player.play()
+	var poly: AudioStreamPlaybackPolyphonic = sfx_player.get_stream_playback() as AudioStreamPlaybackPolyphonic
+	poly.play_stream(sfx_dict.get(key, null))
