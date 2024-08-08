@@ -41,6 +41,10 @@ func deal_damage(damage: int) -> void:
 	stats.modify_stat(UnitStats.StatKey.HP, -damage)
 
 
+func get_damage_multiplier(_key: UnitStats.DamageType) -> float:
+	return 1.0
+
+
 func has_status(key: StatusEffect) -> bool:
 	return status_dict.has(key)
 
@@ -57,16 +61,17 @@ func clear_status() -> void:
 	status_dict.clear()
 
 
-func hurt_hit_check() -> bool:
-	return true
+func resistance_hit_check(key: UnitStats.ResistanceKey) -> bool:
+	var roll: float = randf_range(0.0, 1.0)
+	return roll >= get_base_resistance(key) * get_resistance_modifier(key)
 
 
-func sleep_hit_check() -> bool:
-	return true
+func get_resistance_modifier(_key: UnitStats.ResistanceKey) -> float:
+	return 1.0
 
 
-func stopspell_hit_check() -> bool:
-	return true
+func get_base_resistance(key: UnitStats.ResistanceKey) -> float:
+	return stats.get_base_resistance(key)
 
 
 func sleep_wake_check(turns: int) -> bool:

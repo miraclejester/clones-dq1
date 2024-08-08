@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://s045g1f8s3dj"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_hosoa"]
+
+[resource]
+script = ExtResource("1_hosoa")
+item_name = "Cursed Necklace"
+item_id = 20
+buy_price = -1
+sell_price = 1250
+consumable = false

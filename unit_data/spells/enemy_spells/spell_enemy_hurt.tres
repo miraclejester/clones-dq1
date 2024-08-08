@@ -8,6 +8,7 @@
 script = ExtResource("2_wbe4e")
 min_damage = 3
 max_damage = 10
+damage_type = 1
 
 [sub_resource type="Resource" id="Resource_4rhpd"]
 script = ExtResource("3_vkxls")

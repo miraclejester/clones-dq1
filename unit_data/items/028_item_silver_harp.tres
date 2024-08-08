@@ -1,33 +1,35 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://7d7eis141jc5"]
 
-[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_3cw71"]
-[ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_mxtbb"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_n7h4e"]
-[ext_resource type="Script" path="res://unit_data/spells/spell_effects/silver_harp_spell_effect.gd" id="3_g5131"]
+[ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_k6etx"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_kir26"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/silver_harp_spell_effect.gd" id="3_h6l40"]
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="4_unskt"]
 
 [sub_resource type="Resource" id="Resource_jj4ww"]
-script = ExtResource("2_n7h4e")
+script = ExtResource("2_kir26")
 text = "The %s looks happy."
 in_quotes = false
 
 [sub_resource type="Resource" id="Resource_eyvip"]
-script = ExtResource("3_g5131")
+script = ExtResource("3_h6l40")
 enemy_react_dialogue = SubResource("Resource_jj4ww")
 
 [sub_resource type="Resource" id="Resource_lfyuy"]
-script = ExtResource("1_mxtbb")
+script = ExtResource("1_k6etx")
 target_type = 1
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_eyvip")])
 
 [sub_resource type="Resource" id="Resource_1bqbu"]
-script = ExtResource("2_n7h4e")
+script = ExtResource("2_kir26")
 text = "%s played a sweet melody on the harp."
 in_quotes = false
 
 [resource]
-script = ExtResource("1_3cw71")
+script = ExtResource("4_unskt")
 item_name = "Silver Harp"
-item_id = 3
+item_id = 28
+buy_price = -1
+sell_price = -1
 consumable = false
 use_dialogue = SubResource("Resource_1bqbu")
 battle_action = SubResource("Resource_lfyuy")

@@ -10,7 +10,6 @@ var enemy_data: EnemyData
 
 func set_data(d: EnemyData) -> void:
 	texture = d.texture
-	set_appear_palette(d.appear_palette)
 	position = d.get_position_from_group()
 	enemy_data = d
 
@@ -31,7 +30,3 @@ func apply_hurt_texture() -> void:
 
 func remove_hurt_texture() -> void:
 	texture = enemy_data.texture
-
-
-func set_appear_palette(palette: Texture2D) -> void:
-	(material as ShaderMaterial).set_shader_parameter("palette", palette)

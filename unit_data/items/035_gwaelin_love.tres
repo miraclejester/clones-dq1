@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b70wyvc2skiem"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_ojjyu"]
+
+[resource]
+script = ExtResource("1_ojjyu")
+item_name = "Gwaelin`s Love"
+item_id = 35
+buy_price = -1
+sell_price = -1
+consumable = false

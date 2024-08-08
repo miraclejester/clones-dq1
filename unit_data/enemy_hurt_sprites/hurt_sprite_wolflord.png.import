@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o8gxhl5ic31w"
-path="res://.godot/imported/03_drackee_palette.png-cdda2a9795aaf714b6e73f7420a7c79a.ctex"
+uid="uid://b4dkdw6tl3puu"
+path="res://.godot/imported/hurt_sprite_wolflord.png-c93934953c1831b0927388eaaad97ae1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://unit_data/enemies/03_drackee/03_drackee_palette.png"
-dest_files=["res://.godot/imported/03_drackee_palette.png-cdda2a9795aaf714b6e73f7420a7c79a.ctex"]
+source_file="res://unit_data/enemy_hurt_sprites/hurt_sprite_wolflord.png"
+dest_files=["res://.godot/imported/hurt_sprite_wolflord.png-c93934953c1831b0927388eaaad97ae1.ctex"]
 
 [params]
 

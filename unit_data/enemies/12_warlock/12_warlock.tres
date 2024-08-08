@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=18 format=3 uid="uid://bjlfbmhhqkcrl"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=17 format=3 uid="uid://bjlfbmhhqkcrl"]
 
 [ext_resource type="Texture2D" uid="uid://dmatffpsmdxvg" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_warlock.png" id="1_7m35n"]
 [ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_b1ug5"]
-[ext_resource type="Texture2D" uid="uid://elqm1k0bqtex" path="res://unit_data/enemies/12_warlock/12_warlock_palette.png" id="1_s5y8k"]
 [ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_fhqan"]
 [ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/player_spells/spell_sleep.tres" id="3_mt0j2"]
 [ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="4_dgpk2"]
@@ -57,5 +56,4 @@ hurt_texture = ExtResource("1_7m35n")
 stats = SubResource("Resource_tus02")
 initiative_group = 0
 position_group = 3
-appear_palette = ExtResource("1_s5y8k")
 patterns = Array[ExtResource("6_racgx")]([SubResource("Resource_htlsj"), SubResource("Resource_c5otk")])

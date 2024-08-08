@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://g0ndby5lc7xe"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_fp8ac"]
+
+[resource]
+script = ExtResource("1_fp8ac")
+item_name = "Wings"
+item_id = 26
+buy_price = 70
+sell_price = 35
+consumable = false

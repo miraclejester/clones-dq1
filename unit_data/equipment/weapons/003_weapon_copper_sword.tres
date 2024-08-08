@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://djot0ripjejk2"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_y0bvh"]
+
+[resource]
+script = ExtResource("1_y0bvh")
+equipment_type = 0
+attack_power = 10
+defense_power = 0
+item_name = "Copper Sword"
+item_id = 3
+buy_price = 180
+sell_price = 90
+consumable = false

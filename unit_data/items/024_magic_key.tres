@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://blspedvgbct2w"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="3_q2vvp"]
+
+[resource]
+script = ExtResource("3_q2vvp")
+item_name = "Magic Key"
+item_id = 24
+buy_price = 53
+sell_price = 26
+consumable = true

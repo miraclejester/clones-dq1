@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://elqm1k0bqtex"
-path="res://.godot/imported/12_warlock_palette.png-0732c45d87342dbaf48a49720925b2ce.ctex"
+uid="uid://c4blsir3ne6w6"
+path="res://.godot/imported/18_wolflord.png-4d6c347fcc7601494e1fe5080477592f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://unit_data/enemies/12_warlock/12_warlock_palette.png"
-dest_files=["res://.godot/imported/12_warlock_palette.png-0732c45d87342dbaf48a49720925b2ce.ctex"]
+source_file="res://unit_data/enemies/18_wolflord/18_wolflord.png"
+dest_files=["res://.godot/imported/18_wolflord.png-4d6c347fcc7601494e1fe5080477592f.ctex"]
 
 [params]
 

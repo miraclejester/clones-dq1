@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://3bu7o8q1io21"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_xfhtu"]
+
+[resource]
+script = ExtResource("1_xfhtu")
+equipment_type = 1
+attack_power = 0
+defense_power = 24
+item_name = "Full Plate"
+item_id = 12
+buy_price = 3000
+sell_price = 1500
+consumable = false

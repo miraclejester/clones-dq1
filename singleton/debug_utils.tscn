@@ -7,13 +7,13 @@
 [ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="5_em1i4"]
 [ext_resource type="Resource" uid="uid://1jojbmgi1bmq" path="res://unit_data/spells/player_spells/spell_healmore.tres" id="6_g0bov"]
 [ext_resource type="Resource" uid="uid://ct1rikw1mdsrm" path="res://unit_data/spells/player_spells/spell_hurtmore.tres" id="7_slv8u"]
-[ext_resource type="Resource" uid="uid://5m0qcirywe8w" path="res://unit_data/items/001_item_herb.tres" id="8_rx5dw"]
-[ext_resource type="Resource" uid="uid://cd43nkk22kbkh" path="res://unit_data/items/002_item_fairy_flute.tres" id="9_t5tx1"]
-[ext_resource type="Resource" uid="uid://7d7eis141jc5" path="res://unit_data/items/003_item_silver_harp.tres" id="10_baanb"]
-[ext_resource type="Resource" uid="uid://vyoynukxbod5" path="res://unit_data/equipment/weapons/051_weapon_club.tres" id="11_arbaq"]
+[ext_resource type="Resource" uid="uid://5m0qcirywe8w" path="res://unit_data/items/023_item_herb.tres" id="8_rx5dw"]
+[ext_resource type="Resource" uid="uid://cd43nkk22kbkh" path="res://unit_data/items/027_item_fairy_flute.tres" id="9_t5tx1"]
+[ext_resource type="Resource" uid="uid://7d7eis141jc5" path="res://unit_data/items/028_item_silver_harp.tres" id="10_baanb"]
+[ext_resource type="Resource" uid="uid://bs5jm57olrih8" path="res://unit_data/equipment/armor/014_armor_erdrick_armor.tres" id="11_1t778"]
 
 [node name="DebugUtils" type="Node"]
 script = ExtResource("1_kx7i5")
 debug_spells = Array[Resource("res://unit_data/spells/spell_data.gd")]([ExtResource("2_868nv"), ExtResource("3_vy5qd"), ExtResource("4_yo33i"), ExtResource("5_em1i4"), ExtResource("6_g0bov"), ExtResource("7_slv8u")])
 debug_items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("8_rx5dw"), ExtResource("9_t5tx1"), ExtResource("10_baanb"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw"), ExtResource("8_rx5dw")])
-debug_equipment = Array[Resource("res://unit_data/equipment/equipment_data.gd")]([ExtResource("11_arbaq")])
+debug_equipment = Array[Resource("res://unit_data/equipment/equipment_data.gd")]([ExtResource("11_1t778")])

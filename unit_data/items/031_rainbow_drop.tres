@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://4h0u63qj6u27"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_5dxwc"]
+
+[resource]
+script = ExtResource("1_5dxwc")
+item_name = "Rainbow Drop"
+item_id = 31
+buy_price = -1
+sell_price = -1
+consumable = false

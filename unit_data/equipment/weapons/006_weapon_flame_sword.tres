@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://jrtcd8fvni7y"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_8gx6n"]
+
+[resource]
+script = ExtResource("1_8gx6n")
+equipment_type = 0
+attack_power = 28
+defense_power = 0
+item_name = "Flame Sword"
+item_id = 6
+buy_price = 9800
+sell_price = 4900
+consumable = false

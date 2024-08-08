@@ -5,5 +5,5 @@
 
 [resource]
 shader = ExtResource("1_n7alf")
-shader_parameter/color_index = 0
+shader_parameter/color_index = 1
 shader_parameter/palette = ExtResource("2_dknb1")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dtay22cogb680"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_7xtkl"]
+
+[resource]
+script = ExtResource("1_7xtkl")
+item_name = "Erdrick`s Tablet"
+item_id = 32
+buy_price = -1
+sell_price = -1
+consumable = false

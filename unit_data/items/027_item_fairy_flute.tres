@@ -1,40 +1,42 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://cd43nkk22kbkh"]
 
-[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_nnuie"]
-[ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_waq84"]
-[ext_resource type="Script" path="res://unit_data/spells/spell_effects/fairy_flute_spell_effect.gd" id="2_1ecwu"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_u03bu"]
+[ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_yglf0"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_81uyd"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/fairy_flute_spell_effect.gd" id="3_cj5k1"]
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="4_mxtm1"]
 
 [sub_resource type="Resource" id="Resource_cb8fa"]
-script = ExtResource("2_u03bu")
+script = ExtResource("2_81uyd")
 text = "But nothing happened"
 in_quotes = false
 
 [sub_resource type="Resource" id="Resource_qg7r4"]
-script = ExtResource("2_u03bu")
+script = ExtResource("2_81uyd")
 text = "Quietly Golem closes his eyes and settles into sleep."
 in_quotes = false
 
 [sub_resource type="Resource" id="Resource_kimxg"]
-script = ExtResource("2_1ecwu")
+script = ExtResource("3_cj5k1")
 target_enemy_name = "Golem"
 success_dialogue = SubResource("Resource_qg7r4")
 failure_dialogue = SubResource("Resource_cb8fa")
 
 [sub_resource type="Resource" id="Resource_t8ysl"]
-script = ExtResource("1_waq84")
+script = ExtResource("1_yglf0")
 target_type = 1
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_kimxg")])
 
 [sub_resource type="Resource" id="Resource_vn8vv"]
-script = ExtResource("2_u03bu")
+script = ExtResource("2_81uyd")
 text = "%s blew the Fairies`s Flute."
 in_quotes = false
 
 [resource]
-script = ExtResource("1_nnuie")
+script = ExtResource("4_mxtm1")
 item_name = "Fairy Flute"
-item_id = 2
+item_id = 27
+buy_price = -1
+sell_price = -1
 consumable = false
 use_dialogue = SubResource("Resource_vn8vv")
 battle_action = SubResource("Resource_t8ysl")

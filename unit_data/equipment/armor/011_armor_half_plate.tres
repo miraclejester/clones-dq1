@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://dliarop0cjdcm"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_0mao0"]
+
+[resource]
+script = ExtResource("1_0mao0")
+equipment_type = 1
+attack_power = 0
+defense_power = 16
+item_name = "Half Plate"
+item_id = 11
+buy_price = 1000
+sell_price = 500
+consumable = false

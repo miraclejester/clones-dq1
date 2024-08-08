@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=12 format=3 uid="uid://b50bxhnh555bk"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://b50bxhnh555bk"]
 
 [ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_gl4p5"]
-[ext_resource type="Texture2D" uid="uid://bc7rcbixthu4a" path="res://unit_data/enemies/04_magician/04_magician_palette.png" id="1_yvlyv"]
 [ext_resource type="Texture2D" uid="uid://cmb3ocr6mrc6e" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_magician.png" id="2_iwuqj"]
 [ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="3_pxpks"]
 [ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="4_524b7"]
@@ -14,7 +13,7 @@ script = ExtResource("4_524b7")
 
 [sub_resource type="Resource" id="Resource_uvjkj"]
 script = ExtResource("4_sxmqi")
-chance = 0.5
+chance = 1.0
 condition = SubResource("Resource_w4ui3")
 action = ExtResource("3_pxpks")
 
@@ -40,5 +39,4 @@ hurt_texture = ExtResource("2_iwuqj")
 stats = SubResource("Resource_tmqny")
 initiative_group = 0
 position_group = 3
-appear_palette = ExtResource("1_yvlyv")
 patterns = Array[ExtResource("4_sxmqi")]([SubResource("Resource_uvjkj")])

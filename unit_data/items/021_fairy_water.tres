@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cl4mm4lm0brq8"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_4g0lf"]
+
+[resource]
+script = ExtResource("1_4g0lf")
+item_name = "Fairy Water"
+item_id = 21
+buy_price = 38
+sell_price = 19
+consumable = true

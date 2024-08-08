@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://brobsr0isja6s"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_hqttx"]
+
+[resource]
+script = ExtResource("1_hqttx")
+equipment_type = 2
+attack_power = 0
+defense_power = 20
+item_name = "Silver Shield"
+item_id = 17
+buy_price = 14800
+sell_price = 7400
+consumable = false

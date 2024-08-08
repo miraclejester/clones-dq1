@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://bp5xlsxtymhxj"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_myn37"]
+
+[resource]
+script = ExtResource("1_myn37")
+equipment_type = 0
+attack_power = 20
+defense_power = 0
+item_name = "Broad Sword"
+item_id = 5
+buy_price = 1500
+sell_price = 750
+consumable = false

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl6v6yue35hf1"]
+[gd_scene load_steps=4 format=3 uid="uid://bl6v6yue35hf1"]
 
 [ext_resource type="Script" path="res://battle/bgs/battle_bg.gd" id="1_6mnd3"]
 [ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="1_lxspq"]
-[ext_resource type="Material" uid="uid://cvvj6sehd80" path="res://materials/palette_swap/player_death_color_replace.tres" id="2_by03h"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i6syw"]
 blend_mode = 3
@@ -11,7 +10,6 @@ blend_mode = 3
 script = ExtResource("1_6mnd3")
 
 [node name="BG" type="Sprite2D" parent="."]
-material = ExtResource("2_by03h")
 texture = ExtResource("1_lxspq")
 offset = Vector2(56, 56)
 

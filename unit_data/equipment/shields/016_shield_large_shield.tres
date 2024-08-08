@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://n3nyodhk8vtg"]
 
-[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_r0muf"]
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_s3fcg"]
 
 [resource]
-script = ExtResource("1_r0muf")
+script = ExtResource("1_s3fcg")
 equipment_type = 2
 attack_power = 0
 defense_power = 10
 item_name = "Large Shield"
-item_id = 71
+item_id = 16
+buy_price = 800
+sell_price = 400
 consumable = false

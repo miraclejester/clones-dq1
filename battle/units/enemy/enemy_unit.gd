@@ -51,18 +51,8 @@ func get_sleep_continues_format_vars() -> Array:
 	return [get_unit_name()]
 
 
-func hurt_hit_check() -> bool:
-	var roll: float = randf_range(0.0, 1.0)
-	return roll < (1.0 - data.stats.hurt_resist)
-	
-
-func sleep_hit_check() -> bool:
-	var roll: float = randf_range(0.0, 1.0)
-	return roll < (1.0 - data.stats.sleep_resist)
-
-
-func stopspell_hit_check() -> bool:
-	return randf_range(0.0, 1.0) < (1.0 - data.stats.stop_spell_resist)
+func get_resistance_modifier(_key: UnitStats.ResistanceKey) -> float:
+	return 1.0
 
 
 func sleep_wake_check(turns: int) -> bool:
@@ -75,6 +65,9 @@ func set_stats_from_data(ed: EnemyData) -> void:
 	stats.set_base(UnitStats.StatKey.AGI, ed.stats.agility)
 	stats.set_base(UnitStats.StatKey.HP, randi_range(ed.stats.min_hp, ed.stats.max_hp))
 	stats.set_base(UnitStats.StatKey.MP, 0)
+	stats.set_base_resistance(UnitStats.ResistanceKey.SLEEP, ed.stats.sleep_resist)
+	stats.set_base_resistance(UnitStats.ResistanceKey.STOPSPELL, ed.stats.stop_spell_resist)
+	stats.set_base_resistance(UnitStats.ResistanceKey.HURT, ed.stats.hurt_resist)
 
 
 func get_attack_damage(defender: BattleUnit) -> int:

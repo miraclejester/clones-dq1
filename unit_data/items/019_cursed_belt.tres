@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://co4hs8p7fnr2s"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_7xvua"]
+
+[resource]
+script = ExtResource("1_7xvua")
+item_name = "Cursed Belt"
+item_id = 19
+buy_price = -1
+sell_price = -1
+consumable = false

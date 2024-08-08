@@ -13,6 +13,7 @@ const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.SLIME: Vector2(137, 106),
 	EnemyData.BattlePositionGroup.DRACKY: Vector2(136, 105),
 	EnemyData.BattlePositionGroup.SORCERER: Vector2(135, 104),
+	EnemyData.BattlePositionGroup.WOLFMAN: Vector2(136, 107),
 	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105)
 }
 
@@ -22,7 +23,6 @@ const POSITION_GROUP_MAP: Dictionary = {
 @export var stats: EnemyStatData
 @export var initiative_group: int
 @export var position_group: BattlePositionGroup
-@export var appear_palette: Texture2D
 @export var patterns: Array[EnemyPatternEntry]
 
 

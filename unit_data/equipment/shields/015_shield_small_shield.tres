@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://1tmnpsypi17f"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_bi15l"]
+
+[resource]
+script = ExtResource("1_bi15l")
+equipment_type = 2
+attack_power = 0
+defense_power = 4
+item_name = "Small Shield"
+item_id = 15
+buy_price = 90
+sell_price = 45
+consumable = false

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://co13if6vs27v4"]
+
+[ext_resource type="Shader" path="res://materials/palette_swap/index_palette_swap.gdshader" id="1_i5ssu"]
+[ext_resource type="Texture2D" uid="uid://cx1onlsm8ucx5" path="res://materials/palettes/spell_effect_palette.png" id="2_higim"]
+
+[resource]
+shader = ExtResource("1_i5ssu")
+shader_parameter/color_index = 0
+shader_parameter/palette = ExtResource("2_higim")

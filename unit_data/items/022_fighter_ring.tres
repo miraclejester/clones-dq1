@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bb11yw4i4mybk"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_1nqy4"]
+
+[resource]
+script = ExtResource("1_1nqy4")
+item_name = "Fighter`s Ring"
+item_id = 22
+buy_price = -1
+sell_price = -1
+consumable = false

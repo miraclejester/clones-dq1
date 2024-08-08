@@ -30,6 +30,10 @@ func _ready() -> void:
 	inventory = HeroInventory.new()
 	equipment = HeroEquipment.new()
 	
+	stats.set_base_resistance(UnitStats.ResistanceKey.SLEEP, 0.0)
+	stats.set_base_resistance(UnitStats.ResistanceKey.STOPSPELL, 0.5)
+	stats.set_base_resistance(UnitStats.ResistanceKey.HURT, 0.0)
+	
 	stats.hp_changed.connect(on_hp_changed)
 	stats.mp_changed.connect(on_mp_changed)
 
@@ -51,6 +55,10 @@ func get_attack_damage(defender: BattleUnit) -> int:
 	return damage
 
 
+func get_damage_multiplier(key: UnitStats.DamageType) -> float:
+	return equipment.get_damage_multiplier(key)
+
+
 func get_attack() -> int:
 	return stats.get_stat(UnitStats.StatKey.STR) + equipment.get_attack_power()
 
@@ -59,8 +67,15 @@ func get_defense() -> int:
 	return floor(stats.get_stat(UnitStats.StatKey.AGI) / 2.0) + equipment.get_defense_power()
 
 
-func stopspell_hit_check() -> bool:
-	return randf_range(0.0, 1.0) < 0.5
+func get_resistance_modifier(key: UnitStats.ResistanceKey) -> float:
+	return equipment.get_resistance_multiplier(key)
+
+
+func get_base_resistance(key: UnitStats.ResistanceKey) -> float:
+	var eq_base: float = equipment.get_base_resistance(key)
+	if eq_base != -1.0:
+		return eq_base
+	return stats.get_base_resistance(key) 
 
 
 func set_hero_name(new_name: String) -> void:

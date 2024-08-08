@@ -27,3 +27,34 @@ func equip(eq: EquipmentData) -> EquipmentData:
 	var prev: EquipmentData = eq_dict.get(eq.equipment_type)
 	eq_dict[eq.equipment_type] = eq
 	return prev
+
+
+func get_damage_multiplier(key: UnitStats.DamageType) -> float:
+	var base: float = 1.0
+	for eq in eq_dict.values():
+		var e: EquipmentData = eq as EquipmentData
+		for multiplier in e.damage_multipliers:
+			var m: DamageModifierData = multiplier as DamageModifierData
+			if m.damage_type == key:
+				base *= m.modifier
+	return base
+
+
+func get_resistance_multiplier(key: UnitStats.ResistanceKey) -> float:
+	var base: float = 1.0
+	for eq in eq_dict.values():
+		var e: EquipmentData = eq as EquipmentData
+		for m in e.resistance_modifiers:
+			if m.resistance_type == key:
+				base *= m.modifier
+	return base
+
+
+func get_base_resistance(key: UnitStats.ResistanceKey) -> float:
+	var base: float = -1.0
+	for eq in eq_dict.values():
+		var e: EquipmentData = eq as EquipmentData
+		for m in e.resistance_modifiers:
+			if m.resistance_type == key:
+				base = max(base, m.base)
+	return base

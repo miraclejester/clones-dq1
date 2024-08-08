@@ -7,10 +7,19 @@ enum StatKey {
 	STR, AGI, HP, MP
 }
 
+enum DamageType {
+	PHYSICAL, HURT, BREATH, HEAL
+}
+
+enum ResistanceKey {
+	SLEEP, STOPSPELL, HURT
+}
+
 signal hp_changed(val: int)
 signal mp_changed(val: int)
 
 var stat_dict: Dictionary = {}
+var resistance_dict: Dictionary = {}
 
 
 func _ready() -> void:
@@ -58,6 +67,14 @@ func set_base(key: StatKey, val: int, go_max: bool = true) -> void:
 		stat.set_value(val)
 		if go_max:
 			maximize(key)
+
+
+func get_base_resistance(key: ResistanceKey) -> float:
+	return resistance_dict.get(key, 1.0)
+
+
+func set_base_resistance(key: ResistanceKey, val: float) -> void:
+	resistance_dict[key] = val
 
 
 func maximize(key: StatKey) -> void:

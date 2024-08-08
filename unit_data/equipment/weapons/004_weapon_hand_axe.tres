@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://d3lw2t7xnkn3e"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_j8y3f"]
+
+[resource]
+script = ExtResource("1_j8y3f")
+equipment_type = 0
+attack_power = 15
+defense_power = 0
+item_name = "Hand Axe"
+item_id = 4
+buy_price = 560
+sell_price = 280
+consumable = false

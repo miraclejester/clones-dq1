@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://kogcumfvij7b"]
+
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_6rt1o"]
+
+[resource]
+script = ExtResource("1_6rt1o")
+item_name = "Staff of Rain"
+item_id = 30
+buy_price = -1
+sell_price = -1
+consumable = false

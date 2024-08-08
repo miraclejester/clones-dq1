@@ -8,6 +8,7 @@
 script = ExtResource("2_gpv0g")
 min_damage = 58
 max_damage = 65
+damage_type = 1
 
 [sub_resource type="Resource" id="Resource_rdts6"]
 script = ExtResource("3_edogw")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbkfjldfklook"]
 
-[ext_resource type="Material" uid="uid://bptid15xe2s11" path="res://materials/palette_swap/index_palette_swap.tres" id="1_hjkqu"]
+[ext_resource type="Material" uid="uid://co13if6vs27v4" path="res://materials/palette_swap/appear_swap.tres" id="1_35yvl"]
 [ext_resource type="Texture2D" uid="uid://b4nhyb5x3r3y8" path="res://unit_data/enemies/00_slime/00_slime.png" id="1_s6g5a"]
 [ext_resource type="Script" path="res://battle/controllers/enemy_controller.gd" id="3_w4iwb"]
 
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 0, 1, 2, 3, 0]
+"values": [4, 3, 2, 0, 4, 3, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_xw6e2"]
@@ -90,7 +90,7 @@ _data = {
 }
 
 [node name="EnemyController" type="Sprite2D"]
-material = ExtResource("1_hjkqu")
+material = ExtResource("1_35yvl")
 texture = ExtResource("1_s6g5a")
 script = ExtResource("3_w4iwb")
 

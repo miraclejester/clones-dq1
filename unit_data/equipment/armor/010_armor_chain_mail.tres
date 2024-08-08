@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://d1me0vh5uafem"]
+
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_r5d7y"]
+
+[resource]
+script = ExtResource("1_r5d7y")
+equipment_type = 1
+attack_power = 0
+defense_power = 10
+item_name = "Chain Mail"
+item_id = 10
+buy_price = 300
+sell_price = 150
+consumable = false

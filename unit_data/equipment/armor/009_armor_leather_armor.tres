@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://cvhcvcaq3cp7m"]
 
-[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_8v8mt"]
+[ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_jbdwu"]
 
 [resource]
-script = ExtResource("1_8v8mt")
+script = ExtResource("1_jbdwu")
 equipment_type = 1
 attack_power = 0
 defense_power = 4
 item_name = "Leather Armor"
-item_id = 61
+item_id = 9
+buy_price = 70
+sell_price = 35
 consumable = false

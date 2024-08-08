@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=18 format=3 uid="uid://bjlfbmhhqkcrl"]
+
+[ext_resource type="Texture2D" uid="uid://dmatffpsmdxvg" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_warlock.png" id="1_7m35n"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_b1ug5"]
+[ext_resource type="Texture2D" uid="uid://elqm1k0bqtex" path="res://unit_data/enemies/12_warlock/12_warlock_palette.png" id="1_s5y8k"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_fhqan"]
+[ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/player_spells/spell_sleep.tres" id="3_mt0j2"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="4_dgpk2"]
+[ext_resource type="Texture2D" uid="uid://bmv570587hkvu" path="res://unit_data/enemies/12_warlock/12_warlock.png" id="4_h6bow"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_negate.gd" id="5_u0136"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="6_racgx"]
+[ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="7_pko6g"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="8_vyv0s"]
+
+[sub_resource type="Resource" id="Resource_ervq4"]
+script = ExtResource("4_dgpk2")
+condition = 0
+
+[sub_resource type="Resource" id="Resource_51gv3"]
+script = ExtResource("5_u0136")
+condition = SubResource("Resource_ervq4")
+
+[sub_resource type="Resource" id="Resource_htlsj"]
+script = ExtResource("6_racgx")
+chance = 0.25
+condition = SubResource("Resource_51gv3")
+action = ExtResource("3_mt0j2")
+
+[sub_resource type="Resource" id="Resource_j4lwp"]
+script = ExtResource("8_vyv0s")
+
+[sub_resource type="Resource" id="Resource_c5otk"]
+script = ExtResource("6_racgx")
+chance = 0.5
+condition = SubResource("Resource_j4lwp")
+action = ExtResource("7_pko6g")
+
+[sub_resource type="Resource" id="Resource_tus02"]
+script = ExtResource("3_fhqan")
+strength = 28
+agility = 22
+max_hp = 30
+min_hp = 23
+sleep_resist = 0.188
+stop_spell_resist = 0.063
+hurt_resist = 0.0
+dodge = 0.031
+xp = 13
+max_gp = 34
+min_gp = 26
+
+[resource]
+script = ExtResource("1_b1ug5")
+enemy_name = "Warlock"
+texture = ExtResource("4_h6bow")
+hurt_texture = ExtResource("1_7m35n")
+stats = SubResource("Resource_tus02")
+initiative_group = 0
+position_group = 3
+appear_palette = ExtResource("1_s5y8k")
+patterns = Array[ExtResource("6_racgx")]([SubResource("Resource_htlsj"), SubResource("Resource_c5otk")])

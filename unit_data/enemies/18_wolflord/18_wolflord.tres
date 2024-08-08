@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=13 format=3 uid="uid://du4kxqujwjgl4"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_1y6m0"]
+[ext_resource type="Texture2D" uid="uid://b4dkdw6tl3puu" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wolflord.png" id="1_3sep2"]
+[ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="2_3t2i4"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="3_g8mns"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_negate.gd" id="4_kr3f2"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="5_osq82"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="7_nfwq7"]
+[ext_resource type="Texture2D" uid="uid://c4blsir3ne6w6" path="res://unit_data/enemies/18_wolflord/18_wolflord.png" id="8_og0xa"]
+
+[sub_resource type="Resource" id="Resource_kp11k"]
+script = ExtResource("3_g8mns")
+condition = 1
+
+[sub_resource type="Resource" id="Resource_4cvwv"]
+script = ExtResource("4_kr3f2")
+condition = SubResource("Resource_kp11k")
+
+[sub_resource type="Resource" id="Resource_gqnsl"]
+script = ExtResource("5_osq82")
+chance = 0.5
+condition = SubResource("Resource_4cvwv")
+action = ExtResource("2_3t2i4")
+
+[sub_resource type="Resource" id="Resource_qpdap"]
+script = ExtResource("7_nfwq7")
+strength = 50
+agility = 36
+max_hp = 38
+min_hp = 29
+sleep_resist = 0.25
+stop_spell_resist = 0.438
+hurt_resist = 0.0
+dodge = 0.031
+xp = 20
+max_gp = 79
+min_gp = 60
+
+[resource]
+script = ExtResource("1_1y6m0")
+enemy_name = "Wolflord"
+texture = ExtResource("8_og0xa")
+hurt_texture = ExtResource("1_3sep2")
+stats = SubResource("Resource_qpdap")
+initiative_group = 0
+position_group = 8
+patterns = Array[ExtResource("5_osq82")]([SubResource("Resource_gqnsl")])

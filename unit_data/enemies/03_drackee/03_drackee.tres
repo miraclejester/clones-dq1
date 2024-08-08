@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://dvmif5oo6alos"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dvmif5oo6alos"]
 
-[ext_resource type="Texture2D" uid="uid://o8gxhl5ic31w" path="res://unit_data/enemies/03_drackee/03_drackee_palette.png" id="1_m0l1j"]
 [ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="2_47xy8"]
 [ext_resource type="Texture2D" uid="uid://47hbsom8bwnw" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_drackee.png" id="2_cq3av"]
 [ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_n0kke"]
@@ -28,5 +27,4 @@ hurt_texture = ExtResource("2_cq3av")
 stats = SubResource("Resource_bkcpj")
 initiative_group = 1
 position_group = 1
-appear_palette = ExtResource("1_m0l1j")
 patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])
