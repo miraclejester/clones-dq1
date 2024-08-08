@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
 [ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="2_30gv7"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
-[ext_resource type="Resource" uid="uid://dvmif5oo6alos" path="res://unit_data/enemies/03_drackee/03_drackee.tres" id="3_43j8f"]
+[ext_resource type="Resource" uid="uid://crwbr5k6ypthd" path="res://unit_data/enemies/30_green_dragon/30_green_dragon.tres" id="3_gal18"]
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
 [ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
 [ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="4_45u81"]
@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_en83b"]
 script = ExtResource("4_45u81")
-enemy = ExtResource("3_43j8f")
+enemy = ExtResource("3_gal18")
 battle_bg = ExtResource("2_30gv7")
 bgm_key = 0
 reprise_key = 5
@@ -25,9 +25,9 @@ encounter_data = SubResource("Resource_en83b")
 [node name="BattleBG" parent="." groups=["player_hurt_shake"] instance=ExtResource("3_jflq8")]
 position = Vector2(80, 56)
 
-[node name="BG" parent="BattleBG" index="0" groups=["ambient_hurt", "spell_effect"]]
+[node name="BG" parent="BattleBG" index="0" groups=["ambient_hurt", "player_death_effect", "spell_effect"]]
 
-[node name="Enemy" parent="." groups=["spell_effect"] instance=ExtResource("4_7jigr")]
+[node name="Enemy" parent="." groups=["enemy_spell_effect", "spell_effect"] instance=ExtResource("4_7jigr")]
 visible = false
 
 [node name="BattleUI" parent="." groups=["player_hurt_shake"] instance=ExtResource("6_wgrpo")]

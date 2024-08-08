@@ -106,3 +106,7 @@ func get_unit_name() -> String:
 
 func get_attack_sfx_key() -> SFXEntry.SFXKey:
 	return SFXEntry.SFXKey.Attack
+
+
+func play_spell_effect() -> void:
+	await GlobalVisuals.spell_effect()

@@ -5,7 +5,6 @@ signal bg_appear_finished()
 
 @onready var mask_piece: Sprite2D = $MaskPiece
 @onready var bg: Sprite2D = $BG
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var image: Image
 var texture: ImageTexture
@@ -61,13 +60,3 @@ func create_initial_texture() -> void:
 func show_block(bx: int, by: int) -> void:
 	image.fill_rect(Rect2i(bx * 16, by * 16, 16, 16), Color.WHITE)
 	texture.set_image(image)
-
-
-func show_death_colors() -> void:
-	animation_player.play("death_blink")
-
-
-func show_standard_colors() -> void:
-	animation_player.play("standard_color")
-	await animation_player.animation_finished
-	

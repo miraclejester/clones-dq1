@@ -104,6 +104,10 @@ func get_attack_sfx_key() -> SFXEntry.SFXKey:
 	return SFXEntry.SFXKey.EnemyAttack
 
 
+func play_spell_effect() -> void:
+	await GlobalVisuals.enemy_spell_effect()
+
+
 func get_group_factor() -> float:
 	match data.initiative_group:
 		1:
