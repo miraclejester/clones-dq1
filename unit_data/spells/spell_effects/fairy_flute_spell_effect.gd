@@ -11,5 +11,6 @@ func execute_battle(_battle: Battle, _user: BattleUnit, target: BattleUnit) -> A
 	if target.get_unit_name() != target_enemy_name:
 		res.append(PlayDialogueBattleUpdate.new(failure_dialogue, [], false))
 	else:
+		target.add_status(BattleUnit.StatusEffect.SLEEP)
 		res.append(PlayDialogueBattleUpdate.new(success_dialogue, [], false))
 	return res

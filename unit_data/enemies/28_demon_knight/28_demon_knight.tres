@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dciti3ko10i2u"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_0ho8f"]
+[ext_resource type="Texture2D" uid="uid://tyt0vgnx2l5t" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wraith_knight.png" id="1_2k6sy"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_b44io"]
+[ext_resource type="Texture2D" uid="uid://dokcqyn78xxny" path="res://unit_data/enemies/28_demon_knight/28_demon_knight.png" id="4_eie57"]
+
+[sub_resource type="Resource" id="Resource_hnjde"]
+script = ExtResource("3_b44io")
+strength = 79
+agility = 64
+max_hp = 50
+min_hp = 38
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.938
+dodge = 0.234
+xp = 37
+max_gp = 149
+min_gp = 112
+
+[resource]
+script = ExtResource("1_0ho8f")
+enemy_name = "Demon Knight"
+texture = ExtResource("4_eie57")
+hurt_texture = ExtResource("1_2k6sy")
+stats = SubResource("Resource_hnjde")
+initiative_group = 1
+position_group = 7
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

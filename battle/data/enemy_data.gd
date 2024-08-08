@@ -19,6 +19,9 @@ const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.SNAIL: Vector2(136, 102),
 	EnemyData.BattlePositionGroup.SKELETON: Vector2(134, 105),
 	EnemyData.BattlePositionGroup.WOLFMAN: Vector2(136, 107),
+	EnemyData.BattlePositionGroup.WYVERN: Vector2(133, 102),
+	EnemyData.BattlePositionGroup.KNIGHT: Vector2(138, 103),
+	EnemyData.BattlePositionGroup.GOLEM: Vector2(136, 105),
 	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105)
 }
 

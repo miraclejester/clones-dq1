@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://c7aix4kh2pyai"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_sq4uq"]
+[ext_resource type="Texture2D" uid="uid://b3ohypcllxixc" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_goldman.png" id="1_w7ah3"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_c4854"]
+[ext_resource type="Texture2D" uid="uid://bni6rt7rgbaka" path="res://unit_data/enemies/25_goldman/25_goldman.png" id="4_sau3g"]
+
+[sub_resource type="Resource" id="Resource_44108"]
+script = ExtResource("3_c4854")
+strength = 48
+agility = 40
+max_hp = 50
+min_hp = 38
+sleep_resist = 0.813
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.016
+xp = 6
+max_gp = 199
+min_gp = 150
+
+[resource]
+script = ExtResource("1_sq4uq")
+enemy_name = "Goldman"
+texture = ExtResource("4_sau3g")
+hurt_texture = ExtResource("1_w7ah3")
+stats = SubResource("Resource_44108")
+initiative_group = 1
+position_group = 11
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

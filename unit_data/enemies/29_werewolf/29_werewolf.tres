@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dqywv3egtwakj"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_8llei"]
+[ext_resource type="Texture2D" uid="uid://b4tkw1yce8kqt" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wolf.png" id="1_uew1c"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_e7iit"]
+[ext_resource type="Texture2D" uid="uid://dlp0li2kads7m" path="res://unit_data/enemies/29_werewolf/29_werewolf.png" id="4_eix3k"]
+
+[sub_resource type="Resource" id="Resource_p755j"]
+script = ExtResource("3_e7iit")
+strength = 86
+agility = 70
+max_hp = 60
+min_hp = 46
+sleep_resist = 0.438
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.109
+xp = 40
+max_gp = 154
+min_gp = 116
+
+[resource]
+script = ExtResource("1_8llei")
+enemy_name = "Werewolf"
+texture = ExtResource("4_eix3k")
+hurt_texture = ExtResource("1_uew1c")
+stats = SubResource("Resource_p755j")
+initiative_group = 1
+position_group = 8
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

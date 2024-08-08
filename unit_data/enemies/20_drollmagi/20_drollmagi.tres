@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=13 format=3 uid="uid://k41sbu7m3si8"]
+
+[ext_resource type="Texture2D" uid="uid://dmf04pwj6l6x0" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_droll.png" id="1_3un30"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_4jkgq"]
+[ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="2_4ld7c"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="3_yi57j"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_negate.gd" id="4_y2odc"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="5_yd7i2"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="7_3vibj"]
+[ext_resource type="Texture2D" uid="uid://35233o7i4pvu" path="res://unit_data/enemies/20_drollmagi/20_drollmagi.png" id="8_ckkup"]
+
+[sub_resource type="Resource" id="Resource_pre65"]
+script = ExtResource("3_yi57j")
+condition = 1
+
+[sub_resource type="Resource" id="Resource_0s0wb"]
+script = ExtResource("4_y2odc")
+condition = SubResource("Resource_pre65")
+
+[sub_resource type="Resource" id="Resource_ewdhv"]
+script = ExtResource("5_yd7i2")
+chance = 0.5
+condition = SubResource("Resource_0s0wb")
+action = ExtResource("2_4ld7c")
+
+[sub_resource type="Resource" id="Resource_eo0ap"]
+script = ExtResource("7_3vibj")
+strength = 52
+agility = 50
+max_hp = 38
+min_hp = 29
+sleep_resist = 0.125
+stop_spell_resist = 0.125
+hurt_resist = 0.0
+dodge = 0.016
+xp = 22
+max_gp = 89
+min_gp = 67
+
+[resource]
+script = ExtResource("1_4jkgq")
+enemy_name = "Drollmagi"
+texture = ExtResource("8_ckkup")
+hurt_texture = ExtResource("1_3un30")
+stats = SubResource("Resource_eo0ap")
+initiative_group = 1
+position_group = 6
+patterns = Array[ExtResource("5_yd7i2")]([SubResource("Resource_ewdhv")])

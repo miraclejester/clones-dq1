@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://d167gjesgb0kj"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_atocy"]
+[ext_resource type="Texture2D" uid="uid://c4uyc1t3e1byd" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wyvern.png" id="1_tdrh2"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_mhw78"]
+[ext_resource type="Texture2D" uid="uid://b257t75pjbroh" path="res://unit_data/enemies/21_wyvern/21_wyvern.png" id="4_w8vp7"]
+
+[sub_resource type="Resource" id="Resource_1h7dd"]
+script = ExtResource("3_mhw78")
+strength = 56
+agility = 48
+max_hp = 42
+min_hp = 32
+sleep_resist = 0.25
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.031
+xp = 24
+max_gp = 99
+min_gp = 75
+
+[resource]
+script = ExtResource("1_atocy")
+enemy_name = "Wyvern"
+texture = ExtResource("4_w8vp7")
+hurt_texture = ExtResource("1_tdrh2")
+stats = SubResource("Resource_1h7dd")
+initiative_group = 1
+position_group = 9
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

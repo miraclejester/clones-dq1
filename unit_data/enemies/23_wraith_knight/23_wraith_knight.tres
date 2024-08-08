@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://c8r5ncppggg5w"]
+
+[ext_resource type="Texture2D" uid="uid://tyt0vgnx2l5t" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wraith_knight.png" id="1_nfxi2"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_ns3lc"]
+[ext_resource type="Resource" uid="uid://ba8rupray04y6" path="res://unit_data/spells/enemy_spells/spell_enemy_heal.tres" id="2_yk0hu"]
+[ext_resource type="Texture2D" uid="uid://c5exwnn3va16v" path="res://unit_data/enemies/23_wraith_knight/23_wraith_knight.png" id="3_0j13a"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_compare_max_hp.gd" id="3_oll1g"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_4vswr"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_v6has"]
+
+[sub_resource type="Resource" id="Resource_4hycs"]
+script = ExtResource("3_oll1g")
+comparison_type = 0
+multiplier = 0.25
+
+[sub_resource type="Resource" id="Resource_xapsr"]
+script = ExtResource("4_4vswr")
+chance = 0.75
+condition = SubResource("Resource_4hycs")
+action = ExtResource("2_yk0hu")
+
+[sub_resource type="Resource" id="Resource_2x4r6"]
+script = ExtResource("6_v6has")
+strength = 68
+agility = 56
+max_hp = 46
+min_hp = 35
+sleep_resist = 0.313
+stop_spell_resist = 0.0
+hurt_resist = 0.188
+dodge = 0.063
+xp = 28
+max_gp = 119
+min_gp = 90
+
+[resource]
+script = ExtResource("1_ns3lc")
+enemy_name = "Wraith Knight"
+texture = ExtResource("3_0j13a")
+hurt_texture = ExtResource("1_nfxi2")
+stats = SubResource("Resource_2x4r6")
+initiative_group = 1
+position_group = 7
+patterns = Array[ExtResource("4_4vswr")]([SubResource("Resource_xapsr")])

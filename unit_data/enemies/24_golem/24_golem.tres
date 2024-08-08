@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://gh4y2pulfkvm"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_6db8e"]
+[ext_resource type="Texture2D" uid="uid://c2qqdtxvmlx3k" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_golem.png" id="1_le5hj"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_3ma08"]
+[ext_resource type="Texture2D" uid="uid://cu3f16tsi3y7k" path="res://unit_data/enemies/24_golem/24_golem.png" id="4_c20rv"]
+
+[sub_resource type="Resource" id="Resource_yo7uc"]
+script = ExtResource("3_3ma08")
+strength = 120
+agility = 60
+max_hp = 70
+min_hp = 53
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.938
+dodge = 0.0
+xp = 5
+max_gp = 9
+min_gp = 7
+
+[resource]
+script = ExtResource("1_6db8e")
+enemy_name = "Golem"
+texture = ExtResource("4_c20rv")
+hurt_texture = ExtResource("1_le5hj")
+stats = SubResource("Resource_yo7uc")
+initiative_group = 1
+position_group = 11
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])
