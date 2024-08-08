@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=14 format=3 uid="uid://e7akj3ubd5nr"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_ciyt8"]
+[ext_resource type="Texture2D" uid="uid://pyui2oqbpt2c" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_druinlord.png" id="1_nwqg3"]
+[ext_resource type="Resource" uid="uid://ba8rupray04y6" path="res://unit_data/spells/enemy_spells/spell_enemy_heal.tres" id="2_22qpw"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_us0fh"]
+[ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="5_0kfxi"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="6_5fv0o"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="8_kgxv2"]
+[ext_resource type="Texture2D" uid="uid://2dtq3nmuu4cc" path="res://unit_data/enemies/19_druinlord/19_druinlord.png" id="9_djol3"]
+
+[sub_resource type="Resource" id="Resource_vy3qu"]
+script = ExtResource("6_5fv0o")
+
+[sub_resource type="Resource" id="Resource_1wk31"]
+script = ExtResource("4_us0fh")
+chance = 1.0
+condition = SubResource("Resource_vy3qu")
+action = ExtResource("2_22qpw")
+
+[sub_resource type="Resource" id="Resource_b6hwj"]
+script = ExtResource("6_5fv0o")
+
+[sub_resource type="Resource" id="Resource_rspip"]
+script = ExtResource("4_us0fh")
+chance = 0.25
+condition = SubResource("Resource_b6hwj")
+action = ExtResource("5_0kfxi")
+
+[sub_resource type="Resource" id="Resource_yvgk0"]
+script = ExtResource("8_kgxv2")
+strength = 47
+agility = 40
+max_hp = 35
+min_hp = 27
+sleep_resist = 0.938
+stop_spell_resist = 0.0
+hurt_resist = 0.0
+dodge = 0.063
+xp = 20
+max_gp = 84
+min_gp = 63
+
+[resource]
+script = ExtResource("1_ciyt8")
+enemy_name = "Druinlord"
+texture = ExtResource("9_djol3")
+hurt_texture = ExtResource("1_nwqg3")
+stats = SubResource("Resource_yvgk0")
+initiative_group = 0
+position_group = 5
+patterns = Array[ExtResource("4_us0fh")]([SubResource("Resource_1wk31"), SubResource("Resource_rspip")])

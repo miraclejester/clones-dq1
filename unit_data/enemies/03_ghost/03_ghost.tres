@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://b06giwko5w1xw"]
+
+[ext_resource type="Texture2D" uid="uid://cvm8kf5np5gwy" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_ghost.png" id="1_8u7q6"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_fttvf"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_3xjr3"]
+[ext_resource type="Texture2D" uid="uid://bhhlmoge6i8ib" path="res://unit_data/enemies/03_ghost/03_ghost.png" id="4_27x87"]
+
+[sub_resource type="Resource" id="Resource_gxg2v"]
+script = ExtResource("3_3xjr3")
+strength = 11
+agility = 8
+max_hp = 7
+min_hp = 6
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.063
+xp = 3
+max_gp = 4
+min_gp = 3
+
+[resource]
+script = ExtResource("1_fttvf")
+enemy_name = "Ghost"
+texture = ExtResource("4_27x87")
+hurt_texture = ExtResource("1_8u7q6")
+stats = SubResource("Resource_gxg2v")
+initiative_group = 0
+position_group = 2
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

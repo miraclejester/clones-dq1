@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=5 format=3 uid="uid://cejslh51f5gmu"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_gcpkl"]
+[ext_resource type="Resource" uid="uid://do5vas37r5x6u" path="res://battle/data/dialogues/battle_dialogue_enemy_heal.tres" id="2_hjrp4"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="3_pt8wj"]
+
+[sub_resource type="Resource" id="Resource_7akbj"]
+script = ExtResource("3_pt8wj")
+min_heal = 85
+max_heal = 100
+heal_dialogue = ExtResource("2_hjrp4")
+
+[resource]
+script = ExtResource("1_gcpkl")
+spell_name = "HEALMORE"
+mp_cost = 0
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_7akbj")])

@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
 [ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="2_52olo"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
+[ext_resource type="Resource" uid="uid://e7akj3ubd5nr" path="res://unit_data/enemies/19_druinlord/19_druinlord.tres" id="3_ab6gl"]
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
-[ext_resource type="Resource" uid="uid://crwbr5k6ypthd" path="res://unit_data/enemies/30_green_dragon/30_green_dragon.tres" id="3_k32hj"]
 [ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
 [ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="4_45u81"]
 [ext_resource type="PackedScene" uid="uid://bte60ddj418ss" path="res://battle/ui/battle_ui.tscn" id="6_wgrpo"]
-[ext_resource type="Texture2D" uid="uid://c4blsir3ne6w6" path="res://unit_data/enemies/18_wolflord/18_wolflord.png" id="8_l5ml6"]
+[ext_resource type="Texture2D" uid="uid://beiyd37qp83mn" path="res://unit_data/enemies/11_skeleton/11_skeleton.png" id="8_biapr"]
 
 [sub_resource type="Resource" id="Resource_en83b"]
 script = ExtResource("4_45u81")
-enemy = ExtResource("3_k32hj")
+enemy = ExtResource("3_ab6gl")
 battle_bg = ExtResource("2_52olo")
 bgm_key = 0
 reprise_key = 5
@@ -30,8 +30,8 @@ position = Vector2(80, 56)
 
 [node name="Enemy" parent="." groups=["enemy_spell_effect", "spell_effect"] instance=ExtResource("4_7jigr")]
 visible = false
-position = Vector2(136, 107)
-texture = ExtResource("8_l5ml6")
+position = Vector2(134, 105)
+texture = ExtResource("8_biapr")
 
 [node name="BattleUI" parent="." groups=["player_hurt_shake"] instance=ExtResource("6_wgrpo")]
 

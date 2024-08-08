@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://dqsguqkrgy3a7"]
+
+[ext_resource type="Texture2D" uid="uid://hqyohyprsk04" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_slime.png" id="1_ew534"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_q7kgn"]
+[ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="2_cxjit"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_6u24v"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_u7uns"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_cofl3"]
+[ext_resource type="Texture2D" uid="uid://bpplytrw1dgm5" path="res://unit_data/enemies/16_metal_slime/16_metal_slime.png" id="7_b78d2"]
+
+[sub_resource type="Resource" id="Resource_v3hef"]
+script = ExtResource("3_6u24v")
+
+[sub_resource type="Resource" id="Resource_g3hh4"]
+script = ExtResource("4_u7uns")
+chance = 0.75
+condition = SubResource("Resource_v3hef")
+action = ExtResource("2_cxjit")
+
+[sub_resource type="Resource" id="Resource_a1m40"]
+script = ExtResource("6_cofl3")
+strength = 10
+agility = 255
+max_hp = 4
+min_hp = 4
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.938
+dodge = 0.016
+xp = 115
+max_gp = 5
+min_gp = 4
+
+[resource]
+script = ExtResource("1_q7kgn")
+enemy_name = "Metal Slime"
+texture = ExtResource("7_b78d2")
+hurt_texture = ExtResource("1_ew534")
+stats = SubResource("Resource_a1m40")
+initiative_group = 0
+position_group = 0
+patterns = Array[ExtResource("4_u7uns")]([SubResource("Resource_g3hh4")])

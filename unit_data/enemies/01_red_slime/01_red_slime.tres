@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://c6h8lccc4btau"]
+
+[ext_resource type="Texture2D" uid="uid://hqyohyprsk04" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_slime.png" id="1_nl8o8"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_yg388"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_qlq76"]
+[ext_resource type="Texture2D" uid="uid://c0c5llvayompr" path="res://unit_data/enemies/01_red_slime/01_red_slime.png" id="4_a7xn1"]
+
+[sub_resource type="Resource" id="Resource_07ud7"]
+script = ExtResource("3_qlq76")
+strength = 7
+agility = 3
+max_hp = 4
+min_hp = 4
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.016
+xp = 1
+max_gp = 2
+min_gp = 2
+
+[resource]
+script = ExtResource("1_yg388")
+enemy_name = "Red Slime"
+texture = ExtResource("4_a7xn1")
+hurt_texture = ExtResource("1_nl8o8")
+stats = SubResource("Resource_07ud7")
+initiative_group = 0
+position_group = 0
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

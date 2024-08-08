@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://dgd11vrojbvfn"]
+
+[ext_resource type="Texture2D" uid="uid://cvm8kf5np5gwy" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_ghost.png" id="1_8qthe"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_8wmjk"]
+[ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="2_7wnh6"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_dtg4r"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_a0lhg"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_iw4eq"]
+[ext_resource type="Texture2D" uid="uid://c03ee62mjw8kx" path="res://unit_data/enemies/08_poltergeist/08_poltergeist.png" id="7_mm306"]
+
+[sub_resource type="Resource" id="Resource_4oaw7"]
+script = ExtResource("3_dtg4r")
+
+[sub_resource type="Resource" id="Resource_wrsmm"]
+script = ExtResource("4_a0lhg")
+chance = 0.75
+condition = SubResource("Resource_4oaw7")
+action = ExtResource("2_7wnh6")
+
+[sub_resource type="Resource" id="Resource_b0vsm"]
+script = ExtResource("6_iw4eq")
+strength = 18
+agility = 20
+max_hp = 23
+min_hp = 18
+sleep_resist = 0.0
+stop_spell_resist = 0.0
+hurt_resist = 0.0
+dodge = 0.094
+xp = 8
+max_gp = 17
+min_gp = 13
+
+[resource]
+script = ExtResource("1_8wmjk")
+enemy_name = "Poltergeist"
+texture = ExtResource("7_mm306")
+hurt_texture = ExtResource("1_8qthe")
+stats = SubResource("Resource_b0vsm")
+initiative_group = 0
+position_group = 2
+patterns = Array[ExtResource("4_a0lhg")]([SubResource("Resource_wrsmm")])

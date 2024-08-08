@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://3ghrfioubrbb"]
+
+[ext_resource type="Texture2D" uid="uid://dmf04pwj6l6x0" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_droll.png" id="1_rijsc"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_ry4xx"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_fyigw"]
+[ext_resource type="Texture2D" uid="uid://cdw4qd32ll2kg" path="res://unit_data/enemies/09_droll/09_droll.png" id="4_7rast"]
+
+[sub_resource type="Resource" id="Resource_e6swk"]
+script = ExtResource("3_fyigw")
+strength = 24
+agility = 24
+max_hp = 25
+min_hp = 19
+sleep_resist = 0.0
+stop_spell_resist = 0.875
+hurt_resist = 0.0
+dodge = 0.031
+xp = 10
+max_gp = 24
+min_gp = 18
+
+[resource]
+script = ExtResource("1_ry4xx")
+enemy_name = "Droll"
+texture = ExtResource("4_7rast")
+hurt_texture = ExtResource("1_rijsc")
+stats = SubResource("Resource_e6swk")
+initiative_group = 0
+position_group = 6
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

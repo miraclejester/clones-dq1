@@ -12,7 +12,12 @@ enum BattlePositionGroup {
 const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.SLIME: Vector2(137, 106),
 	EnemyData.BattlePositionGroup.DRACKY: Vector2(136, 105),
+	EnemyData.BattlePositionGroup.GHOST: Vector2(136, 105),
 	EnemyData.BattlePositionGroup.SORCERER: Vector2(135, 104),
+	EnemyData.BattlePositionGroup.SCORPION: Vector2(138, 112),
+	EnemyData.BattlePositionGroup.BEHOLDER: Vector2(138, 98),
+	EnemyData.BattlePositionGroup.SNAIL: Vector2(136, 102),
+	EnemyData.BattlePositionGroup.SKELETON: Vector2(134, 105),
 	EnemyData.BattlePositionGroup.WOLFMAN: Vector2(136, 107),
 	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105)
 }

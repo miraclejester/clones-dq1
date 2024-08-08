@@ -12,10 +12,10 @@ agility = 3
 max_hp = 3
 min_hp = 3
 sleep_resist = 0.0
-stop_spell_resist = 0.0
+stop_spell_resist = 0.938
 hurt_resist = 0.0
 dodge = 0.016
-xp = 23
+xp = 1
 max_gp = 1
 min_gp = 1
 

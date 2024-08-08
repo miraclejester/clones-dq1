@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://b5g5sul58oqs4"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_ebail"]
+[ext_resource type="Texture2D" uid="uid://c4msm6g43pucp" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_scorpion.png" id="1_r0iku"]
+[ext_resource type="Texture2D" uid="uid://bo6rhckltsbe1" path="res://unit_data/enemies/06_scorpion/06_scorpion.png" id="2_2mpb4"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_7jvb1"]
+
+[sub_resource type="Resource" id="Resource_pak13"]
+script = ExtResource("3_7jvb1")
+strength = 18
+agility = 16
+max_hp = 20
+min_hp = 16
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.016
+xp = 6
+max_gp = 15
+min_gp = 12
+
+[resource]
+script = ExtResource("1_ebail")
+enemy_name = "Scorpion"
+texture = ExtResource("2_2mpb4")
+hurt_texture = ExtResource("1_r0iku")
+stats = SubResource("Resource_pak13")
+initiative_group = 0
+position_group = 4
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

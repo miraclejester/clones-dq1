@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://b47vknpbl6ff8"]
+
+[ext_resource type="Texture2D" uid="uid://cq1q3souj76k1" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_druin.png" id="1_aa6te"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_waq2j"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_rueeo"]
+[ext_resource type="Texture2D" uid="uid://dqkbpbaq0fb7n" path="res://unit_data/enemies/07_druin/07_druin.png" id="4_ih376"]
+
+[sub_resource type="Resource" id="Resource_lcc3m"]
+script = ExtResource("3_rueeo")
+strength = 20
+agility = 18
+max_hp = 22
+min_hp = 17
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.031
+xp = 7
+max_gp = 15
+min_gp = 12
+
+[resource]
+script = ExtResource("1_waq2j")
+enemy_name = "Druin"
+texture = ExtResource("4_ih376")
+hurt_texture = ExtResource("1_aa6te")
+stats = SubResource("Resource_lcc3m")
+initiative_group = 0
+position_group = 5
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

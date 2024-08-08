@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://b4vvd3wcgow3o"]
+
+[ext_resource type="Texture2D" uid="uid://47hbsom8bwnw" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_drackee.png" id="1_rk1mj"]
+[ext_resource type="Resource" uid="uid://bqvmxue2vhuad" path="res://unit_data/spells/enemy_spells/spell_enemy_hurt.tres" id="2_g43se"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_d06nc"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_xbr0n"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="5_blaiw"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_odilm"]
+[ext_resource type="Texture2D" uid="uid://dwapt2xlfryqp" path="res://unit_data/enemies/05_magidrakee/05_magidrakee.png" id="7_45oyt"]
+
+[sub_resource type="Resource" id="Resource_2d51p"]
+script = ExtResource("3_d06nc")
+
+[sub_resource type="Resource" id="Resource_01kfq"]
+script = ExtResource("4_xbr0n")
+chance = 0.5
+condition = SubResource("Resource_2d51p")
+action = ExtResource("2_g43se")
+
+[sub_resource type="Resource" id="Resource_65uni"]
+script = ExtResource("6_odilm")
+strength = 14
+agility = 14
+max_hp = 15
+min_hp = 12
+sleep_resist = 0.0
+stop_spell_resist = 0.0
+hurt_resist = 0.0
+dodge = 0.016
+xp = 5
+max_gp = 11
+min_gp = 9
+
+[resource]
+script = ExtResource("5_blaiw")
+enemy_name = "Magidrakee"
+texture = ExtResource("7_45oyt")
+hurt_texture = ExtResource("1_rk1mj")
+stats = SubResource("Resource_65uni")
+initiative_group = 0
+position_group = 1
+patterns = Array[ExtResource("4_xbr0n")]([SubResource("Resource_01kfq")])

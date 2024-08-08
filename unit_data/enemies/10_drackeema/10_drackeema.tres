@@ -46,7 +46,7 @@ min_gp = 15
 
 [resource]
 script = ExtResource("1_yor60")
-enemy_name = "Drackeema"
+enemy_name = "Drakeema"
 texture = ExtResource("10_01po3")
 hurt_texture = ExtResource("2_j155f")
 stats = SubResource("Resource_g0t5o")

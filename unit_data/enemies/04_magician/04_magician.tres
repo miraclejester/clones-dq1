@@ -13,7 +13,7 @@ script = ExtResource("4_524b7")
 
 [sub_resource type="Resource" id="Resource_uvjkj"]
 script = ExtResource("4_sxmqi")
-chance = 1.0
+chance = 0.5
 condition = SubResource("Resource_w4ui3")
 action = ExtResource("3_pxpks")
 

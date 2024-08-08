@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rep8wlm1asr0"
-path="res://.godot/imported/03_drackee.png-a8cef1364e892357dfa2dcfaa8b38684.ctex"
+uid="uid://c0c5llvayompr"
+path="res://.godot/imported/01_red_slime.png-8f5b300bf5d5abd504a92402767db13e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://unit_data/enemies/03_drackee/03_drackee.png"
-dest_files=["res://.godot/imported/03_drackee.png-a8cef1364e892357dfa2dcfaa8b38684.ctex"]
+source_file="res://unit_data/enemies/01_red_slime/01_red_slime.png"
+dest_files=["res://.godot/imported/01_red_slime.png-8f5b300bf5d5abd504a92402767db13e.ctex"]
 
 [params]
 

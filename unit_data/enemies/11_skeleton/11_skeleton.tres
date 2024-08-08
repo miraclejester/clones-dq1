@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://bla50uv81olc3"]
+
+[ext_resource type="Texture2D" uid="uid://dtuxuamodrb7" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_skeleton.png" id="1_2g6s2"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_f3t85"]
+[ext_resource type="Texture2D" uid="uid://beiyd37qp83mn" path="res://unit_data/enemies/11_skeleton/11_skeleton.png" id="2_q2ep8"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_rowbl"]
+
+[sub_resource type="Resource" id="Resource_hfajs"]
+script = ExtResource("3_rowbl")
+strength = 28
+agility = 22
+max_hp = 30
+min_hp = 23
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.063
+xp = 11
+max_gp = 29
+min_gp = 22
+
+[resource]
+script = ExtResource("1_f3t85")
+enemy_name = "Skeleton"
+texture = ExtResource("2_q2ep8")
+hurt_texture = ExtResource("1_2g6s2")
+stats = SubResource("Resource_hfajs")
+initiative_group = 0
+position_group = 7
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

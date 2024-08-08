@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://bscajxlag4l1w"]
+
+[ext_resource type="Texture2D" uid="uid://j4vrq1lahqvt" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_metal_scorpion.png" id="1_bmbj8"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_kj2qc"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_j2alf"]
+[ext_resource type="Texture2D" uid="uid://bu0wocf3br5uo" path="res://unit_data/enemies/13_metal_scorpion/13_metal_scorpion.png" id="4_km7y7"]
+
+[sub_resource type="Resource" id="Resource_3ubwm"]
+script = ExtResource("3_j2alf")
+strength = 36
+agility = 42
+max_hp = 22
+min_hp = 17
+sleep_resist = 0.0
+stop_spell_resist = 0.938
+hurt_resist = 0.0
+dodge = 0.031
+xp = 14
+max_gp = 39
+min_gp = 30
+
+[resource]
+script = ExtResource("1_kj2qc")
+enemy_name = "Metal Scorpion"
+texture = ExtResource("4_km7y7")
+hurt_texture = ExtResource("1_bmbj8")
+stats = SubResource("Resource_3ubwm")
+initiative_group = 0
+position_group = 4
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])
