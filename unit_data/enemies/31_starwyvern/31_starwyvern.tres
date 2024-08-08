@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=15 format=3 uid="uid://dk0vit1bl4buo"]
+
+[ext_resource type="Texture2D" uid="uid://rtemft70pc8m" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_starwyvern.png" id="1_jwdwy"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_nv7j4"]
+[ext_resource type="Resource" uid="uid://cejslh51f5gmu" path="res://unit_data/spells/enemy_spells/spell_enemy_healmore.tres" id="2_8s1lo"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_compare_max_hp.gd" id="3_igc7g"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_ifrot"]
+[ext_resource type="Resource" uid="uid://bfr1403fsjxn8" path="res://unit_data/abilities/ability_weak_breath.tres" id="5_veoew"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="6_hwb0h"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="8_5rb4t"]
+[ext_resource type="Texture2D" uid="uid://bixj153loes0j" path="res://unit_data/enemies/31_starwyvern/31_starwyvern.png" id="9_vf3a4"]
+
+[sub_resource type="Resource" id="Resource_iphqa"]
+script = ExtResource("3_igc7g")
+comparison_type = 0
+multiplier = 0.25
+
+[sub_resource type="Resource" id="Resource_xhlcc"]
+script = ExtResource("4_ifrot")
+chance = 0.75
+condition = SubResource("Resource_iphqa")
+action = ExtResource("2_8s1lo")
+
+[sub_resource type="Resource" id="Resource_13wx6"]
+script = ExtResource("6_hwb0h")
+
+[sub_resource type="Resource" id="Resource_tp6ws"]
+script = ExtResource("4_ifrot")
+chance = 0.25
+condition = SubResource("Resource_13wx6")
+action = ExtResource("5_veoew")
+
+[sub_resource type="Resource" id="Resource_xxwyr"]
+script = ExtResource("8_5rb4t")
+strength = 86
+agility = 80
+max_hp = 65
+min_hp = 49
+sleep_resist = 0.5
+stop_spell_resist = 0.0
+hurt_resist = 0.063
+dodge = 0.031
+xp = 43
+max_gp = 159
+min_gp = 120
+
+[resource]
+script = ExtResource("1_nv7j4")
+enemy_name = "Starwyvern"
+texture = ExtResource("9_vf3a4")
+hurt_texture = ExtResource("1_jwdwy")
+stats = SubResource("Resource_xxwyr")
+initiative_group = 2
+position_group = 9
+patterns = Array[ExtResource("4_ifrot")]([SubResource("Resource_xhlcc"), SubResource("Resource_tp6ws")])

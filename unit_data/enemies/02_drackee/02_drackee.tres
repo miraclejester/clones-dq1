@@ -25,6 +25,6 @@ enemy_name = "Drackee"
 texture = ExtResource("4_x0qnn")
 hurt_texture = ExtResource("1_wxew4")
 stats = SubResource("Resource_bkcpj")
-initiative_group = 1
+initiative_group = 0
 position_group = 1
 patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

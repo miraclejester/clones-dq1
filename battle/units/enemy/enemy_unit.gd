@@ -103,11 +103,11 @@ func play_spell_effect() -> void:
 
 func get_group_factor() -> float:
 	match data.initiative_group:
-		1:
+		0:
 			return 0.25
-		2:
+		1:
 			return 0.375
-		3:
+		2:
 			return 0.5
-		4, _:
+		3, _:
 			return 1

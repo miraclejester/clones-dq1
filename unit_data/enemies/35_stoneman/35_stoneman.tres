@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://bta4ulnxlv0s5"]
+
+[ext_resource type="Texture2D" uid="uid://b3ohypcllxixc" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_goldman.png" id="1_4tcom"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="2_il0sa"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="3_nq1r7"]
+[ext_resource type="Texture2D" uid="uid://bolfg2cseu01c" path="res://unit_data/enemies/35_stoneman/35_stoneman.png" id="4_6m2f7"]
+
+[sub_resource type="Resource" id="Resource_nrrur"]
+script = ExtResource("3_nq1r7")
+strength = 100
+agility = 40
+max_hp = 160
+min_hp = 121
+sleep_resist = 0.125
+stop_spell_resist = 0.938
+hurt_resist = 0.438
+dodge = 0.016
+xp = 65
+max_gp = 139
+min_gp = 105
+
+[resource]
+script = ExtResource("2_il0sa")
+enemy_name = "Stoneman"
+texture = ExtResource("4_6m2f7")
+hurt_texture = ExtResource("1_4tcom")
+stats = SubResource("Resource_nrrur")
+initiative_group = 3
+position_group = 11
+patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

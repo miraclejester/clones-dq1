@@ -25,6 +25,6 @@ enemy_name = "Slime"
 texture = ExtResource("3_18g2l")
 hurt_texture = ExtResource("2_4pg06")
 stats = SubResource("Resource_bkcpj")
-initiative_group = 1
+initiative_group = 0
 position_group = 0
 patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://chcw7qx8m6o7u"]
+
+[ext_resource type="Texture2D" uid="uid://brq0cp8iieepg" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_wizard.png" id="1_3nf2p"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_uva03"]
+[ext_resource type="Resource" uid="uid://dofamue7imt08" path="res://unit_data/spells/enemy_spells/spell_enemy_hurtmore.tres" id="2_hj3i3"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_ls8x5"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_tw6u3"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_og24b"]
+[ext_resource type="Texture2D" uid="uid://bpebj6ktmd0ar" path="res://unit_data/enemies/32_wizard/32_wizard.png" id="7_1g2ja"]
+
+[sub_resource type="Resource" id="Resource_v3vfc"]
+script = ExtResource("3_ls8x5")
+
+[sub_resource type="Resource" id="Resource_7wlbc"]
+script = ExtResource("4_tw6u3")
+chance = 0.5
+condition = SubResource("Resource_v3vfc")
+action = ExtResource("2_hj3i3")
+
+[sub_resource type="Resource" id="Resource_4v5p0"]
+script = ExtResource("6_og24b")
+strength = 80
+agility = 70
+max_hp = 65
+min_hp = 49
+sleep_resist = 0.938
+stop_spell_resist = 0.438
+hurt_resist = 0.938
+dodge = 0.031
+xp = 50
+max_gp = 164
+min_gp = 123
+
+[resource]
+script = ExtResource("1_uva03")
+enemy_name = "Wizard"
+texture = ExtResource("7_1g2ja")
+hurt_texture = ExtResource("1_3nf2p")
+stats = SubResource("Resource_4v5p0")
+initiative_group = 2
+position_group = 3
+patterns = Array[ExtResource("4_tw6u3")]([SubResource("Resource_7wlbc")])

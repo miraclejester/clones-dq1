@@ -13,7 +13,7 @@ script = ExtResource("4_jlqsi")
 
 [sub_resource type="Resource" id="Resource_n48yi"]
 script = ExtResource("5_84xge")
-chance = 1.0
+chance = 0.25
 condition = SubResource("Resource_2pol0")
 action = ExtResource("3_yp6rn")
 
@@ -37,6 +37,6 @@ enemy_name = "Green Dragon"
 texture = ExtResource("8_11bki")
 hurt_texture = ExtResource("2_wh7mb")
 stats = SubResource("Resource_6e1x8")
-initiative_group = 3
+initiative_group = 2
 position_group = 12
 patterns = Array[ExtResource("5_84xge")]([SubResource("Resource_n48yi")])

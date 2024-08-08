@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=13 format=3 uid="uid://bcutl8ih17ha0"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_fovar"]
+[ext_resource type="Texture2D" uid="uid://dfte6ihi1ifa" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_axe_knight.png" id="1_vha33"]
+[ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/player_spells/spell_sleep.tres" id="2_gumlh"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="3_mqcp1"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_negate.gd" id="4_n18wh"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="5_owy82"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="7_m0jed"]
+[ext_resource type="Texture2D" uid="uid://dubf64vjch73a" path="res://unit_data/enemies/33_axe_knight/33_axe_knight.png" id="8_upkqe"]
+
+[sub_resource type="Resource" id="Resource_rokfk"]
+script = ExtResource("3_mqcp1")
+condition = 0
+
+[sub_resource type="Resource" id="Resource_0hd4x"]
+script = ExtResource("4_n18wh")
+condition = SubResource("Resource_rokfk")
+
+[sub_resource type="Resource" id="Resource_ykg1n"]
+script = ExtResource("5_owy82")
+chance = 0.25
+condition = SubResource("Resource_0hd4x")
+action = ExtResource("2_gumlh")
+
+[sub_resource type="Resource" id="Resource_kvus0"]
+script = ExtResource("7_m0jed")
+strength = 94
+agility = 82
+max_hp = 70
+min_hp = 53
+sleep_resist = 0.938
+stop_spell_resist = 0.188
+hurt_resist = 0.063
+dodge = 0.016
+xp = 54
+max_gp = 164
+min_gp = 123
+
+[resource]
+script = ExtResource("1_fovar")
+enemy_name = "Axe Knight"
+texture = ExtResource("8_upkqe")
+hurt_texture = ExtResource("1_vha33")
+stats = SubResource("Resource_kvus0")
+initiative_group = 2
+position_group = 10
+patterns = Array[ExtResource("5_owy82")]([SubResource("Resource_ykg1n")])

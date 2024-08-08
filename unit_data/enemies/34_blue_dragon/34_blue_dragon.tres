@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://df8wj5xwofvfy"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_2ybfu"]
+[ext_resource type="Texture2D" uid="uid://bo8peos30wldv" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_blue_dragon.png" id="1_q3tq7"]
+[ext_resource type="Resource" uid="uid://bfr1403fsjxn8" path="res://unit_data/abilities/ability_weak_breath.tres" id="2_o0syw"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_7dayi"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_unyl6"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_bwmqv"]
+[ext_resource type="Texture2D" uid="uid://dvxxnedhhclgo" path="res://unit_data/enemies/34_blue_dragon/34_blue_dragon.png" id="7_mjxrb"]
+
+[sub_resource type="Resource" id="Resource_rincd"]
+script = ExtResource("3_7dayi")
+
+[sub_resource type="Resource" id="Resource_nwdcr"]
+script = ExtResource("4_unyl6")
+chance = 0.25
+condition = SubResource("Resource_rincd")
+action = ExtResource("2_o0syw")
+
+[sub_resource type="Resource" id="Resource_jjg1h"]
+script = ExtResource("6_bwmqv")
+strength = 98
+agility = 84
+max_hp = 70
+min_hp = 53
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.438
+dodge = 0.031
+xp = 60
+max_gp = 149
+min_gp = 112
+
+[resource]
+script = ExtResource("1_2ybfu")
+enemy_name = "Blue Dragon"
+texture = ExtResource("7_mjxrb")
+hurt_texture = ExtResource("1_q3tq7")
+stats = SubResource("Resource_jjg1h")
+initiative_group = 2
+position_group = 12
+patterns = Array[ExtResource("4_unyl6")]([SubResource("Resource_nwdcr")])
