@@ -6,7 +6,7 @@ enum BattlePositionGroup {
 	SORCERER, SCORPION, BEHOLDER,
 	SNAIL, SKELETON, WOLFMAN,
 	WYVERN, KNIGHT, GOLEM,
-	DRAGON, DRAGONLORD, FINAL_DRAGONLORD
+	DRAGON, DRAGONLORD, TRUE_DRAGONLORD
 }
 
 const POSITION_GROUP_MAP: Dictionary = {
@@ -22,7 +22,9 @@ const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.WYVERN: Vector2(133, 102),
 	EnemyData.BattlePositionGroup.KNIGHT: Vector2(138, 103),
 	EnemyData.BattlePositionGroup.GOLEM: Vector2(136, 105),
-	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105)
+	EnemyData.BattlePositionGroup.DRAGON: Vector2(129, 105),
+	EnemyData.BattlePositionGroup.DRAGONLORD: Vector2(136, 110),
+	EnemyData.BattlePositionGroup.TRUE_DRAGONLORD: Vector2(118, 101)
 }
 
 @export var enemy_name: String

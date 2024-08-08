@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://b1qmq8p4q7un3"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_81m45"]
+[ext_resource type="Texture2D" uid="uid://cmd6q130fytuh" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_true_dragonlord.png" id="1_634g2"]
+[ext_resource type="Resource" uid="uid://c0koaqgue535m" path="res://unit_data/abilities/ability_strong_breath.tres" id="2_aat3p"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="3_0yqfg"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_6bx85"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="6_f0rkb"]
+[ext_resource type="Texture2D" uid="uid://cuekxp8hsihnj" path="res://unit_data/enemies/39_true_dragonlord/39_true_dragonlord.png" id="7_jka4v"]
+
+[sub_resource type="Resource" id="Resource_ewk4p"]
+script = ExtResource("3_0yqfg")
+
+[sub_resource type="Resource" id="Resource_em320"]
+script = ExtResource("4_6bx85")
+chance = 0.5
+condition = SubResource("Resource_ewk4p")
+action = ExtResource("2_aat3p")
+
+[sub_resource type="Resource" id="Resource_d3kh7"]
+script = ExtResource("6_f0rkb")
+strength = 140
+agility = 200
+max_hp = 130
+min_hp = 130
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.938
+dodge = 0.0
+xp = 0
+max_gp = 0
+min_gp = 0
+
+[resource]
+script = ExtResource("1_81m45")
+enemy_name = "Dragonlord"
+texture = ExtResource("7_jka4v")
+hurt_texture = ExtResource("1_634g2")
+stats = SubResource("Resource_d3kh7")
+initiative_group = 3
+position_group = 14
+patterns = Array[ExtResource("4_6bx85")]([SubResource("Resource_em320")])

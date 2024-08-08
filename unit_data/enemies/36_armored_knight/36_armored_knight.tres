@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=15 format=3 uid="uid://csslvy753r50t"]
+
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_laedx"]
+[ext_resource type="Texture2D" uid="uid://b1xt6g7phno5a" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_armored_knight.png" id="1_oj3y1"]
+[ext_resource type="Resource" uid="uid://cejslh51f5gmu" path="res://unit_data/spells/enemy_spells/spell_enemy_healmore.tres" id="2_nttiy"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_compare_max_hp.gd" id="3_qowgr"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="4_enas8"]
+[ext_resource type="Resource" uid="uid://dofamue7imt08" path="res://unit_data/spells/enemy_spells/spell_enemy_hurtmore.tres" id="5_gpii2"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="6_pkuy8"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="8_ybuux"]
+[ext_resource type="Texture2D" uid="uid://da2pkbl08jlo1" path="res://unit_data/enemies/36_armored_knight/36_armored_knight.png" id="9_8k0g4"]
+
+[sub_resource type="Resource" id="Resource_xu3m0"]
+script = ExtResource("3_qowgr")
+comparison_type = 0
+multiplier = 0.25
+
+[sub_resource type="Resource" id="Resource_b7fhv"]
+script = ExtResource("4_enas8")
+chance = 0.75
+condition = SubResource("Resource_xu3m0")
+action = ExtResource("2_nttiy")
+
+[sub_resource type="Resource" id="Resource_ng2je"]
+script = ExtResource("6_pkuy8")
+
+[sub_resource type="Resource" id="Resource_plhnh"]
+script = ExtResource("4_enas8")
+chance = 0.25
+condition = SubResource("Resource_ng2je")
+action = ExtResource("5_gpii2")
+
+[sub_resource type="Resource" id="Resource_b2hp1"]
+script = ExtResource("8_ybuux")
+strength = 105
+agility = 86
+max_hp = 90
+min_hp = 68
+sleep_resist = 0.938
+stop_spell_resist = 0.438
+hurt_resist = 0.063
+dodge = 0.031
+xp = 70
+max_gp = 139
+min_gp = 105
+
+[resource]
+script = ExtResource("1_laedx")
+enemy_name = "Armored Knight"
+texture = ExtResource("9_8k0g4")
+hurt_texture = ExtResource("1_oj3y1")
+stats = SubResource("Resource_b2hp1")
+initiative_group = 3
+position_group = 10
+patterns = Array[ExtResource("4_enas8")]([SubResource("Resource_b7fhv"), SubResource("Resource_plhnh")])

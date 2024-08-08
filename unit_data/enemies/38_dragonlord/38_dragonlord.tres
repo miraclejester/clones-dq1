@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=17 format=3 uid="uid://c4w4ne0vurfcb"]
+
+[ext_resource type="Texture2D" uid="uid://clt41ywn26r0i" path="res://unit_data/enemy_hurt_sprites/hurt_sprite_dragonlord.png" id="1_opp52"]
+[ext_resource type="Script" path="res://battle/data/enemy_data.gd" id="1_vnd8o"]
+[ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="2_hvi6r"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_has_status.gd" id="3_iseqb"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_negate.gd" id="4_ub1i7"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_entry.gd" id="5_buddq"]
+[ext_resource type="Resource" uid="uid://dofamue7imt08" path="res://unit_data/spells/enemy_spells/spell_enemy_hurtmore.tres" id="6_1xvbu"]
+[ext_resource type="Script" path="res://battle/data/enemy_pattern_conditions/condition_always_true.gd" id="7_s4ef6"]
+[ext_resource type="Script" path="res://battle/data/enemy_stat_data.gd" id="9_6m0s0"]
+[ext_resource type="Texture2D" uid="uid://dd2detauyweme" path="res://unit_data/enemies/38_dragonlord/38_dragonlord.png" id="10_klldb"]
+
+[sub_resource type="Resource" id="Resource_do6da"]
+script = ExtResource("3_iseqb")
+condition = 1
+
+[sub_resource type="Resource" id="Resource_sat6r"]
+script = ExtResource("4_ub1i7")
+condition = SubResource("Resource_do6da")
+
+[sub_resource type="Resource" id="Resource_rytk4"]
+script = ExtResource("5_buddq")
+chance = 0.25
+condition = SubResource("Resource_sat6r")
+action = ExtResource("2_hvi6r")
+
+[sub_resource type="Resource" id="Resource_0mmje"]
+script = ExtResource("7_s4ef6")
+
+[sub_resource type="Resource" id="Resource_5d3pv"]
+script = ExtResource("5_buddq")
+chance = 0.75
+condition = SubResource("Resource_0mmje")
+action = ExtResource("6_1xvbu")
+
+[sub_resource type="Resource" id="Resource_xgqxq"]
+script = ExtResource("9_6m0s0")
+strength = 90
+agility = 75
+max_hp = 100
+min_hp = 76
+sleep_resist = 0.938
+stop_spell_resist = 0.938
+hurt_resist = 0.938
+dodge = 0.0
+xp = 0
+max_gp = 0
+min_gp = 0
+
+[resource]
+script = ExtResource("1_vnd8o")
+enemy_name = "Dragonlord"
+texture = ExtResource("10_klldb")
+hurt_texture = ExtResource("1_opp52")
+stats = SubResource("Resource_xgqxq")
+initiative_group = 3
+position_group = 13
+patterns = Array[ExtResource("5_buddq")]([SubResource("Resource_rytk4"), SubResource("Resource_5d3pv")])

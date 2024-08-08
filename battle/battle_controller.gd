@@ -7,7 +7,7 @@ signal battle_finished()
 
 @onready var battle = $Battle
 @onready var battle_bg: BattleBG = $BattleBG
-@onready var enemy_controller: EnemyController = $Enemy
+@onready var enemy_controller: EnemyController = %Enemy
 @onready var battle_ui: BattleUI = $BattleUI
 
 var battle_update_queue: Array[BattleUpdate] = []
