@@ -11,7 +11,7 @@ func _ready() -> void:
 	for equipment in DebugUtils.debug_equipment:
 		hero.equipment.equip(equipment)
 	hero.set_hero_name("Erdrick")
-	hero.set_stats_from_level(15, true)
+	hero.set_stats_from_level(30, true)
 
 
 func get_next_level_entry() -> ExperienceChartEntry:

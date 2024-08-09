@@ -9,6 +9,7 @@
 script = ExtResource("2_kir26")
 text = "The %s looks happy."
 in_quotes = false
+wait_for_input = false
 
 [sub_resource type="Resource" id="Resource_eyvip"]
 script = ExtResource("3_h6l40")
@@ -23,6 +24,7 @@ spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effec
 script = ExtResource("2_kir26")
 text = "%s played a sweet melody on the harp."
 in_quotes = false
+wait_for_input = false
 
 [resource]
 script = ExtResource("4_unskt")

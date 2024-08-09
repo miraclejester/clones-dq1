@@ -20,7 +20,13 @@ func execute(controller: BattleController) -> void:
 	)
 	await controller.battle_ui.show_newline()
 	controller.enemy_controller.visible = false
-	AudioManager.play_bgm_one_shot(BGMEntry.BGMKey.Victory)
+	var routines: Array[Callable] = [AudioManager.play_bgm_one_shot.bind(BGMEntry.BGMKey.Victory)]
+	if controller.show_spoils:
+		routines.append(show_spoils_dialogue.bind(controller))
+	await ParallelPromise.new(routines).run_all()
+
+
+func show_spoils_dialogue(controller: BattleController) -> void:
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleExpGain,
 		[xp],
@@ -31,4 +37,3 @@ func execute(controller: BattleController) -> void:
 	)
 	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.XP, xp)
 	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.GP, gold)
-	await controller.battle_ui.show_newline()

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=15 format=3 uid="uid://woqi7mgcsnm5"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_0tk28"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/wait_seconds_dialogue_event.gd" id="2_8ofi8"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="3_qw7ba"]
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="4_ntjei"]
+[ext_resource type="Resource" uid="uid://b1qmq8p4q7un3" path="res://unit_data/enemies/39_true_dragonlord/39_true_dragonlord.tres" id="5_pscg0"]
+[ext_resource type="Resource" uid="uid://wvrko8whtq7d" path="res://battle/data/dialogues/battle_dialogue_dragonlord_intro.tres" id="6_bq2wl"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="7_0e7u3"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="8_pj2sd"]
+
+[sub_resource type="Resource" id="Resource_kpirr"]
+script = ExtResource("1_0tk28")
+text = "Thou hast found the Ball of Light"
+in_quotes = false
+wait_for_input = true
+
+[sub_resource type="Resource" id="Resource_nmoje"]
+script = ExtResource("1_0tk28")
+text = "Radiance streams forth as thy hands touch the object and hold it aloft."
+in_quotes = false
+wait_for_input = true
+
+[sub_resource type="Resource" id="Resource_bdpi1"]
+script = ExtResource("1_0tk28")
+text = "Across the land spreads the brilliance until all shadows are banished and peace is restored."
+in_quotes = false
+wait_for_input = false
+
+[sub_resource type="Resource" id="Resource_ld00t"]
+script = ExtResource("2_8ofi8")
+wait_seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_igy52"]
+script = ExtResource("3_qw7ba")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_kpirr"), SubResource("Resource_nmoje"), SubResource("Resource_bdpi1"), SubResource("Resource_ld00t")])
+
+[sub_resource type="Resource" id="Resource_mmjii"]
+script = ExtResource("7_0e7u3")
+sfx_key = 2
+wait_for_sfx = true
+
+[resource]
+script = ExtResource("8_pj2sd")
+enemy = ExtResource("5_pscg0")
+battle_bg = ExtResource("4_ntjei")
+pre_battle_event = SubResource("Resource_mmjii")
+intro_dialogue = ExtResource("6_bq2wl")
+bgm_key = 9
+reprise_key = 9
+show_spoils = false
+use_dragonlord_layer = true
+shake_on_hit = false
+after_victory_event = SubResource("Resource_igy52")

@@ -20,7 +20,7 @@ func execute(controller: BattleController) -> void:
 	)
 	if hp_value <= 0:
 		GlobalVisuals.death_effect()
-	await GlobalVisuals.player_hurt_shake()
+	await controller.player_hurt_shake()
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattlePlayerHurt,
 		[damage]

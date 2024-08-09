@@ -9,11 +9,13 @@
 script = ExtResource("2_81uyd")
 text = "But nothing happened"
 in_quotes = false
+wait_for_input = false
 
 [sub_resource type="Resource" id="Resource_qg7r4"]
 script = ExtResource("2_81uyd")
 text = "Quietly Golem closes his eyes and settles into sleep."
 in_quotes = false
+wait_for_input = false
 
 [sub_resource type="Resource" id="Resource_kimxg"]
 script = ExtResource("3_cj5k1")
@@ -30,6 +32,7 @@ spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effec
 script = ExtResource("2_81uyd")
 text = "%s blew the Fairies`s Flute."
 in_quotes = false
+wait_for_input = false
 
 [resource]
 script = ExtResource("4_mxtm1")

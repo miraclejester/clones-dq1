@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dq3shd6mqx2vi"]
+[gd_scene load_steps=45 format=3 uid="uid://dq3shd6mqx2vi"]
 
 [ext_resource type="Script" path="res://singleton/audio_manager/audio_manager.gd" id="1_rp44a"]
 [ext_resource type="AudioStream" uid="uid://bn6cj122hmq6e" path="res://audio/bgm/battle.ogg" id="2_sjt2i"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://singleton/audio_manager/sfx_entry.gd" id="10_63mfy"]
 [ext_resource type="AudioStream" uid="uid://bxqfe8g0020e" path="res://audio/bgm/silver_harp.ogg" id="10_ewsnp"]
 [ext_resource type="AudioStream" uid="uid://bpvd2lx581hef" path="res://audio/sfx/sfx_attack.wav" id="11_2moji"]
+[ext_resource type="AudioStream" uid="uid://beglkvi3nr34m" path="res://audio/bgm/final_battle.ogg" id="11_5bsdx"]
 [ext_resource type="AudioStream" uid="uid://5jhj2jj37y8q" path="res://audio/sfx/sfx_enemy_attack.wav" id="12_7b2f8"]
 [ext_resource type="AudioStream" uid="uid://4joj4sx6ljni" path="res://audio/sfx/sfx_breathing.wav" id="13_yhob2"]
 [ext_resource type="AudioStream" uid="uid://c0khrjmfd3l2m" path="res://audio/sfx/sfx_excellent_move.wav" id="14_sa0fn"]
@@ -62,6 +63,11 @@ bgm = ExtResource("9_766h6")
 script = ExtResource("3_xda6v")
 key = 7
 bgm = ExtResource("10_ewsnp")
+
+[sub_resource type="Resource" id="Resource_wdq1q"]
+script = ExtResource("3_xda6v")
+key = 9
+bgm = ExtResource("11_5bsdx")
 
 [sub_resource type="Resource" id="Resource_40om7"]
 script = ExtResource("10_63mfy")
@@ -122,7 +128,7 @@ sfx = ExtResource("21_oxt4l")
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_rp44a")
-bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa"), SubResource("Resource_3nnqg"), SubResource("Resource_nbiht")])
+bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa"), SubResource("Resource_3nnqg"), SubResource("Resource_nbiht"), SubResource("Resource_wdq1q")])
 sfxs = Array[ExtResource("10_63mfy")]([SubResource("Resource_40om7"), SubResource("Resource_3osdq"), SubResource("Resource_v3dqi"), SubResource("Resource_er272"), SubResource("Resource_gje08"), SubResource("Resource_ilecd"), SubResource("Resource_76c63"), SubResource("Resource_fmyio"), SubResource("Resource_6scbd"), SubResource("Resource_251kx"), SubResource("Resource_dqgg5")])
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]

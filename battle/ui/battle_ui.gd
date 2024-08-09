@@ -94,9 +94,7 @@ func hide_item_window() -> void:
 
 
 func wait_for_dialogue_continuation(cont_visible: bool = true) -> void:
-	await MenuStack.push_stack(dialogue_window, dialogue_window.activate.bind(cont_visible), dialogue_window.deactivate)
-	await dialogue_window.continued
-	await MenuStack.pop_stack()
+	await dialogue_window.wait_for_continuation(cont_visible)
 
 
 func show_line(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
@@ -107,7 +105,7 @@ func show_line_from_data(data: DialogueEvent, format_vars: Array = []) -> void:
 	await dialogue_window.show_paragraph_from_data(data, format_vars)
 
 
-func play_dialogue(data: DialogueEvent, params: Dictionary) -> void:
+func play_dialogue(data: DialogueEvent, params: Dictionary = {}) -> void:
 	await dialogue_window.start_dialogue([DialogueEventParams.fromData(data, params)])
 
 

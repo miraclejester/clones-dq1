@@ -8,6 +8,7 @@ enum ParagraphEventKeys {
 
 @export_multiline var text: String
 @export var in_quotes: bool = false
+@export var wait_for_input: bool = false
 
 func execute(window: DialogueWindow, params: Dictionary) -> void:
 	var word_wrap_length: int = params.get(ParagraphEventKeys.WORD_WRAP_LENGTH, 177)
@@ -16,7 +17,10 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 	paragraph.custom_label_settings = window.standard_settings
 	post_paragraph_create(window, paragraph)
 	await paragraph.play_paragraph(self, params.get(ParagraphEventKeys.FORMAT_VARS, []), word_wrap_length)
-	await window.get_tree().create_timer(0.2).timeout
+	if wait_for_input:
+		await window.wait_for_continuation(true)
+	else:
+		await window.get_tree().create_timer(0.15).timeout
 
 
 func post_paragraph_create(w: DialogueWindow, p: DialogueParagraph) -> void:

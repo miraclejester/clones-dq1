@@ -24,6 +24,8 @@ func play_bgm(key: BGMEntry.BGMKey) -> void:
 		bgm_player.stop()
 		bgm_player.stream = bgm_dict.get(key, null)
 		bgm_player.play()
+	elif key == BGMEntry.BGMKey.None:
+		bgm_player.stop()
 
 
 func play_bgm_one_shot(key: BGMEntry.BGMKey) -> void:
@@ -33,4 +35,6 @@ func play_bgm_one_shot(key: BGMEntry.BGMKey) -> void:
 
 func play_sfx(key: SFXEntry.SFXKey) -> void:
 	var poly: AudioStreamPlaybackPolyphonic = sfx_player.get_stream_playback() as AudioStreamPlaybackPolyphonic
-	poly.play_stream(sfx_dict.get(key, null))
+	var stream_id: int = poly.play_stream(sfx_dict.get(key, null))
+	while poly.is_stream_playing(stream_id):
+		await get_tree().process_frame

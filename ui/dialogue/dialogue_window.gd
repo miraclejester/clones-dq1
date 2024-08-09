@@ -40,6 +40,12 @@ func deactivate() -> void:
 	set_process(false)
 
 
+func wait_for_continuation(cont_visible: bool) -> void:
+	await MenuStack.push_stack(self, activate.bind(cont_visible), deactivate)
+	await continued
+	await MenuStack.pop_stack()
+
+
 func continue_input() -> void:
 	if current_continuator != null:
 		paragraph_container.remove_child(current_continuator)

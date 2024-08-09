@@ -8,6 +8,7 @@ var step_wait: float = 0.03
 var shake_step: int = 2
 var ambient_hurt_enabled: bool = false
 
+
 var shake_callables: Array[Callable] = [
 	shake_node_x.bind(-shake_step),
 	shake_node_x.bind(shake_step),

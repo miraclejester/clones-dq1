@@ -14,9 +14,9 @@ func set_data(d: EnemyData) -> void:
 	enemy_data = d
 
 
-func play_appear_animation() -> AnimationPlayer:
-	animation_player.play("appear")
-	return animation_player
+func play_appear_animation(anim_speed: float = 1.0) -> void:
+	animation_player.play("appear", -1, anim_speed)
+	await animation_player.animation_finished
 
 
 func play_hurt_animation() -> void:

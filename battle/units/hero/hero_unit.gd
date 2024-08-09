@@ -163,6 +163,8 @@ func level_up() -> LevelUpResult:
 
 
 func has_leveled_up() -> bool:
+	if level >= 30:
+		return false
 	var entry: ExperienceChartEntry = PlayerManager.get_next_level_entry()
 	return experience >= entry.experience
 

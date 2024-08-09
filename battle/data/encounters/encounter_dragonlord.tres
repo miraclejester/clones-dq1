@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=4 format=3 uid="uid://ui2iq71o1r41"]
+
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="1_h3vrn"]
+[ext_resource type="Resource" uid="uid://c4w4ne0vurfcb" path="res://unit_data/enemies/38_dragonlord/38_dragonlord.tres" id="2_fqn1l"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="3_qa5cb"]
+
+[resource]
+script = ExtResource("3_qa5cb")
+enemy = ExtResource("2_fqn1l")
+battle_bg = ExtResource("1_h3vrn")
+bgm_key = 0
+reprise_key = 0
+show_spoils = false
+use_dragonlord_layer = false
+shake_on_hit = true
