@@ -9,7 +9,6 @@ enum MoveState {
 	IDLE, FACING, MOVING
 }
 
-@export var move_speed: float = 32
 @export var facing_wait_time: float = 0.2
 @export var after_move_idle_wait_time: float = 1.5
 @export var facing_idle_wait_time: float = 3.5
@@ -19,10 +18,9 @@ enum MoveState {
 
 
 var target_pos: Vector2
-var moving: bool = false
-var current_map: FieldMap
 var move_state: MoveState = MoveState.IDLE
 var tracked_input: String
+var old_pos: Vector2
 
 var move_input_dict: Dictionary = {
 	"down" : Vector2.DOWN,
@@ -38,15 +36,11 @@ func _ready() -> void:
 	idle_timer.start(after_move_idle_wait_time)
 
 
-func _process(delta: float) -> void:
-	process_movement(delta)
+func _process(_delta: float) -> void:
+	process_movement()
 
 
-func set_current_map(map: FieldMap) -> void:
-	current_map = map
-
-
-func process_movement(delta: float) -> void:
+func process_movement() -> void:
 	match move_state:
 		MoveState.IDLE:
 			check_menu_input()
@@ -56,9 +50,7 @@ func process_movement(delta: float) -> void:
 				move_timer.stop()
 				move_state = MoveState.IDLE
 		MoveState.MOVING:
-			position = position.move_toward(target_pos, delta * move_speed)
-			if position.is_equal_approx(target_pos):
-				position = target_pos
+			if not field_move_component.moving:
 				var move: String = get_cur_move_input()
 				if move != "":
 					var target: Vector2 = move_input_dict.get(move, Vector2.DOWN)
@@ -95,21 +87,12 @@ func get_cur_move_input() -> String:
 
 func set_target_dir(dir: Vector2) -> void:
 	idle_timer.start(after_move_idle_wait_time)
-	var target: Vector2 = position + dir * 16
-	if not current_map.request_move(target):
+	if not field_move_component.request_move(position + dir * 16):
 		AudioManager.play_sfx(SFXEntry.SFXKey.Wall)
 		move_state = MoveState.IDLE
 		return
 	idle_timer.stop()
-	target_pos = position + dir * 16
 	move_state = MoveState.MOVING
-
-
-func set_face_dir(dir: Vector2) -> void:
-	var base: String = dir_anim_dict.get(dir, "walk_down")
-	var anim_name: String = "basic_character_move/%s" % base
-	animation_player.play(anim_name)
-	facing_dir = dir
 
 
 func on_move_timer_timeout() -> void:

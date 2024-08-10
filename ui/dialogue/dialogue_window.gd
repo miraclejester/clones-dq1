@@ -11,6 +11,7 @@ signal continued()
 
 @onready var paragraph_container: VBoxContainer = %ParagraphContainer
 @onready var scroll_container: ScrollContainer = %ScrollContainer
+@onready var yes_no_window: CommandWindow = %YesNoWindow
 
 
 var num_lines: int = 0
@@ -24,6 +25,8 @@ func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
 	set_process(false)
 	create_paragraph()
+	yes_no_window.initialize_commands(["YES", "NO"], 1)
+	yes_no_window.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -56,6 +59,10 @@ func continue_input() -> void:
 
 func show_paragraph(id: GeneralDialogueProvider.DialogueID, format_vars: Array = []) -> void:
 	await show_paragraph_from_data(GeneralDialogueProvider.get_dialogue(id), format_vars)
+
+
+func show_newline() -> void:
+	await show_paragraph(GeneralDialogueProvider.DialogueID.Newline)
 
 
 func show_paragraph_from_data(data: DialogueEvent, format_vars: Array = []) -> void:
@@ -108,6 +115,16 @@ func create_newline() -> DialogueParagraph:
 	var p: DialogueParagraph = create_paragraph()
 	p.custom_label_settings = newline_settings
 	return p
+
+
+func prompt_yes_no() -> bool:
+	yes_no_window.visible = true
+	yes_no_window.set_selection(0)
+	await MenuStack.push_stack(yes_no_window, yes_no_window.activate, yes_no_window.deactivate)
+	var idx: int = await yes_no_window.selected
+	await MenuStack.pop_stack()
+	yes_no_window.visible = false
+	return idx == 0
 
 
 func scroll_to_bottom():

@@ -5,8 +5,10 @@ class_name FieldCharacter
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sprite: Sprite2D = %Sprite2D
+@onready var field_move_component: FieldMoveComponent = %FieldMoveComponent
 
 var facing_dir: Vector2 = Vector2.DOWN
+var current_map: FieldMap
 
 var dir_anim_dict: Dictionary = {
 	Vector2.DOWN : "walk_down",
@@ -25,6 +27,10 @@ var pause_frame_dict: Dictionary = {
 
 func _ready() -> void:
 	set_face_dir(starting_face_dir)
+
+
+func set_current_map(map: FieldMap) -> void:
+	current_map = map
 
 
 func set_face_dir(dir: Vector2) -> void:

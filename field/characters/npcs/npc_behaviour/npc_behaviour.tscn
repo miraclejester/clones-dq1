@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxhwfveb0idsy"]
+
+[ext_resource type="Script" path="res://field/characters/npcs/npc_behaviour/npc_behaviour.gd" id="1_vyw7o"]
+
+[node name="NpcBehaviour" type="Node"]
+script = ExtResource("1_vyw7o")

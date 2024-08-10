@@ -52,6 +52,7 @@ func close_command_window() -> void:
 
 
 func on_command_cancelled() -> void:
+	await MenuStack.pop_stack()
 	close_command_window()
 
 
@@ -61,7 +62,11 @@ func on_talk_selected() -> void:
 	var npc: NPCCharacter = field_map.find_npc(hero_character.get_facing_tile_position())
 	if npc != null and npc.talk_event != null:
 		npc.face_towards(hero_character.position)
-		await field_ui.play_dialogue(npc.talk_event)
+		await field_ui.play_dialogue(npc.talk_event, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [
+				PlayerManager.hero.get_unit_name()
+			]
+		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
 	close_command_window()

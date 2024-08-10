@@ -41,4 +41,12 @@ offset_top = 136.0
 offset_right = -8.0
 offset_bottom = 96.0
 
+[node name="YesNoWindow" parent="VisualsParent/DialogueWindow" index="2"]
+offset_left = 40.0
+offset_top = -112.0
+offset_right = 40.0
+offset_bottom = -112.0
+
 [editable path="VisualsParent/CommandWindow"]
+[editable path="VisualsParent/DialogueWindow"]
+[editable path="VisualsParent/DialogueWindow/YesNoWindow"]

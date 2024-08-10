@@ -14,6 +14,7 @@ func _ready() -> void:
 	for npc in npc_parent.get_children():
 		var n: NPCCharacter = npc as NPCCharacter
 		char_dict[n.position] = n
+		n.set_current_map(self)
 
 
 func register_character(character: FieldCharacter) -> void:
@@ -21,14 +22,17 @@ func register_character(character: FieldCharacter) -> void:
 		char_dict[character.position] = character
 
 
-func move_character_register(old_pos: Vector2, new_pos: Vector2) -> void:
-	var character: FieldCharacter = find_character(old_pos)
+func move_character_register(old_pos: Vector2, character: FieldCharacter) -> void:
 	char_dict.erase(old_pos)
-	char_dict[new_pos] = character
+	char_dict[character.position] = character
 
 
-func request_move(target: Vector2) -> bool:
-	return field_tile_map.request_move(target) and find_character(target) == null
+func request_move(target: Vector2, origin: Vector2) -> bool:
+	var is_available: bool = field_tile_map.request_move(target) and not is_pos_reserved(target)
+	if is_available:
+		char_dict[origin] = null
+		char_dict[target] = null
+	return is_available
 
 
 func find_npc(pos: Vector2) -> NPCCharacter:
@@ -37,3 +41,7 @@ func find_npc(pos: Vector2) -> NPCCharacter:
 
 func find_character(pos: Vector2) -> FieldCharacter:
 	return char_dict.get(pos, null) as FieldCharacter
+
+
+func is_pos_reserved(pos: Vector2) -> bool:
+	return char_dict.has(pos)

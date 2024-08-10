@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cskx10vtevct0"]
+[gd_scene load_steps=5 format=3 uid="uid://cskx10vtevct0"]
 
 [ext_resource type="Script" path="res://field/characters/npcs/npc_character.gd" id="1_6fcm0"]
 [ext_resource type="Texture2D" uid="uid://l5na2sh2vg8r" path="res://field/characters/npcs/npc_grey_soldier.png" id="1_i4h8y"]
 [ext_resource type="AnimationLibrary" uid="uid://cnadevh6lfauh" path="res://field/characters/shared/animations/basic_character_move.tres" id="2_xyjha"]
+[ext_resource type="PackedScene" uid="uid://217yy5yc7w43" path="res://field/characters/shared/components/field_move_component.tscn" id="4_thdaf"]
 
 [node name="NpcCharacter" type="Node2D"]
 script = ExtResource("1_6fcm0")
@@ -18,3 +19,11 @@ libraries = {
 "basic_character_move": ExtResource("2_xyjha")
 }
 autoplay = "basic_character_move/walk_down"
+
+[node name="FieldMoveComponent" parent="." node_paths=PackedStringArray("user") instance=ExtResource("4_thdaf")]
+unique_name_in_owner = true
+user = NodePath("..")
+move_speed = 64.0
+
+[node name="Behaviours" type="Node" parent="."]
+unique_name_in_owner = true

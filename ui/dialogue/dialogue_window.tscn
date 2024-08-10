@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8mmvb346f7pf"]
+[gd_scene load_steps=8 format=3 uid="uid://8mmvb346f7pf"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_window.gd" id="1_1u2te"]
 [ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="1_7k6lt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bk14nc2tsvtn5" path="res://ui/dialogue_continuator.tscn" id="3_c0th8"]
 [ext_resource type="LabelSettings" uid="uid://bm3sboupsdknl" path="res://ui/data/newline_label_settings.tres" id="3_gmyen"]
 [ext_resource type="LabelSettings" uid="uid://cu3fsnbm6ymbv" path="res://ui/data/standard_label_settings.tres" id="4_122j0"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="7_4myui"]
 
 [node name="DialogueWindow" type="Control"]
 use_parent_material = true
@@ -51,3 +52,21 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
+
+[node name="YesNoWindow" parent="." instance=ExtResource("7_4myui")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="UIWindow" parent="YesNoWindow" index="0"]
+offset_right = 64.0
+
+[node name="ColorRect" parent="YesNoWindow" index="1"]
+visible = false
+
+[node name="Title" parent="YesNoWindow" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="YesNoWindow" index="3"]
+offset_right = 64.0
+
+[editable path="YesNoWindow"]

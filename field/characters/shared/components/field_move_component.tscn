@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://217yy5yc7w43"]
+
+[ext_resource type="Script" path="res://field/characters/shared/components/field_move_component.gd" id="1_haj7u"]
+
+[node name="FieldMoveComponent" type="Node"]
+script = ExtResource("1_haj7u")

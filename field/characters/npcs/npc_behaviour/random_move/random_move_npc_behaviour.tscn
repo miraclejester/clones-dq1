@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh1e55af28xf8"]
+
+[ext_resource type="Script" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.gd" id="1_djnic"]
+
+[node name="RandomMoveNpcBehaviour" type="Node"]
+script = ExtResource("1_djnic")
+wait_time = 1.5
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
