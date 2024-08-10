@@ -1,15 +1,21 @@
 extends Node2D
 class_name HeroCharacter
 
+signal idling()
+signal move_intention()
+
 enum MoveState {
 	IDLE, FACING, MOVING
 }
 
 @export var move_speed: float = 32
 @export var facing_wait_time: float = 0.2
+@export var after_move_idle_wait_time: float = 1.5
+@export var facing_idle_wait_time: float = 3.5
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_timer: Timer = %MoveTimer
+@onready var idle_timer: Timer = %IdleTimer
 
 
 var target_pos: Vector2
@@ -36,6 +42,8 @@ var move_input_dict: Dictionary = {
 func _ready() -> void:
 	set_face_dir(Vector2.DOWN)
 	move_timer.timeout.connect(on_move_timer_timeout)
+	idle_timer.timeout.connect(on_idle_timer_timeout)
+	idle_timer.start(after_move_idle_wait_time)
 
 
 func _process(delta: float) -> void:
@@ -64,16 +72,19 @@ func process_movement(delta: float) -> void:
 					set_face_dir(target)
 					set_target_dir(target)
 				else:
+					idle_timer.start(after_move_idle_wait_time)
 					move_state = MoveState.IDLE
 
 
 func check_movement_input() -> void:
 	var move: String = get_cur_move_input()
 	if move != "":
+		move_intention.emit()
 		var target: Vector2 = move_input_dict.get(move, Vector2.DOWN)
 		set_face_dir(target)
 		move_timer.start(facing_wait_time)
 		tracked_input = move
+		idle_timer.start(facing_idle_wait_time)
 		move_state = MoveState.FACING
 
 
@@ -85,9 +96,11 @@ func get_cur_move_input() -> String:
 
 
 func set_target_dir(dir: Vector2) -> void:
+	idle_timer.start(after_move_idle_wait_time)
 	var target: Vector2 = position + dir * 16
 	if not current_map.request_move(target):
 		return
+	idle_timer.stop()
 	target_pos = position + dir * 16
 	move_state = MoveState.MOVING
 
@@ -99,3 +112,7 @@ func set_face_dir(dir: Vector2) -> void:
 
 func on_move_timer_timeout() -> void:
 	set_target_dir(facing_dir)
+
+
+func on_idle_timer_timeout() -> void:
+	idling.emit()

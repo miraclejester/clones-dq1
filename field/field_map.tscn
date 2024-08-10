@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=8 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1c12653yrlew" path="res://field/tilemap/map_tileset.png" id="1_lyrkc"]
 [ext_resource type="Script" path="res://field/field_map.gd" id="1_sb2fg"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="2_5fvyf"]
 [ext_resource type="Script" path="res://field/tilemap/field_tilemap.gd" id="2_abgrw"]
+[ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="5_dbnwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p52ro"]
 texture = ExtResource("1_lyrkc")
@@ -99,3 +100,5 @@ script = ExtResource("2_abgrw")
 [node name="HeroCharacter" parent="." instance=ExtResource("2_5fvyf")]
 unique_name_in_owner = true
 position = Vector2(88, 104)
+
+[node name="FieldUI" parent="." instance=ExtResource("5_dbnwl")]

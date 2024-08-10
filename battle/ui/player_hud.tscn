@@ -11,14 +11,15 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -192.0
-offset_bottom = -128.0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = -176.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvbxi")
 
 [node name="UIWindow" parent="." instance=ExtResource("1_1wahw")]
-use_parent_material = true
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 96.0
@@ -33,7 +34,6 @@ texture = ExtResource("3_bgdq4")
 
 [node name="PlayerName" parent="." instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_right = 48.0
@@ -59,14 +59,12 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="LVHeader" parent="MarginContainer/Stats/Level" instance=ExtResource("2_7qtje")]
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LV"
 
 [node name="LevelText" parent="MarginContainer/Stats/Level" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 text = "1"
 horizontal_alignment = 2
@@ -76,14 +74,12 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="HPHeader" parent="MarginContainer/Stats/HP" instance=ExtResource("2_7qtje")]
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "HP"
 
 [node name="HPText" parent="MarginContainer/Stats/HP" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 text = "11"
 horizontal_alignment = 2
@@ -93,14 +89,12 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="MPHeader" parent="MarginContainer/Stats/MP" instance=ExtResource("2_7qtje")]
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MP"
 
 [node name="MPText" parent="MarginContainer/Stats/MP" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -110,14 +104,12 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="GoldHeader" parent="MarginContainer/Stats/Gold" instance=ExtResource("2_7qtje")]
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "G"
 
 [node name="GoldText" parent="MarginContainer/Stats/Gold" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 text = "44"
 horizontal_alignment = 2
@@ -127,14 +119,12 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="ExpHeader" parent="MarginContainer/Stats/Experience" instance=ExtResource("2_7qtje")]
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "E"
 
 [node name="ExpText" parent="MarginContainer/Stats/Experience" instance=ExtResource("2_7qtje")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 text = "2"
 horizontal_alignment = 2
