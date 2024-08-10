@@ -13,7 +13,7 @@ func _init(k: PlayerHUD.HUDStatKey, n: int, u: BattleUnit) -> void:
 
 func execute(controller: BattleController) -> void:
 	if user is HeroUnit:
-		controller.battle_ui.determine_ui_colors(
+		GlobalVisuals.determine_ui_colors(
 			user.stats.get_stat(UnitStats.StatKey.HP),
 			user.stats.get_base(UnitStats.StatKey.HP)
 		)

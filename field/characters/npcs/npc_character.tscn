@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://217yy5yc7w43" path="res://field/characters/shared/components/field_move_component.tscn" id="4_thdaf"]
 
 [node name="NpcCharacter" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_6fcm0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["darken"]]
 unique_name_in_owner = true
+use_parent_material = true
 texture = ExtResource("1_i4h8y")
 hframes = 8
 

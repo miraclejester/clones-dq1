@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://s6tfxqls2bjn"]
+[gd_scene load_steps=34 format=3 uid="uid://s6tfxqls2bjn"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_hwxu4"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_2vqup"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_118hu"]
 [ext_resource type="PackedScene" uid="uid://dh1e55af28xf8" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.tscn" id="5_7i3tg"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/yes_no_decision_dialogue_event.gd" id="5_7x3b3"]
+[ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="7_26oui"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/fade_out_dialogue_event.gd" id="7_a4845"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/quit_game_dialogue_event.gd" id="7_t0knf"]
 
 [sub_resource type="Resource" id="Resource_17uu2"]
 script = ExtResource("3_wncvr")
@@ -86,6 +89,92 @@ format_var_idxs = Array[int]([0])
 script = ExtResource("4_118hu")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_3j4wq"), SubResource("Resource_rr1g6"), SubResource("Resource_jim0r")])
 
+[sub_resource type="Resource" id="Resource_h531b"]
+script = ExtResource("3_wncvr")
+text = "I am greatly pleased that thou hast returned, %s"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_dsn8b"]
+script = ExtResource("3_wncvr")
+text = "Before reaching thy next level of experience thou must gain %d points"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_66scj"]
+script = ExtResource("3_wncvr")
+text = "Will thou tell me now of thy deeds so they won`t be forgotten?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_jqm8d"]
+script = ExtResource("3_wncvr")
+text = "Thy deeds have been recorded on the Imperial Scrolls of Honor"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_7ighl"]
+script = ExtResource("5_7x3b3")
+yes_event = SubResource("Resource_jqm8d")
+
+[sub_resource type="Resource" id="Resource_j8xv8"]
+script = ExtResource("3_wncvr")
+text = "Does thou wish to continue thy quest?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_yby4l"]
+script = ExtResource("3_wncvr")
+text = "Rest then for awhile"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_xhkua"]
+script = ExtResource("7_a4845")
+
+[sub_resource type="Resource" id="Resource_ast1j"]
+script = ExtResource("7_t0knf")
+
+[sub_resource type="Resource" id="Resource_dxugs"]
+script = ExtResource("4_118hu")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_yby4l"), SubResource("Resource_xhkua"), SubResource("Resource_ast1j")])
+
+[sub_resource type="Resource" id="Resource_ebe1e"]
+script = ExtResource("3_wncvr")
+text = "Goodbye now, %s. Take care and tempt not the Fates"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_7orkn"]
+script = ExtResource("5_7x3b3")
+yes_event = SubResource("Resource_ebe1e")
+no_event = SubResource("Resource_dxugs")
+
+[sub_resource type="Resource" id="Resource_matm4"]
+script = ExtResource("4_118hu")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_h531b"), SubResource("Resource_dsn8b"), SubResource("Resource_66scj"), SubResource("Resource_7ighl"), SubResource("Resource_j8xv8"), SubResource("Resource_7orkn")])
+
 [node name="TantegelThrone" instance=ExtResource("1_hwxu4")]
 map_bgm = 10
 
@@ -105,4 +194,14 @@ talk_event = SubResource("Resource_c0mx6")
 
 [node name="RandomMoveNpcBehaviour" parent="NPCParent/MovingGuard/Behaviours" index="0" instance=ExtResource("5_7i3tg")]
 
+[node name="KingLorik" parent="NPCParent" index="3" instance=ExtResource("2_2vqup")]
+position = Vector2(88, 88)
+talk_event = SubResource("Resource_matm4")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="NPCParent/KingLorik" index="0"]
+texture = ExtResource("7_26oui")
+hframes = 2
+
 [editable path="NPCParent/MovingGuard"]
+[editable path="NPCParent/KingLorik"]

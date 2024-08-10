@@ -48,7 +48,7 @@ func start_battle(ec: EncounterData, c: BattleConfig) -> void:
 	enemy_controller.set_data(encounter_data.enemy)
 	battle_ui.initialize()
 	battle_ui.set_hero_data(battle.hero)
-	battle_ui.determine_ui_colors(
+	GlobalVisuals.determine_ui_colors(
 		hero.stats.get_stat(UnitStats.StatKey.HP),
 		hero.stats.get_base(UnitStats.StatKey.HP)
 	)

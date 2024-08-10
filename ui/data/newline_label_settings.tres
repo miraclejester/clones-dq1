@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bm3sboupsdknl"]
 
-[ext_resource type="FontFile" uid="uid://bqgyjfp0gph2p" path="res://ui/font.png" id="1_gap2g"]
+[ext_resource type="FontFile" uid="uid://crwxwggc4abo3" path="res://ui/font_newline.png" id="1_tveat"]
 
 [resource]
 line_spacing = 0.0
-font = ExtResource("1_gap2g")
+font = ExtResource("1_tveat")
 font_size = 8
 font_color = Color(0, 0, 0, 1)

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dn4tgoayvt671"]
+
+[ext_resource type="Shader" path="res://materials/palette_swap/index_palette_swap.gdshader" id="1_bmv77"]
+[ext_resource type="Texture2D" uid="uid://dtseye6wdwysv" path="res://materials/palettes/darken_palette.png" id="2_sibeo"]
+
+[resource]
+shader = ExtResource("1_bmv77")
+shader_parameter/color_index = 0
+shader_parameter/palette = ExtResource("2_sibeo")

@@ -3,8 +3,10 @@ extends Node
 @export var spell_effect_material: ShaderMaterial
 @export var ambient_hurt_material: ShaderMaterial
 @export var ambient_death_material: ShaderMaterial
+@export var darken_material: ShaderMaterial
+@export var darken_hurt_material: ShaderMaterial
 
-var step_wait: float = 0.03
+
 var shake_step: int = 2
 var ambient_hurt_enabled: bool = false
 
@@ -30,26 +32,37 @@ var death_effect_callables: Array[Callable] = [
 	set_death_effect_enabled.bind(false),
 ]
 
+var darken_callables: Array[Callable] = [
+	set_darken.bind(1),
+	set_darken.bind(2),
+	set_darken.bind(3),
+	set_darken.bind(4)
+]
 
-func play_effect(callables: Array[Callable], nodes: Array[Node]) -> void:
-	for i in range(4):
-		await cycle(nodes, callables)
+
+func play_effect(callables: Array[Callable], nodes: Array[Node], step_wait: float, num_cycles: int = 4) -> void:
+	for i in range(num_cycles):
+		await cycle(nodes, callables, step_wait)
 
 
 func player_hurt_shake() -> void:
-	await play_effect(shake_callables, get_tree().get_nodes_in_group("player_hurt_shake"))
+	await play_effect(shake_callables, get_tree().get_nodes_in_group("player_hurt_shake"), 0.03)
 
 
 func spell_effect() -> void:
-	await play_effect(spell_effect_callables, get_tree().get_nodes_in_group("spell_effect"))
+	await play_effect(spell_effect_callables, get_tree().get_nodes_in_group("spell_effect"), 0.03)
 
 
 func enemy_spell_effect() -> void:
-	await play_effect(spell_effect_callables, get_tree().get_nodes_in_group("enemy_spell_effect"))
+	await play_effect(spell_effect_callables, get_tree().get_nodes_in_group("enemy_spell_effect"), 0.03)
 
 
 func death_effect() -> void:
-	await play_effect(death_effect_callables, get_tree().get_nodes_in_group("player_death_effect"))
+	await play_effect(death_effect_callables, get_tree().get_nodes_in_group("player_death_effect"), 0.03)
+
+
+func fade_out() -> void:
+	await play_effect(darken_callables, get_tree().get_nodes_in_group("darken"), 0.1, 1)
 
 
 func set_ambient_hurt_enabled(enabled: bool) -> void:
@@ -65,9 +78,24 @@ func set_death_effect_enabled(node: Node, enabled: bool) -> void:
 		(node as CanvasItem).material = ambient_hurt_material
 	else:
 		(node as CanvasItem).material = null
-	
 
-func cycle(nodes: Array[Node], callables: Array[Callable]) -> void:
+
+func set_darken(node: Node, index: int) -> void:
+	var mat: ShaderMaterial = darken_material
+	if ambient_hurt_enabled:
+		mat = darken_hurt_material
+	(node as CanvasItem).material = mat
+	mat.set_shader_parameter("color_index", index)
+
+
+func determine_ui_colors(hp: int, max_hp: int) -> void:
+	if hp <= floor(max_hp / 5.0):
+		set_ambient_hurt_enabled(true)
+	else:
+		set_ambient_hurt_enabled(false)
+
+
+func cycle(nodes: Array[Node], callables: Array[Callable], step_wait: float) -> void:
 	for callable in callables:
 		for node in nodes:
 			callable.call(node)

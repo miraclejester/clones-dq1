@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://kaiotvf6h345"]
+[gd_scene load_steps=3 format=3 uid="uid://kaiotvf6h345"]
 
 [ext_resource type="Texture2D" uid="uid://bn4pahgs4f4g3" path="res://ui/window.png" id="1_0jkh1"]
+[ext_resource type="Script" path="res://ui/ui_window.gd" id="2_q34jp"]
 
-[node name="UIWindow" type="NinePatchRect"]
+[node name="UIWindow" type="NinePatchRect" groups=["ui_window"]]
 use_parent_material = true
 offset_right = 16.0
 offset_bottom = 16.0
@@ -12,3 +13,4 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+script = ExtResource("2_q34jp")

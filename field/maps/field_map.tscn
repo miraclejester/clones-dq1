@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfx3d12fftfmt"]
+[gd_scene load_steps=7 format=3 uid="uid://dfx3d12fftfmt"]
 
 [ext_resource type="Texture2D" uid="uid://b1c12653yrlew" path="res://field/tilemap/map_tileset.png" id="1_q1n81"]
+[ext_resource type="Material" uid="uid://dn4tgoayvt671" path="res://materials/palette_swap/darken_swap.tres" id="1_qw758"]
 [ext_resource type="Script" path="res://field/maps/field_map.gd" id="1_ywggj"]
 [ext_resource type="Script" path="res://field/tilemap/field_tilemap.gd" id="2_v1yxw"]
 
@@ -85,11 +86,13 @@ custom_data_layer_0/name = "Blocking"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_p52ro")
 
-[node name="FieldMap" type="Node2D"]
+[node name="FieldMap" type="Node2D" groups=["darken"]]
+material = ExtResource("1_qw758")
 script = ExtResource("1_ywggj")
 
 [node name="FieldTileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
+use_parent_material = true
 tile_set = SubResource("TileSet_q7mn3")
 format = 2
 layer_0/name = "Map"
@@ -98,3 +101,4 @@ script = ExtResource("2_v1yxw")
 
 [node name="NPCParent" type="Node2D" parent="."]
 unique_name_in_owner = true
+use_parent_material = true

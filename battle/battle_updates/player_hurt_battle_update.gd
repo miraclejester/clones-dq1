@@ -14,7 +14,7 @@ func _init(u: HeroUnit, d: int, h: int) -> void:
 
 func execute(controller: BattleController) -> void:
 	AudioManager.play_sfx(SFXEntry.SFXKey.ReceiveDamage)
-	controller.battle_ui.determine_ui_colors(
+	GlobalVisuals.determine_ui_colors(
 		hero_unit.stats.get_stat(UnitStats.StatKey.HP),
 		hero_unit.stats.get_base(UnitStats.StatKey.HP)
 	)

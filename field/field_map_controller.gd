@@ -23,6 +23,11 @@ func _ready() -> void:
 	
 	field_ui.command_cancelled.connect(on_command_cancelled)
 	field_ui.talk_selected.connect(on_talk_selected)
+	
+	GlobalVisuals.determine_ui_colors(
+		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
+		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
+	)
 
 
 func load_map(path: String) -> void:
@@ -64,7 +69,8 @@ func on_talk_selected() -> void:
 		npc.face_towards(hero_character.position)
 		await field_ui.play_dialogue(npc.talk_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [
-				PlayerManager.hero.get_unit_name()
+				PlayerManager.hero.get_unit_name(),
+				PlayerManager.get_exp_for_next_level()
 			]
 		})
 	else:

@@ -122,23 +122,6 @@ func update_player_stat(key: PlayerHUD.HUDStatKey, val: int) -> void:
 	player_hud.update_stat(key, val)
 
 
-func set_to_low_health() -> void:
-	visuals_parent.modulate = low_health_color
-
-
-func set_to_normal_health() -> void:
-	visuals_parent.modulate = Color.WHITE
-
-
-func determine_ui_colors(hp: int, max_hp: int) -> void:
-	if hp <= floor(max_hp / 5.0):
-		GlobalVisuals.set_ambient_hurt_enabled(true)
-		set_to_low_health()
-	else:
-		GlobalVisuals.set_ambient_hurt_enabled(false)
-		set_to_normal_health()
-
-
 func command_selected(idx: int) -> void:
 	match idx:
 		0:
