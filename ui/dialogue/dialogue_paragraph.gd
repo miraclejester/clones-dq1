@@ -33,13 +33,11 @@ func play_next_line() -> void:
 	add_child(line)
 	if custom_label_settings:
 		line.custom_label_settings = custom_label_settings
-	await line.play_line(get_next_line_text())
+	await line.play_line(get_next_line_text(), data.is_speech)
 	await play_next_line()
 	
 
 func get_next_line_text() -> String:
-	#Thy Experience 
-	#increases  by 1
 	var res: String = ""
 	if data.in_quotes:
 		if word_index == 0:

@@ -8,6 +8,7 @@ enum ParagraphEventKeys {
 
 @export_multiline var text: String
 @export var in_quotes: bool = false
+@export var is_speech: bool = false
 @export var wait_for_input: bool = false
 @export var use_format_vars: bool = true
 @export var format_var_idxs: Array[int]

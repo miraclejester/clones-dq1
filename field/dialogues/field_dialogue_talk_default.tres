@@ -6,4 +6,7 @@
 script = ExtResource("1_xoin0")
 text = "There is no one there"
 in_quotes = true
+is_speech = true
 wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])

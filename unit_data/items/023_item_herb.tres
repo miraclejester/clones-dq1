@@ -13,7 +13,10 @@ spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effec
 script = ExtResource("4_467ux")
 text = "%s used the Herb."
 in_quotes = false
+is_speech = false
 wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
 
 [resource]
 script = ExtResource("3_uss38")
