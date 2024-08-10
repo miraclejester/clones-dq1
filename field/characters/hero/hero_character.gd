@@ -97,6 +97,8 @@ func set_target_dir(dir: Vector2) -> void:
 	idle_timer.start(after_move_idle_wait_time)
 	var target: Vector2 = position + dir * 16
 	if not current_map.request_move(target):
+		AudioManager.play_sfx(SFXEntry.SFXKey.Wall)
+		move_state = MoveState.IDLE
 		return
 	idle_timer.stop()
 	target_pos = position + dir * 16

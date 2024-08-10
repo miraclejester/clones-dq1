@@ -5,7 +5,7 @@ enum SFXKey {
 	Attack, EnemyAttack, Breathing,
 	ExcellentMove, Hit, Miss1,
 	Miss2, ReceiveDamage, Spell,
-	Run, MenuBlip
+	Run, MenuBlip, Wall
 }
 
 @export var key: SFXKey
