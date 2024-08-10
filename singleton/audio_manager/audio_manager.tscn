@@ -127,6 +127,7 @@ sfx = ExtResource("21_oxt4l")
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_qpl2e"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_rp44a")
 bgms = Array[ExtResource("3_xda6v")]([SubResource("Resource_38b51"), SubResource("Resource_rp6jq"), SubResource("Resource_pw2ep"), SubResource("Resource_doxpq"), SubResource("Resource_yn1wc"), SubResource("Resource_ivuaa"), SubResource("Resource_3nnqg"), SubResource("Resource_nbiht"), SubResource("Resource_wdq1q")])
 sfxs = Array[ExtResource("10_63mfy")]([SubResource("Resource_40om7"), SubResource("Resource_3osdq"), SubResource("Resource_v3dqi"), SubResource("Resource_er272"), SubResource("Resource_gje08"), SubResource("Resource_ilecd"), SubResource("Resource_76c63"), SubResource("Resource_fmyio"), SubResource("Resource_6scbd"), SubResource("Resource_251kx"), SubResource("Resource_dqgg5")])

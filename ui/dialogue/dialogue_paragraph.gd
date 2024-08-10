@@ -38,23 +38,26 @@ func play_next_line() -> void:
 	
 
 func get_next_line_text() -> String:
+	#Thy Experience 
+	#increases  by 1
 	var res: String = ""
 	if data.in_quotes:
 		if word_index == 0:
-			res += '~'
+			split_text[word_index] = '~' + split_text[word_index]
 		else:
-			res += ' '
+			split_text[word_index] = ' ' + split_text[word_index]
 	var cur_length: int = 0
 	var idx: int = word_index
+	if idx < split_text.size() - 1 and cur_length + ((split_text[idx].length() + 1) * 8) <= wrap_length:
+		split_text[idx] += ' '
 	while idx < split_text.size() and cur_length + (split_text[idx].length() * 8) <= wrap_length:
-		var spaces: int = 1
-		if cur_length == 0 and data.in_quotes:
-			spaces += 1
-		cur_length += (split_text[idx].length() + spaces) * 8
-		res += split_text[idx] + ' '
+		cur_length += (split_text[idx].length()) * 8
+		res += split_text[idx]
 		idx += 1
+		if data.in_quotes and idx == split_text.size() - 1:
+			split_text[idx] += "'"
+		if idx < split_text.size() - 1 and cur_length + ((split_text[idx].length() + 1) * 8) <= wrap_length:
+			split_text[idx] += ' '
 	res = res.trim_suffix(" ")
 	word_index = idx
-	if word_index >= split_text.size() and data.in_quotes:
-		res += "'"
 	return res

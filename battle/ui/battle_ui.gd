@@ -63,7 +63,6 @@ func show_hud() -> void:
 
 
 func show_command_window() -> void:
-	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
 	command_window.visible = true
 	MenuStack.push_stack(command_window, command_window.activate, command_window.deactivate)
 	

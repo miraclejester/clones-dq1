@@ -88,6 +88,12 @@ func create_paragraph() -> DialogueParagraph:
 	return paragraph
 
 
+func clean_window() -> void:
+	paragraph_container.remove_child(current_paragraph)
+	current_paragraph.queue_free()
+	create_paragraph()
+
+
 func create_continuator(vis: bool = true) -> void:
 	var cont: DialogueContinuator = continuator_scene.instantiate() as DialogueContinuator
 	paragraph_container.add_child(cont)

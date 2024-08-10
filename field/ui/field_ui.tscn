@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvrgbbcsw5bfy"]
+[gd_scene load_steps=5 format=3 uid="uid://cvrgbbcsw5bfy"]
 
 [ext_resource type="Script" path="res://field/ui/field_ui.gd" id="1_7y1k8"]
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_356wy"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="3_tjigo"]
+[ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="4_5wf1j"]
 
 [node name="FieldUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_7y1k8")
 
 [node name="VisualsParent" type="Control" parent="."]
@@ -15,5 +18,27 @@ offset_bottom = 40.0
 [node name="PlayerHud" parent="VisualsParent" instance=ExtResource("1_356wy")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = -24.0
+offset_left = 8.0
+offset_right = -32.0
 offset_bottom = -16.0
+
+[node name="CommandWindow" parent="VisualsParent" instance=ExtResource("3_tjigo")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 88.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = -32.0
+
+[node name="GridContainer" parent="VisualsParent/CommandWindow/MarginContainer" index="0"]
+theme_override_constants/h_separation = 12
+
+[node name="DialogueWindow" parent="VisualsParent" instance=ExtResource("4_5wf1j")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 32.0
+offset_top = 136.0
+offset_right = -8.0
+offset_bottom = 96.0
+
+[editable path="VisualsParent/CommandWindow"]

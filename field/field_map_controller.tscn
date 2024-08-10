@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3hdkb0bnwlmh"]
+
+[ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
+[ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
+[ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
+[ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
+
+[node name="FieldMapController" type="Node2D"]
+script = ExtResource("1_wpht4")
+base_map_path = "res://field/maps"
+talk_default_dialogue = ExtResource("2_xsj18")
+
+[node name="FieldMapContainer" type="Node2D" parent="."]
+
+[node name="HeroCharacter" parent="." instance=ExtResource("5_xgior")]
+unique_name_in_owner = true
+position = Vector2(88, 104)
+
+[node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]

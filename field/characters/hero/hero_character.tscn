@@ -1,99 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtm3drykcn2lw"]
+[gd_scene load_steps=4 format=3 uid="uid://dtm3drykcn2lw"]
 
 [ext_resource type="Texture2D" uid="uid://dk7rdjy31f2xb" path="res://field/characters/hero/hero.png" id="1_6hfk0"]
 [ext_resource type="Script" path="res://field/characters/hero/hero_character.gd" id="1_jcmbw"]
-
-[sub_resource type="Animation" id="Animation_x8ws5"]
-resource_name = "walk_down"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_qwhnw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_sws0l"]
-resource_name = "walk_left"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_wplfr"]
-resource_name = "walk_up"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_k0q3n"]
-resource_name = "walk_right"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [6, 7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6lrry"]
-_data = {
-"RESET": SubResource("Animation_qwhnw"),
-"walk_down": SubResource("Animation_x8ws5"),
-"walk_left": SubResource("Animation_sws0l"),
-"walk_right": SubResource("Animation_k0q3n"),
-"walk_up": SubResource("Animation_wplfr")
-}
+[ext_resource type="AnimationLibrary" uid="uid://cnadevh6lfauh" path="res://field/characters/shared/animations/basic_character_move.tres" id="3_uqujf"]
 
 [node name="HeroCharacter" type="Node2D"]
 script = ExtResource("1_jcmbw")
@@ -101,15 +10,17 @@ move_speed = 48.0
 facing_wait_time = 0.15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("1_6hfk0")
 hframes = 8
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_6lrry")
+"basic_character_move": ExtResource("3_uqujf")
 }
-autoplay = "walk_down"
+autoplay = "basic_character_move/walk_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

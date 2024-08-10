@@ -118,6 +118,7 @@ func cancel() -> void:
 
 
 func activate() -> void:
+	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
 	get_command(selection_index).highlight()
 	menu_active = true
 
