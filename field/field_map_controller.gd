@@ -30,6 +30,7 @@ func load_map(path: String) -> void:
 	var map: FieldMap = map_scene.instantiate() as FieldMap
 	field_map = map
 	field_map_container.add_child(field_map)
+	AudioManager.play_bgm(field_map.map_bgm)
 
 
 func on_hero_idling() -> void:

@@ -28,6 +28,7 @@ in_quotes = true
 wait_for_input = false
 
 [node name="TantegelThrone" instance=ExtResource("1_hwxu4")]
+map_bgm = 10
 
 [node name="LeftGuard" parent="NPCParent" index="0" instance=ExtResource("2_2vqup")]
 position = Vector2(88, 136)

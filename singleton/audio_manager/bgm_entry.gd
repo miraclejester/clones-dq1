@@ -4,7 +4,7 @@ class_name BGMEntry
 enum BGMKey {
 	BattleBGM, Overworld, Victory, Defeat,
 	FairyFlute, BattleReprise, LevelUp, SilverHarp,
-	None, FinalBattle
+	None, FinalBattle, TantegelThrone
 }
 
 @export var key: BGMKey
