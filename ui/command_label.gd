@@ -34,7 +34,7 @@ func select() -> void:
 	selected.emit(label_text.text)
 
 
-func set_text(t: String, include_second_line: bool = true) -> void:
+func set_text(t: String, include_second_line: bool = true, second_line_has_text: bool = false) -> void:
 	var split: Array[String] = []
 	split.assign(t.split(' '))
 	match split.size():
@@ -43,15 +43,33 @@ func set_text(t: String, include_second_line: bool = true) -> void:
 			second_line.text = ""
 			second_line.visible = include_second_line
 		2:
-			label_text.text = split[0]
-			second_line.text = split[1]
-			second_line.visible = true
+			if include_second_line:
+				if second_line_has_text:
+					label_text.text = split[0]
+					second_line.text = split[1]
+				else:
+					label_text.text = t
+					second_line.text = ""
+				second_line.visible = true
+			else:
+				label_text.text = t
+				second_line.visible = false
 		3:
-			label_text.text = "%s %s" % [split[0], split[1]]
-			second_line.text = split[2]
-			second_line.visible = true
+			if include_second_line:
+				if second_line_has_text:
+					label_text.text = "%s %s" % [split[0], split[1]]
+					second_line.text = split[2]
+				else:
+					label_text.text = t
+					second_line.text = ""
+				second_line.visible = true
+			else:
+				label_text.text = t
+				second_line.visible = false
 		_:
 			label_text.text = t
+			second_line.text = ""
+			second_line.visible = true
 
 
 func set_amount(amount: int) -> void:

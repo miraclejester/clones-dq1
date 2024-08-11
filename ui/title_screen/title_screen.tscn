@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bavnl1ibsthxy"]
+
+[ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_gcgo6"]
+[ext_resource type="Texture2D" uid="uid://hjvxt4dsb0lg" path="res://ui/title_screen/title_screen.png" id="1_hlcdu"]
+[ext_resource type="PackedScene" uid="uid://d3hdkb0bnwlmh" path="res://field/field_map_controller.tscn" id="2_hhe0w"]
+[ext_resource type="Texture2D" uid="uid://dluiswcmnggwh" path="res://ui/title_screen/title_screen_full.png" id="2_yh04f"]
+[ext_resource type="Texture2D" uid="uid://bxq6vap1nresw" path="res://ui/title_screen/title_spark.png" id="4_tcr3a"]
+
+[sub_resource type="Animation" id="Animation_5bhe8"]
+resource_name = "spark"
+length = 5.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.45, 0.8, 2.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0, 1, 2, 3, 3, 2, 1, 0, 1, 2, 3, 3, 2, 1, 0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1gnqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skg45"]
+_data = {
+"RESET": SubResource("Animation_1gnqj"),
+"spark": SubResource("Animation_5bhe8")
+}
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_gcgo6")
+next_scene = ExtResource("2_hhe0w")
+
+[node name="TitleOnly" type="Sprite2D" parent="."]
+position = Vector2(384, 128)
+texture = ExtResource("1_hlcdu")
+offset = Vector2(-256, -24)
+
+[node name="FullScreen" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(384, 128)
+texture = ExtResource("2_yh04f")
+offset = Vector2(-256, -24)
+
+[node name="Spark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(202, 72)
+texture = ExtResource("4_tcr3a")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_skg45")
+}

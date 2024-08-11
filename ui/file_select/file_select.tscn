@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://csi7aj4iqanqj"]
+
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="1_2j5pk"]
+[ext_resource type="Script" path="res://ui/file_select/file_select.gd" id="1_xbxrf"]
+
+[node name="FileSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbxrf")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_2j5pk")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 33.0
+offset_top = 56.0
+offset_right = -32.0
+offset_bottom = -137.0
+
+[node name="UIWindow" parent="MainMenu" index="0"]
+offset_right = 191.0
+offset_bottom = 31.0
+
+[node name="ColorRect" parent="MainMenu" index="1"]
+visible = false
+
+[node name="Title" parent="MainMenu" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="MainMenu" index="3"]
+offset_right = 191.0
+offset_bottom = 31.0
+
+[node name="AdventureLogs" parent="." instance=ExtResource("1_2j5pk")]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 136.0
+offset_right = -16.0
+offset_bottom = -64.0
+
+[node name="UIWindow" parent="AdventureLogs" index="0"]
+offset_right = 160.0
+offset_bottom = 24.0
+
+[node name="ColorRect" parent="AdventureLogs" index="1"]
+visible = false
+
+[node name="Title" parent="AdventureLogs" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="AdventureLogs" index="3"]
+offset_right = 160.0
+offset_bottom = 24.0
+
+[editable path="MainMenu"]
+[editable path="AdventureLogs"]

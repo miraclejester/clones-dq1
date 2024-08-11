@@ -1,8 +1,7 @@
-extends Control
+extends UIMenu
 class_name CommandWindow
 
 signal selected(index: int)
-signal cancelled()
 
 @export var command_label_scene: PackedScene
 
@@ -56,6 +55,7 @@ func initialize_commands(commands: Array[String], columns: int) -> void:
 	for command in commands:
 		add_command(command, idx < last_row_index)
 		idx += 1
+	set_selection(0)
 
 
 func initialize_stacks(stacks: Array[ItemStack], columns: int) -> void:
@@ -66,14 +66,15 @@ func initialize_stacks(stacks: Array[ItemStack], columns: int) -> void:
 	var last_row_index: int = stacks.size() - grid_container.columns
 	var idx: int = 0
 	for stack in stacks:
-		add_command(stack.item.item_name, idx < last_row_index, stack.amount)
+		var words: int = stack.item.item_name.split(" ").size()
+		add_command(stack.item.item_name, idx < last_row_index or words > 1, stack.amount, true)
 		idx += 1
 
 
-func add_command(command_text: String, show_second_line: bool, amount: int = 0) -> void:
+func add_command(command_text: String, show_second_line: bool, amount: int = 0, second_line_has_text: bool = false) -> void:
 	var command_label: CommandLabel = command_label_scene.instantiate()
 	grid_container.add_child(command_label)
-	command_label.set_text(command_text, show_second_line)
+	command_label.set_text(command_text, show_second_line, second_line_has_text)
 	command_label.set_amount(amount)
 	command_label.move_away()
 

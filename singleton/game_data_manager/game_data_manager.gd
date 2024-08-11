@@ -28,11 +28,11 @@ func load_items_from_dir(dir: String) -> void:
 
 
 func save_game() -> void:
+	generate_save_data()
 	save_to_file(current_file_index)
 
 
 func save_to_file(file_index: int) -> void:
-	generate_save_data()
 	var save_file: FileAccess = FileAccess.open("%sfile%d.save" % [save_path, file_index], FileAccess.WRITE)
 	save_file.store_var(save_dict)
 
@@ -64,3 +64,11 @@ func generate_new_save_data() -> void:
 			"map_key": "brecconary/tantegel_throne"
 		}
 	}
+
+
+func get_available_slots() -> Array[int]:
+	var res: Array[int] = []
+	for i in range(1, 3):
+		if FileAccess.file_exists("%sfile%d.save" % [save_path, i]):
+			res.append(i)
+	return res
