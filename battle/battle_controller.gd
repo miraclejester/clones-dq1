@@ -26,13 +26,6 @@ func _ready() -> void:
 	battle_ui.run_selected.connect(run_selected)
 	battle_ui.item_selected.connect(item_selected)
 	
-	battle_ui.spell_data_selected.connect(spell_selected_from_menu)
-	battle_ui.spell_cancelled.connect(spell_menu_cancelled)
-	
-	battle_ui.item_data_selected.connect(item_selected_from_menu)
-	battle_ui.item_cancelled.connect(item_menu_cancelled)
-	
-	battle_ui.command_menu_cancelled.connect(command_menu_cancelled)
 	var c: BattleConfig = BattleConfig.new()
 	c.field_bgm = BGMEntry.BGMKey.Overworld
 	start_battle(e_data, c)
@@ -100,7 +93,7 @@ func process_updates() -> void:
 func ask_command() -> void:
 	await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCommand)
 	await battle_ui.show_newline()
-	battle_ui.show_command_window()
+	battle_ui.show_command_window(command_menu_cancelled)
 
 
 func fight_selected() -> void:
@@ -122,7 +115,7 @@ func spell_selected() -> void:
 		battle.do_turn()
 		process_updates()
 	else:
-		battle_ui.show_spell_window()
+		battle_ui.show_spell_window(spell_selected_from_menu, spell_menu_cancelled)
 
 
 func item_selected() -> void:
@@ -133,12 +126,14 @@ func item_selected() -> void:
 		process_updates()
 	else:
 		battle_ui.refresh_inventory(hero)
-		battle_ui.show_item_window()
+		battle_ui.show_item_window(item_selected_from_menu, item_menu_cancelled)
 		
 
 
 func spell_selected_from_menu(data: SpellData) -> void:
-	await battle_ui.hide_spell_window()
+	await MenuStack.pop_stack()
+	battle_ui.hide_spell_window()
+	await MenuStack.pop_stack()
 	battle_ui.hide_command_window()
 	if battle.hero.stats.get_stat(UnitStats.StatKey.MP) < data.mp_cost:
 		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleLowMP)
@@ -150,7 +145,9 @@ func spell_selected_from_menu(data: SpellData) -> void:
 
 
 func item_selected_from_menu(data: ItemData) -> void:
-	await battle_ui.hide_item_window()
+	await MenuStack.pop_stack()
+	battle_ui.hide_item_window()
+	await MenuStack.pop_stack()
 	battle_ui.hide_command_window()
 	if (not data.battle_action) or (data.battle_action.spell_effects.size() == 0):
 		await battle_ui.show_line(GeneralDialogueProvider.DialogueID.BattleCannotUseItem)
@@ -164,22 +161,26 @@ func item_selected_from_menu(data: ItemData) -> void:
 
 
 func spell_menu_cancelled() -> void:
-	await battle_ui.hide_spell_window()
+	battle_ui.hide_spell_window()
+	await MenuStack.pop_stack()
 	battle_ui.hide_command_window()
-	await battle_ui.show_newline()
+	await MenuStack.pop_stack()
 	battle.do_turn()
 	process_updates()
 
 
 func item_menu_cancelled() -> void:
-	await battle_ui.hide_item_window()
+	battle_ui.hide_item_window()
+	await MenuStack.pop_stack()
 	battle_ui.hide_command_window()
+	await MenuStack.pop_stack()
 	await battle_ui.show_newline()
 	battle.do_turn()
 	process_updates()
 
 
 func command_menu_cancelled() -> void:
+	await MenuStack.pop_stack()
 	battle.do_turn()
 	process_updates()
 

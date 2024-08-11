@@ -1,8 +1,7 @@
-extends Control
+extends UIMenu
 class_name ItemWindow
 
 signal item_selected(item: ItemData)
-signal cancelled()
 
 @onready var command_window: CommandWindow = $CommandWindow
 var inventory: Array[ItemStack]

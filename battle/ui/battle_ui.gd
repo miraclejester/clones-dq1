@@ -6,14 +6,6 @@ signal spell_selected()
 signal run_selected()
 signal item_selected()
 
-signal spell_data_selected()
-signal spell_cancelled()
-
-signal item_data_selected()
-signal item_cancelled()
-
-signal command_menu_cancelled()
-
 signal dialogue_finished()
 
 @export var low_health_color: Color
@@ -29,13 +21,7 @@ signal dialogue_finished()
 
 func _ready() -> void:
 	dialogue_window.current_dialogue_finished.connect(current_dialogue_finished)
-	spell_window.spell_selected.connect(spell_selected_from_menu)
-	spell_window.cancelled.connect(spell_menu_cancelled)
 	
-	item_window.item_selected.connect(item_selected_from_menu)
-	item_window.cancelled.connect(item_menu_cancelled)
-	
-	command_window.cancelled.connect(on_command_menu_cancelled)
 	command_window.initialize_commands(
 		[
 			CommandData.new("FIGHT", func (): fight_selected.emit()),
@@ -69,34 +55,53 @@ func show_hud() -> void:
 	player_hud.visible = true
 
 
-func show_command_window() -> void:
+func show_command_window(cancel_callback: Callable) -> void:
 	command_window.visible = true
-	MenuStack.push_stack(command_window, command_window.activate, command_window.deactivate)
-	
+	command_window.set_selection(0)
+	MenuStack.push_stack(
+		command_window,
+		command_window.activate,
+		command_window.deactivate,
+		cancel_callback
+	)
+
+
+func show_spell_window(spell_selected_callback: Callable, cancel_callback: Callable) -> void:
+	spell_window.visible = true
+	await MenuStack.push_stack(
+		spell_window,
+		spell_window.activate,
+		spell_window.deactivate,
+		func ():
+			spell_window.spell_selected.disconnect(spell_selected_callback)
+			cancel_callback.call()
+	)
+	spell_window.spell_selected.connect(spell_selected_callback, CONNECT_ONE_SHOT)
+
 
 func hide_command_window() -> void:
 	command_window.visible = false
-	MenuStack.pop_stack()
-
-
-func show_spell_window() -> void:
-	spell_window.visible = true
-	await MenuStack.push_stack(spell_window, spell_window.activate, spell_window.deactivate)
 
 
 func hide_spell_window() -> void:
 	spell_window.visible = false
-	await MenuStack.pop_stack()
 
 
-func show_item_window() -> void:
+func show_item_window(item_selected_callback: Callable, cancel_callback: Callable) -> void:
 	item_window.visible = true
-	await MenuStack.push_stack(item_window, item_window.activate, item_window.deactivate)
+	await MenuStack.push_stack(
+		item_window,
+		item_window.activate,
+		item_window.deactivate,
+		func ():
+			item_window.item_selected.disconnect(item_selected_callback)
+			cancel_callback.call()
+	)
+	item_window.item_selected.connect(item_selected_callback, CONNECT_ONE_SHOT)
 
 
 func hide_item_window() -> void:
 	item_window.visible = false
-	await MenuStack.pop_stack()
 
 
 func wait_for_dialogue_continuation(cont_visible: bool = true) -> void:
@@ -127,23 +132,3 @@ func current_dialogue_finished() -> void:
 
 func update_player_stat(key: PlayerHUD.HUDStatKey, val: int) -> void:
 	player_hud.update_stat(key, val)
-
-
-func spell_selected_from_menu(spell: SpellData) -> void:
-	spell_data_selected.emit(spell)
-
-
-func spell_menu_cancelled() -> void:
-	spell_cancelled.emit()
-
-
-func item_selected_from_menu(item: ItemData) -> void:
-	item_data_selected.emit(item)
-
-
-func item_menu_cancelled() -> void:
-	item_cancelled.emit()
-
-
-func on_command_menu_cancelled() -> void:
-	command_menu_cancelled.emit()

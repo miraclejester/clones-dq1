@@ -26,6 +26,6 @@ func pop_stack() -> void:
 		(stack[0].menu as UIMenu).cancelled.disconnect(stack[0].cancel_method)
 	stack[0].deactivate_method.call()
 	stack.pop_front()
+	await get_tree().process_frame
 	if stack.size() > 0:
-		await get_tree().process_frame
 		stack[0].activate_method.call()

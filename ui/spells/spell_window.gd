@@ -1,8 +1,7 @@
-extends Control
+extends UIMenu
 class_name SpellWindow
 
 signal spell_selected(data: SpellData)
-signal cancelled()
 
 @onready var command_window: CommandWindow = $CommandWindow
 
