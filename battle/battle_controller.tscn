@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="2_52olo"]
 [ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="2_f0bgm"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
-[ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime/00_slime.tres" id="3_h8031"]
+[ext_resource type="Resource" uid="uid://dqywv3egtwakj" path="res://unit_data/enemies/29_werewolf/29_werewolf.tres" id="3_bdjjw"]
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
 [ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
 [ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="4_45u81"]
@@ -13,10 +13,10 @@
 
 [sub_resource type="Resource" id="Resource_1dm77"]
 script = ExtResource("4_45u81")
-enemy = ExtResource("3_h8031")
+enemy = ExtResource("3_bdjjw")
 battle_bg = ExtResource("2_f0bgm")
 bgm_key = 0
-reprise_key = 0
+reprise_key = 5
 show_spoils = true
 use_dragonlord_layer = false
 shake_on_hit = true

@@ -25,7 +25,6 @@ func _ready() -> void:
 	scroll_container.get_v_scroll_bar().changed.connect(scroll_to_bottom)
 	set_process(false)
 	create_paragraph()
-	yes_no_window.initialize_commands(["YES", "NO"], 1)
 	yes_no_window.visible = false
 
 
@@ -117,14 +116,32 @@ func create_newline() -> DialogueParagraph:
 	return p
 
 
-func prompt_yes_no() -> bool:
+func prompt_yes_no(on_yes: Callable, on_no: Callable) -> void:
+	var cleanup_callable: Callable = func ():
+		await MenuStack.pop_stack()
+		yes_no_window.visible = false
+	
+	yes_no_window.initialize_commands([
+		CommandData.new("YES", func():
+			await cleanup_callable.call()
+			await on_yes.call()
+			),
+		CommandData.new("NO", func():
+			await cleanup_callable.call()
+			await on_no.call()
+			),
+	], 1)
 	yes_no_window.visible = true
-	yes_no_window.set_selection(0)
-	await MenuStack.push_stack(yes_no_window, yes_no_window.activate, yes_no_window.deactivate)
-	var idx: int = await yes_no_window.selected
-	await MenuStack.pop_stack()
-	yes_no_window.visible = false
-	return idx == 0
+	await MenuStack.push_stack(
+		yes_no_window,
+		yes_no_window.activate,
+		yes_no_window.deactivate,
+		func ():
+			await MenuStack.pop_stack()
+			yes_no_window.set_selection(1)
+			yes_no_window.select()
+			yes_no_window.visible = false
+	)
 
 
 func scroll_to_bottom():

@@ -9,6 +9,8 @@ signal selected(index: int)
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var grid_container: GridContainer = %GridContainer
 
+var command_callables: Array[Callable]
+
 
 var selection_index: int = 0
 var menu_active: bool = false
@@ -45,7 +47,8 @@ func _process(_delta: float) -> void:
 		cancel()
 
 
-func initialize_commands(commands: Array[String], columns: int) -> void:
+func initialize_commands(commands: Array[CommandData], columns: int) -> void:
+	command_callables = []
 	for child in grid_container.get_children():
 		grid_container.remove_child(child)
 		child.queue_free()
@@ -53,30 +56,19 @@ func initialize_commands(commands: Array[String], columns: int) -> void:
 	var last_row_index: int = commands.size() - grid_container.columns
 	var idx: int = 0
 	for command in commands:
-		add_command(command, idx < last_row_index)
+		add_command(command, idx < last_row_index, command.amount)
 		idx += 1
 	set_selection(0)
 
 
-func initialize_stacks(stacks: Array[ItemStack], columns: int) -> void:
-	for child in grid_container.get_children():
-		grid_container.remove_child(child)
-		child.queue_free()
-	grid_container.columns = columns
-	var last_row_index: int = stacks.size() - grid_container.columns
-	var idx: int = 0
-	for stack in stacks:
-		var words: int = stack.item.item_name.split(" ").size()
-		add_command(stack.item.item_name, idx < last_row_index or words > 1, stack.amount, true)
-		idx += 1
-
-
-func add_command(command_text: String, show_second_line: bool, amount: int = 0, second_line_has_text: bool = false) -> void:
+func add_command(command: CommandData, show_second_line: bool, amount: int = 0, second_line_has_text: bool = false) -> void:
 	var command_label: CommandLabel = command_label_scene.instantiate()
 	grid_container.add_child(command_label)
-	command_label.set_text(command_text, show_second_line, second_line_has_text)
+	command_label.set_text(command.text, show_second_line, second_line_has_text)
 	command_label.set_amount(amount)
 	command_label.move_away()
+	
+	command_callables.append(command.callback)
 
 
 func move_left() -> void:
@@ -112,6 +104,7 @@ func set_selection(idx: int) -> void:
 func select() -> void:
 	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
 	selected.emit(selection_index)
+	command_callables[selection_index].call()
 
 
 func cancel() -> void:

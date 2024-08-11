@@ -12,7 +12,7 @@ func _ready() -> void:
 		hero.equipment.equip(equipment)
 	hero.set_hero_name("Erdrick")
 	hero.set_stats_from_level(12, true)
-	#hero.stats.set_stat(UnitStats.StatKey.HP, 2)
+	hero.stats.set_stat(UnitStats.StatKey.HP, 2)
 
 
 func get_next_level_entry() -> ExperienceChartEntry:

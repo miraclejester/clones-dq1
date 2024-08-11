@@ -10,19 +10,17 @@ var spells: Array[SpellData] = []
 
 
 func _ready() -> void:
-	command_window.selected.connect(command_selected)
 	command_window.cancelled.connect(command_cancelled)
 
 
 func set_spells(s: Array[SpellData]) -> void:
 	spells = s
-	var spell_names: Array[String] = []
-	spell_names.assign(spells.map(func(spell: SpellData): return spell.spell_name))
-	command_window.initialize_commands(spell_names, 1)
-
-
-func command_selected(idx: int) -> void:
-	spell_selected.emit(spells[idx])
+	var spell_commands: Array[CommandData] = []
+	spell_commands.assign(spells.map(
+			func(spell: SpellData): return CommandData.new(spell.spell_name, func (): spell_selected.emit(spell))
+		)
+	)
+	command_window.initialize_commands(spell_commands, 1)
 
 
 func command_cancelled() -> void:

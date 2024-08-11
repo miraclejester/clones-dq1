@@ -9,17 +9,21 @@ var inventory: Array[ItemStack]
 
 
 func _ready() -> void:
-	command_window.selected.connect(command_selected)
 	command_window.cancelled.connect(command_cancelled)
 
 
 func set_items(inv: Array[ItemStack]) -> void:
 	inventory.assign(inv)
-	command_window.initialize_stacks(inventory, 1)
-
-
-func command_selected(idx: int) -> void:
-	item_selected.emit(inventory[idx].item)
+	var commands: Array[CommandData] = []
+	commands.assign(inventory.map(func (stack: ItemStack):
+		return CommandData.new(
+			stack.item.item_name,
+			func (): item_selected.emit(stack.item),
+			stack.amount
+			)
+		)
+	)
+	command_window.initialize_commands(commands, 1)
 
 
 func command_cancelled() -> void:

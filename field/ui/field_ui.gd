@@ -29,14 +29,18 @@ func _ready() -> void:
 	for child in visuals_parent.get_children():
 		(child as Control).visible = false
 	set_hero(PlayerManager.hero)
-	command_window.initialize_commands([
-		"TALK", "SPELL",
-		"STATUS", "ITEM",
-		"STAIRS", "DOOR",
-		"SEARCH", "TAKE"
-	], 2)
+	var commands: Array[CommandData] = [
+		CommandData.new("TALK", func() : talk_selected.emit()),
+		CommandData.new("SPELL", func() : spell_selected.emit()),
+		CommandData.new("STATUS", func() : status_selected.emit()),
+		CommandData.new("ITEM", func() : item_selected.emit()),
+		CommandData.new("STAIRS", func() : stairs_selected.emit()),
+		CommandData.new("DOOR", func() : door_selected.emit()),
+		CommandData.new("SEARCH", func() : search_selected.emit()),
+		CommandData.new("TAKE", func() : take_selected.emit()),
+	]
+	command_window.initialize_commands(commands, 2)
 	
-	command_window.selected.connect(on_command_selected)
 	command_window.cancelled.connect(on_command_cancelled)
 
 
@@ -69,10 +73,6 @@ func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}) -> void:
 	await dialogue_window.start_dialogue([DialogueEventParams.fromData(dialogue, params)])
 	await dialogue_window.wait_for_continuation(false)
 	dialogue_window.visible = false
-
-
-func on_command_selected(idx: int) -> void:
-	command_select_signals[idx].emit()
 
 
 func on_command_cancelled() -> void:

@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://5m0qcirywe8w"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://5m0qcirywe8w"]
 
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_flxgu"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_iyfbs"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="3_uss38"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="4_467ux"]
+
+[sub_resource type="Resource" id="Resource_u4jf4"]
+script = ExtResource("2_iyfbs")
+min_heal = 20
+max_heal = 35
 
 [sub_resource type="Resource" id="Resource_qq4jm"]
 script = ExtResource("1_flxgu")
 target_type = 0
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_u4jf4")])
 
 [sub_resource type="Resource" id="Resource_xulle"]
 script = ExtResource("4_467ux")

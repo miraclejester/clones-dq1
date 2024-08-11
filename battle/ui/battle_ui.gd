@@ -28,7 +28,6 @@ signal dialogue_finished()
 
 
 func _ready() -> void:
-	command_window.selected.connect(command_selected)
 	dialogue_window.current_dialogue_finished.connect(current_dialogue_finished)
 	spell_window.spell_selected.connect(spell_selected_from_menu)
 	spell_window.cancelled.connect(spell_menu_cancelled)
@@ -37,7 +36,15 @@ func _ready() -> void:
 	item_window.cancelled.connect(item_menu_cancelled)
 	
 	command_window.cancelled.connect(on_command_menu_cancelled)
-	command_window.initialize_commands(["FIGHT", "SPELL", "RUN", "ITEM"], 2)
+	command_window.initialize_commands(
+		[
+			CommandData.new("FIGHT", func (): fight_selected.emit()),
+			CommandData.new("SPELL", func (): spell_selected.emit()), 
+			CommandData.new("RUN", func (): run_selected.emit()),
+			CommandData.new("ITEM", func (): item_selected.emit())
+		],
+		2
+	)
 
 
 func initialize() -> void:
@@ -120,18 +127,6 @@ func current_dialogue_finished() -> void:
 
 func update_player_stat(key: PlayerHUD.HUDStatKey, val: int) -> void:
 	player_hud.update_stat(key, val)
-
-
-func command_selected(idx: int) -> void:
-	match idx:
-		0:
-			fight_selected.emit()
-		1:
-			spell_selected.emit()
-		2:
-			run_selected.emit()
-		3:
-			item_selected.emit()
 
 
 func spell_selected_from_menu(spell: SpellData) -> void:
