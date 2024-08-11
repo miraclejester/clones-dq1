@@ -23,6 +23,7 @@ DebugUtils="*res://singleton/debug_utils.tscn"
 PlayerManager="*res://singleton/player_manager/player_manager.tscn"
 GlobalVisuals="*res://singleton/global_visuals/global_visuals.tscn"
 AudioManager="*res://singleton/audio_manager/audio_manager.tscn"
+GameDataManager="*res://singleton/game_data_manager/game_data_manager.tscn"
 
 [display]
 

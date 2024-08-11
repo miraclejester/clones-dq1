@@ -58,3 +58,11 @@ func get_base_resistance(key: UnitStats.ResistanceKey) -> float:
 			if m.resistance_type == key:
 				base = max(base, m.base)
 	return base
+
+
+func generate_save_data() -> Array[int]:
+	var res: Array[int] = []
+	for val in eq_dict.values():
+		var v: EquipmentData = val as EquipmentData
+		res.append(v.item_id)
+	return res

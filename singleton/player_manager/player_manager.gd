@@ -11,7 +11,7 @@ func _ready() -> void:
 	for equipment in DebugUtils.debug_equipment:
 		hero.equipment.equip(equipment)
 	hero.set_hero_name("Erdrick")
-	hero.set_stats_from_level(1, true)
+	hero.set_stats_from_level(12, true)
 	#hero.stats.set_stat(UnitStats.StatKey.HP, 2)
 
 
@@ -26,4 +26,16 @@ func get_exp_for_next_level() -> int:
 	if chart == null:
 		return 0
 	else:
-		return chart.experience - hero.experience 
+		return chart.experience - hero.experience
+
+
+func generate_save_data() -> Dictionary:
+	return {
+		"level": hero.level,
+		"gold": hero.gold,
+		"experience": hero.experience,
+		"hp": hero.stats.get_stat(UnitStats.StatKey.HP),
+		"mp": hero.stats.get_stat(UnitStats.StatKey.MP),
+		"items": hero.inventory.generate_save_data(),
+		"equipment": hero.equipment.generate_save_data()
+	}

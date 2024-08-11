@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://s6tfxqls2bjn"]
+[gd_scene load_steps=37 format=3 uid="uid://s6tfxqls2bjn"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_hwxu4"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_2vqup"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/yes_no_decision_dialogue_event.gd" id="5_7x3b3"]
 [ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="7_26oui"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/fade_out_dialogue_event.gd" id="7_a4845"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_game_dialogue_event.gd" id="7_m4n18"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/quit_game_dialogue_event.gd" id="7_t0knf"]
 
 [sub_resource type="Resource" id="Resource_17uu2"]
@@ -116,7 +117,10 @@ wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
 
-[sub_resource type="Resource" id="Resource_jqm8d"]
+[sub_resource type="Resource" id="Resource_hmd4i"]
+script = ExtResource("7_m4n18")
+
+[sub_resource type="Resource" id="Resource_0v1u1"]
 script = ExtResource("3_wncvr")
 text = "Thy deeds have been recorded on the Imperial Scrolls of Honor"
 in_quotes = true
@@ -125,9 +129,13 @@ wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
 
+[sub_resource type="Resource" id="Resource_dlk32"]
+script = ExtResource("4_118hu")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_hmd4i"), SubResource("Resource_0v1u1")])
+
 [sub_resource type="Resource" id="Resource_7ighl"]
 script = ExtResource("5_7x3b3")
-yes_event = SubResource("Resource_jqm8d")
+yes_event = SubResource("Resource_dlk32")
 
 [sub_resource type="Resource" id="Resource_j8xv8"]
 script = ExtResource("3_wncvr")

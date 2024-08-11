@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5mkw7n2o1wl"]
+
+[ext_resource type="Script" path="res://singleton/game_data_manager/game_data_manager.gd" id="1_pyd5o"]
+
+[node name="GameDataManager" type="Node"]
+script = ExtResource("1_pyd5o")
+items_dir = "res://unit_data/items/data"
+equipment_dir = "res://unit_data/equipment"

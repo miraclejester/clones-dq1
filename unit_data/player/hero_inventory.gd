@@ -34,3 +34,13 @@ func find_stack(id: int) -> ItemStack:
 
 func has_item(item: ItemData) -> bool:
 	return find_stack(item.item_id) != null
+
+
+func generate_save_data() -> Array[Dictionary]:
+	var res: Array[Dictionary] = []
+	for stack in items:
+		res.append({
+			"id": stack.item.item_id,
+			"amount": stack.amount
+		})
+	return res
