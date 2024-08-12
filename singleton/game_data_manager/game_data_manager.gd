@@ -20,6 +20,10 @@ func generate_item_database() -> void:
 	load_items_from_dir(equipment_dir + "/armor")
 
 
+func get_item(id: int) -> ItemData:
+	return item_dict.get(id) as ItemData
+
+
 func load_items_from_dir(dir: String) -> void:
 	for file_name in DirAccess.get_files_at(dir):
 		var item: ItemData = load("%s/%s" % [dir, file_name]) as ItemData
@@ -28,6 +32,11 @@ func load_items_from_dir(dir: String) -> void:
 
 func save_game() -> void:
 	generate_save_data()
+	save_to_file(current_file_index)
+
+
+func create_new_game(hero_name: String) -> void:
+	generate_new_save_data(hero_name)
 	save_to_file(current_file_index)
 
 
@@ -40,6 +49,7 @@ func generate_save_data() -> void:
 	save_dict = {}
 	
 	save_dict["player"] = PlayerManager.generate_save_data()
+	save_dict["settings"] = GameSettings.generate_save_data()
 	
 	var save_handlers: Array[SaveDataHandler] = []
 	save_handlers.assign(get_tree().get_nodes_in_group("save_handler"))
@@ -60,15 +70,20 @@ func generate_new_save_data(hero_name: String) -> void:
 			"items": [],
 			"equipment": []
 		},
-		"map": {
-			"map_key": "brecconary/tantegel_throne"
+		"settings": {
+			"message_speed": 0
 		}
 	}
 
 
+func load_from_local_data() -> void:
+	PlayerManager.load_from_data(save_dict.get("player", {}))
+	GameSettings.load_from_data(save_dict.get("settings", {}))
+
+
 func get_filled_slots() -> Array[int]:
 	var res: Array[int] = []
-	for i in range(1, 3):
+	for i in range(1, 4):
 		if FileAccess.file_exists("%sfile%d.save" % [save_path, i]):
 			res.append(i)
 	return res

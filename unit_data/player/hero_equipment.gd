@@ -66,3 +66,8 @@ func generate_save_data() -> Array[int]:
 		var v: EquipmentData = val as EquipmentData
 		res.append(v.item_id)
 	return res
+
+
+func load_from_data(data: Array[int]) -> void:
+	for id in data:
+		equip(GameDataManager.get_item(id) as EquipmentData)

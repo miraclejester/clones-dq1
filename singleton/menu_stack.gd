@@ -29,3 +29,8 @@ func pop_stack() -> void:
 	await get_tree().process_frame
 	if stack.size() > 0:
 		stack[0].activate_method.call()
+
+
+func clear_menu_stack() -> void:
+	while stack.size() > 0:
+		await pop_stack()

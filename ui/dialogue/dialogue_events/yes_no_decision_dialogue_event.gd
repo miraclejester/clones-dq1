@@ -13,15 +13,15 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 
 
 func execute_yes(window: DialogueWindow, params: Dictionary) -> void:
+	await window.show_newline()
 	if yes_event != null:
-		await window.show_newline()
 		await yes_event.execute(window, params)
 	event_executed.emit()
 
 
 func execute_no(window: DialogueWindow, params: Dictionary) -> void:
+	await window.show_newline()
 	if no_event != null:
-		await window.show_newline()
 		await no_event.execute(window, params)
 	event_executed.emit()
 	

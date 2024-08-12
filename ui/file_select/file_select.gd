@@ -1,11 +1,15 @@
 extends Control
 class_name FileSelect
 
+@export var next_scene: PackedScene
+
 @onready var main_menu: CommandWindow = %MainMenu
 @onready var adventure_logs: CommandWindow = $AdventureLogs
 @onready var name_entry_window: NameEntryWindow = %NameEntryWindow
+@onready var message_speed_selector: MessageSpeedSelector = %MessageSpeedSelector
 
 var target_file_idx: int = 1
+var chosen_name: String = ""
 
 
 func _ready() -> void:
@@ -13,6 +17,7 @@ func _ready() -> void:
 	hide_adventure_logs()
 	populate_main_menu()
 	name_entry_window.visible = false
+	message_speed_selector.visible = false
 
 
 func populate_main_menu() -> void:
@@ -45,7 +50,7 @@ func show_adventure_logs(filled_slots: Array[int]) -> void:
 			return CommandData.new(
 				"ADVENTURE LOG %d" % slot,
 				func ():
-					target_file_idx = slot
+					GameDataManager.current_file_index = slot
 					show_name_entry_window()
 					)
 			)
@@ -69,9 +74,34 @@ func hide_adventure_logs() -> void:
 func show_name_entry_window() -> void:
 	MenuStack.push_stack(name_entry_window, name_entry_window.activate, name_entry_window.deactivate, name_entry_window.back)
 	name_entry_window.visible = true
-	var final_name: String = await name_entry_window.name_filled
-	GameDataManager.generate_new_save_data(final_name)
-	name_entry_window.visible = false
-	await MenuStack.pop_stack()
-	hide_adventure_logs()
-	await MenuStack.pop_stack()
+	chosen_name = await name_entry_window.name_filled
+	show_message_speed_selector()
+
+
+func show_message_speed_selector() -> void:
+	var cancel: Callable = func ():
+		message_speed_selector.speed_selected.disconnect(speed_selected_for_new_game)
+		message_speed_selector.visible = false
+		await MenuStack.pop_stack()
+		name_entry_window.visible = false
+		await MenuStack.pop_stack()
+		hide_adventure_logs()
+		await MenuStack.pop_stack()
+	
+	message_speed_selector.visible = true
+	await MenuStack.push_stack(
+		message_speed_selector,
+		message_speed_selector.activate,
+		message_speed_selector.deactivate,
+		cancel
+	)
+	message_speed_selector.speed_selected.connect(speed_selected_for_new_game)
+	
+
+
+func speed_selected_for_new_game(speed: int) -> void:
+	GameSettings.set_message_speed(speed)
+	GameDataManager.create_new_game(chosen_name)
+	GameDataManager.load_from_local_data()
+	await MenuStack.clear_menu_stack()
+	get_tree().change_scene_to_packed(next_scene)

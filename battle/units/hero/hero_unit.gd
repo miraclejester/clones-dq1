@@ -97,7 +97,10 @@ func set_stats_from_level(l: int, go_max: bool = false) -> void:
 func process_growth_value() -> void:
 	var sum: int = 0
 	for n in range(4):
-		sum += letter_values.get(hero_name[n]) as int
+		var letter: String = " "
+		if hero_name.length() > n:
+			letter = hero_name[n]
+		sum += letter_values.get(letter, 0) as int
 	growth_value = sum % 4
 	growth_sum = sum
 

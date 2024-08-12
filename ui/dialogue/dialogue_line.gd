@@ -3,7 +3,6 @@ class_name DialogueLine
 
 signal line_finished()
 
-@export var letter_speed: float = 0.035
 @export var speech_sound_speed: float = 0.06
 
 @onready var line_label: Label = $LineLabel
@@ -13,6 +12,10 @@ var letter_index: int = 0
 var current_text: String
 var custom_label_settings: LabelSettings
 var playing: bool = false
+var letter_speed: float = 0.035
+
+func _ready() -> void:
+	letter_speed = GameSettings.get_message_speed()
 
 
 func play_line(text: String, is_speech: bool = false) -> void:

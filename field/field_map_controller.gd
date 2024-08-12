@@ -8,7 +8,6 @@ class_name FieldMapController
 @onready var hero_character: HeroCharacter = %HeroCharacter
 @onready var field_ui: FieldUI = $FieldUI
 @onready var field_map_container: Node2D = $FieldMapContainer
-@onready var save_data_handler = %SaveDataHandler
 
 
 
@@ -17,7 +16,7 @@ var current_map_key: String
 
 
 func _ready() -> void:
-	save_data_handler.register_save_callable(generate_save_data)
+	await get_tree().process_frame
 	load_map("brecconary/tantegel_throne")
 	
 	hero_character.idling.connect(on_hero_idling)
@@ -81,9 +80,3 @@ func on_talk_selected() -> void:
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
 	close_command_window()
-
-
-func generate_save_data() -> SaveDataEntry:
-	return SaveDataEntry.new("map", {
-		"map_key": current_map_key
-	})

@@ -44,3 +44,8 @@ func generate_save_data() -> Array[Dictionary]:
 			"amount": stack.amount
 		})
 	return res
+
+func load_from_data(data: Array[Dictionary]) -> void:
+	for stack in data:
+		for i in range(stack.get("amount", 0)):
+			add_item(GameDataManager.get_item(stack.get("id") as int))

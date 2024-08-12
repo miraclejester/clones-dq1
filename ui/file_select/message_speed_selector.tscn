@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2fkmgnceplhx"]
+
+[ext_resource type="Script" path="res://ui/file_select/message_speed_selector.gd" id="1_j86xu"]
+[ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="2_0wmhj"]
+[ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="3_wo0u1"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="4_rlso4"]
+
+[node name="MessageSpeedSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = -48.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j86xu")
+
+[node name="UIWindow" parent="." instance=ExtResource("2_0wmhj")]
+layout_mode = 2
+offset_right = 144.0
+offset_bottom = 112.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UIWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIWindow/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Question" parent="UIWindow/MarginContainer/VBoxContainer" instance=ExtResource("3_wo0u1")]
+layout_mode = 2
+text = "Which Message
+
+Speed Do You 
+
+Want To Use?"
+
+[node name="MarginContainer" type="MarginContainer" parent="UIWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 27
+
+[node name="CommandWindow" parent="UIWindow/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("4_rlso4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UIWindow" parent="UIWindow/MarginContainer/VBoxContainer/MarginContainer/CommandWindow" index="0"]
+visible = false
+
+[node name="ColorRect" parent="UIWindow/MarginContainer/VBoxContainer/MarginContainer/CommandWindow" index="1"]
+visible = false
+
+[node name="Title" parent="UIWindow/MarginContainer/VBoxContainer/MarginContainer/CommandWindow" index="2"]
+visible = false
+
+[editable path="UIWindow/MarginContainer/VBoxContainer/MarginContainer/CommandWindow"]

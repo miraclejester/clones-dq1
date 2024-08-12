@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=5 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
-[ext_resource type="PackedScene" uid="uid://b7rmrg4758grl" path="res://singleton/game_data_manager/save_data_handler.tscn" id="5_adne4"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
 
@@ -21,6 +20,3 @@ facing_idle_wait_time = 3.5
 starting_face_dir = Vector2(0, 1)
 
 [node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]
-
-[node name="SaveDataHandler" parent="." instance=ExtResource("5_adne4")]
-unique_name_in_owner = true

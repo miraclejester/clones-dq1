@@ -4,16 +4,6 @@ extends Node
 
 @onready var hero: HeroUnit = $Hero
 
-func _ready() -> void:
-	hero.spells = DebugUtils.debug_spells
-	for item in DebugUtils.debug_items:
-		hero.inventory.add_item(item)
-	for equipment in DebugUtils.debug_equipment:
-		hero.equipment.equip(equipment)
-	hero.set_hero_name("Erdrick")
-	hero.set_stats_from_level(12, true)
-	#hero.stats.set_stat(UnitStats.StatKey.HP, 2)
-
 
 func get_next_level_entry() -> ExperienceChartEntry:
 	if hero.level >= 30:
@@ -34,8 +24,26 @@ func generate_save_data() -> Dictionary:
 		"level": hero.level,
 		"gold": hero.gold,
 		"experience": hero.experience,
+		"hero_name": hero.get_unit_name(),
 		"hp": hero.stats.get_stat(UnitStats.StatKey.HP),
 		"mp": hero.stats.get_stat(UnitStats.StatKey.MP),
 		"items": hero.inventory.generate_save_data(),
 		"equipment": hero.equipment.generate_save_data()
 	}
+
+
+func load_from_data(data: Dictionary) -> void:
+	hero.set_stats_from_level(data.get("level", 1))
+	hero.gold = data.get("gold", 0)
+	hero.experience = data.get("experience", 0)
+	hero.set_hero_name(data.get("hero_name", "NONAME"))
+	hero.stats.set_stat(UnitStats.StatKey.HP, data.get("hp", 15))
+	hero.stats.set_stat(UnitStats.StatKey.MP, data.get("mp", 0))
+	
+	var items: Array[Dictionary] = []
+	items.assign(data.get("items", []))
+	hero.inventory.load_from_data(items)
+	
+	var equipment: Array[int] = []
+	equipment.assign(data.get("equipment", []))
+	hero.equipment.load_from_data(equipment)

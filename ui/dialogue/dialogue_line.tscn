@@ -13,7 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_efevw")
-letter_speed = 0.02
 
 [node name="LineLabel" parent="." instance=ExtResource("1_3ey7h")]
 layout_mode = 0
