@@ -1,9 +1,9 @@
 extends BattleUpdate
 class_name PlayOneShotBGMBattleUpdate
 
-var bgm_key: BGMEntry.BGMKey
+var bgm_key: String
 
-func _init(k: BGMEntry.BGMKey) -> void:
+func _init(k: String) -> void:
 	bgm_key = k
 
 func execute(controller: BattleController) -> void:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_gcgo6"]
 [ext_resource type="Texture2D" uid="uid://hjvxt4dsb0lg" path="res://ui/title_screen/title_screen.png" id="1_hlcdu"]
-[ext_resource type="PackedScene" uid="uid://d3hdkb0bnwlmh" path="res://field/field_map_controller.tscn" id="2_hhe0w"]
+[ext_resource type="PackedScene" uid="uid://csi7aj4iqanqj" path="res://ui/file_select/file_select.tscn" id="2_6ot6j"]
 [ext_resource type="Texture2D" uid="uid://dluiswcmnggwh" path="res://ui/title_screen/title_screen_full.png" id="2_yh04f"]
 [ext_resource type="Texture2D" uid="uid://bxq6vap1nresw" path="res://ui/title_screen/title_spark.png" id="4_tcr3a"]
 
@@ -71,7 +71,7 @@ _data = {
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_gcgo6")
-next_scene = ExtResource("2_hhe0w")
+next_scene = ExtResource("2_6ot6j")
 
 [node name="TitleOnly" type="Sprite2D" parent="."]
 position = Vector2(384, 128)

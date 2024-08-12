@@ -1,7 +1,7 @@
 extends DialogueEvent
 class_name PlaySFXDialogueEvent
 
-@export var sfx_key: SFXEntry.SFXKey
+@export var sfx_key: String
 @export var wait_for_sfx: bool = false
 
 func execute(window: DialogueWindow, _params: Dictionary) -> void:

@@ -1,7 +1,7 @@
 extends Node2D
 class_name FieldMap
 
-@export var map_bgm: BGMEntry.BGMKey
+@export var map_bgm: String
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent

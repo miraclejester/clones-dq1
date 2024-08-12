@@ -20,7 +20,7 @@ func execute(controller: BattleController) -> void:
 	)
 	await controller.battle_ui.show_newline()
 	controller.enemy_controller.visible = false
-	var routines: Array[Callable] = [AudioManager.play_bgm_one_shot.bind(BGMEntry.BGMKey.Victory)]
+	var routines: Array[Callable] = [AudioManager.play_bgm_one_shot.bind("victory")]
 	if controller.show_spoils:
 		routines.append(show_spoils_dialogue.bind(controller))
 	await ParallelPromise.new(routines).run_all()

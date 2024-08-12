@@ -6,20 +6,21 @@ class_name FileSelect
 
 
 func _ready() -> void:
+	AudioManager.play_bgm("town")
 	hide_adventure_logs()
 	populate_main_menu()
 
 
 func populate_main_menu() -> void:
 	var commands: Array[CommandData] = []
-	var available_slots: Array[int] = GameDataManager.get_available_slots()
+	var filled_slots: Array[int] = GameDataManager.get_filled_slots()
 	
-	if available_slots.size() < 3:
+	if filled_slots.size() > 0:
 		commands.append(CommandData.new("CONTINUE A QUEST", func(): pass))
 		commands.append(CommandData.new("CHANGE MESSAGE SPEED", func(): pass))
-	if available_slots.size() > 0:
-		commands.append(CommandData.new("BEGIN A NEW QUEST", show_adventure_logs.bind(available_slots)))
-	if available_slots.size() < 3:
+	if filled_slots.size() < 3:
+		commands.append(CommandData.new("BEGIN A NEW QUEST", show_adventure_logs.bind(filled_slots)))
+	if filled_slots.size() > 0:
 		commands.append(CommandData.new("COPY A QUEST", func(): pass))
 		commands.append(CommandData.new("ERASE A QUEST", func(): pass))
 	main_menu.initialize_commands(commands, 1)
@@ -32,10 +33,10 @@ func populate_main_menu() -> void:
 	)
 
 
-func show_adventure_logs(empty_slots: Array[int]) -> void:
+func show_adventure_logs(filled_slots: Array[int]) -> void:
 	var logs: Array[CommandData] = []
 	logs.assign([1, 2, 3]
-		.filter(func (slot: int): return not empty_slots.has(slot))
+		.filter(func (slot: int): return not filled_slots.has(slot))
 		.map(func (slot: int): return CommandData.new("ADVENTURE LOG %d" % slot, func (): pass))
 	)
 	adventure_logs.visible = true

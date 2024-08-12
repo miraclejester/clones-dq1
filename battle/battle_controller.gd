@@ -14,7 +14,7 @@ signal battle_finished()
 
 var battle_update_queue: Array[BattleUpdate] = []
 var hero: HeroUnit
-var reprise_key: BGMEntry.BGMKey
+var reprise_key: String
 var show_spoils: bool = true
 var encounter_data: EncounterData
 var config: BattleConfig
@@ -27,7 +27,7 @@ func _ready() -> void:
 	battle_ui.item_selected.connect(item_selected)
 	
 	var c: BattleConfig = BattleConfig.new()
-	c.field_bgm = BGMEntry.BGMKey.Overworld
+	c.field_bgm = "overworld"
 	start_battle(e_data, c)
 
 
@@ -98,12 +98,14 @@ func ask_command() -> void:
 
 func fight_selected() -> void:
 	battle_ui.hide_command_window()
+	await MenuStack.pop_stack()
 	battle.player_fight()
 	process_updates()
 
 
 func run_selected() -> void:
 	battle_ui.hide_command_window()
+	await MenuStack.pop_stack()
 	battle.player_run()
 	process_updates()
 

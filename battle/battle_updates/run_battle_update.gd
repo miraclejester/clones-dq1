@@ -18,7 +18,7 @@ static func from_data(n: String, r: RunResult) -> RunBattleUpdate:
 
 
 func execute(controller: BattleController) -> void:
-	AudioManager.play_sfx(SFXEntry.SFXKey.Run)
+	AudioManager.play_sfx("run")
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleAttemptRun,
 		[hero_name]

@@ -13,19 +13,28 @@
 script = ExtResource("1_0tk28")
 text = "Thou hast found the Ball of Light"
 in_quotes = false
+is_speech = false
 wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_nmoje"]
 script = ExtResource("1_0tk28")
 text = "Radiance streams forth as thy hands touch the object and hold it aloft."
 in_quotes = false
+is_speech = false
 wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_bdpi1"]
 script = ExtResource("1_0tk28")
 text = "Across the land spreads the brilliance until all shadows are banished and peace is restored."
 in_quotes = false
+is_speech = false
 wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_ld00t"]
 script = ExtResource("2_8ofi8")
@@ -37,7 +46,7 @@ events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")](
 
 [sub_resource type="Resource" id="Resource_mmjii"]
 script = ExtResource("7_0e7u3")
-sfx_key = 2
+sfx_key = "breathing"
 wait_for_sfx = true
 
 [resource]
@@ -46,8 +55,8 @@ enemy = ExtResource("5_pscg0")
 battle_bg = ExtResource("4_ntjei")
 pre_battle_event = SubResource("Resource_mmjii")
 intro_dialogue = ExtResource("6_bq2wl")
-bgm_key = 9
-reprise_key = 9
+bgm_key = "final_battle"
+reprise_key = "final_battle"
 show_spoils = false
 use_dragonlord_layer = true
 shake_on_hit = false

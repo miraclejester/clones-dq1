@@ -16,6 +16,9 @@ talk_default_dialogue = ExtResource("2_xsj18")
 [node name="HeroCharacter" parent="." instance=ExtResource("5_xgior")]
 unique_name_in_owner = true
 position = Vector2(88, 104)
+after_move_idle_wait_time = 1.5
+facing_idle_wait_time = 3.5
+starting_face_dir = Vector2(0, 1)
 
 [node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]
 

@@ -18,7 +18,8 @@ func set_items(inv: Array[ItemStack]) -> void:
 		return CommandData.new(
 			stack.item.item_name,
 			func (): item_selected.emit(stack.item),
-			stack.amount
+			stack.amount,
+			true
 			)
 		)
 	)

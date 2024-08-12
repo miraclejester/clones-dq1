@@ -61,10 +61,10 @@ func initialize_commands(commands: Array[CommandData], columns: int) -> void:
 	set_selection(0)
 
 
-func add_command(command: CommandData, show_second_line: bool, amount: int = 0, second_line_has_text: bool = false) -> void:
+func add_command(command: CommandData, show_second_line: bool, amount: int = 0) -> void:
 	var command_label: CommandLabel = command_label_scene.instantiate()
 	grid_container.add_child(command_label)
-	command_label.set_text(command.text, show_second_line, second_line_has_text)
+	command_label.set_text(command.text, command.multiline, show_second_line)
 	command_label.set_amount(amount)
 	command_label.move_away()
 	
@@ -78,7 +78,7 @@ func move_left() -> void:
 
 
 func move_right() -> void:
-	if (selection_index + 1) % grid_container.columns == 0:
+	if (selection_index + 1) % grid_container.columns == 0 or selection_index + 1 >= grid_container.get_child_count():
 		return
 	set_selection(selection_index + 1)
 
@@ -102,7 +102,7 @@ func set_selection(idx: int) -> void:
 
 
 func select() -> void:
-	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
+	AudioManager.play_sfx("menu_blip")
 	selected.emit(selection_index)
 	command_callables[selection_index].call()
 
@@ -112,7 +112,7 @@ func cancel() -> void:
 
 
 func activate() -> void:
-	AudioManager.play_sfx(SFXEntry.SFXKey.MenuBlip)
+	AudioManager.play_sfx("menu_blip")
 	get_command(selection_index).highlight()
 	menu_active = true
 

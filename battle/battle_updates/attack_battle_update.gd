@@ -72,7 +72,7 @@ func no_damage(controller: BattleController) -> void:
 
 
 func crit(controller: BattleController) -> void:
-	await AudioManager.play_sfx(SFXEntry.SFXKey.ExcellentMove)
+	await AudioManager.play_sfx("excellent_move")
 	await controller.battle_ui.show_line(
 		GeneralDialogueProvider.DialogueID.BattleExcellentMove
 	)
@@ -80,5 +80,5 @@ func crit(controller: BattleController) -> void:
 
 
 func play_miss_sfx() -> void:
-	var keys: Array[SFXEntry.SFXKey] = [SFXEntry.SFXKey.Miss1, SFXEntry.SFXKey.Miss2]
+	var keys: Array[String] = ["miss_1", "miss_2"]
 	AudioManager.play_sfx(keys.pick_random())

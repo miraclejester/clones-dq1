@@ -15,7 +15,7 @@ var step_index = 0
 
 
 func _ready() -> void:
-	AudioManager.play_bgm(BGMEntry.BGMKey.Title)
+	AudioManager.play_bgm("title")
 	await get_tree().create_timer(9.56).timeout
 	if step_index == 0:
 		next_step()

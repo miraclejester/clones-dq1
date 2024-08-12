@@ -10,7 +10,6 @@ var save_path: String = "user://"
 var current_file_index: int = 1
 
 func _ready() -> void:
-	generate_new_save_data()
 	generate_item_database()
 
 
@@ -49,12 +48,13 @@ func generate_save_data() -> void:
 		save_dict[entry.key] = entry.data
 
 
-func generate_new_save_data() -> void:
+func generate_new_save_data(hero_name: String) -> void:
 	save_dict = {
 		"player": {
 			"level": 1,
 			"gold": 0,
 			"experience": 0,
+			"hero_name": hero_name,
 			"hp": 15,
 			"mp": 0,
 			"items": [],
@@ -66,7 +66,7 @@ func generate_new_save_data() -> void:
 	}
 
 
-func get_available_slots() -> Array[int]:
+func get_filled_slots() -> Array[int]:
 	var res: Array[int] = []
 	for i in range(1, 3):
 		if FileAccess.file_exists("%sfile%d.save" % [save_path, i]):

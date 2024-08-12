@@ -88,7 +88,7 @@ func get_cur_move_input() -> String:
 func set_target_dir(dir: Vector2) -> void:
 	idle_timer.start(after_move_idle_wait_time)
 	if not field_move_component.request_move(position + dir * 16):
-		AudioManager.play_sfx(SFXEntry.SFXKey.Wall)
+		AudioManager.play_sfx("wall")
 		move_state = MoveState.IDLE
 		return
 	idle_timer.stop()

@@ -35,5 +35,5 @@ func play_line(text: String, is_speech: bool = false) -> void:
 func play_speech_sounds() -> void:
 	await get_tree().create_timer(0.05).timeout
 	while playing:
-		AudioManager.play_sfx(SFXEntry.SFXKey.SpeechBlip)
+		AudioManager.play_sfx("speech_blip")
 		await get_tree().create_timer(speech_sound_speed).timeout

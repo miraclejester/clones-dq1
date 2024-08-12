@@ -184,7 +184,7 @@ script = ExtResource("4_118hu")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_h531b"), SubResource("Resource_dsn8b"), SubResource("Resource_66scj"), SubResource("Resource_7ighl"), SubResource("Resource_j8xv8"), SubResource("Resource_7orkn")])
 
 [node name="TantegelThrone" instance=ExtResource("1_hwxu4")]
-map_bgm = 10
+map_bgm = "tantegel_throne"
 
 [node name="LeftGuard" parent="NPCParent" index="0" instance=ExtResource("2_2vqup")]
 position = Vector2(88, 136)

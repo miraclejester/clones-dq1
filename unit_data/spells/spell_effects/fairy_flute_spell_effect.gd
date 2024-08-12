@@ -7,7 +7,7 @@ class_name FairyFluteSpellEffect
 
 func execute_battle(_battle: Battle, _user: BattleUnit, target: BattleUnit) -> Array[BattleUpdate]:
 	var res: Array[BattleUpdate] = []
-	res.append(PlayOneShotBGMBattleUpdate.new(BGMEntry.BGMKey.FairyFlute))
+	res.append(PlayOneShotBGMBattleUpdate.new("fairy_flute"))
 	if target.get_unit_name() != target_enemy_name:
 		res.append(PlayDialogueBattleUpdate.new(failure_dialogue, [], false))
 	else:

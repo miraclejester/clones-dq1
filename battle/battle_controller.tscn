@@ -15,8 +15,8 @@
 script = ExtResource("4_45u81")
 enemy = ExtResource("3_bdjjw")
 battle_bg = ExtResource("2_f0bgm")
-bgm_key = 0
-reprise_key = 5
+bgm_key = "battle"
+reprise_key = "battle_reprise"
 show_spoils = true
 use_dragonlord_layer = false
 shake_on_hit = true
