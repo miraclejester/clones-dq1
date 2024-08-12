@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqa487ur1d4vf"]
+[gd_scene load_steps=8 format=3 uid="uid://bqa487ur1d4vf"]
 
 [ext_resource type="Script" path="res://ui/name_entry/name_entry_window.gd" id="1_pkljl"]
+[ext_resource type="PackedScene" uid="uid://dn6rxa5cskre2" path="res://ui/file_select/name_display_window.tscn" id="2_sqqhw"]
 [ext_resource type="Script" path="res://battle/ui/command_window.gd" id="2_v2u87"]
 [ext_resource type="PackedScene" uid="uid://dtwpqn5rj6oxt" path="res://ui/command_label.tscn" id="3_qc2vj"]
 [ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="4_xsjwg"]
@@ -15,6 +16,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pkljl")
+
+[node name="NameDisplayWindow" parent="." instance=ExtResource("2_sqqhw")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 80.0
+offset_top = 40.0
+offset_right = -80.0
+offset_bottom = -151.0
 
 [node name="LetterWindow" type="Control" parent="."]
 unique_name_in_owner = true
@@ -70,8 +79,40 @@ use_parent_material = true
 layout_mode = 2
 theme_override_constants/h_separation = -8
 theme_override_constants/v_separation = 0
-columns = 2
 
 [node name="ContinousTimer" type="Timer" parent="LetterWindow"]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="BackCommand" parent="." instance=ExtResource("3_qc2vj")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 136.0
+offset_top = 168.0
+offset_right = 173.0
+offset_bottom = 184.0
+metadata/_edit_group_ = true
+
+[node name="LabelText" parent="BackCommand/VBoxContainer" index="0"]
+text = "BACK"
+
+[node name="SecondLine" parent="BackCommand/VBoxContainer/MarginContainer" index="0"]
+text = ""
+
+[node name="EndCommand" parent="." instance=ExtResource("3_qc2vj")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 184.0
+offset_top = 168.0
+offset_right = 221.0
+offset_bottom = 184.0
+metadata/_edit_group_ = true
+
+[node name="LabelText" parent="EndCommand/VBoxContainer" index="0"]
+text = "END"
+
+[node name="SecondLine" parent="EndCommand/VBoxContainer/MarginContainer" index="0"]
+text = ""
+
+[editable path="BackCommand"]
+[editable path="EndCommand"]
