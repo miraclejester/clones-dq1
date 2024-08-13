@@ -52,5 +52,12 @@ func find_event(pos: Vector2) -> MapEvent:
 	return event_dict.get(pos, null) as MapEvent
 
 
+func remove_event(pos: Vector2) -> void:
+	var event: MapEvent = find_event(pos)
+	if event != null:
+		event_dict.erase(pos)
+		event.queue_free()
+
+
 func is_pos_reserved(pos: Vector2) -> bool:
 	return char_dict.has(pos)

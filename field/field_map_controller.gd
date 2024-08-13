@@ -47,6 +47,7 @@ func load_map(path: String) -> void:
 	await GlobalVisuals.fade_in()
 	
 	if field_map.map_start_event != null:
+		await get_tree().process_frame
 		get_tree().paused = true
 		await field_ui.play_dialogue(field_map.map_start_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
@@ -98,7 +99,8 @@ func on_take_selected() -> void:
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.take_event != null:
 		await field_ui.play_dialogue(event.take_event, {
-			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
+			"map" : field_map
 		})
 	else:
 		await field_ui.play_dialogue(take_default_dialogue, {
