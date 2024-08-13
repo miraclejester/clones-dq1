@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="4_rlso4"]
 
 [node name="MessageSpeedSelector" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,7 @@ offset_right = 144.0
 offset_bottom = 112.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UIWindow"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +36,7 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIWindow/MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -46,6 +49,7 @@ Speed Do You
 Want To Use?"
 
 [node name="MarginContainer" type="MarginContainer" parent="UIWindow/MarginContainer/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 27
 

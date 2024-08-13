@@ -17,12 +17,11 @@ var current_map_key: String
 
 func _ready() -> void:
 	await get_tree().process_frame
-	load_map("brecconary/tantegel_throne")
 	
 	hero_character.idling.connect(on_hero_idling)
 	hero_character.move_intention.connect(on_hero_move_intention)
 	hero_character.menu_requested.connect(on_hero_menu_requested)
-	hero_character.set_current_map(field_map)
+	hero_character.set_process(false)
 	
 	field_ui.command_cancelled.connect(on_command_cancelled)
 	field_ui.talk_selected.connect(on_talk_selected)
@@ -31,6 +30,9 @@ func _ready() -> void:
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
 		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
 	)
+	
+	load_map("brecconary/tantegel_throne")
+	hero_character.set_current_map(field_map)
 
 
 func load_map(path: String) -> void:
@@ -40,6 +42,8 @@ func load_map(path: String) -> void:
 	field_map = map
 	field_map_container.add_child(field_map)
 	AudioManager.play_bgm(field_map.map_bgm)
+	await GlobalVisuals.fade_in()
+	hero_character.set_process(true)
 
 
 func on_hero_idling() -> void:

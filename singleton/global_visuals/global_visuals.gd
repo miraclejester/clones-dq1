@@ -39,6 +39,13 @@ var darken_callables: Array[Callable] = [
 	set_darken.bind(4)
 ]
 
+var lighten_callables: Array[Callable] = [
+	set_darken.bind(3),
+	set_darken.bind(2),
+	set_darken.bind(1),
+	set_darken.bind(0)
+]
+
 
 func play_effect(callables: Array[Callable], nodes: Array[Node], step_wait: float, num_cycles: int = 4) -> void:
 	for i in range(num_cycles):
@@ -63,6 +70,15 @@ func death_effect() -> void:
 
 func fade_out() -> void:
 	await play_effect(darken_callables, get_tree().get_nodes_in_group("darken"), 0.1, 1)
+
+
+func fade_in() -> void:
+	await play_effect(lighten_callables, get_tree().get_nodes_in_group("darken"), 0.1, 1)
+
+
+func dark_out() -> void:
+	for node in get_tree().get_nodes_in_group("darken"):
+		set_darken(node, 4)
 
 
 func set_ambient_hurt_enabled(enabled: bool) -> void:

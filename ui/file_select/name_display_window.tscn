@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6b6v4y470v2e" path="res://ui/header_block.png" id="3_0ero4"]
 
 [node name="NameDisplayWindow" type="Control"]
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_t1iif")
 
 [node name="MainMargin" type="MarginContainer" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_right = 96.0
 offset_bottom = 42.0
@@ -26,11 +28,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMargin"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/MarginContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 

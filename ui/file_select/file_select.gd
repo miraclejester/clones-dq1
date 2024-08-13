@@ -100,8 +100,10 @@ func show_message_speed_selector() -> void:
 
 
 func speed_selected_for_new_game(speed: int) -> void:
+	GlobalVisuals.dark_out()
 	GameSettings.set_message_speed(speed)
 	GameDataManager.create_new_game(chosen_name)
 	GameDataManager.load_from_local_data()
 	await MenuStack.clear_menu_stack()
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_packed(next_scene)
