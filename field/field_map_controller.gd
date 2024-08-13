@@ -31,8 +31,7 @@ func _ready() -> void:
 		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
 	)
 	
-	load_map("brecconary/tantegel_throne")
-	hero_character.set_current_map(field_map)
+	load_map(GameDataManager.get_starting_map_key())
 
 
 func load_map(path: String) -> void:
@@ -41,8 +40,16 @@ func load_map(path: String) -> void:
 	var map: FieldMap = map_scene.instantiate() as FieldMap
 	field_map = map
 	field_map_container.add_child(field_map)
+	hero_character.set_current_map(field_map)
 	AudioManager.play_bgm(field_map.map_bgm)
 	await GlobalVisuals.fade_in()
+	
+	if field_map.map_start_event != null:
+		get_tree().paused = true
+		await field_ui.play_dialogue(field_map.map_start_event, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+		})
+		get_tree().paused = false
 	hero_character.set_process(true)
 
 
@@ -76,11 +83,15 @@ func on_talk_selected() -> void:
 	if npc != null and npc.talk_event != null:
 		npc.face_towards(hero_character.position)
 		await field_ui.play_dialogue(npc.talk_event, {
-			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [
-				PlayerManager.hero.get_unit_name(),
-				PlayerManager.get_exp_for_next_level()
-			]
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
 		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
 	close_command_window()
+
+
+func get_global_format_vars() -> Array:
+	return [
+		PlayerManager.hero.get_unit_name(),
+		PlayerManager.get_exp_for_next_level()
+	]

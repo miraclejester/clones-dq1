@@ -84,6 +84,8 @@ texture = ExtResource("1_q1n81")
 [sub_resource type="TileSet" id="TileSet_q7mn3"]
 custom_data_layer_0/name = "Blocking"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = ""
+custom_data_layer_1/type = 0
 sources/0 = SubResource("TileSetAtlasSource_p52ro")
 
 [node name="FieldMap" type="Node2D" groups=["darken"]]
@@ -102,3 +104,6 @@ script = ExtResource("2_v1yxw")
 [node name="NPCParent" type="Node2D" parent="."]
 unique_name_in_owner = true
 use_parent_material = true
+
+[node name="SearchablesParent" type="Node2D" parent="."]
+unique_name_in_owner = true

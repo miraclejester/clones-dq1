@@ -24,6 +24,10 @@ func get_item(id: int) -> ItemData:
 	return item_dict.get(id) as ItemData
 
 
+func get_starting_map_key() -> String:
+	return (save_dict.get("map") as Dictionary).get("map_key", "")
+
+
 func load_items_from_dir(dir: String) -> void:
 	for file_name in DirAccess.get_files_at(dir):
 		var item: ItemData = load("%s/%s" % [dir, file_name]) as ItemData
@@ -50,6 +54,9 @@ func generate_save_data() -> void:
 	
 	save_dict["player"] = PlayerManager.generate_save_data()
 	save_dict["settings"] = GameSettings.generate_save_data()
+	save_dict["map"] = {
+		"map_key": "brecconary/tantegel_throne"
+	}
 	
 	var save_handlers: Array[SaveDataHandler] = []
 	save_handlers.assign(get_tree().get_nodes_in_group("save_handler"))
@@ -69,6 +76,9 @@ func generate_new_save_data(hero_name: String) -> void:
 			"mp": 0,
 			"items": [],
 			"equipment": []
+		},
+		"map": {
+			"map_key": "brecconary/new_game_tantegel_throne"
 		},
 		"settings": {
 			"message_speed": 0

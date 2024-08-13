@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://s6tfxqls2bjn"]
+[gd_scene load_steps=31 format=3 uid="uid://s6tfxqls2bjn"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_hwxu4"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_2vqup"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_118hu"]
 [ext_resource type="PackedScene" uid="uid://dh1e55af28xf8" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.tscn" id="5_7i3tg"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/yes_no_decision_dialogue_event.gd" id="5_7x3b3"]
+[ext_resource type="Resource" uid="uid://c645f2wmfyrd0" path="res://field/dialogues/common_npc_dialogues/field_dialogue_gwaelin_kidnapped.tres" id="5_hm83i"]
 [ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="7_26oui"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/fade_out_dialogue_event.gd" id="7_a4845"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_game_dialogue_event.gd" id="7_m4n18"]
@@ -41,54 +42,6 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_3j4wq"]
-script = ExtResource("3_wncvr")
-text = "Dost thou know about Princess Gwaelin?"
-in_quotes = true
-is_speech = true
-wait_for_input = false
-use_format_vars = false
-format_var_idxs = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_147j4"]
-script = ExtResource("3_wncvr")
-text = "Half a year now hath passed since the Princess was kidnapped by the enemy"
-in_quotes = true
-is_speech = true
-wait_for_input = true
-use_format_vars = false
-format_var_idxs = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_lopvr"]
-script = ExtResource("3_wncvr")
-text = "Never does the King speak of it, but he must be suffering much"
-in_quotes = true
-is_speech = true
-wait_for_input = true
-use_format_vars = false
-format_var_idxs = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_uh7nw"]
-script = ExtResource("4_118hu")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_147j4"), SubResource("Resource_lopvr")])
-
-[sub_resource type="Resource" id="Resource_rr1g6"]
-script = ExtResource("5_7x3b3")
-no_event = SubResource("Resource_uh7nw")
-
-[sub_resource type="Resource" id="Resource_jim0r"]
-script = ExtResource("3_wncvr")
-text = "%s, please save the Princess"
-in_quotes = true
-is_speech = true
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([0])
-
-[sub_resource type="Resource" id="Resource_c0mx6"]
-script = ExtResource("4_118hu")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_3j4wq"), SubResource("Resource_rr1g6"), SubResource("Resource_jim0r")])
 
 [sub_resource type="Resource" id="Resource_h531b"]
 script = ExtResource("3_wncvr")
@@ -198,7 +151,7 @@ starting_face_dir = Vector2(-1, 0)
 
 [node name="MovingGuard" parent="NPCParent" index="2" instance=ExtResource("2_2vqup")]
 position = Vector2(152, 120)
-talk_event = SubResource("Resource_c0mx6")
+talk_event = ExtResource("5_hm83i")
 
 [node name="RandomMoveNpcBehaviour" parent="NPCParent/MovingGuard/Behaviours" index="0" instance=ExtResource("5_7i3tg")]
 

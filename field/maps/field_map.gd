@@ -2,10 +2,11 @@ extends Node2D
 class_name FieldMap
 
 @export var map_bgm: String
+@export var map_start_event: DialogueEvent
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
-
+@onready var searchables_parent: Node2D = %SearchablesParent
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
 

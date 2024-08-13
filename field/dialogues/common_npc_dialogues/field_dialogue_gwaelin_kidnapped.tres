@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=10 format=3 uid="uid://c645f2wmfyrd0"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_k4ei4"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_byt3p"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/yes_no_decision_dialogue_event.gd" id="3_ble8g"]
+
+[sub_resource type="Resource" id="Resource_3j4wq"]
+script = ExtResource("1_k4ei4")
+text = "Dost thou know about Princess Gwaelin?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_147j4"]
+script = ExtResource("1_k4ei4")
+text = "Half a year now hath passed since the Princess was kidnapped by the enemy"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_lopvr"]
+script = ExtResource("1_k4ei4")
+text = "Never does the King speak of it, but he must be suffering much"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_uh7nw"]
+script = ExtResource("2_byt3p")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_147j4"), SubResource("Resource_lopvr")])
+
+[sub_resource type="Resource" id="Resource_rr1g6"]
+script = ExtResource("3_ble8g")
+no_event = SubResource("Resource_uh7nw")
+
+[sub_resource type="Resource" id="Resource_jim0r"]
+script = ExtResource("1_k4ei4")
+text = "%s, please save the Princess"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[resource]
+script = ExtResource("2_byt3p")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_3j4wq"), SubResource("Resource_rr1g6"), SubResource("Resource_jim0r")])

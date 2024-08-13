@@ -8,9 +8,7 @@
 [node name="HeroCharacter" type="Node2D" groups=["darken"]]
 script = ExtResource("1_jcmbw")
 facing_wait_time = 0.15
-after_move_idle_wait_time = null
-facing_idle_wait_time = null
-starting_face_dir = null
+starting_face_dir = Vector2(0, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true

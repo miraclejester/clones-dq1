@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt22g2ixke48n"]
+
+[ext_resource type="Script" path="res://field/events/map_event.gd" id="1_5mdel"]
+
+[node name="MapEvent" type="Node2D"]
+script = ExtResource("1_5mdel")

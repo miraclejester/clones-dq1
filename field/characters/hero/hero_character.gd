@@ -33,7 +33,6 @@ func _ready() -> void:
 	super()
 	move_timer.timeout.connect(on_move_timer_timeout)
 	idle_timer.timeout.connect(on_idle_timer_timeout)
-	idle_timer.start(after_move_idle_wait_time)
 
 
 func _process(_delta: float) -> void:
