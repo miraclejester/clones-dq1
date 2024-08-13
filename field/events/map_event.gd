@@ -2,6 +2,8 @@ extends Node2D
 class_name MapEvent
 
 @export var take_event: DialogueEvent
+@export var search_event: DialogueEvent
+
 @onready var take_params: Node = %TakeParams
 
 

@@ -68,9 +68,10 @@ func hide_command_window() -> void:
 	command_window.visible = false
 
 
-func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}) -> void:
+func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}, clean_window: bool = true) -> void:
 	dialogue_window.visible = true
-	dialogue_window.clean_window()
+	if clean_window:
+		dialogue_window.clean_window()
 	await dialogue_window.start_dialogue([DialogueEventParams.fromData(dialogue, params)])
 	await dialogue_window.wait_for_continuation(false)
 	dialogue_window.visible = false

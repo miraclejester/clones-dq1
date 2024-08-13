@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpe0qd36t3ahi"]
+[gd_scene load_steps=21 format=3 uid="uid://dpe0qd36t3ahi"]
 
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="1_ude6i"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="2_bfbbm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_gold_dialogue_event.gd" id="7_cd3ej"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="8_gobsc"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="9_f5iq1"]
+[ext_resource type="Resource" uid="uid://cc322kgljkfi0" path="res://field/events/common_dialogues/chest_search_dialogue.tres" id="10_5q8gy"]
 [ext_resource type="PackedScene" uid="uid://6dih381y4dgh" path="res://field/events/param_providers/event_position_param_provider.tscn" id="10_us4w2"]
 [ext_resource type="PackedScene" uid="uid://j26ha6vsb2to" path="res://field/events/param_providers/integer_event_param_provider.tscn" id="11_6m7pm"]
 
@@ -55,6 +56,7 @@ events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")](
 
 [node name="GoldChestEvent" instance=ExtResource("1_ude6i")]
 take_event = SubResource("Resource_gs0rg")
+search_event = ExtResource("10_5q8gy")
 
 [node name="EventPositionParamProvider" parent="TakeParams" index="0" instance=ExtResource("10_us4w2")]
 keys = Array[String](["change_tilemap_target_pos", "change_map_event_target_pos"])

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://cc322kgljkfi0"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_mi0ug"]
+
+[resource]
+script = ExtResource("1_mi0ug")
+text = "There is a treasure box"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
