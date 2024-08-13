@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6dih381y4dgh"]
+
+[ext_resource type="Script" path="res://field/events/param_providers/event_position_param_provider.gd" id="1_wq5b4"]
+
+[node name="EventPositionParamProvider" type="Node"]
+script = ExtResource("1_wq5b4")

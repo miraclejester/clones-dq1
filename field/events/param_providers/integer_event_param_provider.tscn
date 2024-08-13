@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://j26ha6vsb2to"]
+
+[ext_resource type="Script" path="res://field/events/param_providers/integer_event_param_provider.gd" id="1_dtc0u"]
+
+[node name="IntegerEventParamProvider" type="Node"]
+script = ExtResource("1_dtc0u")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=22 format=3 uid="uid://u77o377e6bjj"]
+
+[ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="1_b78xh"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="2_bwyiv"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="3_r4nxg"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="4_15qv8"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_ua5rh"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="5_hhatm"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="6_kxo4w"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="7_1272b"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="8_10y3p"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="9_utyka"]
+[ext_resource type="PackedScene" uid="uid://6dih381y4dgh" path="res://field/events/param_providers/event_position_param_provider.tscn" id="11_apgfe"]
+[ext_resource type="PackedScene" uid="uid://j5ymq4cec7nu" path="res://field/events/param_providers/item_event_param_provider.tscn" id="12_hwnib"]
+
+[sub_resource type="Resource" id="Resource_rtrw8"]
+script = ExtResource("2_bwyiv")
+sfx_key = "treasure"
+wait_for_sfx = false
+
+[sub_resource type="Resource" id="Resource_c4ymo"]
+script = ExtResource("3_r4nxg")
+target_pos = Vector2(0, 0)
+tile_key = "brick"
+
+[sub_resource type="Resource" id="Resource_b8d8f"]
+script = ExtResource("4_15qv8")
+text = "Fortune smiles upon thee, %s. Thou hast found the %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_y8jbq"]
+script = ExtResource("5_hhatm")
+
+[sub_resource type="Resource" id="Resource_pwrrq"]
+script = ExtResource("6_kxo4w")
+
+[sub_resource type="Resource" id="Resource_c78rt"]
+script = ExtResource("7_1272b")
+dialogue = SubResource("Resource_b8d8f")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
+
+[sub_resource type="Resource" id="Resource_gdkjv"]
+script = ExtResource("8_10y3p")
+
+[sub_resource type="Resource" id="Resource_ljxwm"]
+script = ExtResource("9_utyka")
+target_pos = Vector2(0, 0)
+operation = 0
+
+[sub_resource type="Resource" id="Resource_n3u28"]
+script = ExtResource("4_ua5rh")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm")])
+
+[node name="ItemChestEvent" instance=ExtResource("1_b78xh")]
+take_event = SubResource("Resource_n3u28")
+
+[node name="EventPositionParamProvider" parent="TakeParams" index="0" instance=ExtResource("11_apgfe")]
+keys = Array[String](["change_tilemap_target_pos", "change_map_target_pos"])
+
+[node name="ItemEventParamProvider" parent="TakeParams" index="1" instance=ExtResource("12_hwnib")]
+keys = Array[String](["item_name_provider_item", "grant_item_item"])
