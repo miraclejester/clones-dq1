@@ -16,6 +16,8 @@ signal command_cancelled()
 @onready var player_hud: PlayerHUD = %PlayerHud
 @onready var command_window: CommandWindow = %CommandWindow
 @onready var dialogue_window: DialogueWindow = %DialogueWindow
+@onready var item_window: ItemWindow = %ItemWindow
+
 
 var command_select_signals: Array[Signal] = [
 	talk_selected, spell_selected,
@@ -66,6 +68,30 @@ func show_command_window() -> void:
 
 func hide_command_window() -> void:
 	command_window.visible = false
+
+
+func show_item_window(item_selected_callback: Callable) -> void:
+	var selected_callable: Callable = func (item: ItemData):
+		MenuStack.pop_stack()
+		item_window.visible = false
+		item_selected_callback.call(item)
+	
+	item_window.set_items(PlayerManager.hero.inventory.items)
+	item_window.visible = true
+	await MenuStack.push_stack(
+		item_window,
+		item_window.activate,
+		item_window.deactivate,
+		func ():
+			item_window.item_selected.disconnect(selected_callable)
+			MenuStack.pop_stack()
+			item_window.visible = false
+	)
+	item_window.item_selected.connect(
+		selected_callable,
+		CONNECT_ONE_SHOT
+	)
+	
 
 
 func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}, clean_window: bool = true) -> void:

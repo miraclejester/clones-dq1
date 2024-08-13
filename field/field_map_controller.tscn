@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=12 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
@@ -51,6 +51,15 @@ wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
 
+[sub_resource type="Resource" id="Resource_8qaab"]
+script = ExtResource("3_mhtmc")
+text = "Nothing of use has yet been given to thee."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+
 [node name="FieldMapController" type="Node2D"]
 script = ExtResource("1_wpht4")
 base_map_path = "res://field/maps"
@@ -60,6 +69,7 @@ search_initial_dialogue = SubResource("Resource_kf30r")
 search_default_dialogue = SubResource("Resource_302om")
 door_no_key_dialogue = SubResource("Resource_i88cl")
 door_default_dialogue = SubResource("Resource_7yyl3")
+item_default_dialogue = SubResource("Resource_8qaab")
 
 [node name="FieldMapContainer" type="Node2D" parent="."]
 

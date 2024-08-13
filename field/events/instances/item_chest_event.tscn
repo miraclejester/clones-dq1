@@ -61,7 +61,7 @@ take_event = SubResource("Resource_n3u28")
 search_event = ExtResource("11_nqxf7")
 
 [node name="EventPositionParamProvider" parent="TakeParams" index="0" instance=ExtResource("11_apgfe")]
-keys = Array[String](["change_tilemap_target_pos", "change_map_target_pos"])
+keys = Array[String](["change_tilemap_target_pos", "change_map_event_target_pos"])
 
 [node name="ItemEventParamProvider" parent="TakeParams" index="1" instance=ExtResource("12_hwnib")]
 keys = Array[String](["item_name_provider_item", "grant_item_item"])

@@ -162,7 +162,9 @@ func move_up() -> void:
 
 
 func set_selection(idx: int) -> void:
-	get_command(selection_index).move_away()
+	var prev_command: CommandLabel = get_command(selection_index)
+	if prev_command != null:
+		get_command(selection_index).move_away()
 	selection_index = idx
 	get_command(selection_index).highlight()
 

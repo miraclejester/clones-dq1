@@ -8,6 +8,7 @@ class_name FieldMapController
 @export var search_default_dialogue: DialogueEvent
 @export var door_no_key_dialogue: DialogueEvent
 @export var door_default_dialogue: DialogueEvent
+@export var item_default_dialogue: DialogueEvent
 
 
 @onready var hero_character: HeroCharacter = %HeroCharacter
@@ -33,6 +34,7 @@ func _ready() -> void:
 	field_ui.take_selected.connect(on_take_selected)
 	field_ui.search_selected.connect(on_search_selected)
 	field_ui.door_selected.connect(on_door_selected)
+	field_ui.item_selected.connect(on_item_selected)
 	
 	GlobalVisuals.determine_ui_colors(
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
@@ -152,6 +154,27 @@ func on_door_selected() -> void:
 	else:
 		await field_ui.play_dialogue(door_default_dialogue)
 	
+	close_command_window()
+
+
+func on_item_selected() -> void:
+	if PlayerManager.hero.inventory.stack_count() > 0:
+		field_ui.show_item_window(on_item_data_selected)
+	else:
+		await field_ui.play_dialogue(item_default_dialogue)
+		close_command_window()
+
+
+func on_item_data_selected(item: ItemData) -> void:
+	var clean: bool = false
+	if item.use_dialogue != null:
+		field_ui.play_dialogue(item.use_dialogue)
+		clean = true
+	await field_ui.play_dialogue(item.field_action, {
+		"wait_for_continuation": false,
+		"clean_window": clean,
+		"map_controller": self
+	})
 	close_command_window()
 
 
