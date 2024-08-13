@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://corf8wtekpr6l"]
+[gd_scene load_steps=34 format=3 uid="uid://corf8wtekpr6l"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_a0atq"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_6eo76"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="5_oepjy"]
 [ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="6_8go4b"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="7_41644"]
+[ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="8_acxgb"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/integer_format_var_provider.gd" id="9_3rwrc"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="9_mrtm2"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_gold_dialogue_event.gd" id="11_phtd3"]
 
 [sub_resource type="Resource" id="Resource_nvtba"]
 script = ExtResource("5_oepjy")
@@ -146,6 +150,32 @@ format_var_idxs = Array[int]([])
 script = ExtResource("7_41644")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_bq2q8"), SubResource("Resource_m2etv")])
 
+[sub_resource type="Resource" id="Resource_f7vcc"]
+script = ExtResource("5_oepjy")
+text = "Of GOLD thou hast gained %d"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_0rwta"]
+script = ExtResource("9_3rwrc")
+value = 120
+
+[sub_resource type="Resource" id="Resource_3lsat"]
+script = ExtResource("9_mrtm2")
+dialogue = SubResource("Resource_f7vcc")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_0rwta")])
+
+[sub_resource type="Resource" id="Resource_ey2kv"]
+script = ExtResource("11_phtd3")
+amount = 120
+
+[sub_resource type="Resource" id="Resource_oddpo"]
+script = ExtResource("7_41644")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_3lsat"), SubResource("Resource_ey2kv")])
+
 [node name="NewGameTantegelThrone" instance=ExtResource("1_a0atq")]
 map_bgm = "tantegel_throne"
 map_start_event = SubResource("Resource_4sy1o")
@@ -176,6 +206,10 @@ starting_face_dir = Vector2(1, 0)
 position = Vector2(120, 136)
 talk_event = SubResource("Resource_yiyka")
 starting_face_dir = Vector2(-1, 0)
+
+[node name="GoldChest" parent="EventParent" index="0" instance=ExtResource("8_acxgb")]
+position = Vector2(104, 104)
+take_event = SubResource("Resource_oddpo")
 
 [editable path="NPCParent/MovingGuard"]
 [editable path="NPCParent/KingLorik"]

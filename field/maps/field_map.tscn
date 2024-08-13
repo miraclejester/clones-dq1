@@ -105,5 +105,5 @@ script = ExtResource("2_v1yxw")
 unique_name_in_owner = true
 use_parent_material = true
 
-[node name="SearchablesParent" type="Node2D" parent="."]
+[node name="EventParent" type="Node2D" parent="."]
 unique_name_in_owner = true

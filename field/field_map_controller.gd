@@ -3,6 +3,7 @@ class_name FieldMapController
 
 @export_dir var base_map_path: String
 @export var talk_default_dialogue: DialogueEvent
+@export var take_default_dialogue: DialogueEvent
 
 
 @onready var hero_character: HeroCharacter = %HeroCharacter
@@ -25,6 +26,7 @@ func _ready() -> void:
 	
 	field_ui.command_cancelled.connect(on_command_cancelled)
 	field_ui.talk_selected.connect(on_talk_selected)
+	field_ui.take_selected.connect(on_take_selected)
 	
 	GlobalVisuals.determine_ui_colors(
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
@@ -87,6 +89,21 @@ func on_talk_selected() -> void:
 		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
+	close_command_window()
+
+
+func on_take_selected() -> void:
+	await MenuStack.pop_stack()
+	
+	var event: MapEvent = field_map.find_event(hero_character.position)
+	if event != null and event.take_event != null:
+		await field_ui.play_dialogue(event.take_event, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+		})
+	else:
+		await field_ui.play_dialogue(take_default_dialogue, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+		})
 	close_command_window()
 
 

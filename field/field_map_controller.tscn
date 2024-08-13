@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=7 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_mhtmc"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
+
+[sub_resource type="Resource" id="Resource_l04rv"]
+script = ExtResource("3_mhtmc")
+text = "There is nothing to take here, %s"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
 
 [node name="FieldMapController" type="Node2D"]
 script = ExtResource("1_wpht4")
 base_map_path = "res://field/maps"
 talk_default_dialogue = ExtResource("2_xsj18")
+take_default_dialogue = SubResource("Resource_l04rv")
 
 [node name="FieldMapContainer" type="Node2D" parent="."]
 

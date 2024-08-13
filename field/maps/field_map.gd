@@ -6,9 +6,10 @@ class_name FieldMap
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
-@onready var searchables_parent: Node2D = %SearchablesParent
+@onready var event_parent: Node2D = %EventParent
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
+var event_dict: Dictionary #Vector2 to MapEvent
 
 
 func _ready() -> void:
@@ -16,6 +17,9 @@ func _ready() -> void:
 		var n: NPCCharacter = npc as NPCCharacter
 		char_dict[n.position] = n
 		n.set_current_map(self)
+	for event in event_parent.get_children():
+		var e: MapEvent = event as MapEvent
+		event_dict[e.position] = e
 
 
 func register_character(character: FieldCharacter) -> void:
@@ -42,6 +46,10 @@ func find_npc(pos: Vector2) -> NPCCharacter:
 
 func find_character(pos: Vector2) -> FieldCharacter:
 	return char_dict.get(pos, null) as FieldCharacter
+
+
+func find_event(pos: Vector2) -> MapEvent:
+	return event_dict.get(pos, null) as MapEvent
 
 
 func is_pos_reserved(pos: Vector2) -> bool:
