@@ -193,6 +193,8 @@ func deactivate() -> void:
 func get_command(idx: int) -> CommandLabel:
 	if floating_dict.has(idx):
 		return floating_dict.get(idx) as CommandLabel
+	if idx < 0 or idx >= grid_container.get_child_count():
+		return null
 	return grid_container.get_child(idx) as CommandLabel
 
 
