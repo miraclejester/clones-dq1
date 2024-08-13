@@ -6,6 +6,8 @@ class_name FieldMapController
 @export var take_default_dialogue: DialogueEvent
 @export var search_initial_dialogue: DialogueEvent
 @export var search_default_dialogue: DialogueEvent
+@export var door_no_key_dialogue: DialogueEvent
+@export var door_default_dialogue: DialogueEvent
 
 
 @onready var hero_character: HeroCharacter = %HeroCharacter
@@ -30,6 +32,7 @@ func _ready() -> void:
 	field_ui.talk_selected.connect(on_talk_selected)
 	field_ui.take_selected.connect(on_take_selected)
 	field_ui.search_selected.connect(on_search_selected)
+	field_ui.door_selected.connect(on_door_selected)
 	
 	GlobalVisuals.determine_ui_colors(
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
@@ -126,6 +129,29 @@ func on_search_selected() -> void:
 		await field_ui.play_dialogue(event.search_event, {}, false)
 	else:
 		await field_ui.play_dialogue(search_default_dialogue, {}, false)
+	close_command_window()
+
+
+func on_door_selected() -> void:
+	await MenuStack.pop_stack()
+	
+	var event: MapEvent = field_map.find_event(hero_character.get_facing_tile_position())
+	if event != null and event.door_event != null:
+		var magic_key: ItemData = GameDataManager.get_item(24)
+		if PlayerManager.hero.inventory.has_item(magic_key):
+			PlayerManager.hero.inventory.remove_item(magic_key)
+			var params: Dictionary = {
+				"map" : field_map,
+				"wait_for_continuation": false,
+				"make_window_visible": false
+			}
+			params.merge(event.get_door_params())
+			await field_ui.play_dialogue(event.door_event, params)
+		else:
+			await field_ui.play_dialogue(door_no_key_dialogue)
+	else:
+		await field_ui.play_dialogue(door_default_dialogue)
+	
 	close_command_window()
 
 

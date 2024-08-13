@@ -7,3 +7,6 @@ script = ExtResource("1_5mdel")
 
 [node name="TakeParams" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="DoorParams" type="Node" parent="."]
+unique_name_in_owner = true
