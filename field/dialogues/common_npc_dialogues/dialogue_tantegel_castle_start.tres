@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=7 format=3 uid="uid://cvxq7hxxxitmj"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_dqiun"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_v3xvf"]
+
+[sub_resource type="Resource" id="Resource_js66x"]
+script = ExtResource("1_dqiun")
+text = "I am glad thou hast returned. All our hopes are riding on thee"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_oc2oo"]
+script = ExtResource("1_dqiun")
+text = "Before reaching thy next level of experience thou must gain %d Points"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_nsnv0"]
+script = ExtResource("1_dqiun")
+text = "See me again when thy level has increased"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_7t7gj"]
+script = ExtResource("1_dqiun")
+text = "Goodbye now, %s. Take care and tempt not the Fates"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[resource]
+script = ExtResource("2_v3xvf")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_js66x"), SubResource("Resource_oc2oo"), SubResource("Resource_nsnv0"), SubResource("Resource_7t7gj")])

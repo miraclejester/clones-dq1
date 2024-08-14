@@ -72,7 +72,7 @@ func hide_command_window() -> void:
 	command_window.visible = false
 
 
-func show_item_window(item_selected_callback: Callable) -> void:
+func show_item_window(item_selected_callback: Callable, on_close: Callable) -> void:
 	var selected_callable: Callable = func (item: ItemData):
 		MenuStack.pop_stack()
 		item_window.visible = false
@@ -86,8 +86,9 @@ func show_item_window(item_selected_callback: Callable) -> void:
 		item_window.deactivate,
 		func ():
 			item_window.item_selected.disconnect(selected_callable)
-			MenuStack.pop_stack()
 			item_window.visible = false
+			await MenuStack.pop_stack()
+			on_close.call()
 	)
 	item_window.item_selected.connect(
 		selected_callable,

@@ -7,6 +7,9 @@ class_name NPCCharacter
 
 func _ready() -> void:
 	super()
+
+
+func activate_events() -> void:
 	for child in behaviours.get_children():
 		var b: NPCBehaviour = child as NPCBehaviour
 		b.set_user(self)

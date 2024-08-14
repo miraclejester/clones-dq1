@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3aljw8c4qutb"]
+
+[ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="1_78lrn"]
+[ext_resource type="Texture2D" uid="uid://csj3scn1phvxf" path="res://field/characters/npcs/npc_red_soldier.png" id="2_po7l7"]
+
+[node name="NpcRedSoldier" instance=ExtResource("1_78lrn")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_po7l7")

@@ -184,7 +184,12 @@ func on_door_selected() -> void:
 func on_item_selected() -> void:
 	await MenuStack.pop_stack()
 	if PlayerManager.hero.inventory.stack_count() > 0:
-		field_ui.show_item_window(on_item_data_selected)
+		field_ui.show_item_window(
+		on_item_data_selected,
+		func ():
+			await MenuStack.pop_stack()
+			close_command_window()
+	)
 	else:
 		await field_ui.play_dialogue(item_default_dialogue)
 		close_command_window()

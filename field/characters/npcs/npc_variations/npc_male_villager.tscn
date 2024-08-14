@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c83poqvc248ik"]
+
+[ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="1_rso7v"]
+[ext_resource type="Texture2D" uid="uid://bkuv2l1l0eefv" path="res://field/characters/npcs/npc_male_villager.png" id="2_c0jii"]
+
+[node name="NpcMaleVillager" instance=ExtResource("1_rso7v")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c0jii")

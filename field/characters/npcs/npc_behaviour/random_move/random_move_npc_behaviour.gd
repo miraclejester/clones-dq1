@@ -6,7 +6,7 @@ class_name RandomMoveNPCBehaviour
 @onready var wait_timer: Timer = $WaitTimer
 
 var possible_dirs: Array[Vector2] = [
-	Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT
+	Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT, Vector2.ZERO
 ]
 
 
@@ -19,9 +19,10 @@ func check_move() -> void:
 	if not enabled:
 		return
 	var dir: Vector2 = possible_dirs.pick_random()
-	var target: Vector2 = user.position + dir * 16
-	user.set_face_dir(dir)
-	var successful_request = user.field_move_component.request_move(target)
-	if successful_request:
-		await user.field_move_component.move_finished
+	if dir != Vector2.ZERO:
+		var target: Vector2 = user.position + dir * 16
+		user.set_face_dir(dir)
+		var successful_request = user.field_move_component.request_move(target)
+		if successful_request:
+			await user.field_move_component.move_finished
 	wait_timer.start(wait_time)

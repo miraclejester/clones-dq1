@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ntxmiusytft"]
+
+[ext_resource type="PackedScene" uid="uid://cxhwfveb0idsy" path="res://field/characters/npcs/npc_behaviour/npc_behaviour.tscn" id="1_e1vbx"]
+[ext_resource type="Script" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.gd" id="2_rxpun"]
+
+[node name="ProjectNpcBehaviour" instance=ExtResource("1_e1vbx")]
+script = ExtResource("2_rxpun")
+project_dir = Vector2(0, 0)

@@ -19,6 +19,7 @@ func _ready() -> void:
 		var n: NPCCharacter = npc as NPCCharacter
 		char_dict[n.position] = n
 		n.set_current_map(self)
+		n.activate_events()
 	for event in event_parent.get_children():
 		var e: MapEvent = event as MapEvent
 		event_dict[e.position] = e
@@ -27,6 +28,10 @@ func _ready() -> void:
 func register_character(character: FieldCharacter) -> void:
 	if not char_dict.has(character.position):
 		char_dict[character.position] = character
+
+
+func place_character_spot(character: FieldCharacter, pos: Vector2) -> void:
+	char_dict[pos] = character
 
 
 func move_character_register(old_pos: Vector2, character: FieldCharacter) -> void:
