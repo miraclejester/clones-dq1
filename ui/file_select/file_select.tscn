@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://csi7aj4iqanqj"]
+[gd_scene load_steps=7 format=3 uid="uid://csi7aj4iqanqj"]
 
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="1_2j5pk"]
 [ext_resource type="Script" path="res://ui/file_select/file_select.gd" id="1_xbxrf"]
 [ext_resource type="PackedScene" uid="uid://d3hdkb0bnwlmh" path="res://field/field_map_controller.tscn" id="2_y4nda"]
 [ext_resource type="PackedScene" uid="uid://bqa487ur1d4vf" path="res://ui/name_entry/name_entry_window.tscn" id="3_dvmyh"]
 [ext_resource type="PackedScene" uid="uid://d2fkmgnceplhx" path="res://ui/file_select/message_speed_selector.tscn" id="4_2ltm0"]
+[ext_resource type="PackedScene" uid="uid://cglyu066s60oe" path="res://ui/file_select/file_data_display.tscn" id="6_76knr"]
 
 [node name="FileSelect" type="Control" groups=["darken"]]
 layout_mode = 3
@@ -64,9 +65,58 @@ unique_name_in_owner = true
 use_parent_material = true
 layout_mode = 1
 
+[node name="FilledAdventureLogs" parent="." instance=ExtResource("1_2j5pk")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 48.0
+offset_top = 88.0
+offset_right = -16.0
+offset_bottom = -104.0
+
+[node name="UIWindow" parent="FilledAdventureLogs" index="0"]
+offset_right = 192.0
+offset_bottom = 32.0
+
+[node name="ColorRect" parent="FilledAdventureLogs" index="1"]
+visible = false
+
+[node name="Title" parent="FilledAdventureLogs" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="FilledAdventureLogs" index="3"]
+offset_right = 192.0
+offset_bottom = 32.0
+
 [node name="MessageSpeedSelector" parent="." instance=ExtResource("4_2ltm0")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="YesNoWindow" parent="." instance=ExtResource("1_2j5pk")]
+layout_mode = 1
+offset_left = 160.0
+offset_top = 40.0
+offset_right = -32.0
+offset_bottom = -136.0
+
+[node name="UIWindow" parent="YesNoWindow" index="0"]
+offset_right = 64.0
+
+[node name="ColorRect" parent="YesNoWindow" index="1"]
+visible = false
+
+[node name="Title" parent="YesNoWindow" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="YesNoWindow" index="3"]
+offset_right = 64.0
+
+[node name="FileDataDisplay" parent="." instance=ExtResource("6_76knr")]
 unique_name_in_owner = true
 layout_mode = 1
 
 [editable path="MainMenu"]
 [editable path="AdventureLogs"]
+[editable path="FilledAdventureLogs"]
+[editable path="MessageSpeedSelector"]
+[editable path="MessageSpeedSelector/UIWindow/MarginContainer/VBoxContainer/MarginContainer/CommandWindow"]
+[editable path="YesNoWindow"]

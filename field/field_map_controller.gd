@@ -54,13 +54,13 @@ func load_map(path: String) -> void:
 	AudioManager.play_bgm(field_map.map_bgm)
 	await GlobalVisuals.fade_in()
 	
-	#if field_map.map_start_event != null:
-	#	await get_tree().process_frame
-	#	get_tree().paused = true
-	#	await field_ui.play_dialogue(field_map.map_start_event, {
-	#		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
-	#	})
-	#	get_tree().paused = false
+	if field_map.map_start_event != null:
+		await get_tree().process_frame
+		get_tree().paused = true
+		await field_ui.play_dialogue(field_map.map_start_event, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+		})
+		get_tree().paused = false
 	hero_character.set_process(true)
 
 
