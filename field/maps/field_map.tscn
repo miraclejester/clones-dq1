@@ -111,7 +111,7 @@ custom_data_layer_0/name = "Blocking"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_p52ro")
 
-[node name="FieldMap" type="Node2D" groups=["darken"]]
+[node name="FieldMap" type="Node2D" groups=["darken", "spell_effect"]]
 material = ExtResource("1_qw758")
 script = ExtResource("1_ywggj")
 

@@ -5,7 +5,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://cnadevh6lfauh" path="res://field/characters/shared/animations/basic_character_move.tres" id="3_uqujf"]
 [ext_resource type="PackedScene" uid="uid://217yy5yc7w43" path="res://field/characters/shared/components/field_move_component.tscn" id="4_f3y0y"]
 
-[node name="HeroCharacter" type="Node2D" groups=["darken"]]
+[node name="HeroCharacter" type="Node2D" groups=["darken", "spell_effect"]]
 script = ExtResource("1_jcmbw")
 facing_wait_time = 0.15
 starting_face_dir = Vector2(0, -1)

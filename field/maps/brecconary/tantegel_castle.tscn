@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=26 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cbjcm8nmv6mne" path="res://field/characters/npcs/npc_variations/npc_female_villager.tscn" id="7_lyggg"]
 [ext_resource type="Resource" uid="uid://cufe444qc7nam" path="res://field/dialogues/common_npc_dialogues/dialogue_where_gwaelin.tres" id="8_mvfv1"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="9_btpew"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="10_urqlu"]
 [ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="10_y5ubs"]
 
 [sub_resource type="Resource" id="Resource_ujfi2"]
@@ -72,9 +73,13 @@ wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0])
 
+[sub_resource type="Resource" id="Resource_hlill"]
+script = ExtResource("10_urqlu")
+effect = 0
+
 [sub_resource type="Resource" id="Resource_nk56y"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill")])
 
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")
