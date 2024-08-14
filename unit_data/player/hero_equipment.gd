@@ -71,3 +71,7 @@ func generate_save_data() -> Array[int]:
 func load_from_data(data: Array[int]) -> void:
 	for id in data:
 		equip(GameDataManager.get_item(id) as EquipmentData)
+
+
+func get_equip(key: EquipmentData.EquipmentType) -> EquipmentData:
+	return eq_dict.get(key)

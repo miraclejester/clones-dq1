@@ -1,0 +1,269 @@
+[gd_scene load_steps=4 format=3 uid="uid://82u2w5c2svg4"]
+
+[ext_resource type="Script" path="res://field/ui/status_window/status_window.gd" id="1_sf0ly"]
+[ext_resource type="PackedScene" uid="uid://kaiotvf6h345" path="res://ui/ui_window.tscn" id="2_6ahj5"]
+[ext_resource type="PackedScene" uid="uid://bocskjsydt86j" path="res://ui/dq_label.tscn" id="3_g8x67"]
+
+[node name="StatusWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 40.0
+offset_right = -16.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sf0ly")
+
+[node name="UIWindow" parent="." instance=ExtResource("2_6ahj5")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="HeroName" parent="MarginContainer/VBoxContainer/NameMargin" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NAME:ABC"
+
+[node name="StrengthMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="StrengthContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/StrengthMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/StrengthMargin/StrengthContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STRENGTH:"
+
+[node name="Strength" parent="MarginContainer/VBoxContainer/StrengthMargin/StrengthContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18"
+horizontal_alignment = 2
+
+[node name="AgilityMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+
+[node name="AgilityContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/AgilityMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/AgilityMargin/AgilityContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AGILITY:"
+
+[node name="Agility" parent="MarginContainer/VBoxContainer/AgilityMargin/AgilityContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "17"
+horizontal_alignment = 2
+
+[node name="MaxHPMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="MaxHPContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MaxHPMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/MaxHPMargin/MaxHPContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAXIMUM HP:"
+
+[node name="MaxHP" parent="MarginContainer/VBoxContainer/MaxHPMargin/MaxHPContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "39"
+horizontal_alignment = 2
+
+[node name="MaxMPMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="MaxMPContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MaxMPMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/MaxMPMargin/MaxMPContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAXIMUM MP:"
+
+[node name="MaxMP" parent="MarginContainer/VBoxContainer/MaxMPMargin/MaxMPContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "26"
+horizontal_alignment = 2
+
+[node name="AttackPowerMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="AttackPowerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/AttackPowerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/AttackPowerMargin/AttackPowerContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ATTACK POWER:"
+
+[node name="AttackPower" parent="MarginContainer/VBoxContainer/AttackPowerMargin/AttackPowerContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18"
+horizontal_alignment = 2
+
+[node name="DefensePowerMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="DefensePowerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/DefensePowerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/DefensePowerMargin/DefensePowerContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DEFENSE POWER:"
+
+[node name="DefensePower" parent="MarginContainer/VBoxContainer/DefensePowerMargin/DefensePowerContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+horizontal_alignment = 2
+
+[node name="EquipmentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="WeaponMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="WeaponContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin/WeaponContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "WEAPON:"
+
+[node name="WeaponNameContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin/WeaponContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="WeaponNameLine1" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin/WeaponContainer/WeaponNameContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Erdrick`s"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin/WeaponContainer/WeaponNameContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="WeaponNameLine2" parent="MarginContainer/VBoxContainer/EquipmentContainer/WeaponMargin/WeaponContainer/WeaponNameContainer/MarginContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sword"
+
+[node name="ArmorMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="ArmorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin/ArmorContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "ARMOR:"
+
+[node name="ArmorNameContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin/ArmorContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ArmorNameLine1" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin/ArmorContainer/ArmorNameContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Erdrick`s"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin/ArmorContainer/ArmorNameContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="ArmorNameLine2" parent="MarginContainer/VBoxContainer/EquipmentContainer/ArmorMargin/ArmorContainer/ArmorNameContainer/MarginContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Armor"
+
+[node name="ShieldMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="ShieldContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin/ShieldContainer" instance=ExtResource("3_g8x67")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "SHIELD:"
+
+[node name="ShieldNameContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin/ShieldContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ShieldNameLine1" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin/ShieldContainer/ShieldNameContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Silver"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin/ShieldContainer/ShieldNameContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="ShieldNameLine2" parent="MarginContainer/VBoxContainer/EquipmentContainer/ShieldMargin/ShieldContainer/ShieldNameContainer/MarginContainer" instance=ExtResource("3_g8x67")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shield"

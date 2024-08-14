@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvrgbbcsw5bfy"]
+[gd_scene load_steps=7 format=3 uid="uid://cvrgbbcsw5bfy"]
 
 [ext_resource type="Script" path="res://field/ui/field_ui.gd" id="1_7y1k8"]
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_356wy"]
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="3_tjigo"]
 [ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="4_5wf1j"]
 [ext_resource type="PackedScene" uid="uid://cl07w4uuaew7u" path="res://ui/items/item_window.tscn" id="5_ubbot"]
+[ext_resource type="PackedScene" uid="uid://82u2w5c2svg4" path="res://field/ui/status_window/status_window.tscn" id="6_6nwqk"]
 
 [node name="FieldUI" type="CanvasLayer"]
 process_mode = 3
@@ -12,9 +13,11 @@ script = ExtResource("1_7y1k8")
 
 [node name="VisualsParent" type="Control" parent="." groups=["ambient_hurt", "darken"]]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayerHud" parent="VisualsParent" instance=ExtResource("1_356wy")]
 unique_name_in_owner = true
@@ -56,6 +59,10 @@ offset_top = 40.0
 offset_right = 105.0
 offset_bottom = 40.0
 pivot_offset = Vector2(7, -16)
+
+[node name="StatusWindow" parent="VisualsParent" instance=ExtResource("6_6nwqk")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [editable path="VisualsParent/CommandWindow"]
 [editable path="VisualsParent/DialogueWindow"]

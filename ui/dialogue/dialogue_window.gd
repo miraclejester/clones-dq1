@@ -132,9 +132,11 @@ func prompt_yes_no(on_yes: Callable, on_no: Callable) -> void:
 			),
 	], 1)
 	yes_no_window.visible = true
+	AudioManager.play_sfx("decision")
+	await get_tree().create_timer(0.4).timeout
 	await MenuStack.push_stack(
 		yes_no_window,
-		yes_no_window.activate,
+		yes_no_window.activate.bind(false),
 		yes_no_window.deactivate,
 		func ():
 			await MenuStack.pop_stack()

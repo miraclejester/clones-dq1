@@ -17,6 +17,8 @@ signal command_cancelled()
 @onready var command_window: CommandWindow = %CommandWindow
 @onready var dialogue_window: DialogueWindow = %DialogueWindow
 @onready var item_window: ItemWindow = %ItemWindow
+@onready var status_window: StatusWindow = %StatusWindow
+
 
 
 var command_select_signals: Array[Signal] = [
@@ -91,7 +93,21 @@ func show_item_window(item_selected_callback: Callable) -> void:
 		selected_callable,
 		CONNECT_ONE_SHOT
 	)
-	
+
+
+func show_status_window(on_cancel: Callable) -> void:
+	await MenuStack.push_stack(
+		status_window,
+		status_window.activate,
+		status_window.deactivate,
+		on_cancel
+	)
+	status_window.set_data_from_hero(PlayerManager.hero)
+	status_window.visible = true
+
+
+func hide_status_window() -> void:
+	status_window.visible = false
 
 
 func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}, clean_window: bool = true) -> void:

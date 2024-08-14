@@ -78,7 +78,7 @@ func check_movement_input() -> void:
 
 
 func check_menu_input() -> void:
-	if Input.is_action_pressed("A"):
+	if Input.is_action_just_pressed("A"):
 		menu_requested.emit()
 
 

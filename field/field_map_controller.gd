@@ -35,6 +35,7 @@ func _ready() -> void:
 	field_ui.search_selected.connect(on_search_selected)
 	field_ui.door_selected.connect(on_door_selected)
 	field_ui.item_selected.connect(on_item_selected)
+	field_ui.status_selected.connect(on_status_selected)
 	
 	GlobalVisuals.determine_ui_colors(
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
@@ -158,6 +159,7 @@ func on_door_selected() -> void:
 
 
 func on_item_selected() -> void:
+	await MenuStack.pop_stack()
 	if PlayerManager.hero.inventory.stack_count() > 0:
 		field_ui.show_item_window(on_item_data_selected)
 	else:
@@ -176,6 +178,17 @@ func on_item_data_selected(item: ItemData) -> void:
 		"map_controller": self
 	})
 	close_command_window()
+
+
+func on_status_selected() -> void:
+	await MenuStack.pop_stack()
+	await field_ui.show_status_window(
+		func ():
+			await MenuStack.pop_stack()
+			field_ui.hide_status_window()
+			await get_tree().process_frame
+			close_command_window()
+	)
 
 
 func get_global_format_vars() -> Array:

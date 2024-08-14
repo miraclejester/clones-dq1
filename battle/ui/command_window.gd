@@ -179,8 +179,9 @@ func cancel() -> void:
 	cancelled.emit()
 
 
-func activate() -> void:
-	AudioManager.play_sfx("menu_blip")
+func activate(play_blip: bool = true) -> void:
+	if play_blip:
+		AudioManager.play_sfx("menu_blip")
 	get_command(selection_index).highlight()
 	menu_active = true
 
