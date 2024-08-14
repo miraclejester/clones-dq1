@@ -12,15 +12,19 @@ enum MoveState {
 @export var facing_wait_time: float = 0.2
 @export var after_move_idle_wait_time: float = 1.5
 @export var facing_idle_wait_time: float = 3.5
+@export var wall_wait_time: float = 0.18
 
 @onready var move_timer: Timer = %MoveTimer
 @onready var idle_timer: Timer = %IdleTimer
+@onready var wall_timer: Timer = %WallTimer
+
 
 
 var target_pos: Vector2
 var move_state: MoveState = MoveState.IDLE
 var tracked_input: String
 var old_pos: Vector2
+var can_play_wall_sound: bool = true
 
 var move_input_dict: Dictionary = {
 	"down" : Vector2.DOWN,
@@ -33,6 +37,7 @@ func _ready() -> void:
 	super()
 	move_timer.timeout.connect(on_move_timer_timeout)
 	idle_timer.timeout.connect(on_idle_timer_timeout)
+	wall_timer.timeout.connect(on_wall_timer_timeout)
 
 
 func _process(_delta: float) -> void:
@@ -87,7 +92,10 @@ func get_cur_move_input() -> String:
 func set_target_dir(dir: Vector2) -> void:
 	idle_timer.start(after_move_idle_wait_time)
 	if not field_move_component.request_move(position + dir * 16):
-		AudioManager.play_sfx("wall")
+		if can_play_wall_sound:
+			AudioManager.play_sfx("wall")
+			can_play_wall_sound = false
+			wall_timer.start(wall_wait_time)
 		move_state = MoveState.IDLE
 		return
 	idle_timer.stop()
@@ -100,3 +108,7 @@ func on_move_timer_timeout() -> void:
 
 func on_idle_timer_timeout() -> void:
 	idling.emit()
+
+
+func on_wall_timer_timeout() -> void:
+	can_play_wall_sound = true

@@ -54,7 +54,7 @@ func load_map(path: String) -> void:
 	AudioManager.play_bgm(field_map.map_bgm)
 	await GlobalVisuals.fade_in()
 	
-	if field_map.map_start_event != null:
+	if field_map.map_start_event != null and false:
 		await get_tree().process_frame
 		get_tree().paused = true
 		await field_ui.play_dialogue(field_map.map_start_event, {
