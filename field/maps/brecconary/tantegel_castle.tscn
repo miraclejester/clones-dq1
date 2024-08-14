@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=34 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="9_btpew"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="10_urqlu"]
 [ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="10_y5ubs"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="11_22ilt"]
+[ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="13_s00wy"]
+[ext_resource type="Resource" uid="uid://5piqufaqxh1x" path="res://field/dialogues/common_npc_dialogues/merchant_killed_by_dragonlord.tres" id="14_aq8kv"]
 
 [sub_resource type="Resource" id="Resource_ujfi2"]
 script = ExtResource("2_i2oon")
@@ -77,9 +80,50 @@ format_var_idxs = Array[int]([0])
 script = ExtResource("10_urqlu")
 effect = 0
 
+[sub_resource type="Resource" id="Resource_0ynif"]
+script = ExtResource("11_22ilt")
+key = 0
+amount = 0
+
 [sub_resource type="Resource" id="Resource_nk56y"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill"), SubResource("Resource_0ynif")])
+
+[sub_resource type="Resource" id="Resource_wtwap"]
+script = ExtResource("2_i2oon")
+text = "Rumor has it that entire towns have been destroyed by the Dragonlord`s servants"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_cyq65"]
+script = ExtResource("2_i2oon")
+text = "To become strong enough to face future trials thou must first battle many foes"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_ncws1"]
+script = ExtResource("2_i2oon")
+text = "Thou must have a key to open a door"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_f8va7"]
+script = ExtResource("2_i2oon")
+text = "Welcome to Tantegel Castle"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")
@@ -130,13 +174,46 @@ position = Vector2(264, 344)
 talk_event = ExtResource("8_mvfv1")
 starting_face_dir = Vector2(1, 0)
 
-[node name="NpcOldMan" parent="NPCParent" index="6" instance=ExtResource("9_btpew")]
+[node name="MPHealer" parent="NPCParent" index="6" instance=ExtResource("9_btpew")]
 position = Vector2(344, 440)
 talk_event = SubResource("Resource_nk56y")
 starting_face_dir = Vector2(-1, 0)
 
-[node name="ProjectNpcBehaviour" parent="NPCParent/NpcOldMan/Behaviours" index="0" instance=ExtResource("10_y5ubs")]
+[node name="ProjectNpcBehaviour" parent="NPCParent/MPHealer/Behaviours" index="0" instance=ExtResource("10_y5ubs")]
 project_dir = Vector2(-1, 0)
+
+[node name="LoreMerchant" parent="NPCParent" index="7" instance=ExtResource("13_s00wy")]
+position = Vector2(88, 376)
+talk_event = SubResource("Resource_wtwap")
+metadata/_edit_group_ = true
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/LoreMerchant/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="LoreMerchant2" parent="NPCParent" index="8" instance=ExtResource("13_s00wy")]
+position = Vector2(136, 424)
+talk_event = ExtResource("14_aq8kv")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/LoreMerchant2/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="HintVillager" parent="NPCParent" index="9" instance=ExtResource("4_c1p3n")]
+position = Vector2(56, 152)
+talk_event = SubResource("Resource_cyq65")
+
+[node name="HintGuard" parent="NPCParent" index="10" instance=ExtResource("2_1blbo")]
+position = Vector2(312, 56)
+talk_event = SubResource("Resource_ncws1")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/HintGuard/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="LeftWelcomeGuard" parent="NPCParent" index="11" instance=ExtResource("2_1blbo")]
+position = Vector2(168, 456)
+talk_event = SubResource("Resource_f8va7")
+starting_face_dir = Vector2(1, 0)
+
+[node name="RightWelcomeGuard" parent="NPCParent" index="12" instance=ExtResource("2_1blbo")]
+position = Vector2(216, 456)
+talk_event = SubResource("Resource_f8va7")
+starting_face_dir = Vector2(-1, 0)
 
 [node name="ToThrone" parent="EventParent" index="0" instance=ExtResource("2_5jjpx")]
 position = Vector2(136, 136)
@@ -151,4 +228,7 @@ position = Vector2(136, 136)
 [editable path="NPCParent/LoreVillager1"]
 [editable path="NPCParent/LoreVillager2"]
 [editable path="NPCParent/TorchGuard"]
-[editable path="NPCParent/NpcOldMan"]
+[editable path="NPCParent/MPHealer"]
+[editable path="NPCParent/LoreMerchant"]
+[editable path="NPCParent/LoreMerchant2"]
+[editable path="NPCParent/HintGuard"]

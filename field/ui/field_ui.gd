@@ -51,6 +51,9 @@ func _ready() -> void:
 func set_hero(hero: HeroUnit) -> void:
 	player_hud.set_hero(hero)
 	PlayerManager.hero.gold_changed.connect(player_hud.on_gold_changed)
+	PlayerManager.hero.mp_changed.connect(player_hud.on_mp_changed)
+	PlayerManager.hero.hp_changed.connect(player_hud.on_hp_changed)
+	PlayerManager.hero.exp_changed.connect(player_hud.on_exp_changed)
 
 
 func show_hud() -> void:
