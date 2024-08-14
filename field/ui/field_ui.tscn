@@ -11,7 +11,7 @@
 process_mode = 3
 script = ExtResource("1_7y1k8")
 
-[node name="VisualsParent" type="Control" parent="." groups=["ambient_hurt", "darken"]]
+[node name="VisualsParent" type="Control" parent="." groups=["ambient_hurt", "darken", "spell_effect"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
