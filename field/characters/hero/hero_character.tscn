@@ -25,6 +25,7 @@ libraries = {
 autoplay = "basic_character_move/walk_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 
 [node name="MoveTimer" type="Timer" parent="."]
 unique_name_in_owner = true

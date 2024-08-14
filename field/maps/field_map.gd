@@ -7,6 +7,8 @@ class_name FieldMap
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
 @onready var event_parent: Node2D = %EventParent
+@onready var spawn_points: Node2D = $SpawnPoints
+
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
 var event_dict: Dictionary #Vector2 to MapEvent
@@ -61,3 +63,11 @@ func remove_event(pos: Vector2) -> void:
 
 func is_pos_reserved(pos: Vector2) -> bool:
 	return char_dict.has(pos)
+
+
+func find_spawn_pos(key: String) -> Vector2:
+	var sp: Node2D = find_child(key) as Node2D
+	if sp != null:
+		return sp.position
+	else:
+		return Vector2.ZERO

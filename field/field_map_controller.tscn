@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=15 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_mhtmc"]
+[ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_hvgwh"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
 
@@ -60,6 +61,21 @@ wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
 
+[sub_resource type="Resource" id="Resource_vhygg"]
+script = ExtResource("3_mhtmc")
+text = "There are no stairs here"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_b0e4t"]
+script = ExtResource("4_hvgwh")
+play_starting_event = false
+spawn_point_key = "throne"
+spawn_direction = Vector2(0, -1)
+
 [node name="FieldMapController" type="Node2D"]
 script = ExtResource("1_wpht4")
 base_map_path = "res://field/maps"
@@ -70,11 +86,14 @@ search_default_dialogue = SubResource("Resource_302om")
 door_no_key_dialogue = SubResource("Resource_i88cl")
 door_default_dialogue = SubResource("Resource_7yyl3")
 item_default_dialogue = SubResource("Resource_8qaab")
+default_stairs_dialogue = SubResource("Resource_vhygg")
+starting_map_load_params = SubResource("Resource_b0e4t")
 
 [node name="FieldMapContainer" type="Node2D" parent="."]
 
 [node name="HeroCharacter" parent="." instance=ExtResource("5_xgior")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(88, 104)
 
 [node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]

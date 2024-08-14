@@ -9,6 +9,8 @@ class_name FieldMapController
 @export var door_no_key_dialogue: DialogueEvent
 @export var door_default_dialogue: DialogueEvent
 @export var item_default_dialogue: DialogueEvent
+@export var default_stairs_dialogue: DialogueEvent
+@export var starting_map_load_params: MapLoadParams
 
 
 @onready var hero_character: HeroCharacter = %HeroCharacter
@@ -36,26 +38,39 @@ func _ready() -> void:
 	field_ui.door_selected.connect(on_door_selected)
 	field_ui.item_selected.connect(on_item_selected)
 	field_ui.status_selected.connect(on_status_selected)
+	field_ui.stairs_selected.connect(on_stairs_selected)
 	
 	GlobalVisuals.determine_ui_colors(
 		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
 		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
 	)
-	
-	load_map(GameDataManager.get_starting_map_key())
+	load_map(GameDataManager.get_starting_map_key(), starting_map_load_params)
 
 
-func load_map(path: String) -> void:
+func load_map(path: String, params: MapLoadParams) -> void:
+	hero_character.visible = false
 	current_map_key = path
 	var map_scene: PackedScene = load("%s/%s.tscn" % [base_map_path, path])
 	var map: FieldMap = map_scene.instantiate() as FieldMap
 	field_map = map
+	for child in field_map_container.get_children():
+		field_map_container.remove_child(child)
+		child.queue_free()
+	field_map.visible = false
 	field_map_container.add_child(field_map)
+	
 	hero_character.set_current_map(field_map)
+	
+	hero_character.position = field_map.find_spawn_pos(params.spawn_point_key)
+	hero_character.set_face_dir(params.spawn_direction)
+	
+	await get_tree().create_timer(1).timeout
 	AudioManager.play_bgm(field_map.map_bgm)
+	hero_character.visible = true
+	field_map.visible = true
 	await GlobalVisuals.fade_in()
 	
-	if field_map.map_start_event != null and false:
+	if field_map.map_start_event != null and params.play_starting_event:
 		await get_tree().process_frame
 		get_tree().paused = true
 		await field_ui.play_dialogue(field_map.map_start_event, {
@@ -63,6 +78,14 @@ func load_map(path: String) -> void:
 		})
 		get_tree().paused = false
 	hero_character.set_process(true)
+
+
+func transition_to_map(path: String, params: MapLoadParams) -> void:
+	hero_character.set_process(false)
+	get_tree().paused = true
+	await GlobalVisuals.fade_out()
+	await load_map(path, params)
+	get_tree().paused = false
 
 
 func on_hero_idling() -> void:
@@ -174,9 +197,8 @@ func on_item_data_selected(item: ItemData) -> void:
 		clean = true
 	await field_ui.play_dialogue(item.field_action, {
 		"wait_for_continuation": false,
-		"clean_window": clean,
 		"map_controller": self
-	})
+	}, clean)
 	close_command_window()
 
 
@@ -189,6 +211,23 @@ func on_status_selected() -> void:
 			await get_tree().process_frame
 			close_command_window()
 	)
+
+
+func on_stairs_selected() -> void:
+	await MenuStack.pop_stack()
+	var event: MapEvent = field_map.find_event(hero_character.position)
+	if event != null and event.stairs_event != null:
+		close_command_window()
+		AudioManager.play_sfx("stairs")
+		field_ui.hide_hud()
+		await field_ui.play_dialogue(event.stairs_event, {
+			"wait_for_continuation": false,
+			"map_controller": self,
+			"make_window_visible": false
+		}, false)
+	else:
+		await field_ui.play_dialogue(default_stairs_dialogue)
+		close_command_window()
 
 
 func get_global_format_vars() -> Array:

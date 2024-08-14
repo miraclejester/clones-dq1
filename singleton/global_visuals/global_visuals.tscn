@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://d2cydjqh54jr6" path="res://materials/palette_swap/darken_hurt_swap.tres" id="6_142dn"]
 
 [node name="GlobalVisuals" type="Node"]
+process_mode = 3
 script = ExtResource("1_lpqev")
 spell_effect_material = ExtResource("2_t8dn0")
 ambient_hurt_material = ExtResource("3_8mr3j")

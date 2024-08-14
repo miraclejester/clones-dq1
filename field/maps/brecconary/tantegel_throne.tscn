@@ -164,5 +164,8 @@ metadata/_edit_group_ = true
 texture = ExtResource("7_26oui")
 hframes = 2
 
+[node name="throne" type="Node2D" parent="SpawnPoints" index="0"]
+position = Vector2(88, 104)
+
 [editable path="NPCParent/MovingGuard"]
 [editable path="NPCParent/KingLorik"]
