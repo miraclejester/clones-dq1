@@ -15,10 +15,16 @@ enum HUDStatKey {
 var hero: HeroUnit
 
 
-func set_hero(h: HeroUnit) -> void:
+func set_hero(h: HeroUnit, set_signals: bool = false) -> void:
 	hero = h
 	player_name.text = hero.hero_name.substr(0, 4)
 	update_from_hero()
+	if set_signals:
+		hero.hp_changed.connect(on_hp_changed)
+		hero.mp_changed.connect(on_mp_changed)
+		hero.level_changed.connect(on_level_changed)
+		hero.gold_changed.connect(on_gold_changed)
+		hero.exp_changed.connect(on_exp_changed)
 
 
 func update_from_hero() -> void:

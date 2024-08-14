@@ -27,6 +27,9 @@ func _ready() -> void:
 	create_stat(StatKey.AGI)
 	create_stat(StatKey.HP)
 	create_stat(StatKey.MP)
+	
+	(stat_dict.get(StatKey.HP) as Stat).current_value_set.connect(func (val: int): hp_changed.emit(val))
+	(stat_dict.get(StatKey.MP) as Stat).current_value_set.connect(func (val: int): mp_changed.emit(val))
 
 
 func create_stat(key: StatKey) -> void:

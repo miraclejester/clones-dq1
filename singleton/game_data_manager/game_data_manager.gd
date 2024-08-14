@@ -2,6 +2,7 @@ extends Node
 
 @export_dir var items_dir: String
 @export_dir var equipment_dir: String
+@export_dir var map_dir: String
 
 var save_dict: Dictionary = {} #Json
 var item_dict: Dictionary = {} #int to ItemData
@@ -51,7 +52,7 @@ func save_to_file(file_index: int) -> void:
 
 func generate_save_data(keep_map_key: bool = false) -> void:
 	var sd: Dictionary = {}
-	var map_key: String = "brecconary/tantegel_throne"
+	var map_key: String = "tantegel_throne"
 	if keep_map_key:
 		map_key = save_dict.get("map").get("map_key")
 	
@@ -83,7 +84,7 @@ func generate_new_save_data(hero_name: String, message_speed: int) -> void:
 			"equipment": []
 		},
 		"map": {
-			"map_key": "brecconary/new_game_tantegel_throne"
+			"map_key": "new_game_tantegel_throne"
 		},
 		"settings": {
 			"message_speed": message_speed
@@ -117,6 +118,13 @@ func get_filled_slots() -> Array[int]:
 func copy_file(from: int, to: int) -> void:
 	load_save_from_slot(from)
 	save_to_file(to)
+
+
+func get_all_map_keys() -> Array[String]:
+	var res: Array[String] = []
+	res.assign(DirAccess.get_files_at(map_dir))
+	res.assign(res.map(func(key: String): return key.trim_suffix(".tscn")))
+	return res
 
 
 func erase_file(slot: int) -> void:

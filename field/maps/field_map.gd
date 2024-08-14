@@ -71,8 +71,10 @@ func is_pos_reserved(pos: Vector2) -> bool:
 
 
 func find_spawn_pos(key: String) -> Vector2:
-	var sp: Node2D = find_child(key) as Node2D
-	if sp != null:
-		return sp.position
-	else:
+	if spawn_points.get_child_count() == 0:
 		return Vector2.ZERO
+	for sp in spawn_points.get_children():
+		var s: Node2D = sp as Node2D
+		if s.name == key:
+			return s.position
+	return (spawn_points.get_child(0) as Node2D).position

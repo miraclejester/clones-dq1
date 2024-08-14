@@ -162,7 +162,7 @@ spawn_direction = Vector2(1, 0)
 
 [sub_resource type="Resource" id="Resource_iopuf"]
 script = ExtResource("15_8j7wn")
-map_key = "brecconary/tantegel_castle"
+map_key = "tantegel_castle"
 load_params = SubResource("Resource_b04x5")
 
 [node name="NewGameTantegelThrone" instance=ExtResource("1_a0atq")]

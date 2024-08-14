@@ -6,3 +6,4 @@
 script = ExtResource("1_pyd5o")
 items_dir = "res://unit_data/items/data"
 equipment_dir = "res://unit_data/equipment"
+map_dir = "res://field/maps/data"

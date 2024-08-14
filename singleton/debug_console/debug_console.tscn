@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs55rdr3g2umt"]
+
+[ext_resource type="Script" path="res://singleton/debug_console/debug_console.gd" id="1_eiq72"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="1_ok3gu"]
+[ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="2_2pshr"]
+[ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="4_0p8xd"]
+
+[sub_resource type="Resource" id="Resource_hvdb4"]
+script = ExtResource("2_2pshr")
+play_starting_event = false
+spawn_point_key = ""
+spawn_direction = Vector2(0, 1)
+
+[node name="DebugConsole" type="CanvasLayer"]
+process_mode = 3
+layer = 40
+script = ExtResource("1_eiq72")
+map_load_params = SubResource("Resource_hvdb4")
+
+[node name="CommandWindow" parent="." instance=ExtResource("1_ok3gu")]
+unique_name_in_owner = true
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="UIWindow" parent="CommandWindow" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" parent="CommandWindow" index="1"]
+offset_left = 100.0
+offset_right = 141.0
+
+[node name="Title" parent="CommandWindow" index="2"]
+offset_left = 100.0
+offset_right = 156.0
+text = "DEBUG"
+
+[node name="MarginContainer" parent="CommandWindow" index="3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHud" parent="." instance=ExtResource("4_0p8xd")]
+unique_name_in_owner = true
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[editable path="CommandWindow"]

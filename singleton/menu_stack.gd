@@ -31,6 +31,10 @@ func pop_stack() -> void:
 		stack[0].activate_method.call()
 
 
+func is_stack_empty() -> bool:
+	return stack.size() == 0
+
+
 func clear_menu_stack() -> void:
 	while stack.size() > 0:
 		await pop_stack()

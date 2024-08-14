@@ -202,7 +202,7 @@ func get_command(idx: int) -> CommandLabel:
 func on_main_container_resized() -> void:
 	var width: int = int(grid_container.size.x) + left_margin + right_margin
 	var height: int = int(grid_container.size.y) + top_margin + bottom_margin
-	ui_window.size = Vector2(width, height)
+	ui_window.set_deferred("size", Vector2(width, height))
 
 
 func on_contiunous_timeout() -> void:
