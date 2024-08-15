@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=6 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -9,6 +9,12 @@ script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(0, -1)
+
+[sub_resource type="Resource" id="Resource_vsh5g"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(1, 0)
 
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
@@ -23,6 +29,11 @@ metadata/_edit_lock_ = true
 position = Vector2(8, 8)
 map_key = "tantegel_castle"
 load_params = SubResource("Resource_8u7du")
+
+[node name="ToBrecconary" parent="EventParent" index="1" instance=ExtResource("2_6dvip")]
+position = Vector2(88, -24)
+map_key = "brecconary"
+load_params = SubResource("Resource_vsh5g")
 
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
