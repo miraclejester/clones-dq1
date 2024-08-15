@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gw0rqrda1ger"]
+
+[ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="1_5yqjo"]
+[ext_resource type="Script" path="res://field/events/instances/map_transition_event.gd" id="2_ub38c"]
+
+[node name="MapTransitionEvent" instance=ExtResource("1_5yqjo")]
+script = ExtResource("2_ub38c")
+map_key = ""
+load_params = null

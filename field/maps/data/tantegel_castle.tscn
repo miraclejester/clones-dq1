@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=36 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="11_22ilt"]
 [ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="13_s00wy"]
 [ext_resource type="Resource" uid="uid://5piqufaqxh1x" path="res://field/dialogues/common_npc_dialogues/merchant_killed_by_dragonlord.tres" id="14_aq8kv"]
+[ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="18_8577f"]
 
 [sub_resource type="Resource" id="Resource_ujfi2"]
 script = ExtResource("2_i2oon")
@@ -136,6 +137,12 @@ script = ExtResource("4_76sow")
 map_key = "tantegel_throne"
 load_params = SubResource("Resource_8k2m6")
 
+[sub_resource type="Resource" id="Resource_8iojy"]
+script = ExtResource("3_eu1uo")
+play_starting_event = false
+spawn_point_key = "tantegel"
+spawn_direction = Vector2(0, 1)
+
 [node name="TantegelCastle" instance=ExtResource("1_6o5ni")]
 map_bgm = "tantegel_castle"
 
@@ -215,15 +222,51 @@ position = Vector2(216, 456)
 talk_event = SubResource("Resource_f8va7")
 starting_face_dir = Vector2(-1, 0)
 
+[node name="EventParent" parent="." index="2"]
+metadata/_edit_lock_ = true
+
 [node name="ToThrone" parent="EventParent" index="0" instance=ExtResource("2_5jjpx")]
 position = Vector2(136, 136)
 stairs_event = SubResource("Resource_nr3d1")
+
+[node name="ToOverworld" parent="EventParent" index="1" instance=ExtResource("18_8577f")]
+position = Vector2(168, 488)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
+
+[node name="ToOverworld2" parent="EventParent" index="2" instance=ExtResource("18_8577f")]
+position = Vector2(168, 504)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
+
+[node name="ToOverworld3" parent="EventParent" index="3" instance=ExtResource("18_8577f")]
+position = Vector2(184, 504)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
+
+[node name="ToOverworld4" parent="EventParent" index="4" instance=ExtResource("18_8577f")]
+position = Vector2(200, 504)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
+
+[node name="ToOverworld5" parent="EventParent" index="5" instance=ExtResource("18_8577f")]
+position = Vector2(216, 504)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
+
+[node name="ToOverworld6" parent="EventParent" index="6" instance=ExtResource("18_8577f")]
+position = Vector2(216, 488)
+map_key = "overworld"
+load_params = SubResource("Resource_8iojy")
 
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
 [node name="throne_stairs" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(136, 136)
+
+[node name="entrance" type="Node2D" parent="SpawnPoints" index="1"]
+position = Vector2(184, 488)
 
 [editable path="NPCParent/LoreVillager1"]
 [editable path="NPCParent/LoreVillager2"]

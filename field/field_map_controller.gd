@@ -29,6 +29,7 @@ func _ready() -> void:
 	hero_character.idling.connect(on_hero_idling)
 	hero_character.move_intention.connect(on_hero_move_intention)
 	hero_character.menu_requested.connect(on_hero_menu_requested)
+	hero_character.move_finished.connect(on_move_finished)
 	hero_character.set_process(false)
 	
 	field_ui.command_cancelled.connect(on_command_cancelled)
@@ -233,6 +234,18 @@ func on_stairs_selected() -> void:
 	else:
 		await field_ui.play_dialogue(default_stairs_dialogue)
 		close_command_window()
+
+
+func on_move_finished() -> void:
+	var event: MapEvent = field_map.find_event(hero_character.position)
+	if event != null and event.step_event != null:
+		AudioManager.play_sfx("stairs")
+		field_ui.hide_hud()
+		await field_ui.play_dialogue(event.step_event, {
+			"wait_for_continuation": false,
+			"map_controller": self,
+			"make_window_visible": false
+		})
 
 
 func get_global_format_vars() -> Array:

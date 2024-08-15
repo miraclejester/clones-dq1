@@ -4,6 +4,7 @@ class_name HeroCharacter
 signal idling()
 signal move_intention()
 signal menu_requested()
+signal move_finished()
 
 enum MoveState {
 	IDLE, FACING, MOVING
@@ -17,7 +18,6 @@ enum MoveState {
 @onready var move_timer: Timer = %MoveTimer
 @onready var idle_timer: Timer = %IdleTimer
 @onready var wall_timer: Timer = %WallTimer
-
 
 
 var target_pos: Vector2
@@ -38,6 +38,7 @@ func _ready() -> void:
 	move_timer.timeout.connect(on_move_timer_timeout)
 	idle_timer.timeout.connect(on_idle_timer_timeout)
 	wall_timer.timeout.connect(on_wall_timer_timeout)
+	field_move_component.move_finished.connect(func() : move_finished.emit())
 
 
 func _process(_delta: float) -> void:
