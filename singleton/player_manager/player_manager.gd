@@ -33,10 +33,10 @@ func generate_save_data() -> Dictionary:
 
 
 func load_from_data(data: Dictionary) -> void:
+	hero.set_hero_name(data.get("hero_name", "NONAME"))
 	hero.set_stats_from_level(data.get("level", 1))
 	hero.gold = data.get("gold", 0)
 	hero.experience = data.get("experience", 0)
-	hero.set_hero_name(data.get("hero_name", "NONAME"))
 	hero.stats.set_stat(UnitStats.StatKey.HP, data.get("hp", 15))
 	hero.stats.set_stat(UnitStats.StatKey.MP, data.get("mp", 0))
 	

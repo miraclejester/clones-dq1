@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://jj5khoav0i5p"]
+[gd_scene load_steps=55 format=3 uid="uid://jj5khoav0i5p"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_fhpbb"]
 [ext_resource type="PackedScene" uid="uid://c83poqvc248ik" path="res://field/characters/npcs/npc_variations/npc_male_villager.tscn" id="2_yl3lp"]
@@ -27,6 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="16_rkmqo"]
 [ext_resource type="Resource" uid="uid://ds04lq3bq25ep" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_shop_not_enough_money.tres" id="17_3ebmm"]
 [ext_resource type="Resource" uid="uid://iu4dt1imuxer" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_rebuy.tres" id="22_sb34s"]
+[ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="26_bodjr"]
+[ext_resource type="PackedScene" uid="uid://dh1e55af28xf8" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.tscn" id="27_saj72"]
+[ext_resource type="PackedScene" uid="uid://3aljw8c4qutb" path="res://field/characters/npcs/npc_variations/npc_red_soldier.tscn" id="28_sir18"]
+[ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="29_dpya5"]
 
 [sub_resource type="Resource" id="Resource_lotqr"]
 script = ExtResource("3_op2on")
@@ -77,6 +81,135 @@ items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("9_ry
 script = ExtResource("7_wyemw")
 shop_data = SubResource("Resource_3rsn0")
 
+[sub_resource type="Resource" id="Resource_mu31w"]
+script = ExtResource("3_op2on")
+text = "Watch thy Hit Points when in the Poisonous Marsh"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_pvaes"]
+script = ExtResource("3_op2on")
+text = "Please, save us from the minions of the Dragonlord"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_bge4j"]
+script = ExtResource("3_op2on")
+text = "Go north to the seashore, then follow the coastline west until thou hath reached Garinham"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_m4n8d"]
+script = ExtResource("3_op2on")
+text = "There is a town where magic keys can be purchased"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_f3dp5"]
+script = ExtResource("3_op2on")
+text = "If thou art cursed, come again"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_57pjc"]
+script = ExtResource("3_op2on")
+text = "Art thou the descendant of Erdrick?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_idwn2"]
+script = ExtResource("3_op2on")
+text = "Hast thou any proof?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_l2kbv"]
+script = ExtResource("5_20iq0")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_57pjc"), SubResource("Resource_idwn2")])
+
+[sub_resource type="Resource" id="Resource_tp3us"]
+script = ExtResource("3_op2on")
+text = "See King Lorik when thy experience levels are raised"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_ee567"]
+script = ExtResource("3_op2on")
+text = "Many have been the warriors who have perished on this quest"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_cblwu"]
+script = ExtResource("3_op2on")
+text = "But for thee I wish success, %s"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_t5w6p"]
+script = ExtResource("5_20iq0")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ee567"), SubResource("Resource_cblwu")])
+
+[sub_resource type="Resource" id="Resource_a1r5x"]
+script = ExtResource("3_op2on")
+text = "Enter where thou can"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_ybx0d"]
+script = ExtResource("3_op2on")
+text = "Within sight of Tantegel Castle to the south, is Charlock,"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_0gsme"]
+script = ExtResource("3_op2on")
+text = "The fortress of the Dragonlord"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_dndfd"]
+script = ExtResource("5_20iq0")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ybx0d"), SubResource("Resource_0gsme")])
+
 [sub_resource type="Resource" id="Resource_cdxnq"]
 script = ExtResource("7_0jxln")
 play_starting_event = false
@@ -103,6 +236,62 @@ talk_event = SubResource("Resource_xrrtg")
 
 [node name="ProjectNpcBehaviour" parent="NPCParent/WeaponArmorShop/Behaviours" index="0" instance=ExtResource("16_rkmqo")]
 project_dir = Vector2(0, 1)
+
+[node name="OldManSwampAdvice" parent="NPCParent" index="3" instance=ExtResource("26_bodjr")]
+position = Vector2(184, 72)
+talk_event = SubResource("Resource_mu31w")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/OldManSwampAdvice/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="MerchantPleaseSave" parent="NPCParent" index="4" instance=ExtResource("6_hyq4k")]
+position = Vector2(296, 168)
+talk_event = SubResource("Resource_pvaes")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/MerchantPleaseSave/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="DirectorToGarinham" parent="NPCParent" index="5" instance=ExtResource("2_yl3lp")]
+position = Vector2(184, 216)
+talk_event = SubResource("Resource_bge4j")
+starting_face_dir = Vector2(1, 0)
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/DirectorToGarinham/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="HintKeys" parent="NPCParent" index="6" instance=ExtResource("2_yl3lp")]
+position = Vector2(344, 184)
+talk_event = SubResource("Resource_m4n8d")
+
+[node name="NpcOldMan" parent="NPCParent" index="7" instance=ExtResource("26_bodjr")]
+position = Vector2(408, 184)
+talk_event = SubResource("Resource_f3dp5")
+
+[node name="DescendantProofAsker" parent="NPCParent" index="8" instance=ExtResource("28_sir18")]
+position = Vector2(376, 280)
+talk_event = SubResource("Resource_l2kbv")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/DescendantProofAsker/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="HintToLorik" parent="NPCParent" index="9" instance=ExtResource("29_dpya5")]
+position = Vector2(472, 232)
+talk_event = SubResource("Resource_tp3us")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/HintToLorik/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="LoreSoldier" parent="NPCParent" index="10" instance=ExtResource("28_sir18")]
+position = Vector2(216, 344)
+talk_event = SubResource("Resource_t5w6p")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/LoreSoldier/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="EnterShop" parent="NPCParent" index="11" instance=ExtResource("2_yl3lp")]
+position = Vector2(344, 392)
+talk_event = SubResource("Resource_a1r5x")
+starting_face_dir = Vector2(0, -1)
+
+[node name="CharlockLore" parent="NPCParent" index="12" instance=ExtResource("2_yl3lp")]
+position = Vector2(440, 360)
+talk_event = SubResource("Resource_dndfd")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/CharlockLore/Behaviours" index="0" instance=ExtResource("27_saj72")]
 
 [node name="ToOverworld" parent="EventParent" index="0" instance=ExtResource("6_y8cgf")]
 position = Vector2(8, 232)
@@ -176,3 +365,10 @@ metadata/_edit_lock_ = true
 position = Vector2(24, 264)
 
 [editable path="NPCParent/WeaponArmorShop"]
+[editable path="NPCParent/OldManSwampAdvice"]
+[editable path="NPCParent/MerchantPleaseSave"]
+[editable path="NPCParent/DirectorToGarinham"]
+[editable path="NPCParent/DescendantProofAsker"]
+[editable path="NPCParent/HintToLorik"]
+[editable path="NPCParent/LoreSoldier"]
+[editable path="NPCParent/CharlockLore"]
