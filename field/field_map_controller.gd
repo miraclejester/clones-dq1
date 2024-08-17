@@ -84,6 +84,8 @@ func load_map(path: String, params: MapLoadParams) -> void:
 func transition_to_map(path: String, params: MapLoadParams) -> void:
 	hero_character.set_process(false)
 	get_tree().paused = true
+	AudioManager.play_sfx("stairs")
+	field_ui.hide_hud()
 	await GlobalVisuals.fade_out()
 	await load_map(path, params)
 	get_tree().paused = false
@@ -241,8 +243,6 @@ func on_stairs_selected() -> void:
 func on_move_finished() -> void:
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.step_event != null:
-		AudioManager.play_sfx("stairs")
-		field_ui.hide_hud()
 		await field_ui.play_dialogue(event.step_event, {
 			"wait_for_continuation": false,
 			"map_controller": self,

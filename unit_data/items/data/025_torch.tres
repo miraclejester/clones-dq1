@@ -17,6 +17,6 @@ script = ExtResource("3_akput")
 item_name = "Torch"
 item_id = 25
 buy_price = 8
-sell_price = -1
+sell_price = 4
 consumable = false
 field_action = SubResource("Resource_q7mng")

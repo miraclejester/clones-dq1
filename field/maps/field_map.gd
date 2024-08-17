@@ -8,6 +8,7 @@ class_name FieldMap
 @onready var npc_parent: Node2D = %NPCParent
 @onready var event_parent: Node2D = %EventParent
 @onready var spawn_points: Node2D = $SpawnPoints
+@onready var building_npc_parent: Node2D = %BuildingNPCParent
 
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
@@ -16,6 +17,11 @@ var event_dict: Dictionary #Vector2 to MapEvent
 
 func _ready() -> void:
 	for npc in npc_parent.get_children():
+		var n: NPCCharacter = npc as NPCCharacter
+		char_dict[n.position] = n
+		n.set_current_map(self)
+		n.activate_events()
+	for npc in building_npc_parent.get_children():
 		var n: NPCCharacter = npc as NPCCharacter
 		char_dict[n.position] = n
 		n.set_current_map(self)
@@ -82,3 +88,13 @@ func find_spawn_pos(key: String) -> Vector2:
 		if s.name == key:
 			return s.position
 	return (spawn_points.get_child(0) as Node2D).position
+
+
+func building_entered() -> void:
+	field_tile_map.building_entered()
+	npc_parent.visible = false
+
+
+func building_exited() -> void:
+	field_tile_map.building_exited()
+	npc_parent.visible = true

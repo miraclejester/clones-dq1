@@ -264,3 +264,4 @@ one_shot = true
 [node name="FieldMoveComponent" parent="." node_paths=PackedStringArray("user") instance=ExtResource("4_f3y0y")]
 unique_name_in_owner = true
 user = NodePath("..")
+move_speed = 64.0
