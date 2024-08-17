@@ -119,7 +119,9 @@ func on_talk_selected() -> void:
 	if npc != null and npc.talk_event != null:
 		npc.face_towards(hero_character.position)
 		await field_ui.play_dialogue(npc.talk_event, {
-			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
+			"shop_interface": field_ui.shop_interface,
+			"wait_for_continuation": not npc.talk_event is StartShopDialogueEvent
 		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
@@ -197,10 +199,10 @@ func on_item_selected() -> void:
 
 
 func on_item_data_selected(item: ItemData) -> void:
-	var clean: bool = false
+	var clean: bool = true
 	if item.use_dialogue != null:
 		field_ui.play_dialogue(item.use_dialogue)
-		clean = true
+		clean = false
 	await field_ui.play_dialogue(item.field_action, {
 		"wait_for_continuation": false,
 		"map_controller": self

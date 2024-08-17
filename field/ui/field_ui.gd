@@ -18,6 +18,7 @@ signal command_cancelled()
 @onready var dialogue_window: DialogueWindow = %DialogueWindow
 @onready var item_window: ItemWindow = %ItemWindow
 @onready var status_window: StatusWindow = %StatusWindow
+@onready var shop_interface: ShopInterface = %ShopInterface
 
 
 

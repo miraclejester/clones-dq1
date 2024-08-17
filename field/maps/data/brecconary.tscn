@@ -1,12 +1,32 @@
-[gd_scene load_steps=13 format=3 uid="uid://jj5khoav0i5p"]
+[gd_scene load_steps=35 format=3 uid="uid://jj5khoav0i5p"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_fhpbb"]
 [ext_resource type="PackedScene" uid="uid://c83poqvc248ik" path="res://field/characters/npcs/npc_variations/npc_male_villager.tscn" id="2_yl3lp"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_op2on"]
 [ext_resource type="PackedScene" uid="uid://cbjcm8nmv6mne" path="res://field/characters/npcs/npc_variations/npc_female_villager.tscn" id="4_or02e"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="5_20iq0"]
+[ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="6_hyq4k"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="6_y8cgf"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="7_0jxln"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/start_shop_dialogue_event.gd" id="7_wyemw"]
+[ext_resource type="Script" path="res://field/ui/shop_interface/shop_data.gd" id="8_0lyil"]
+[ext_resource type="Resource" uid="uid://cp263d7igr0ol" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_again.tres" id="8_idff3"]
+[ext_resource type="Resource" uid="uid://dr2gsf1jash3f" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_greet.tres" id="8_tpkf4"]
+[ext_resource type="Resource" uid="uid://7y73d6h2tamo" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_goodbye.tres" id="8_utmb3"]
+[ext_resource type="Resource" uid="uid://b56tm8p8qavhk" path="res://unit_data/equipment/weapons/001_weapon_bamboo_pole.tres" id="9_ryeft"]
+[ext_resource type="Resource" uid="uid://43tefcpr8qgw" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_cancel.tres" id="9_wsu00"]
+[ext_resource type="Resource" uid="uid://c2l6n0y64a1up" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_confirm.tres" id="9_y0vyd"]
+[ext_resource type="Resource" uid="uid://vyoynukxbod5" path="res://unit_data/equipment/weapons/002_weapon_club.tres" id="10_paksb"]
+[ext_resource type="Resource" uid="uid://djot0ripjejk2" path="res://unit_data/equipment/weapons/003_weapon_copper_sword.tres" id="11_ie1cx"]
+[ext_resource type="Resource" uid="uid://b8mi8lisvuya1" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_item_selected.tres" id="11_lnwca"]
+[ext_resource type="Resource" uid="uid://c38uowgha1w5q" path="res://unit_data/equipment/armor/008_armor_clothes.tres" id="12_da280"]
+[ext_resource type="Resource" uid="uid://cfuqlrj07bjof" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_item_bought.tres" id="12_pol43"]
+[ext_resource type="Resource" uid="uid://cvhcvcaq3cp7m" path="res://unit_data/equipment/armor/009_armor_leather_armor.tres" id="13_rbfuc"]
+[ext_resource type="Resource" uid="uid://1tmnpsypi17f" path="res://unit_data/equipment/shields/015_shield_small_shield.tres" id="14_qcyam"]
+[ext_resource type="Resource" uid="uid://rk1jtwoahqry" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_what_buy.tres" id="16_ojpwj"]
+[ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="16_rkmqo"]
+[ext_resource type="Resource" uid="uid://ds04lq3bq25ep" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_shop_not_enough_money.tres" id="17_3ebmm"]
+[ext_resource type="Resource" uid="uid://iu4dt1imuxer" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_rebuy.tres" id="22_sb34s"]
 
 [sub_resource type="Resource" id="Resource_lotqr"]
 script = ExtResource("3_op2on")
@@ -39,6 +59,24 @@ format_var_idxs = Array[int]([])
 script = ExtResource("5_20iq0")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_o404u"), SubResource("Resource_7w718")])
 
+[sub_resource type="Resource" id="Resource_3rsn0"]
+script = ExtResource("8_0lyil")
+initial_dialogue = ExtResource("8_tpkf4")
+what_buy_dialogue = ExtResource("16_ojpwj")
+goodbye_dialogue = ExtResource("8_utmb3")
+not_enough_money_dialogue = ExtResource("17_3ebmm")
+buy_again_dialogue = ExtResource("8_idff3")
+item_selected_dialogue = ExtResource("11_lnwca")
+buy_confirm_dialogue = ExtResource("9_y0vyd")
+item_bought_dialogue = ExtResource("12_pol43")
+buy_cancelled_dialogue = ExtResource("9_wsu00")
+rebuy_equipment_dialogue = ExtResource("22_sb34s")
+items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("9_ryeft"), ExtResource("10_paksb"), ExtResource("11_ie1cx"), ExtResource("12_da280"), ExtResource("13_rbfuc"), ExtResource("14_qcyam")])
+
+[sub_resource type="Resource" id="Resource_xrrtg"]
+script = ExtResource("7_wyemw")
+shop_data = SubResource("Resource_3rsn0")
+
 [sub_resource type="Resource" id="Resource_cdxnq"]
 script = ExtResource("7_0jxln")
 play_starting_event = false
@@ -58,6 +96,13 @@ talk_event = SubResource("Resource_lotqr")
 [node name="ShopGreeter" parent="NPCParent" index="1" instance=ExtResource("4_or02e")]
 position = Vector2(88, 136)
 talk_event = SubResource("Resource_s5a6b")
+
+[node name="WeaponArmorShop" parent="NPCParent" index="2" instance=ExtResource("6_hyq4k")]
+position = Vector2(104, 88)
+talk_event = SubResource("Resource_xrrtg")
+
+[node name="ProjectNpcBehaviour" parent="NPCParent/WeaponArmorShop/Behaviours" index="0" instance=ExtResource("16_rkmqo")]
+project_dir = Vector2(0, 1)
 
 [node name="ToOverworld" parent="EventParent" index="0" instance=ExtResource("6_y8cgf")]
 position = Vector2(8, 232)
@@ -129,3 +174,5 @@ metadata/_edit_lock_ = true
 
 [node name="entrance" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(24, 264)
+
+[editable path="NPCParent/WeaponArmorShop"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvrgbbcsw5bfy"]
+[gd_scene load_steps=8 format=3 uid="uid://cvrgbbcsw5bfy"]
 
 [ext_resource type="Script" path="res://field/ui/field_ui.gd" id="1_7y1k8"]
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_356wy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="4_5wf1j"]
 [ext_resource type="PackedScene" uid="uid://cl07w4uuaew7u" path="res://ui/items/item_window.tscn" id="5_ubbot"]
 [ext_resource type="PackedScene" uid="uid://82u2w5c2svg4" path="res://field/ui/status_window/status_window.tscn" id="6_6nwqk"]
+[ext_resource type="PackedScene" uid="uid://dda03uudn1fl4" path="res://field/ui/shop_interface/shop_interface.tscn" id="7_xshpe"]
 
 [node name="FieldUI" type="CanvasLayer"]
 process_mode = 3
@@ -61,6 +62,10 @@ offset_bottom = 40.0
 pivot_offset = Vector2(7, -16)
 
 [node name="StatusWindow" parent="VisualsParent" instance=ExtResource("6_6nwqk")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="ShopInterface" parent="VisualsParent" instance=ExtResource("7_xshpe")]
 unique_name_in_owner = true
 layout_mode = 1
 

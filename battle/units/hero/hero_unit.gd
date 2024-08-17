@@ -187,5 +187,10 @@ func add_gold(val: int) -> void:
 	gold_changed.emit(gold)
 
 
+func spend_gold(val: int) -> void:
+	gold = clampi(gold - val, 0, 9999)
+	gold_changed.emit(gold)
+
+
 func get_unit_name() -> String:
 	return hero_name

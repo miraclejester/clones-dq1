@@ -139,7 +139,6 @@ func prompt_yes_no(on_yes: Callable, on_no: Callable) -> void:
 		yes_no_window.activate.bind(false),
 		yes_no_window.deactivate,
 		func ():
-			await MenuStack.pop_stack()
 			yes_no_window.set_selection(1)
 			yes_no_window.select()
 			yes_no_window.visible = false

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://iu4dt1imuxer"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_f6edh"]
+
+[resource]
+script = ExtResource("1_f6edh")
+text = "Then I will buy thy %s for %d GOLD"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])

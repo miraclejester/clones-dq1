@@ -41,7 +41,8 @@ func show_main_commands() -> void:
 	debug_context = DebugContext.MAIN
 	var commands: Array[CommandData] = [
 		CommandData.new("Teleport", teleport_selected),
-		CommandData.new("Set Stats", set_stats_selected)
+		CommandData.new("Set Stats", set_stats_selected),
+		CommandData.new("Add 100 Gold", add_gold.bind(100))
 	]
 	command_window.initialize_commands(commands, 1)
 
@@ -80,6 +81,10 @@ func set_stats_selected() -> void:
 			)
 	]
 	command_window.initialize_commands(commands, 1)
+
+
+func add_gold(amount: int) -> void:
+	cur_hero.add_gold(amount)
 
 
 func teleport_to_map(key: String) -> void:

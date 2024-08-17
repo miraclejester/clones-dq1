@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dda03uudn1fl4"]
+
+[ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="1_jkt2d"]
+[ext_resource type="Script" path="res://field/ui/shop_interface/shop_interface.gd" id="1_l8yom"]
+[ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="3_36ibb"]
+
+[node name="ShopInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l8yom")
+
+[node name="DialogueWindow" parent="." instance=ExtResource("1_jkt2d")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 32.0
+offset_top = 136.0
+offset_right = -32.0
+offset_bottom = -8.0
+
+[node name="YesNoWindow" parent="DialogueWindow" index="2"]
+offset_left = 40.0
+offset_top = -112.0
+offset_right = -88.0
+offset_bottom = -192.0
+
+[node name="ProductsWindow" parent="." instance=ExtResource("3_36ibb")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 72.0
+offset_top = 24.0
+offset_right = -32.0
+offset_bottom = -88.0
+
+[node name="UIWindow" parent="ProductsWindow" index="0"]
+offset_right = 152.0
+offset_bottom = 112.0
+
+[node name="ColorRect" parent="ProductsWindow" index="1"]
+visible = false
+
+[node name="Title" parent="ProductsWindow" index="2"]
+visible = false
+
+[node name="MarginContainer" parent="ProductsWindow" index="3"]
+offset_right = 152.0
+offset_bottom = 112.0
+theme_override_constants/margin_top = 8
+
+[editable path="DialogueWindow"]
+[editable path="DialogueWindow/YesNoWindow"]
+[editable path="ProductsWindow"]
