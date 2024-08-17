@@ -1,6 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dff1bpkdw8feg"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dff1bpkdw8feg"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_bep05"]
+[ext_resource type="Script" path="res://unit_data/abilities/ability_data.gd" id="1_yjnpc"]
+[ext_resource type="Resource" uid="uid://dthr06cdemtfg" path="res://unit_data/items/item_events/dragon_scale_dialogue_event.tres" id="2_ulyuu"]
+
+[sub_resource type="Resource" id="Resource_d1b6y"]
+script = ExtResource("1_yjnpc")
+use_dialogue = ExtResource("2_ulyuu")
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])
 
 [resource]
 script = ExtResource("1_bep05")
@@ -8,4 +16,6 @@ item_name = "Dragon`s Scale"
 item_id = 18
 buy_price = 20
 sell_price = 10
-consumable = true
+consumable = false
+battle_action = SubResource("Resource_d1b6y")
+field_action = ExtResource("2_ulyuu")

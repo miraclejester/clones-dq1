@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=12 format=3 uid="uid://dthr06cdemtfg"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/accessory_equipped_dialogue_condition.gd" id="1_7cfk1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_0ttmw"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="3_0lvi7"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_y80qj"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_cevlv"]
+
+[sub_resource type="Resource" id="Resource_gn6lv"]
+script = ExtResource("1_7cfk1")
+accessory_id = 18
+
+[sub_resource type="Resource" id="Resource_uod02"]
+script = ExtResource("2_0ttmw")
+text = "%s donned the scale of the dragon"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_pw8g2"]
+script = ExtResource("3_0lvi7")
+key = 3
+min_val = 0
+max_val = 0
+id = 18
+
+[sub_resource type="Resource" id="Resource_refum"]
+script = ExtResource("3_0lvi7")
+key = 2
+min_val = 2
+max_val = 2
+id = 0
+
+[sub_resource type="Resource" id="Resource_rnth6"]
+script = ExtResource("4_y80qj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_uod02"), SubResource("Resource_pw8g2"), SubResource("Resource_refum")])
+
+[sub_resource type="Resource" id="Resource_r0br3"]
+script = ExtResource("2_0ttmw")
+text = "Thou art already wearing the scale of the dragon"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[resource]
+script = ExtResource("5_cevlv")
+condition = SubResource("Resource_gn6lv")
+condition_true_event = SubResource("Resource_r0br3")
+condition_false_event = SubResource("Resource_rnth6")

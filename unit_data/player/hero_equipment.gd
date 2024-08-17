@@ -4,6 +4,8 @@ class_name HeroEquipment
 signal item_equipped(item: EquipmentData)
 
 var eq_dict: Dictionary = {}
+var accessories: Array[int] = []
+var permanent_defense_modifier: int = 0
 
 func get_attack_power() -> int:
 	var w: EquipmentData = eq_dict.get(EquipmentData.EquipmentType.WEAPON) as EquipmentData
@@ -22,7 +24,7 @@ func get_defense_power() -> int:
 	var s_power: int = 0
 	if s != null:
 		s_power = s.defense_power
-	return a_power + s_power
+	return a_power + s_power + permanent_defense_modifier
 
 
 func equip(eq: EquipmentData) -> EquipmentData:
@@ -30,6 +32,15 @@ func equip(eq: EquipmentData) -> EquipmentData:
 	eq_dict[eq.equipment_type] = eq
 	item_equipped.emit(eq)
 	return prev
+
+
+func equip_accessory(item_id: int) -> void:
+	if not accessories.has(item_id):
+		accessories.append(item_id)
+
+
+func is_accessory_equipped(item_id: int) -> bool:
+	return accessories.has(item_id)
 
 
 func get_damage_multiplier(key: UnitStats.DamageType) -> float:
@@ -63,17 +74,25 @@ func get_base_resistance(key: UnitStats.ResistanceKey) -> float:
 	return base
 
 
-func generate_save_data() -> Array[int]:
-	var res: Array[int] = []
+func generate_save_data() -> Dictionary:
+	var res: Dictionary = {}
+	
+	var equips: Array[int] = []
 	for val in eq_dict.values():
 		var v: EquipmentData = val as EquipmentData
-		res.append(v.item_id)
+		equips.append(v.item_id)
+	res["equips"] = equips
+	res["accessories"] = accessories
+	res["defense_modifier"] = permanent_defense_modifier
 	return res
 
 
-func load_from_data(data: Array[int]) -> void:
-	for id in data:
+func load_from_data(data: Dictionary) -> void:
+	for id in data.get("equips", []):
 		equip(GameDataManager.get_item(id) as EquipmentData)
+	for id in data.get("accessories", []):
+		equip_accessory(id)
+	permanent_defense_modifier = data.get("defense_modifier", 0)
 
 
 func get_equip(key: EquipmentData.EquipmentType) -> EquipmentData:

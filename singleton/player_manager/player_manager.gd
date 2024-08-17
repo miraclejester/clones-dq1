@@ -44,6 +44,4 @@ func load_from_data(data: Dictionary) -> void:
 	items.assign(data.get("items", []))
 	hero.inventory.load_from_data(items)
 	
-	var equipment: Array[int] = []
-	equipment.assign(data.get("equipment", []))
-	hero.equipment.load_from_data(equipment)
+	hero.equipment.load_from_data(data.get("equipment", {}))

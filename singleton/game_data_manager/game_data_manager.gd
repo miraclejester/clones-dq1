@@ -88,7 +88,7 @@ func generate_new_save_data(hero_name: String, message_speed: int) -> void:
 			"hp": 15,
 			"mp": 0,
 			"items": [],
-			"equipment": []
+			"equipment": {}
 		},
 		"map": {
 			"map_key": "new_game_tantegel_throne"
