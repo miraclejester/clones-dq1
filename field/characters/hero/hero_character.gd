@@ -39,6 +39,8 @@ func _ready() -> void:
 	idle_timer.timeout.connect(on_idle_timer_timeout)
 	wall_timer.timeout.connect(on_wall_timer_timeout)
 	field_move_component.move_finished.connect(func() : move_finished.emit())
+	
+	PlayerManager.hero.item_equipped.connect(on_item_equipped)
 
 
 func _process(_delta: float) -> void:
@@ -103,6 +105,36 @@ func set_target_dir(dir: Vector2) -> void:
 	move_state = MoveState.MOVING
 
 
+func get_move_anim_name(base: String) -> String:
+	return "%s%s" % [get_anim_prefix(), base]
+
+
+func get_pause_frame(base: String) -> int:
+	var base_frame: int = super(base)
+	match get_anim_prefix():
+		"full_":
+			return base_frame + 24
+		"sword_":
+			return base_frame + 8
+		"shield_":
+			return base_frame + 16
+		_:
+			return base_frame
+
+
+func get_anim_prefix() -> String:
+	var has_weapon: bool = PlayerManager.hero.equipment.has_equip(EquipmentData.EquipmentType.WEAPON)
+	var has_shield: bool = PlayerManager.hero.equipment.has_equip(EquipmentData.EquipmentType.SHIELD)
+	var prefix: String = "basic_character_move/"
+	if has_weapon and has_shield:
+		prefix = "full_"
+	elif has_weapon:
+		prefix = "sword_"
+	elif has_shield:
+		prefix = "shield_"
+	return prefix
+
+
 func on_move_timer_timeout() -> void:
 	set_target_dir(facing_dir)
 
@@ -113,3 +145,7 @@ func on_idle_timer_timeout() -> void:
 
 func on_wall_timer_timeout() -> void:
 	can_play_wall_sound = true
+
+
+func on_item_equipped(_item: EquipmentData) -> void:
+	set_face_dir(facing_dir)

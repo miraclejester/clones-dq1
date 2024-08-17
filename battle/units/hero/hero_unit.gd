@@ -6,6 +6,7 @@ signal mp_changed(new_val: int)
 signal level_changed(new_val: int)
 signal gold_changed(new_val: int)
 signal exp_changed(new_val: int)
+signal item_equipped(eq: EquipmentData)
 
 @export_file var level_chart_path: String
 @export_file var letter_values_path: String
@@ -36,6 +37,8 @@ func _ready() -> void:
 	
 	stats.hp_changed.connect(on_hp_changed)
 	stats.mp_changed.connect(on_mp_changed)
+	
+	equipment.item_equipped.connect(func (eq: EquipmentData): item_equipped.emit(eq))
 
 
 func process_turn(battle: Battle) -> void:

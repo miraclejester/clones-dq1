@@ -1,6 +1,8 @@
 extends RefCounted
 class_name HeroEquipment
 
+signal item_equipped(item: EquipmentData)
+
 var eq_dict: Dictionary = {}
 
 func get_attack_power() -> int:
@@ -26,6 +28,7 @@ func get_defense_power() -> int:
 func equip(eq: EquipmentData) -> EquipmentData:
 	var prev: EquipmentData = eq_dict.get(eq.equipment_type)
 	eq_dict[eq.equipment_type] = eq
+	item_equipped.emit(eq)
 	return prev
 
 
@@ -75,3 +78,7 @@ func load_from_data(data: Array[int]) -> void:
 
 func get_equip(key: EquipmentData.EquipmentType) -> EquipmentData:
 	return eq_dict.get(key)
+
+
+func has_equip(key: EquipmentData.EquipmentType) -> bool:
+	return eq_dict.has(key)

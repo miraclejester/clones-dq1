@@ -18,10 +18,10 @@ var dir_anim_dict: Dictionary = {
 }
 
 var pause_frame_dict: Dictionary = {
-	Vector2.DOWN : 0,
-	Vector2.LEFT : 2,
-	Vector2.UP : 4,
-	Vector2.RIGHT : 6
+	"walk_down" : 0,
+	"walk_left" : 2,
+	"walk_up" : 4,
+	"walk_right" : 6
 }
 
 
@@ -35,11 +35,18 @@ func set_current_map(map: FieldMap) -> void:
 
 func set_face_dir(dir: Vector2) -> void:
 	var base: String = dir_anim_dict.get(dir, "walk_down")
-	var anim_name: String = "basic_character_move/%s" % base
-	animation_player.play(anim_name)
+	animation_player.play(get_move_anim_name(base))
 	facing_dir = dir
 	if get_tree().paused:
-		sprite.frame = pause_frame_dict.get(dir, 0)
+		sprite.frame = get_pause_frame(base)
+
+
+func get_move_anim_name(base: String) -> String:
+	return "basic_character_move/%s" % base
+
+
+func get_pause_frame(base: String) -> int:
+	return pause_frame_dict.get(base, 0)
 
 
 func face_towards(pos: Vector2) -> void:
