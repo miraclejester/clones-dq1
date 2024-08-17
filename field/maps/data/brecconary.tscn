@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://jj5khoav0i5p"]
+[gd_scene load_steps=78 format=3 uid="uid://jj5khoav0i5p"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_fhpbb"]
 [ext_resource type="PackedScene" uid="uid://c83poqvc248ik" path="res://field/characters/npcs/npc_variations/npc_male_villager.tscn" id="2_yl3lp"]
@@ -226,6 +226,37 @@ format_var_idxs = Array[int]([])
 script = ExtResource("5_20iq0")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ybx0d"), SubResource("Resource_0gsme")])
 
+[sub_resource type="Resource" id="Resource_x4blg"]
+script = ExtResource("3_op2on")
+text = "No, I am not Princess Gwaelin"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_pbde0"]
+script = ExtResource("3_op2on")
+text = "Tell King Lorik that the search for his daugther hath failed"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_x0rvm"]
+script = ExtResource("3_op2on")
+text = "I am almost gone||"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_yq5hg"]
+script = ExtResource("5_20iq0")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_pbde0"), SubResource("Resource_x0rvm")])
+
 [sub_resource type="Resource" id="Resource_cdxnq"]
 script = ExtResource("7_0jxln")
 play_starting_event = false
@@ -339,6 +370,17 @@ talk_event = SubResource("Resource_dndfd")
 
 [node name="RandomMoveNpcBehaviour" parent="NPCParent/CharlockLore/Behaviours" index="0" instance=ExtResource("27_saj72")]
 
+[node name="FakeGwaelin" parent="NPCParent" index="13" instance=ExtResource("4_or02e")]
+position = Vector2(248, 456)
+talk_event = SubResource("Resource_x4blg")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/FakeGwaelin/Behaviours" index="0" instance=ExtResource("27_saj72")]
+
+[node name="FallenSoldier" parent="NPCParent" index="14" instance=ExtResource("29_dpya5")]
+position = Vector2(184, 440)
+talk_event = SubResource("Resource_yq5hg")
+starting_face_dir = Vector2(0, -1)
+
 [node name="EventParent" parent="." index="2"]
 metadata/_edit_lock_ = true
 
@@ -437,4 +479,5 @@ project_dir = Vector2(-1, 0)
 [editable path="NPCParent/HintToLorik"]
 [editable path="NPCParent/LoreSoldier"]
 [editable path="NPCParent/CharlockLore"]
+[editable path="NPCParent/FakeGwaelin"]
 [editable path="BuildingNPCParent/ToolShop"]
