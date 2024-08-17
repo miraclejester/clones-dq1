@@ -95,8 +95,5 @@ starting_map_load_params = SubResource("Resource_b0e4t")
 unique_name_in_owner = true
 visible = false
 position = Vector2(88, 104)
-after_move_idle_wait_time = 1.5
-facing_idle_wait_time = 3.5
-wall_wait_time = 0.18
 
 [node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]

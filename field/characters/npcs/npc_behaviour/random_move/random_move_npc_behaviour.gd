@@ -22,7 +22,7 @@ func check_move() -> void:
 	if dir != Vector2.ZERO:
 		var target: Vector2 = user.position + dir * 16
 		user.set_face_dir(dir)
-		var successful_request = user.field_move_component.request_move(target)
+		var successful_request = user.field_move_component.request_move(target, true)
 		if successful_request:
 			await user.field_move_component.move_finished
 	wait_timer.start(wait_time)

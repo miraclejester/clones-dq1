@@ -39,8 +39,12 @@ func move_character_register(old_pos: Vector2, character: FieldCharacter) -> voi
 	char_dict[character.position] = character
 
 
-func request_move(target: Vector2, origin: Vector2) -> bool:
+func request_move(target: Vector2, origin: Vector2, skip_step_events: bool = false) -> bool:
 	var is_available: bool = field_tile_map.request_move(target) and not is_pos_reserved(target)
+	if skip_step_events:
+		var event: MapEvent = find_event(target)
+		if event != null:
+			is_available = event.step_event == null
 	if is_available:
 		char_dict[origin] = null
 		char_dict[target] = null
