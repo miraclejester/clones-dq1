@@ -21,6 +21,13 @@ func generate_item_database() -> void:
 	load_items_from_dir(equipment_dir + "/armor")
 
 
+func get_all_non_equipments() -> Array[ItemData]:
+	var items: Array[ItemData] = []
+	for i in range(18, 36):
+		items.append(get_item(i))
+	return items
+
+
 func get_item(id: int) -> ItemData:
 	return item_dict.get(id) as ItemData
 

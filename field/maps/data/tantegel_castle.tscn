@@ -84,7 +84,8 @@ effect = 0
 [sub_resource type="Resource" id="Resource_0ynif"]
 script = ExtResource("11_22ilt")
 key = 0
-amount = 0
+min_val = 0
+max_val = 0
 
 [sub_resource type="Resource" id="Resource_nk56y"]
 script = ExtResource("3_01fyj")

@@ -203,10 +203,12 @@ func on_item_selected() -> void:
 func on_item_data_selected(item: ItemData) -> void:
 	var clean: bool = true
 	if item.use_dialogue != null:
-		field_ui.play_dialogue(item.use_dialogue)
+		await field_ui.play_dialogue(item.use_dialogue, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
+			"wait_for_continuation": false
+		})
 		clean = false
 	await field_ui.play_dialogue(item.field_action, {
-		"wait_for_continuation": false,
 		"map_controller": self
 	}, clean)
 	close_command_window()

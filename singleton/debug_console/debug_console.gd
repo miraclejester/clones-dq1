@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var player_hud: PlayerHUD = %PlayerHud
 
 enum DebugContext {
-	MAIN, TELEPORT, SET_STATS
+	MAIN, TELEPORT, SET_STATS, ADD_ITEM
 }
 
 var debug_context: DebugContext
@@ -42,7 +42,8 @@ func show_main_commands() -> void:
 	var commands: Array[CommandData] = [
 		CommandData.new("Teleport", teleport_selected),
 		CommandData.new("Set Stats", set_stats_selected),
-		CommandData.new("Add 100 Gold", add_gold.bind(100))
+		CommandData.new("Add 100 Gold", add_gold.bind(100)),
+		CommandData.new("Add Item", add_item_selected)
 	]
 	command_window.initialize_commands(commands, 1)
 
@@ -54,6 +55,16 @@ func teleport_selected() -> void:
 	for key in GameDataManager.get_all_map_keys():
 		commands.append(CommandData.new(key, teleport_to_map.bind(key)))
 	command_window.initialize_commands(commands, 1)
+
+
+func add_item_selected() -> void:
+	player_hud.visible = false
+	await get_tree().process_frame
+	debug_context = DebugContext.ADD_ITEM
+	var commands: Array[CommandData] = []
+	for item in GameDataManager.get_all_non_equipments():
+		commands.append(CommandData.new(item.item_name, func (): PlayerManager.hero.inventory.add_item(item), 0, true))
+	command_window.initialize_commands(commands, 2)
 
 
 func set_stats_selected() -> void:
@@ -97,8 +108,9 @@ func on_cancel() -> void:
 	match debug_context:
 		DebugContext.MAIN:
 			await exit_debug()
-		DebugContext.TELEPORT, DebugContext.SET_STATS:
+		DebugContext.TELEPORT, DebugContext.SET_STATS, DebugContext.ADD_ITEM:
 			await get_tree().process_frame
+			player_hud.visible = true
 			show_main_commands()
 
 

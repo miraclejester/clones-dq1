@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://5m0qcirywe8w"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://5m0qcirywe8w"]
 
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_flxgu"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_iyfbs"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="3_uss38"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="3_we6er"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="4_467ux"]
 
 [sub_resource type="Resource" id="Resource_u4jf4"]
@@ -15,6 +16,12 @@ script = ExtResource("1_flxgu")
 target_type = 0
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_u4jf4")])
 
+[sub_resource type="Resource" id="Resource_lpmgt"]
+script = ExtResource("3_we6er")
+key = 1
+min_val = 20
+max_val = 35
+
 [sub_resource type="Resource" id="Resource_xulle"]
 script = ExtResource("4_467ux")
 text = "%s used the Herb."
@@ -22,7 +29,7 @@ in_quotes = false
 is_speech = false
 wait_for_input = false
 use_format_vars = true
-format_var_idxs = Array[int]([])
+format_var_idxs = Array[int]([0])
 
 [resource]
 script = ExtResource("3_uss38")
@@ -33,3 +40,4 @@ sell_price = 12
 consumable = true
 use_dialogue = SubResource("Resource_xulle")
 battle_action = SubResource("Resource_qq4jm")
+field_action = SubResource("Resource_lpmgt")

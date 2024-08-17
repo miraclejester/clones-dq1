@@ -40,7 +40,7 @@ func set_text(t: String, multiline: bool, show_second_line: bool) -> void:
 	label_text.text = ""
 	if split.size() > 1 and multiline:
 		while split.size() > 1:
-			label_text.text += split.pop_front()
+			label_text.text += split.pop_front() + " "
 		label_text.text.trim_suffix(" ")
 		second_line.text = split[0]
 		second_line.visible = true

@@ -8,7 +8,7 @@ script = ExtResource("1_l2njt")
 text = "A torch can be used only in dark places"
 in_quotes = false
 is_speech = false
-wait_for_input = true
+wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
 
