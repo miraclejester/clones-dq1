@@ -9,6 +9,7 @@ class_name FieldMap
 @onready var event_parent: Node2D = %EventParent
 @onready var spawn_points: Node2D = $SpawnPoints
 @onready var building_npc_parent: Node2D = %BuildingNPCParent
+@onready var encounter_data: Node2D = %EncounterData
 
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
@@ -98,3 +99,15 @@ func building_entered() -> void:
 func building_exited() -> void:
 	field_tile_map.building_exited()
 	npc_parent.visible = true
+
+
+func get_encounter_zone(pos: Vector2) -> EncounterZone:
+	for zone in encounter_data.get_children():
+		var z: EncounterZone = zone as EncounterZone
+		if z.is_in_zone(pos):
+			return z
+	return null
+
+
+func get_tile_battle_id(pos: Vector2) -> EncounterChanceEntry.TileBattleID:
+	return field_tile_map.get_tile_battle_id(pos)

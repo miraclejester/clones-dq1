@@ -16,7 +16,7 @@ class_name FieldMapController
 @onready var hero_character: HeroCharacter = %HeroCharacter
 @onready var field_ui: FieldUI = $FieldUI
 @onready var field_map_container: Node2D = $FieldMapContainer
-
+@onready var battle_controller: BattleController = $BattleController
 
 
 var field_map: FieldMap
@@ -31,6 +31,9 @@ func _ready() -> void:
 	hero_character.menu_requested.connect(on_hero_menu_requested)
 	hero_character.move_finished.connect(on_move_finished)
 	hero_character.set_process(false)
+	
+	battle_controller.set_visibility(false)
+	battle_controller.battle_finished.connect(on_battle_finished)
 	
 	field_ui.command_cancelled.connect(on_command_cancelled)
 	field_ui.talk_selected.connect(on_talk_selected)
@@ -251,6 +254,36 @@ func on_move_finished() -> void:
 			"map_controller": self,
 			"make_window_visible": false
 		})
+		return
+	
+	var zone: EncounterZone = field_map.get_encounter_zone(hero_character.position)
+	if zone != null:
+		var tile_id: EncounterChanceEntry.TileBattleID = field_map.get_tile_battle_id(hero_character.position)
+		var encounter: EncounterData = zone.roll_for_battle(tile_id)
+		if encounter != null:
+			start_battle(encounter, zone)
+
+
+func start_battle(encounter: EncounterData, zone: EncounterZone) -> void:
+	field_ui.visible = false
+	get_tree().paused = true
+	var config: BattleConfig = BattleConfig.new()
+	config.field_bgm = field_map.map_bgm
+	config.battle_bg = zone.battle_bg
+	battle_controller.set_visibility(true)
+	battle_controller.position.x = hero_character.position.x - (8*16)
+	battle_controller.position.y = hero_character.position.y - (7*16)
+	battle_controller.start_battle(encounter, config)
+
+
+func on_battle_finished(status: BattleController.BattleEndStatus) -> void:
+	match status:
+		BattleController.BattleEndStatus.VICTORY, BattleController.BattleEndStatus.RUN:
+			get_tree().paused = false
+			field_ui.visible = true
+			battle_controller.set_visibility(false)
+		_:
+			pass
 
 
 func get_global_format_vars() -> Array:

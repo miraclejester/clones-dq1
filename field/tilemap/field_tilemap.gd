@@ -32,6 +32,11 @@ func get_layer_id(key: String) -> int:
 	return layer_id_dict.get(key, 0)
 
 
+func get_tile_battle_id(pos: Vector2) -> EncounterChanceEntry.TileBattleID:
+	var tile: TileData = get_cell_tile_data(0, local_to_map(pos))
+	return tile.get_custom_data("BattleKey") as EncounterChanceEntry.TileBattleID
+
+
 func building_entered() -> void:
 	set_layer_enabled(get_layer_id("Map"), false)
 	set_layer_enabled(get_layer_id("BuildingRooftop"), false)

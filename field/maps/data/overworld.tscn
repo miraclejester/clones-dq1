@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=7 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_1cupo"]
+[ext_resource type="PackedScene" uid="uid://bhv5omt5ndy0j" path="res://field/encounters/zones/zone_0.tscn" id="4_i82r6"]
 
 [sub_resource type="Resource" id="Resource_8u7du"]
 script = ExtResource("3_1cupo")
@@ -44,3 +45,13 @@ position = Vector2(8, 8)
 
 [node name="brecconary" type="Node2D" parent="SpawnPoints" index="1"]
 position = Vector2(88, -24)
+
+[node name="Zone0" parent="EncounterData" index="0" instance=ExtResource("4_i82r6")]
+position = Vector2(-200, -200)
+
+[node name="Zone0Right" parent="EncounterData" index="1" instance=ExtResource("4_i82r6")]
+position = Vector2(40, -200)
+metadata/_edit_group_ = true
+
+[editable path="EncounterData/Zone0"]
+[editable path="EncounterData/Zone0Right"]

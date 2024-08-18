@@ -35,5 +35,5 @@ func show_spoils_dialogue(controller: BattleController) -> void:
 		GeneralDialogueProvider.DialogueID.BattleGoldGain,
 		[gold],
 	)
-	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.XP, xp)
-	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.GP, gold)
+	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.XP, PlayerManager.hero.experience)
+	controller.battle_ui.update_player_stat(PlayerHUD.HUDStatKey.GP, PlayerManager.hero.gold)

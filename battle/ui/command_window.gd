@@ -93,7 +93,8 @@ func initialize_commands(commands: Array[CommandData], columns: int) -> void:
 	for command in commands:
 		add_command(command, idx < last_row_index, command.amount)
 		idx += 1
-	set_selection(0)
+	if commands.size() > 0:
+		set_selection(0)
 
 
 func add_command(command: CommandData, show_second_line: bool, amount: int = 0) -> void:

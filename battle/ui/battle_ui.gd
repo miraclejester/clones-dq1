@@ -36,6 +36,7 @@ func _ready() -> void:
 func initialize() -> void:
 	for child in visuals_parent.get_children():
 		(child as Control).visible = false
+	dialogue_window.clean_window()
 
 
 func set_hero_data(hero: BattleUnit) -> void:

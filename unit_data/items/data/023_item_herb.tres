@@ -21,6 +21,7 @@ script = ExtResource("3_we6er")
 key = 1
 min_val = 20
 max_val = 35
+id = 0
 
 [sub_resource type="Resource" id="Resource_xulle"]
 script = ExtResource("4_467ux")

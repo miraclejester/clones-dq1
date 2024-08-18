@@ -71,7 +71,7 @@ func player_fight() -> void:
 func player_run() -> void:
 	if enemy.has_status(BattleUnit.StatusEffect.SLEEP) or speed_roll():
 		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
-		updates.append(FinishBattleUpdate.new(false))
+		updates.append(FinishBattleUpdate.new(false, BattleController.BattleEndStatus.RUN))
 	else:
 		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.FAILURE))
 		next_turn()
@@ -92,7 +92,7 @@ func player_item(item: ItemData) -> void:
 func enemy_run_check() -> bool:
 	if enemy.is_running_away(hero):
 		updates.append(EnemyRunBattleUpdate.new(enemy))
-		updates.append(FinishBattleUpdate.new())
+		updates.append(FinishBattleUpdate.new(true, BattleController.BattleEndStatus.RUN))
 		return true
 	return false
 
@@ -101,19 +101,21 @@ func check_battle_end() -> void:
 	if enemy.is_dead():
 		var exp_gain: int = enemy.get_xp()
 		var gold_gain: int = enemy.get_gp()
-		updates.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
-		
 		hero.add_exp(exp_gain)
+		hero.add_gold(gold_gain)
+		
+		
+		updates.append(VictoryBattleUpdate.from_data(enemy.get_unit_name(), exp_gain, gold_gain))
 		if hero.has_leveled_up():
 			var result: LevelUpResult = hero.level_up()
 			updates.append(LevelUpBattleUpdate.new(result))
 			updates.append(UpdateHUDBattleUpdate.new(PlayerHUD.HUDStatKey.LVL, hero.level, hero))
 		
-		hero.add_gold(gold_gain)
-		updates.append(FinishBattleUpdate.new())
+		
+		updates.append(FinishBattleUpdate.new(true, BattleController.BattleEndStatus.VICTORY))
 	elif hero.is_dead():
 		updates.append(DefeatBattleUpdate.new())
-		updates.append(FinishBattleUpdate.new())
+		updates.append(FinishBattleUpdate.new(true, BattleController.BattleEndStatus.DEFEAT))
 
 
 func is_battle_finished() -> bool:

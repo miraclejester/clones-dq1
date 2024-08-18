@@ -21,6 +21,7 @@ func set_bg_texture(t: Texture2D) -> void:
 
 
 func start_appear_animation() -> void:
+	create_initial_texture()
 	show_block(3, 3)
 	await show_outline(3, 3, 4)
 	await show_outline(5, 4, 5)

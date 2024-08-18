@@ -1,0 +1,61 @@
+[gd_scene load_steps=16 format=3 uid="uid://bhv5omt5ndy0j"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_pwr3r"]
+[ext_resource type="Script" path="res://field/encounters/encounter_chance_entry.gd" id="2_35h2u"]
+[ext_resource type="Script" path="res://field/encounters/encounter_chance_chart.gd" id="3_iiff8"]
+[ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime/00_slime.tres" id="4_d5koi"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="5_83jn0"]
+[ext_resource type="Resource" uid="uid://c6h8lccc4btau" path="res://unit_data/enemies/01_red_slime/01_red_slime.tres" id="6_est7k"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="7_61ksn"]
+
+[sub_resource type="Resource" id="Resource_b6qoi"]
+script = ExtResource("2_35h2u")
+battle_id = 0
+chance = 0.021
+
+[sub_resource type="Resource" id="Resource_8yhjo"]
+script = ExtResource("2_35h2u")
+battle_id = 1
+chance = 0.021
+
+[sub_resource type="Resource" id="Resource_5gg22"]
+script = ExtResource("2_35h2u")
+battle_id = 2
+chance = 0.031
+
+[sub_resource type="Resource" id="Resource_0im4v"]
+script = ExtResource("2_35h2u")
+battle_id = 3
+chance = 0.031
+
+[sub_resource type="Resource" id="Resource_qyro4"]
+script = ExtResource("2_35h2u")
+battle_id = 4
+chance = 0.063
+
+[sub_resource type="Resource" id="Resource_qapx6"]
+script = ExtResource("3_iiff8")
+chances = Array[ExtResource("2_35h2u")]([SubResource("Resource_b6qoi"), SubResource("Resource_8yhjo"), SubResource("Resource_5gg22"), SubResource("Resource_0im4v"), SubResource("Resource_qyro4")])
+
+[sub_resource type="Resource" id="Resource_ypq5u"]
+script = ExtResource("5_83jn0")
+enemy = ExtResource("4_d5koi")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true
+
+[sub_resource type="Resource" id="Resource_1mj11"]
+script = ExtResource("5_83jn0")
+enemy = ExtResource("6_est7k")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true
+
+[node name="Zone0" instance=ExtResource("1_pwr3r")]
+encounter_chances = SubResource("Resource_qapx6")
+encounters = Array[ExtResource("5_83jn0")]([SubResource("Resource_ypq5u"), SubResource("Resource_1mj11")])
+battle_bg = ExtResource("7_61ksn")

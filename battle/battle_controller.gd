@@ -1,9 +1,11 @@
 extends Node2D
 class_name BattleController
 
-signal battle_finished()
+signal battle_finished(status: BattleEndStatus)
 
-@export var e_data: EncounterData
+enum BattleEndStatus {
+	VICTORY, DEFEAT, RUN
+}
 
 @onready var battle = $Battle
 @onready var battle_bg: BattleBG = $BattleBG
@@ -25,10 +27,7 @@ func _ready() -> void:
 	battle_ui.spell_selected.connect(spell_selected)
 	battle_ui.run_selected.connect(run_selected)
 	battle_ui.item_selected.connect(item_selected)
-	
-	var c: BattleConfig = BattleConfig.new()
-	c.field_bgm = "overworld"
-	start_battle(e_data, c)
+	battle_ui.visible = false
 
 
 func start_battle(ec: EncounterData, c: BattleConfig) -> void:
@@ -55,7 +54,7 @@ func start_battle(ec: EncounterData, c: BattleConfig) -> void:
 	AudioManager.play_bgm(encounter_data.bgm_key)
 	reprise_key = encounter_data.reprise_key
 	
-	battle_bg.set_bg_texture(encounter_data.battle_bg)
+	battle_bg.set_bg_texture(config.battle_bg)
 	await battle_bg.start_appear_animation()
 	
 	enemy_controller.visible = true
@@ -187,11 +186,11 @@ func command_menu_cancelled() -> void:
 	process_updates()
 
 
-func finish_battle() -> void:
+func finish_battle(status: BattleEndStatus) -> void:
 	await get_tree().process_frame
 	if encounter_data.after_victory_event:
 		await battle_ui.play_dialogue(encounter_data.after_victory_event)
-	battle_finished.emit()
+	battle_finished.emit(status)
 
 
 func reprise_battle_bgm() -> void:
@@ -203,3 +202,8 @@ func player_hurt_shake() -> void:
 		await GlobalVisuals.player_hurt_shake()
 	else:
 		await get_tree().create_timer(0.1).timeout
+
+
+func set_visibility(v: bool) -> void:
+	visible = v
+	battle_ui.visible = v

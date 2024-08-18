@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=16 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_hvgwh"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
+[ext_resource type="PackedScene" uid="uid://b3pdkdcgcir3x" path="res://battle/battle_controller.tscn" id="7_jnlec"]
 
 [sub_resource type="Resource" id="Resource_l04rv"]
 script = ExtResource("3_mhtmc")
@@ -97,3 +98,6 @@ visible = false
 position = Vector2(88, 104)
 
 [node name="FieldUI" parent="." instance=ExtResource("6_nc5xv")]
+
+[node name="BattleController" parent="." instance=ExtResource("7_jnlec")]
+process_mode = 3
