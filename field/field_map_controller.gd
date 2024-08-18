@@ -44,10 +44,6 @@ func _ready() -> void:
 	field_ui.status_selected.connect(on_status_selected)
 	field_ui.stairs_selected.connect(on_stairs_selected)
 	
-	GlobalVisuals.determine_ui_colors(
-		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
-		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
-	)
 	load_map(GameDataManager.get_starting_map_key(), starting_map_load_params)
 
 
@@ -73,6 +69,12 @@ func load_map(path: String, params: MapLoadParams) -> void:
 	hero_character.visible = true
 	field_map.visible = true
 	await GlobalVisuals.fade_in()
+	
+	await get_tree().process_frame
+	GlobalVisuals.determine_ui_colors(
+		PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
+		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
+	)
 	
 	if field_map.map_start_event != null and params.play_starting_event:
 		await get_tree().process_frame

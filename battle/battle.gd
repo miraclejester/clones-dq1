@@ -17,6 +17,7 @@ var hero: HeroUnit
 func init_battle(e: EnemyData) -> void:
 	hero = PlayerManager.hero
 	enemy.set_data(e)
+	turn_index = 0
 	updates = []
 	
 	hero.clear_status()
