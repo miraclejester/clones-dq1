@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=5 format=3 uid="uid://bbgoh608s7lt0"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_6dqg7"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="1_pn3ar"]
+
+[sub_resource type="Resource" id="Resource_gmdkm"]
+script = ExtResource("1_6dqg7")
+text = "Okay."
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_ex82m"]
+script = ExtResource("1_6dqg7")
+text = "Good-bye, traveler"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[resource]
+script = ExtResource("1_pn3ar")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_gmdkm"), SubResource("Resource_ex82m")])

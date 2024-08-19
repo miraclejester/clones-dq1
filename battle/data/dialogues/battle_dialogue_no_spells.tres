@@ -6,3 +6,7 @@
 script = ExtResource("1_sl51m")
 text = "%s cannot yet use the spell."
 in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])

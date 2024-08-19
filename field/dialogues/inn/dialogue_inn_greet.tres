@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://bpxgvqhco1x3v"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_elbh1"]
+
+[resource]
+script = ExtResource("1_elbh1")
+text = "Welcome to the traveler`s Inn"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])

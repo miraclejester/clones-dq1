@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=9 format=3 uid="uid://dx7ggmgs66uxu"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="1_c0m1i"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_lvy5a"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/newline_dialogue_event.gd" id="3_76uij"]
+
+[sub_resource type="Resource" id="Resource_72ixo"]
+script = ExtResource("1_lvy5a")
+text = "Good morning."
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_0rvw8"]
+script = ExtResource("1_lvy5a")
+text = "Thou seems to have spent a good night"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_5wht0"]
+script = ExtResource("1_c0m1i")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_72ixo"), SubResource("Resource_0rvw8")])
+
+[sub_resource type="Resource" id="Resource_0u8bu"]
+script = ExtResource("3_76uij")
+text = ""
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_kgdne"]
+script = ExtResource("1_lvy5a")
+text = "I shall see thee again"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+
+[resource]
+script = ExtResource("1_c0m1i")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5wht0"), SubResource("Resource_0u8bu"), SubResource("Resource_kgdne")])

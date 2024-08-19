@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=5 format=3 uid="uid://ecxito64b0id"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="1_613op"]
+[ext_resource type="Resource" uid="uid://bpxgvqhco1x3v" path="res://field/dialogues/inn/dialogue_inn_greet.tres" id="1_surox"]
+[ext_resource type="Resource" uid="uid://djxqg5hkdxebx" path="res://field/dialogues/inn/dialogue_inn_greet_2.tres" id="2_3dugs"]
+[ext_resource type="Resource" uid="uid://dkf4guw74700j" path="res://field/dialogues/inn/dialogue_inn_greet_3.tres" id="3_3fxb4"]
+
+[resource]
+script = ExtResource("1_613op")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("1_surox"), ExtResource("2_3dugs"), ExtResource("3_3fxb4")])

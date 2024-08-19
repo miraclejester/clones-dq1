@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://dkf4guw74700j"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_wfhwy"]
+
+[resource]
+script = ExtResource("1_wfhwy")
+text = "Dost thou want a room?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])

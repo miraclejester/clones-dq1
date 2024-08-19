@@ -10,6 +10,7 @@ class_name FieldMapController
 @export var door_default_dialogue: DialogueEvent
 @export var item_default_dialogue: DialogueEvent
 @export var default_stairs_dialogue: DialogueEvent
+@export var spell_default_dialogue: DialogueEvent
 @export var starting_map_load_params: MapLoadParams
 
 
@@ -43,6 +44,7 @@ func _ready() -> void:
 	field_ui.item_selected.connect(on_item_selected)
 	field_ui.status_selected.connect(on_status_selected)
 	field_ui.stairs_selected.connect(on_stairs_selected)
+	field_ui.spell_selected.connect(on_spell_selected)
 	
 	load_map(GameDataManager.get_starting_map_key(), starting_map_load_params)
 
@@ -128,7 +130,8 @@ func on_talk_selected() -> void:
 		await field_ui.play_dialogue(npc.talk_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
 			"shop_interface": field_ui.shop_interface,
-			"wait_for_continuation": not npc.talk_event is StartShopDialogueEvent
+			"wait_for_continuation": not npc.talk_event is StartShopDialogueEvent,
+			"field_map": field_map
 		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)
@@ -245,6 +248,17 @@ func on_stairs_selected() -> void:
 		}, false)
 	else:
 		await field_ui.play_dialogue(default_stairs_dialogue)
+		close_command_window()
+
+
+func on_spell_selected() -> void:
+	await MenuStack.pop_stack()
+	if PlayerManager.hero.spells.size() > 0:
+		print("Spell window with spells not implemented yet")
+	else:
+		await field_ui.play_dialogue(spell_default_dialogue, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()]
+		})
 		close_command_window()
 
 
