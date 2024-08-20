@@ -112,6 +112,7 @@ func run_selected() -> void:
 func spell_selected() -> void:
 	if battle.hero.spells.size() == 0:
 		battle_ui.hide_command_window()
+		await MenuStack.pop_stack()
 		await NoSpellBattleUpdate.from_data(battle.hero.get_unit_name()).execute(self)
 		battle.do_turn()
 		process_updates()
