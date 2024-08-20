@@ -50,6 +50,7 @@ func start_battle(ec: EncounterData, c: BattleConfig) -> void:
 	if encounter_data.use_dragonlord_layer:
 		remove_child(enemy_controller)
 		dragonlord_layer.add_child(enemy_controller)
+	enemy_controller.visible = false
 	
 	AudioManager.play_bgm(encounter_data.bgm_key)
 	reprise_key = encounter_data.reprise_key
@@ -123,6 +124,7 @@ func spell_selected() -> void:
 func item_selected() -> void:
 	if hero.inventory.stack_count() == 0:
 		battle_ui.hide_command_window()
+		await MenuStack.pop_stack()
 		await NoItemBattleUpdate.new().execute(self)
 		battle.do_turn()
 		process_updates()

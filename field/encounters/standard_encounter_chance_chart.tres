@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="EncounterChanceChart" load_steps=12 format=3 uid="uid://dbrdsqlf2bi77"]
+
+[ext_resource type="Script" path="res://field/encounters/encounter_chance_entry.gd" id="1_twny1"]
+[ext_resource type="Script" path="res://field/encounters/encounter_chance_chart.gd" id="2_xxgob"]
+
+[sub_resource type="Resource" id="Resource_38mui"]
+script = ExtResource("1_twny1")
+battle_id = 0
+chance = 0.042
+
+[sub_resource type="Resource" id="Resource_rdfjd"]
+script = ExtResource("1_twny1")
+battle_id = 6
+chance = 0.063
+
+[sub_resource type="Resource" id="Resource_vp8s0"]
+script = ExtResource("1_twny1")
+battle_id = 3
+chance = 0.063
+
+[sub_resource type="Resource" id="Resource_m704a"]
+script = ExtResource("1_twny1")
+battle_id = 4
+chance = 0.125
+
+[sub_resource type="Resource" id="Resource_s4s2d"]
+script = ExtResource("1_twny1")
+battle_id = 5
+chance = 0.125
+
+[sub_resource type="Resource" id="Resource_4fl0r"]
+script = ExtResource("1_twny1")
+battle_id = 7
+chance = 0.042
+
+[sub_resource type="Resource" id="Resource_1q0si"]
+script = ExtResource("1_twny1")
+battle_id = 8
+chance = 0.042
+
+[sub_resource type="Resource" id="Resource_m1310"]
+script = ExtResource("1_twny1")
+battle_id = 9
+chance = 0.063
+
+[sub_resource type="Resource" id="Resource_2kjfk"]
+script = ExtResource("1_twny1")
+battle_id = 10
+chance = 0.063
+
+[resource]
+script = ExtResource("2_xxgob")
+chances = Array[ExtResource("1_twny1")]([SubResource("Resource_38mui"), SubResource("Resource_rdfjd"), SubResource("Resource_vp8s0"), SubResource("Resource_m704a"), SubResource("Resource_s4s2d"), SubResource("Resource_4fl0r"), SubResource("Resource_1q0si"), SubResource("Resource_m1310"), SubResource("Resource_2kjfk")])

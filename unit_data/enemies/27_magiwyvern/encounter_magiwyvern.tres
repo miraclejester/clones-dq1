@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://cyotnpyggp370"]
+
+[ext_resource type="Resource" uid="uid://bf3xja04eb0j8" path="res://unit_data/enemies/27_magiwyvern/27_magiwyvern.tres" id="1_f86gb"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_e0cge"]
+
+[resource]
+script = ExtResource("2_e0cge")
+enemy = ExtResource("1_f86gb")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

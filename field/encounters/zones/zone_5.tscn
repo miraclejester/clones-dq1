@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://dssdf3n6hcldb"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_eeu17"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_obu53"]
+[ext_resource type="Resource" uid="uid://becydqw0koe5r" path="res://unit_data/enemies/03_ghost/ghost_encounter.tres" id="3_fyxrj"]
+[ext_resource type="Resource" uid="uid://dhiijk8r01tx7" path="res://unit_data/enemies/04_magician/encounter_magician.tres" id="4_c5x0i"]
+[ext_resource type="Resource" uid="uid://d3ndod3ahq4vp" path="res://unit_data/enemies/05_magidrakee/encounter_magidrakee.tres" id="5_w8oig"]
+[ext_resource type="Resource" uid="uid://c0vedpjcpwnic" path="res://unit_data/enemies/06_scorpion/encounter_scorpion.tres" id="6_lhaug"]
+[ext_resource type="Resource" uid="uid://b8xtefm7rvort" path="res://unit_data/enemies/11_skeleton/encounter_skeleton.tres" id="7_o3346"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="8_5ogho"]
+
+[node name="Zone5" instance=ExtResource("1_eeu17")]
+encounter_chances = ExtResource("2_obu53")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_fyxrj"), ExtResource("4_c5x0i"), ExtResource("5_w8oig"), ExtResource("6_lhaug"), ExtResource("7_o3346")])
+battle_bg = ExtResource("8_5ogho")
+highlight_color = Color(0.666667, 0.666667, 0, 0.690196)

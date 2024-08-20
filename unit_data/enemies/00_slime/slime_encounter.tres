@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://h4xmcgy0pfbg"]
+
+[ext_resource type="Resource" uid="uid://kndwdhgbjq1r" path="res://unit_data/enemies/00_slime/00_slime.tres" id="1_necfa"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="1_pcw8g"]
+
+[resource]
+script = ExtResource("1_pcw8g")
+enemy = ExtResource("1_necfa")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

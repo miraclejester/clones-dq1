@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://b8xtefm7rvort"]
+
+[ext_resource type="Resource" uid="uid://bla50uv81olc3" path="res://unit_data/enemies/11_skeleton/11_skeleton.tres" id="1_nfncf"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_jq58f"]
+
+[resource]
+script = ExtResource("2_jq58f")
+enemy = ExtResource("1_nfncf")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

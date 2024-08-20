@@ -1,9 +1,13 @@
+@tool
 extends Node2D
 class_name EncounterZone
 
 @export var encounter_chances: EncounterChanceChart
 @export var encounters: Array[EncounterData]
 @export var battle_bg: Texture2D
+
+@export_group("Editor")
+@export var highlight_color: Color
 
 @onready var start_position: Node2D = %StartPosition as Node2D
 @onready var end_position: Node2D = %EndPosition as Node2D
@@ -13,6 +17,10 @@ var chances_dict: Dictionary = {}
 func _ready() -> void:
 	for entry in encounter_chances.chances:
 		chances_dict[entry.battle_id] = entry.chance
+
+
+func _process(_delta: float) -> void:
+	queue_redraw()
 
 
 func is_in_zone(pos: Vector2) -> bool:
@@ -31,3 +39,14 @@ func roll_for_battle(id: EncounterChanceEntry.TileBattleID) -> EncounterData:
 		return encounters.pick_random()
 	else:
 		return null
+
+
+func _draw() -> void:
+	if not Engine.is_editor_hint():
+		return
+	var sp: Vector2 = start_position.position
+	var ep: Vector2 = end_position.position
+	draw_rect(
+		Rect2(sp, Vector2(ep.x - sp.x, ep.y - sp.y)),
+		highlight_color
+	)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://becydqw0koe5r"]
+
+[ext_resource type="Resource" uid="uid://b06giwko5w1xw" path="res://unit_data/enemies/03_ghost/03_ghost.tres" id="1_5lwtb"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="1_nuy5w"]
+
+[resource]
+script = ExtResource("1_nuy5w")
+enemy = ExtResource("1_5lwtb")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://d3ndod3ahq4vp"]
+
+[ext_resource type="Resource" uid="uid://b4vvd3wcgow3o" path="res://unit_data/enemies/05_magidrakee/05_magidrakee.tres" id="1_k4kgj"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_wiyp4"]
+
+[resource]
+script = ExtResource("2_wiyp4")
+enemy = ExtResource("1_k4kgj")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

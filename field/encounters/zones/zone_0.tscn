@@ -59,3 +59,7 @@ shake_on_hit = true
 encounter_chances = SubResource("Resource_qapx6")
 encounters = Array[ExtResource("5_83jn0")]([SubResource("Resource_ypq5u"), SubResource("Resource_1mj11")])
 battle_bg = ExtResource("7_61ksn")
+highlight_color = Color(0.647059, 0, 0, 0.690196)
+
+[node name="EndPosition" parent="." index="1"]
+position = Vector2(232, 232)

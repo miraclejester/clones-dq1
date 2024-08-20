@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://d2p8xvfdmwpa4"]
+
+[ext_resource type="Resource" uid="uid://dqywv3egtwakj" path="res://unit_data/enemies/29_werewolf/29_werewolf.tres" id="1_hm2fd"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_5evtp"]
+
+[resource]
+script = ExtResource("2_5evtp")
+enemy = ExtResource("1_hm2fd")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

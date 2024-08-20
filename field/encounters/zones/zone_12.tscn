@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2oaccpxel41i"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_vk7c4"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_o6vkt"]
+[ext_resource type="Resource" uid="uid://ddlt0aucrn5sq" path="res://unit_data/enemies/26_knight/encounter_knight.tres" id="3_1inx3"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="3_6uyqj"]
+[ext_resource type="Resource" uid="uid://caes7q0ee2o1i" path="res://unit_data/enemies/28_demon_knight/encounter_demon_knight.tres" id="4_hoi78"]
+[ext_resource type="Resource" uid="uid://cyotnpyggp370" path="res://unit_data/enemies/27_magiwyvern/encounter_magiwyvern.tres" id="5_tvh84"]
+[ext_resource type="Resource" uid="uid://myouo5k06k0i" path="res://unit_data/enemies/31_starwyvern/encounter_starwyvern.tres" id="6_nr7nd"]
+[ext_resource type="Resource" uid="uid://d2p8xvfdmwpa4" path="res://unit_data/enemies/29_werewolf/encounter_werewolf.tres" id="7_f0fkh"]
+
+[node name="Zone12" instance=ExtResource("1_vk7c4")]
+encounter_chances = ExtResource("2_o6vkt")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_1inx3"), ExtResource("4_hoi78"), ExtResource("5_tvh84"), ExtResource("6_nr7nd"), ExtResource("7_f0fkh")])
+battle_bg = ExtResource("3_6uyqj")
+highlight_color = Color(0, 0.333333, 0.666667, 0.690196)

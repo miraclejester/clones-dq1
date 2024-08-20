@@ -7,7 +7,8 @@ script = ExtResource("1_tn44k")
 
 [node name="StartPosition" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-8, -8)
 
 [node name="EndPosition" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(224, 224)
+position = Vector2(232, 232)
