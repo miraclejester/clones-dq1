@@ -19,6 +19,7 @@ signal command_cancelled()
 @onready var item_window: ItemWindow = %ItemWindow
 @onready var status_window: StatusWindow = %StatusWindow
 @onready var shop_interface: ShopInterface = %ShopInterface
+@onready var spell_window: SpellWindow = %SpellWindow
 
 
 
@@ -94,6 +95,27 @@ func show_item_window(item_selected_callback: Callable, on_close: Callable) -> v
 		selected_callable,
 		CONNECT_ONE_SHOT
 	)
+
+
+func show_spell_window(spell_selected_callback: Callable, on_close: Callable) -> void:
+	var selected_callable: Callable = func (spell: SpellData):
+		MenuStack.pop_stack()
+		spell_window.visible = false
+		spell_selected_callback.call(spell)
+	
+	spell_window.set_spells(PlayerManager.hero.spells)
+	spell_window.visible = true
+	await MenuStack.push_stack(
+		spell_window,
+		spell_window.activate,
+		spell_window.deactivate,
+		func ():
+			spell_window.spell_selected.disconnect(selected_callable)
+			spell_window.visible = false
+			await MenuStack.pop_stack()
+			on_close.call()
+	)
+	spell_window.spell_selected.connect(selected_callable, CONNECT_ONE_SHOT)
 
 
 func show_status_window(on_cancel: Callable) -> void:

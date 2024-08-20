@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://cuxhv6isaxox1"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_njc6b"]
+
+[resource]
+script = ExtResource("1_njc6b")
+text = "But nothing happened"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])

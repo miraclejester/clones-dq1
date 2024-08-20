@@ -1,7 +1,15 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://3q37agavxk4d"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=6 format=3 uid="uid://3q37agavxk4d"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_cgq2r"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="1_gixcf"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_5q1dj"]
+
+[sub_resource type="Resource" id="Resource_ubvmw"]
+script = ExtResource("1_gixcf")
+key = 1
+min_val = 10
+max_val = 17
+id = 0
 
 [sub_resource type="Resource" id="Resource_6iqml"]
 script = ExtResource("2_5q1dj")
@@ -13,5 +21,6 @@ script = ExtResource("1_cgq2r")
 spell_id = 0
 spell_name = "HEAL"
 mp_cost = 4
+field_effect = SubResource("Resource_ubvmw")
 target_type = 0
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_6iqml")])

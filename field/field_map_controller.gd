@@ -11,6 +11,7 @@ class_name FieldMapController
 @export var item_default_dialogue: DialogueEvent
 @export var default_stairs_dialogue: DialogueEvent
 @export var spell_default_dialogue: DialogueEvent
+@export var non_field_spell_dialogue: DialogueEvent
 @export var starting_map_load_params: MapLoadParams
 
 
@@ -254,12 +255,55 @@ func on_stairs_selected() -> void:
 func on_spell_selected() -> void:
 	await MenuStack.pop_stack()
 	if PlayerManager.hero.spells.size() > 0:
-		print("Spell window with spells not implemented yet")
+		field_ui.show_spell_window(
+		on_spell_data_selected,
+		func ():
+			await MenuStack.pop_stack()
+			close_command_window()
+	)
 	else:
 		await field_ui.play_dialogue(spell_default_dialogue, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()]
 		})
 		close_command_window()
+
+
+func on_spell_data_selected(spell: SpellData) -> void:
+	var spell_sequence: SequenceDialogueEvent = SequenceDialogueEvent.new()
+	
+	if PlayerManager.hero.stats.get_stat(UnitStats.StatKey.MP) >= spell.mp_cost:
+		spell_sequence.events.append(GeneralDialogueProvider.get_dialogue(GeneralDialogueProvider.DialogueID.BattleChantSpell))
+		
+		var sfx: PlaySFXDialogueEvent = PlaySFXDialogueEvent.new()
+		sfx.sfx_key = "spell"
+		sfx.wait_for_sfx = false
+		spell_sequence.events.append(sfx)
+		
+		var effect: PlayEffectDialogueEvent = PlayEffectDialogueEvent.new()
+		effect.effect = PlayEffectDialogueEvent.EffectKey.SPELL
+		spell_sequence.events.append(effect)
+		
+		var mp_spend: ChangeHeroStatsDialogueEvent = ChangeHeroStatsDialogueEvent.new()
+		mp_spend.key = ChangeHeroStatsDialogueEvent.OperationKey.MODIFY_MP
+		mp_spend.min_val = -spell.mp_cost
+		spell_sequence.events.append(mp_spend)
+		
+		if spell.field_effect != null:
+			spell_sequence.events.append(spell.field_effect)
+		else:
+			spell_sequence.events.append(non_field_spell_dialogue)
+	else:
+		spell_sequence.events.append(
+			GeneralDialogueProvider.get_dialogue(GeneralDialogueProvider.DialogueID.BattleLowMP)
+		)
+	
+	await field_ui.play_dialogue(
+		spell_sequence,
+		{
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [PlayerManager.hero.get_unit_name(), spell.spell_name],
+		}
+	)
+	close_command_window()
 
 
 func on_move_finished() -> void:

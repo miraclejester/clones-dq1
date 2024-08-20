@@ -6,7 +6,8 @@ enum OperationKey {
 	HEAL_HP,
 	ADD_DEFENSE_MODIFIER,
 	EQUIP_ACCESSORY,
-	FULL_HEAL
+	FULL_HEAL,
+	MODIFY_MP
 }
 
 @export var key: OperationKey
@@ -29,3 +30,5 @@ func execute(window: DialogueWindow, _params: Dictionary) -> void:
 		OperationKey.FULL_HEAL:
 			PlayerManager.hero.stats.maximize(UnitStats.StatKey.HP)
 			PlayerManager.hero.stats.maximize(UnitStats.StatKey.MP)
+		OperationKey.MODIFY_MP:
+			PlayerManager.hero.stats.modify_stat(UnitStats.StatKey.MP, min_val)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=18 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_mhtmc"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_hvgwh"]
 [ext_resource type="Resource" uid="uid://bscyc5aswyaat" path="res://battle/data/dialogues/battle_dialogue_no_spells.tres" id="4_wmlf5"]
+[ext_resource type="Resource" uid="uid://cuxhv6isaxox1" path="res://ui/data/field_dialogues/field_dialogue_non_field_spell.tres" id="5_hffhm"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
 [ext_resource type="PackedScene" uid="uid://b3pdkdcgcir3x" path="res://battle/battle_controller.tscn" id="7_jnlec"]
@@ -90,6 +91,7 @@ door_default_dialogue = SubResource("Resource_7yyl3")
 item_default_dialogue = SubResource("Resource_8qaab")
 default_stairs_dialogue = SubResource("Resource_vhygg")
 spell_default_dialogue = ExtResource("4_wmlf5")
+non_field_spell_dialogue = ExtResource("5_hffhm")
 starting_map_load_params = SubResource("Resource_b0e4t")
 
 [node name="FieldMapContainer" type="Node2D" parent="."]
