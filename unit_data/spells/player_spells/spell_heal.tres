@@ -10,6 +10,7 @@ max_heal = 17
 
 [resource]
 script = ExtResource("1_cgq2r")
+spell_id = 0
 spell_name = "HEAL"
 mp_cost = 4
 target_type = 0

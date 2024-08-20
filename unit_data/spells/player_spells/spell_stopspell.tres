@@ -8,6 +8,7 @@ script = ExtResource("2_anb6t")
 
 [resource]
 script = ExtResource("1_f0ty6")
+spell_id = 5
 spell_name = "STOPSPELL"
 mp_cost = 2
 target_type = 1

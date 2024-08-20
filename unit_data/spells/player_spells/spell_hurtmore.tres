@@ -16,6 +16,7 @@ damage_deal_effect = SubResource("Resource_8xb0j")
 
 [resource]
 script = ExtResource("1_tyuqc")
+spell_id = 3
 spell_name = "HURTMORE"
 mp_cost = 5
 target_type = 1

@@ -16,6 +16,7 @@ damage_deal_effect = SubResource("Resource_lkukc")
 
 [resource]
 script = ExtResource("1_hwvob")
+spell_id = 2
 spell_name = "HURT"
 mp_cost = 2
 target_type = 1

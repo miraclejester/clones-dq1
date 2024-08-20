@@ -28,7 +28,8 @@ func generate_save_data() -> Dictionary:
 		"hp": hero.stats.get_stat(UnitStats.StatKey.HP),
 		"mp": hero.stats.get_stat(UnitStats.StatKey.MP),
 		"items": hero.inventory.generate_save_data(),
-		"equipment": hero.equipment.generate_save_data()
+		"equipment": hero.equipment.generate_save_data(),
+		"spells": hero.spells.map(func (spell: SpellData): return spell.spell_id)
 	}
 
 
@@ -45,3 +46,7 @@ func load_from_data(data: Dictionary) -> void:
 	hero.inventory.load_from_data(items)
 	
 	hero.equipment.load_from_data(data.get("equipment", {}))
+	
+	var spell_ids: Array[int] = []
+	spell_ids.assign(data.get("spells", []))
+	hero.spells.assign(spell_ids.map(func(id: int): return GameDataManager.get_spell(id)))

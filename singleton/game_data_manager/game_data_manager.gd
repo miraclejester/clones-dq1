@@ -2,16 +2,19 @@ extends Node
 
 @export_dir var items_dir: String
 @export_dir var equipment_dir: String
+@export_dir var spell_dir: String
 @export_dir var map_dir: String
 
 var save_dict: Dictionary = {} #Json
 var item_dict: Dictionary = {} #int to ItemData
+var spell_dict: Dictionary = {} #int to SpellData
 
 var save_path: String = "user://"
 var current_file_index: int = 1
 
 func _ready() -> void:
 	generate_item_database()
+	generate_spell_database()
 
 
 func generate_item_database() -> void:
@@ -19,6 +22,10 @@ func generate_item_database() -> void:
 	load_items_from_dir(equipment_dir + "/weapons")
 	load_items_from_dir(equipment_dir + "/shields")
 	load_items_from_dir(equipment_dir + "/armor")
+
+
+func generate_spell_database() -> void:
+	load_spells_from_dir(spell_dir)
 
 
 func get_all_non_equipments() -> Array[ItemData]:
@@ -32,6 +39,10 @@ func get_item(id: int) -> ItemData:
 	return item_dict.get(id) as ItemData
 
 
+func get_spell(id: int) -> SpellData:
+	return spell_dict.get(id) as SpellData
+
+
 func get_starting_map_key() -> String:
 	return (save_dict.get("map") as Dictionary).get("map_key", "")
 
@@ -40,6 +51,11 @@ func load_items_from_dir(dir: String) -> void:
 	for file_name in DirAccess.get_files_at(dir):
 		var item: ItemData = load("%s/%s" % [dir, file_name]) as ItemData
 		item_dict[item.item_id] = item
+
+func load_spells_from_dir(dir: String) -> void:
+	for file_name in DirAccess.get_files_at(dir):
+		var spell: SpellData = load("%s/%s" % [dir, file_name]) as SpellData
+		spell_dict[spell.spell_id] = spell
 
 
 func save_game(keep_map: bool = false) -> void:
@@ -88,7 +104,8 @@ func generate_new_save_data(hero_name: String, message_speed: int) -> void:
 			"hp": 15,
 			"mp": 0,
 			"items": [],
-			"equipment": {}
+			"equipment": {},
+			"spells": []
 		},
 		"map": {
 			"map_key": "new_game_tantegel_throne"

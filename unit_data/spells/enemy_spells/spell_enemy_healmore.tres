@@ -12,6 +12,7 @@ heal_dialogue = ExtResource("2_hjrp4")
 
 [resource]
 script = ExtResource("1_gcpkl")
+spell_id = 0
 spell_name = "HEALMORE"
 mp_cost = 0
 target_type = 0

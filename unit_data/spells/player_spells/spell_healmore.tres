@@ -10,6 +10,7 @@ max_heal = 100
 
 [resource]
 script = ExtResource("1_601s7")
+spell_id = 1
 spell_name = "HEALMORE"
 mp_cost = 10
 target_type = 0
