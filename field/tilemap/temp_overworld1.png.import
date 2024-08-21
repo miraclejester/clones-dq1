@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctqoxxik3djb3"
-path="res://.godot/imported/24_golem.png-e24cb64e72833a484f80badf8e0a053c.ctex"
+uid="uid://ce26cyo55bwky"
+path="res://.godot/imported/temp_overworld1.png-77c62fed32c7224a6083429f714321bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://unit_data/enemies/23_wraith_knight/24_golem/24_golem.png"
-dest_files=["res://.godot/imported/24_golem.png-e24cb64e72833a484f80badf8e0a053c.ctex"]
+source_file="res://field/tilemap/temp_overworld1.png"
+dest_files=["res://.godot/imported/temp_overworld1.png-77c62fed32c7224a6083429f714321bf.ctex"]
 
 [params]
 

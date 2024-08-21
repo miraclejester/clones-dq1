@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://m37i6tyitq27"]
+
+[ext_resource type="Resource" uid="uid://di2cv42ifgw43" path="res://unit_data/enemies/14_wolf/14_wolf.tres" id="1_t3mr4"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_hwk6v"]
+
+[resource]
+script = ExtResource("2_hwk6v")
+enemy = ExtResource("1_t3mr4")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

@@ -1,0 +1,15 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkjycvrb03u6a"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_gx0bs"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_53ua5"]
+[ext_resource type="Resource" uid="uid://12g4h1pegn" path="res://unit_data/enemies/18_wolflord/encounter_wolflord.tres" id="3_lucm3"]
+[ext_resource type="Resource" uid="uid://dughbfpfx7lbm" path="res://unit_data/enemies/15_wraith/encounter_wraith.tres" id="4_i1crr"]
+[ext_resource type="Resource" uid="uid://bcrgon0ydxhev" path="res://unit_data/enemies/25_goldman/encounter_goldman.tres" id="5_trsrl"]
+[ext_resource type="Resource" uid="uid://pcvetb567a60" path="res://unit_data/enemies/21_wyvern/encounter_wyvern.tres" id="6_nyiej"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="7_72t6x"]
+
+[node name="Zone9" instance=ExtResource("1_gx0bs")]
+encounter_chances = ExtResource("2_53ua5")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_lucm3"), ExtResource("4_i1crr"), ExtResource("5_trsrl"), ExtResource("6_nyiej")])
+battle_bg = ExtResource("7_72t6x")
+highlight_color = Color(0, 0.501961, 0.25098, 0.690196)

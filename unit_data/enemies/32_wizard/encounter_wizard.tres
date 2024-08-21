@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://dle5ls667262n"]
+
+[ext_resource type="Resource" uid="uid://chcw7qx8m6o7u" path="res://unit_data/enemies/32_wizard/32_wizard.tres" id="1_qbpfd"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_imrhm"]
+
+[resource]
+script = ExtResource("2_imrhm")
+enemy = ExtResource("1_qbpfd")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

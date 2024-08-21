@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://dughbfpfx7lbm"]
+
+[ext_resource type="Resource" uid="uid://defnc1jc8uft" path="res://unit_data/enemies/15_wraith/15_wraith.tres" id="1_dhvq6"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_duky3"]
+
+[resource]
+script = ExtResource("2_duky3")
+enemy = ExtResource("1_dhvq6")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

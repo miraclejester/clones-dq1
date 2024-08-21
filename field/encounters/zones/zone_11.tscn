@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkaqp20hhb6g3"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_50mvl"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_5j27b"]
+[ext_resource type="Resource" uid="uid://smhyrrmkpghk" path="res://unit_data/enemies/23_wraith_knight/encounter_wraith_knight.tres" id="3_o006b"]
+[ext_resource type="Resource" uid="uid://ddlt0aucrn5sq" path="res://unit_data/enemies/26_knight/encounter_knight.tres" id="4_ypntm"]
+[ext_resource type="Resource" uid="uid://caes7q0ee2o1i" path="res://unit_data/enemies/28_demon_knight/encounter_demon_knight.tres" id="5_fbb81"]
+[ext_resource type="Resource" uid="uid://cargxbvmti8yv" path="res://unit_data/enemies/16_metal_slime/encounter_metal_slime.tres" id="6_mmcju"]
+[ext_resource type="Resource" uid="uid://cyotnpyggp370" path="res://unit_data/enemies/27_magiwyvern/encounter_magiwyvern.tres" id="7_ximri"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="8_0cnq1"]
+
+[node name="Zone11" instance=ExtResource("1_50mvl")]
+encounter_chances = ExtResource("2_5j27b")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_o006b"), ExtResource("4_ypntm"), ExtResource("5_fbb81"), ExtResource("6_mmcju"), ExtResource("7_ximri")])
+battle_bg = ExtResource("8_0cnq1")
+highlight_color = Color(0, 0.666667, 0.666667, 0.690196)

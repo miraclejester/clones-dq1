@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://g47lrsfcupeg"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_r0i4x"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_nkxfv"]
+[ext_resource type="Resource" uid="uid://d3ndod3ahq4vp" path="res://unit_data/enemies/05_magidrakee/encounter_magidrakee.tres" id="3_ymtry"]
+[ext_resource type="Resource" uid="uid://c0vedpjcpwnic" path="res://unit_data/enemies/06_scorpion/encounter_scorpion.tres" id="4_xl0ye"]
+[ext_resource type="Resource" uid="uid://b8xtefm7rvort" path="res://unit_data/enemies/11_skeleton/encounter_skeleton.tres" id="5_hwhw8"]
+[ext_resource type="Resource" uid="uid://dt67g60axoh6x" path="res://unit_data/enemies/12_warlock/encounter_warlock.tres" id="6_3uxl7"]
+[ext_resource type="Resource" uid="uid://m37i6tyitq27" path="res://unit_data/enemies/14_wolf/encounter_wolf.tres" id="7_wwep8"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="8_mutur"]
+
+[node name="Zone6" instance=ExtResource("1_r0i4x")]
+encounter_chances = ExtResource("2_nkxfv")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_ymtry"), ExtResource("4_xl0ye"), ExtResource("5_hwhw8"), ExtResource("6_3uxl7"), ExtResource("7_wwep8")])
+battle_bg = ExtResource("8_mutur")
+highlight_color = Color(0, 0.666667, 0, 0.690196)

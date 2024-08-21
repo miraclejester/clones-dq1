@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://bt8ttigtqf3kj"]
+
+[ext_resource type="Resource" uid="uid://crwbr5k6ypthd" path="res://unit_data/enemies/30_green_dragon/30_green_dragon.tres" id="1_qnip3"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_lwy6f"]
+
+[resource]
+script = ExtResource("2_lwy6f")
+enemy = ExtResource("1_qnip3")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

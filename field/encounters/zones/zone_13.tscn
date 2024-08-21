@@ -1,0 +1,15 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8ixopnqefyei"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_whjlu"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_jse3e"]
+[ext_resource type="Resource" uid="uid://myouo5k06k0i" path="res://unit_data/enemies/31_starwyvern/encounter_starwyvern.tres" id="3_421im"]
+[ext_resource type="Resource" uid="uid://d2p8xvfdmwpa4" path="res://unit_data/enemies/29_werewolf/encounter_werewolf.tres" id="4_plqs8"]
+[ext_resource type="Resource" uid="uid://dle5ls667262n" path="res://unit_data/enemies/32_wizard/encounter_wizard.tres" id="5_0tg2y"]
+[ext_resource type="Resource" uid="uid://bt8ttigtqf3kj" path="res://unit_data/enemies/30_green_dragon/encounter_green_dragon.tres" id="6_tphp0"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="7_wob2f"]
+
+[node name="Zone13" instance=ExtResource("1_whjlu")]
+encounter_chances = ExtResource("2_jse3e")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_421im"), ExtResource("4_plqs8"), ExtResource("5_0tg2y"), ExtResource("6_tphp0")])
+battle_bg = ExtResource("7_wob2f")
+highlight_color = Color(0, 0.25098, 0.501961, 0.690196)

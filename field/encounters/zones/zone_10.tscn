@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://blkp1jpamh7qh"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_muemw"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_yfqvk"]
+[ext_resource type="Resource" uid="uid://pcvetb567a60" path="res://unit_data/enemies/21_wyvern/encounter_wyvern.tres" id="3_bvphh"]
+[ext_resource type="Resource" uid="uid://b543nkfc6hani" path="res://unit_data/enemies/22_rogue_scorpion/encounter_rogue_scorpion.tres" id="4_xlok2"]
+[ext_resource type="Resource" uid="uid://smhyrrmkpghk" path="res://unit_data/enemies/23_wraith_knight/encounter_wraith_knight.tres" id="5_5h5hj"]
+[ext_resource type="Resource" uid="uid://ddlt0aucrn5sq" path="res://unit_data/enemies/26_knight/encounter_knight.tres" id="6_k6g7s"]
+[ext_resource type="Resource" uid="uid://caes7q0ee2o1i" path="res://unit_data/enemies/28_demon_knight/encounter_demon_knight.tres" id="7_nk6ve"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="8_amu3d"]
+
+[node name="Zone10" instance=ExtResource("1_muemw")]
+encounter_chances = ExtResource("2_yfqvk")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_bvphh"), ExtResource("4_xlok2"), ExtResource("5_5h5hj"), ExtResource("6_k6g7s"), ExtResource("7_nk6ve")])
+battle_bg = ExtResource("8_amu3d")
+highlight_color = Color(0, 0.501961, 0.501961, 0.690196)

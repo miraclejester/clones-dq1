@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://pcvetb567a60"]
+
+[ext_resource type="Resource" uid="uid://d167gjesgb0kj" path="res://unit_data/enemies/21_wyvern/21_wyvern.tres" id="1_3uoxw"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_2w6y5"]
+
+[resource]
+script = ExtResource("2_2w6y5")
+enemy = ExtResource("1_3uoxw")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true
