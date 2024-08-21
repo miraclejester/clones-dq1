@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=12 format=3 uid="uid://v82bfc6ty8tq"]
+
+[ext_resource type="Resource" uid="uid://ca1rc01y5wsy5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_buy_again.tres" id="1_jsekb"]
+[ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_ueiy7"]
+[ext_resource type="Resource" uid="uid://d1c5qrxttqe71" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_item_selected.tres" id="2_ai4cn"]
+[ext_resource type="Resource" uid="uid://dmuq0ph4wqvx5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_goodbye.tres" id="3_uyfwx"]
+[ext_resource type="Resource" uid="uid://b4u1qm14q3yb8" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_greet.tres" id="4_dts6x"]
+[ext_resource type="Resource" uid="uid://bx8q8jsb3kt03" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_no_possessions.tres" id="5_xyhyc"]
+[ext_resource type="Resource" uid="uid://cyejs7tch82h6" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_not_enough_money.tres" id="6_jkn36"]
+[ext_resource type="Resource" uid="uid://c1iqqvpn12aiy" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_again.tres" id="8_77vpi"]
+[ext_resource type="Resource" uid="uid://d30xhb2oejmrl" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_confirm.tres" id="9_e84nt"]
+[ext_resource type="Resource" uid="uid://krx4wnewlhnn" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_buy.tres" id="10_fvequ"]
+[ext_resource type="Resource" uid="uid://cti3giohee85o" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_sell.tres" id="11_ishub"]
+
+[resource]
+script = ExtResource("1_ueiy7")
+initial_dialogue = ExtResource("4_dts6x")
+what_buy_dialogue = ExtResource("10_fvequ")
+goodbye_dialogue = ExtResource("3_uyfwx")
+not_enough_money_dialogue = ExtResource("6_jkn36")
+buy_again_dialogue = ExtResource("1_jsekb")
+item_selected_dialogue = ExtResource("2_ai4cn")
+buy_confirm_dialogue = ExtResource("2_ai4cn")
+item_bought_dialogue = ExtResource("2_ai4cn")
+sell_confirm_dialogue = ExtResource("9_e84nt")
+sell_again_dialogue = ExtResource("8_77vpi")
+no_sellable_items_dialogue = ExtResource("5_xyhyc")
+what_sell_dialogue = ExtResource("11_ishub")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://jj5khoav0i5p"]
+[gd_scene load_steps=63 format=3 uid="uid://jj5khoav0i5p"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_fhpbb"]
 [ext_resource type="PackedScene" uid="uid://c83poqvc248ik" path="res://field/characters/npcs/npc_variations/npc_male_villager.tscn" id="2_yl3lp"]
@@ -10,48 +10,26 @@
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="7_0jxln"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/start_shop_dialogue_event.gd" id="7_wyemw"]
 [ext_resource type="Script" path="res://field/ui/shop_interface/shop_data.gd" id="8_0lyil"]
-[ext_resource type="Resource" uid="uid://cp263d7igr0ol" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_again.tres" id="8_idff3"]
-[ext_resource type="Resource" uid="uid://dr2gsf1jash3f" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_greet.tres" id="8_tpkf4"]
-[ext_resource type="Resource" uid="uid://7y73d6h2tamo" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_goodbye.tres" id="8_utmb3"]
+[ext_resource type="Resource" uid="uid://cpjrrbwylmkkm" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/weapon_shop_dialogue_set.tres" id="8_2fyps"]
 [ext_resource type="Resource" uid="uid://b56tm8p8qavhk" path="res://unit_data/equipment/weapons/001_weapon_bamboo_pole.tres" id="9_ryeft"]
-[ext_resource type="Resource" uid="uid://43tefcpr8qgw" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_cancel.tres" id="9_wsu00"]
-[ext_resource type="Resource" uid="uid://c2l6n0y64a1up" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_confirm.tres" id="9_y0vyd"]
 [ext_resource type="Resource" uid="uid://vyoynukxbod5" path="res://unit_data/equipment/weapons/002_weapon_club.tres" id="10_paksb"]
 [ext_resource type="Resource" uid="uid://djot0ripjejk2" path="res://unit_data/equipment/weapons/003_weapon_copper_sword.tres" id="11_ie1cx"]
-[ext_resource type="Resource" uid="uid://b8mi8lisvuya1" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_item_selected.tres" id="11_lnwca"]
 [ext_resource type="Resource" uid="uid://c38uowgha1w5q" path="res://unit_data/equipment/armor/008_armor_clothes.tres" id="12_da280"]
-[ext_resource type="Resource" uid="uid://cfuqlrj07bjof" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_item_bought.tres" id="12_pol43"]
 [ext_resource type="Resource" uid="uid://cvhcvcaq3cp7m" path="res://unit_data/equipment/armor/009_armor_leather_armor.tres" id="13_rbfuc"]
 [ext_resource type="Resource" uid="uid://1tmnpsypi17f" path="res://unit_data/equipment/shields/015_shield_small_shield.tres" id="14_qcyam"]
-[ext_resource type="Resource" uid="uid://rk1jtwoahqry" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_what_buy.tres" id="16_ojpwj"]
 [ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="16_rkmqo"]
-[ext_resource type="Resource" uid="uid://ds04lq3bq25ep" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_shop_not_enough_money.tres" id="17_3ebmm"]
-[ext_resource type="Resource" uid="uid://iu4dt1imuxer" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_rebuy.tres" id="22_sb34s"]
+[ext_resource type="Resource" uid="uid://bu5ex5llrrppi" path="res://field/dialogues/inn/dialogue_sets/standard_inn_dialogue_set.tres" id="21_qocds"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="26_bodjr"]
 [ext_resource type="PackedScene" uid="uid://dh1e55af28xf8" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.tscn" id="27_saj72"]
 [ext_resource type="PackedScene" uid="uid://3aljw8c4qutb" path="res://field/characters/npcs/npc_variations/npc_red_soldier.tscn" id="28_sir18"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="29_dpya5"]
-[ext_resource type="Resource" uid="uid://ecxito64b0id" path="res://field/dialogues/inn/dialogue_inn_greet_sequence.tres" id="30_cqskw"]
-[ext_resource type="Resource" uid="uid://dx7ggmgs66uxu" path="res://field/dialogues/inn/dialogue_inn_good_morning.tres" id="30_kfgfy"]
-[ext_resource type="Resource" uid="uid://bpfi7cs43i3xx" path="res://field/dialogues/inn/dialogue_inn_not_enough_money.tres" id="31_7dpue"]
+[ext_resource type="Resource" uid="uid://v82bfc6ty8tq" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/tool_shop_dialogue_set.tres" id="31_7kc27"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/inn_dialogue_event.gd" id="31_yjg22"]
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="32_3s1c3"]
-[ext_resource type="Resource" uid="uid://bbgoh608s7lt0" path="res://field/dialogues/inn/dialogue_inn_reject.tres" id="32_fsjum"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/building_entrance_dialogue_event.gd" id="33_7ao04"]
-[ext_resource type="Resource" uid="uid://ca1rc01y5wsy5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_buy_again.tres" id="34_f1ff7"]
-[ext_resource type="Resource" uid="uid://ff5srwkobysp" path="res://field/dialogues/inn/dialogue_inn_sleep_start.tres" id="34_xw3bm"]
 [ext_resource type="Resource" uid="uid://5m0qcirywe8w" path="res://unit_data/items/data/023_item_herb.tres" id="34_yo7oq"]
 [ext_resource type="Resource" uid="uid://b5rs1qc4vl5ym" path="res://unit_data/items/data/025_torch.tres" id="35_4ixai"]
-[ext_resource type="Resource" uid="uid://dmuq0ph4wqvx5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_goodbye.tres" id="35_low4e"]
-[ext_resource type="Resource" uid="uid://b4u1qm14q3yb8" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_greet.tres" id="36_0xbq1"]
 [ext_resource type="Resource" uid="uid://dff1bpkdw8feg" path="res://unit_data/items/data/018_dragon_scale.tres" id="36_iuxxi"]
-[ext_resource type="Resource" uid="uid://d1c5qrxttqe71" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_item_selected.tres" id="37_02g1b"]
-[ext_resource type="Resource" uid="uid://cyejs7tch82h6" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_not_enough_money.tres" id="41_f34jm"]
-[ext_resource type="Resource" uid="uid://bx8q8jsb3kt03" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_no_possessions.tres" id="41_mh47l"]
-[ext_resource type="Resource" uid="uid://krx4wnewlhnn" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_buy.tres" id="42_2cmh3"]
-[ext_resource type="Resource" uid="uid://c1iqqvpn12aiy" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_again.tres" id="43_y2nu2"]
-[ext_resource type="Resource" uid="uid://d30xhb2oejmrl" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_confirm.tres" id="44_0sd14"]
-[ext_resource type="Resource" uid="uid://cti3giohee85o" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_sell.tres" id="46_i8h3l"]
 
 [sub_resource type="Resource" id="Resource_lotqr"]
 script = ExtResource("3_op2on")
@@ -88,16 +66,7 @@ events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")](
 script = ExtResource("8_0lyil")
 can_sell = false
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("9_ryeft"), ExtResource("10_paksb"), ExtResource("11_ie1cx"), ExtResource("12_da280"), ExtResource("13_rbfuc"), ExtResource("14_qcyam")])
-initial_dialogue = ExtResource("8_tpkf4")
-what_buy_dialogue = ExtResource("16_ojpwj")
-goodbye_dialogue = ExtResource("8_utmb3")
-not_enough_money_dialogue = ExtResource("17_3ebmm")
-buy_again_dialogue = ExtResource("8_idff3")
-item_selected_dialogue = ExtResource("11_lnwca")
-buy_confirm_dialogue = ExtResource("9_y0vyd")
-item_bought_dialogue = ExtResource("12_pol43")
-buy_cancelled_dialogue = ExtResource("9_wsu00")
-rebuy_equipment_dialogue = ExtResource("22_sb34s")
+dialogues = ExtResource("8_2fyps")
 
 [sub_resource type="Resource" id="Resource_xrrtg"]
 script = ExtResource("7_wyemw")
@@ -266,11 +235,7 @@ events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")](
 [sub_resource type="Resource" id="Resource_seehy"]
 script = ExtResource("31_yjg22")
 inn_cost = 6
-greet_dialogue = ExtResource("30_cqskw")
-sleep_start_dialogue = ExtResource("34_xw3bm")
-good_morning_dialogue = ExtResource("30_kfgfy")
-reject_dialogue = ExtResource("32_fsjum")
-not_enough_money_dialogue = ExtResource("31_7dpue")
+dialogues = ExtResource("21_qocds")
 
 [sub_resource type="Resource" id="Resource_cdxnq"]
 script = ExtResource("7_0jxln")
@@ -290,17 +255,7 @@ entered = false
 script = ExtResource("8_0lyil")
 can_sell = true
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("34_yo7oq"), ExtResource("35_4ixai"), ExtResource("36_iuxxi")])
-initial_dialogue = ExtResource("36_0xbq1")
-what_buy_dialogue = ExtResource("42_2cmh3")
-goodbye_dialogue = ExtResource("35_low4e")
-not_enough_money_dialogue = ExtResource("41_f34jm")
-buy_again_dialogue = ExtResource("34_f1ff7")
-item_selected_dialogue = ExtResource("37_02g1b")
-item_bought_dialogue = ExtResource("37_02g1b")
-sell_confirm_dialogue = ExtResource("44_0sd14")
-sell_again_dialogue = ExtResource("43_y2nu2")
-no_sellable_items_dialogue = ExtResource("41_mh47l")
-what_sell_dialogue = ExtResource("46_i8h3l")
+dialogues = ExtResource("31_7kc27")
 
 [sub_resource type="Resource" id="Resource_gkeon"]
 script = ExtResource("7_wyemw")

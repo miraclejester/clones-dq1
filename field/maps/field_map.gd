@@ -27,9 +27,16 @@ func _ready() -> void:
 		char_dict[n.position] = n
 		n.set_current_map(self)
 		n.activate_events()
-	for event in event_parent.get_children():
-		var e: MapEvent = event as MapEvent
-		event_dict[e.position] = e
+	register_events(event_parent)
+
+
+func register_events(p: Node2D) -> void:
+	for event in p.get_children():
+		if event is MapEvent:
+			var e: MapEvent = event as MapEvent
+			event_dict[e.position] = e
+		else:
+			register_events(event)
 
 
 func register_character(character: FieldCharacter) -> void:

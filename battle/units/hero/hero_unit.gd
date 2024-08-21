@@ -180,9 +180,11 @@ func set_level(l: int) -> void:
 	level_changed.emit(level)
 
 
-func add_exp(val: int) -> void:
+func add_exp(val: int, immediate_level_up: bool = false) -> void:
 	experience = clampi(experience + val, 0, 65535)
 	exp_changed.emit(experience)
+	if immediate_level_up and has_leveled_up():
+		level_up()
 
 
 func add_gold(val: int) -> void:

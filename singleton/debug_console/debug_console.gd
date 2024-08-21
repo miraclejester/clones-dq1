@@ -72,7 +72,7 @@ func set_stats_selected() -> void:
 	debug_context = DebugContext.SET_STATS
 	var commands: Array[CommandData] = [
 		CommandData.new("Level Up", func (): 
-			cur_hero.level_up()
+			cur_hero.add_exp(PlayerManager.get_exp_for_next_level(), true)
 			),
 		CommandData.new("Heal", func ():
 			cur_hero.stats.set_stat(UnitStats.StatKey.HP, cur_hero.stats.get_base(UnitStats.StatKey.HP))

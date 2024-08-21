@@ -18,7 +18,7 @@ func start(d: ShopData) -> void:
 	data = d
 	dialogue_window.clean_window()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.initial_dialogue)
+		DialogueEventParams.fromData(data.dialogues.initial_dialogue)
 	])
 	if data.can_sell:
 		buy_sell_question()
@@ -29,7 +29,7 @@ func start(d: ShopData) -> void:
 func buy_intention_selected() -> void:
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.what_buy_dialogue)
+		DialogueEventParams.fromData(data.dialogues.what_buy_dialogue)
 	])
 	show_products()
 
@@ -69,7 +69,7 @@ func purchase_flow_for_selling(product: ItemData) -> void:
 	if product.buy_price > PlayerManager.hero.gold:
 		dialogue_window.show_newline()
 		await dialogue_window.start_dialogue([
-			DialogueEventParams.fromData(data.not_enough_money_dialogue)
+			DialogueEventParams.fromData(data.dialogues.not_enough_money_dialogue)
 		])
 		await dialogue_window.wait_for_continuation(true)
 		buy_again_flow()
@@ -81,7 +81,7 @@ func purchase_flow_for_non_selling(product: ItemData) -> void:
 	dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
 		DialogueEventParams.fromData(
-			data.item_selected_dialogue,
+			data.dialogues.item_selected_dialogue,
 			{
 				PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [product.item_name]
 			}
@@ -90,7 +90,7 @@ func purchase_flow_for_non_selling(product: ItemData) -> void:
 	await dialogue_window.wait_for_continuation(true)
 	if product.buy_price > PlayerManager.hero.gold:
 		await dialogue_window.start_dialogue([
-			DialogueEventParams.fromData(data.not_enough_money_dialogue)
+			DialogueEventParams.fromData(data.dialogues.not_enough_money_dialogue)
 		])
 		await dialogue_window.wait_for_continuation(true)
 		buy_again_flow()
@@ -99,7 +99,7 @@ func purchase_flow_for_non_selling(product: ItemData) -> void:
 		if product is EquipmentData:
 			if cur_equip != null:
 				await dialogue_window.start_dialogue([
-					DialogueEventParams.fromData(data.rebuy_equipment_dialogue, {
+					DialogueEventParams.fromData(data.dialogues.rebuy_equipment_dialogue, {
 						PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [
 							cur_equip.item_name,
 							cur_equip.sell_price
@@ -108,7 +108,7 @@ func purchase_flow_for_non_selling(product: ItemData) -> void:
 				])
 				await dialogue_window.wait_for_continuation(true)
 		await dialogue_window.start_dialogue([
-			DialogueEventParams.fromData(data.buy_confirm_dialogue)
+			DialogueEventParams.fromData(data.dialogues.buy_confirm_dialogue)
 		])
 		dialogue_window.prompt_yes_no(
 			on_item_bought.bind(product, cur_equip),
@@ -123,7 +123,7 @@ func activate() -> void:
 func on_item_bought(item: ItemData, previous_item: ItemData = null) -> void:
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.item_bought_dialogue, {
+		DialogueEventParams.fromData(data.dialogues.item_bought_dialogue, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [item.item_name]
 		})
 	])
@@ -141,7 +141,7 @@ func on_item_bought(item: ItemData, previous_item: ItemData = null) -> void:
 func on_buy_cancelled() -> void:
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.buy_cancelled_dialogue)
+		DialogueEventParams.fromData(data.dialogues.buy_cancelled_dialogue)
 	])
 	await dialogue_window.wait_for_continuation(true)
 	buy_again_flow()
@@ -180,12 +180,12 @@ func sell_selected() -> void:
 	await dialogue_window.show_newline()
 	if PlayerManager.hero.inventory.stack_count() == 0:
 		await dialogue_window.start_dialogue([
-			DialogueEventParams.fromData(data.no_sellable_items_dialogue)
+			DialogueEventParams.fromData(data.dialogues.no_sellable_items_dialogue)
 		])
 		exit_shop()
 		return
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.what_sell_dialogue)
+		DialogueEventParams.fromData(data.dialogues.what_sell_dialogue)
 	])
 	item_window.set_items(PlayerManager.hero.inventory.items)
 	await MenuStack.push_stack(
@@ -207,7 +207,7 @@ func item_to_sell_selected(item: ItemData) -> void:
 	item_window.visible = false
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.sell_confirm_dialogue, {
+		DialogueEventParams.fromData(data.dialogues.sell_confirm_dialogue, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [item.item_name, item.sell_price]
 		})
 	])
@@ -223,14 +223,14 @@ func item_to_sell_selected(item: ItemData) -> void:
 func sell_again_flow() -> void:
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.sell_again_dialogue)
+		DialogueEventParams.fromData(data.dialogues.sell_again_dialogue)
 	])
 	dialogue_window.prompt_yes_no(sell_selected, exit_shop)
 
 
 func buy_again_flow() -> void:
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.buy_again_dialogue)
+		DialogueEventParams.fromData(data.dialogues.buy_again_dialogue)
 	])
 	product_showcase_question()
 
@@ -238,7 +238,7 @@ func buy_again_flow() -> void:
 func exit_shop():
 	await dialogue_window.show_newline()
 	await dialogue_window.start_dialogue([
-		DialogueEventParams.fromData(data.goodbye_dialogue)
+		DialogueEventParams.fromData(data.dialogues.goodbye_dialogue)
 	])
 	await dialogue_window.wait_for_continuation(false)
 	finish()

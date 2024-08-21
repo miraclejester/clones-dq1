@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InnDialogueSet" load_steps=7 format=3 uid="uid://bu5ex5llrrppi"]
+
+[ext_resource type="Script" path="res://field/dialogues/inn/dialogue_sets/inn_dialogue_set.gd" id="1_7n62m"]
+[ext_resource type="Resource" uid="uid://dx7ggmgs66uxu" path="res://field/dialogues/inn/dialogue_inn_good_morning.tres" id="1_32yu8"]
+[ext_resource type="Resource" uid="uid://ecxito64b0id" path="res://field/dialogues/inn/dialogue_inn_greet_sequence.tres" id="2_w52xb"]
+[ext_resource type="Resource" uid="uid://bpfi7cs43i3xx" path="res://field/dialogues/inn/dialogue_inn_not_enough_money.tres" id="3_vc1jl"]
+[ext_resource type="Resource" uid="uid://bbgoh608s7lt0" path="res://field/dialogues/inn/dialogue_inn_reject.tres" id="4_718he"]
+[ext_resource type="Resource" uid="uid://ff5srwkobysp" path="res://field/dialogues/inn/dialogue_inn_sleep_start.tres" id="6_g34ga"]
+
+[resource]
+script = ExtResource("1_7n62m")
+greet_dialogue = ExtResource("2_w52xb")
+sleep_start_dialogue = ExtResource("6_g34ga")
+good_morning_dialogue = ExtResource("1_32yu8")
+reject_dialogue = ExtResource("4_718he")
+not_enough_money_dialogue = ExtResource("3_vc1jl")
