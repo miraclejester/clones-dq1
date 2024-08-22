@@ -118,3 +118,7 @@ func get_encounter_zone(pos: Vector2) -> EncounterZone:
 
 func get_tile_battle_id(pos: Vector2) -> EncounterChanceEntry.TileBattleID:
 	return field_tile_map.get_tile_battle_id(pos)
+
+
+func get_tile_damage(pos: Vector2) -> int:
+	return field_tile_map.get_tile_damage(pos)

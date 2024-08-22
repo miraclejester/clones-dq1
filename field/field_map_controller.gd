@@ -315,6 +315,25 @@ func on_move_finished() -> void:
 		})
 		return
 	
+	var damage: int = field_map.get_tile_damage(hero_character.position)
+	if damage > 0:
+		get_tree().paused = true
+		PlayerManager.hero.deal_damage(damage)
+		AudioManager.play_sfx("tile_hit")
+		await GlobalVisuals.map_hurt_effect()
+		GlobalVisuals.determine_ui_colors(
+			PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
+			PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
+		)
+		if PlayerManager.hero.is_dead():
+			await AudioManager.play_bgm_one_shot("defeat")
+			await field_ui.play_dialogue(
+				GeneralDialogueProvider.get_dialogue(GeneralDialogueProvider.DialogueID.BattlePlayerDeath)
+			)
+			get_tree().quit()
+			return
+		get_tree().paused = false
+	
 	var zone: EncounterZone = field_map.get_encounter_zone(hero_character.position)
 	if zone != null:
 		var tile_id: EncounterChanceEntry.TileBattleID = field_map.get_tile_battle_id(hero_character.position)

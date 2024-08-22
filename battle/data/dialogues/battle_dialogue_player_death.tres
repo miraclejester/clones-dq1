@@ -6,3 +6,7 @@
 script = ExtResource("1_nrd72")
 text = "Thou art dead."
 in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])

@@ -37,6 +37,11 @@ func get_tile_battle_id(pos: Vector2) -> EncounterChanceEntry.TileBattleID:
 	return tile.get_custom_data("BattleKey") as EncounterChanceEntry.TileBattleID
 
 
+func get_tile_damage(pos: Vector2) -> int:
+	var tile: TileData = get_cell_tile_data(0, local_to_map(pos))
+	return tile.get_custom_data("Damage") as int
+
+
 func building_entered() -> void:
 	set_layer_enabled(get_layer_id("Map"), false)
 	set_layer_enabled(get_layer_id("BuildingRooftop"), false)

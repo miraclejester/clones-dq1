@@ -32,6 +32,11 @@ var death_effect_callables: Array[Callable] = [
 	set_death_effect_enabled.bind(false),
 ]
 
+var map_hurt_callables: Array[Callable] = [
+	set_death_effect_enabled.bind(true),
+	set_death_effect_enabled.bind(false)
+]
+
 var darken_callables: Array[Callable] = [
 	set_darken.bind(1),
 	set_darken.bind(2),
@@ -66,6 +71,10 @@ func enemy_spell_effect() -> void:
 
 func death_effect() -> void:
 	await play_effect(death_effect_callables, get_tree().get_nodes_in_group("player_death_effect"), 0.03)
+
+
+func map_hurt_effect() -> void:
+	await play_effect(map_hurt_callables, get_tree().get_nodes_in_group("player_death_effect"), 0.1, 1)
 
 
 func fade_out() -> void:
