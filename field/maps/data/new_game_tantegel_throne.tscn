@@ -24,6 +24,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_smija"]
 script = ExtResource("5_oepjy")
@@ -33,6 +34,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_0wmq6"]
 script = ExtResource("5_oepjy")
@@ -42,6 +44,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_suatg"]
 script = ExtResource("5_oepjy")
@@ -51,6 +54,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_i7wdc"]
 script = ExtResource("5_oepjy")
@@ -60,6 +64,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_mjjtr"]
 script = ExtResource("5_oepjy")
@@ -69,6 +74,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_se02e"]
 script = ExtResource("5_oepjy")
@@ -78,6 +84,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_lsssq"]
 script = ExtResource("5_oepjy")
@@ -87,10 +94,12 @@ is_speech = true
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_4sy1o"]
 script = ExtResource("7_41644")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_nvtba"), SubResource("Resource_smija"), SubResource("Resource_0wmq6"), SubResource("Resource_suatg"), SubResource("Resource_i7wdc"), SubResource("Resource_mjjtr"), SubResource("Resource_se02e"), SubResource("Resource_lsssq")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_d2xru"]
 script = ExtResource("5_oepjy")
@@ -100,6 +109,7 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_h0omy"]
 script = ExtResource("5_oepjy")
@@ -109,6 +119,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_nwweq"]
 script = ExtResource("5_oepjy")
@@ -118,6 +129,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_6xnae"]
 script = ExtResource("5_oepjy")
@@ -127,10 +139,12 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_5qmpw"]
 script = ExtResource("7_41644")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_h0omy"), SubResource("Resource_nwweq"), SubResource("Resource_6xnae")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_bq2q8"]
 script = ExtResource("5_oepjy")
@@ -140,6 +154,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_m2etv"]
 script = ExtResource("5_oepjy")
@@ -149,10 +164,12 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_yiyka"]
 script = ExtResource("7_41644")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_bq2q8"), SubResource("Resource_m2etv")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_b04x5"]
 script = ExtResource("14_uu0it")
@@ -164,6 +181,7 @@ spawn_direction = Vector2(1, 0)
 script = ExtResource("15_8j7wn")
 map_key = "tantegel_castle"
 load_params = SubResource("Resource_b04x5")
+skip_window = false
 
 [node name="NewGameTantegelThrone" instance=ExtResource("1_a0atq")]
 map_bgm = "tantegel_throne"

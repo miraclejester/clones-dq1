@@ -19,6 +19,7 @@ var lines_to_transition: int = 8
 var event_queue: Array[DialogueEventParams] = []
 var current_paragraph: DialogueParagraph
 var current_continuator: DialogueContinuator = null
+var auto_continue: bool = false
 
 
 func _ready() -> void:
@@ -44,7 +45,10 @@ func deactivate() -> void:
 
 func wait_for_continuation(cont_visible: bool) -> void:
 	await MenuStack.push_stack(self, activate.bind(cont_visible), deactivate)
-	await continued
+	if not auto_continue:
+		await continued
+	else:
+		continue_input()
 	await MenuStack.pop_stack()
 
 
@@ -53,6 +57,7 @@ func continue_input() -> void:
 		paragraph_container.remove_child(current_continuator)
 		current_continuator.queue_free()
 		await show_paragraph(GeneralDialogueProvider.DialogueID.Newline)
+	auto_continue = false
 	continued.emit()
 
 

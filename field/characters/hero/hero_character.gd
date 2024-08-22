@@ -14,6 +14,8 @@ enum MoveState {
 @export var after_move_idle_wait_time: float = 1.5
 @export var facing_idle_wait_time: float = 3.5
 @export var wall_wait_time: float = 0.18
+@onready var darkness_layer: DarknessLayer = %DarknessLayer
+
 
 @onready var move_timer: Timer = %MoveTimer
 @onready var idle_timer: Timer = %IdleTimer
@@ -38,7 +40,7 @@ func _ready() -> void:
 	move_timer.timeout.connect(on_move_timer_timeout)
 	idle_timer.timeout.connect(on_idle_timer_timeout)
 	wall_timer.timeout.connect(on_wall_timer_timeout)
-	field_move_component.move_finished.connect(func() : move_finished.emit())
+	field_move_component.move_finished.connect(on_move_finished)
 	
 	PlayerManager.hero.item_equipped.connect(on_item_equipped)
 
@@ -149,3 +151,21 @@ func on_wall_timer_timeout() -> void:
 
 func on_item_equipped(_item: EquipmentData) -> void:
 	set_face_dir(facing_dir)
+
+
+func show_darkness() -> void:
+	darkness_layer.visible = true
+
+
+func hide_darkness() -> void:
+	darkness_layer.initialize()
+	darkness_layer.visible = false
+
+
+func illuminate(strength: int, battery: int = 0) -> void:
+	darkness_layer.illuminate(strength, battery)
+
+
+func on_move_finished() -> void:
+	move_finished.emit()
+	darkness_layer.on_step()

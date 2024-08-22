@@ -52,6 +52,7 @@ func _ready() -> void:
 
 func load_map(path: String, params: MapLoadParams) -> void:
 	hero_character.visible = false
+	
 	current_map_key = path
 	var map_scene: PackedScene = load("%s/%s.tscn" % [base_map_path, path])
 	var map: FieldMap = map_scene.instantiate() as FieldMap
@@ -63,6 +64,10 @@ func load_map(path: String, params: MapLoadParams) -> void:
 	field_map_container.add_child(field_map)
 	
 	hero_character.set_current_map(field_map)
+	if field_map.is_dark:
+		hero_character.show_darkness()
+	else:
+		hero_character.hide_darkness()
 	
 	hero_character.position = field_map.find_spawn_pos(params.spawn_point_key)
 	hero_character.set_face_dir(params.spawn_direction)
@@ -219,7 +224,8 @@ func on_item_data_selected(item: ItemData) -> void:
 		clean = false
 	await field_ui.play_dialogue(item.field_action, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
-		"map_controller": self
+		"map_controller": self,
+		"wait_for_continuation": not item.field_action.skip_window
 	}, clean)
 	close_command_window()
 
@@ -262,7 +268,8 @@ func on_spell_selected() -> void:
 	)
 	else:
 		await field_ui.play_dialogue(spell_default_dialogue, {
-			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()]
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
+			"map_controller": self
 		})
 		close_command_window()
 
@@ -300,6 +307,7 @@ func on_spell_data_selected(spell: SpellData) -> void:
 		spell_sequence,
 		{
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [PlayerManager.hero.get_unit_name(), spell.spell_name],
+			"map_controller": self
 		}
 	)
 	close_command_window()
@@ -369,3 +377,10 @@ func get_global_format_vars() -> Array:
 		PlayerManager.hero.get_unit_name(),
 		PlayerManager.get_exp_for_next_level()
 	]
+
+func illuminate(strength: int, battery: int = 0) -> void:
+	hero_character.illuminate(strength, battery)
+
+
+func initialize_darkness() -> void:
+	hero_character.darkness_layer.initialize()

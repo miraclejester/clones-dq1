@@ -18,11 +18,13 @@
 script = ExtResource("2_bwyiv")
 sfx_key = "treasure"
 wait_for_sfx = false
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_c4ymo"]
 script = ExtResource("3_r4nxg")
 target_pos = Vector2(0, 0)
 tile_key = "brick"
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_b8d8f"]
 script = ExtResource("4_15qv8")
@@ -32,6 +34,7 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_y8jbq"]
 script = ExtResource("5_hhatm")
@@ -43,18 +46,22 @@ script = ExtResource("6_kxo4w")
 script = ExtResource("7_1272b")
 dialogue = SubResource("Resource_b8d8f")
 format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_gdkjv"]
 script = ExtResource("8_10y3p")
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_ljxwm"]
 script = ExtResource("9_utyka")
 target_pos = Vector2(0, 0)
 operation = 0
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_n3u28"]
 script = ExtResource("4_ua5rh")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm")])
+skip_window = false
 
 [node name="ItemChestEvent" instance=ExtResource("1_b78xh")]
 take_event = SubResource("Resource_n3u28")

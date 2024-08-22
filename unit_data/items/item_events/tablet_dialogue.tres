@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=10 format=3 uid="uid://bonojmqtjv4b6"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_qcxpn"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_t62fe"]
+
+[sub_resource type="Resource" id="Resource_q6p3v"]
+script = ExtResource("1_qcxpn")
+text = "The tablet reads as follows:"
+in_quotes = false
+is_speech = false
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_1tyvg"]
+script = ExtResource("1_qcxpn")
+text = "I am Erdrick and thou art my descendant"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wn8dj"]
+script = ExtResource("1_qcxpn")
+text = "Three items were needed to reach the Isle of Dragons, which is south of Brecconary"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_lx8n8"]
+script = ExtResource("1_qcxpn")
+text = "I gathered these items, reached the island, and there defeated a creature of great evil"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dhvub"]
+script = ExtResource("1_qcxpn")
+text = "Now I have entrusted the three items to three worthy keepers"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_rwne8"]
+script = ExtResource("1_qcxpn")
+text = "Their descendants will protect the items until thy quest leads thee to seek them out"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wagvs"]
+script = ExtResource("1_qcxpn")
+text = "When a new evil arises, find the three items, then fight!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+skip_window = false
+
+[resource]
+script = ExtResource("2_t62fe")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_q6p3v"), SubResource("Resource_1tyvg"), SubResource("Resource_wn8dj"), SubResource("Resource_lx8n8"), SubResource("Resource_dhvub"), SubResource("Resource_rwne8"), SubResource("Resource_wagvs")])
+skip_window = false

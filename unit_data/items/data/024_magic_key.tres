@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_c1das"]
 script = ExtResource("1_c2r6s")
 command = 0
+skip_window = false
 
 [resource]
 script = ExtResource("3_q2vvp")

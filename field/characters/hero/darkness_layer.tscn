@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjvhnx0wy8s4b"]
+
+[ext_resource type="Script" path="res://field/characters/hero/darkness_layer.gd" id="2_sgs6g"]
+
+[node name="DarknessLayer" type="Sprite2D"]
+position = Vector2(128, 112)
+script = ExtResource("2_sgs6g")

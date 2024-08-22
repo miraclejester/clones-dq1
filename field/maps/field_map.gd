@@ -2,6 +2,7 @@ extends Node2D
 class_name FieldMap
 
 @export var map_bgm: String
+@export var is_dark: bool
 @export var map_start_event: DialogueEvent
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
