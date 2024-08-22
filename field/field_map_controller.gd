@@ -240,7 +240,6 @@ func on_stairs_selected() -> void:
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.stairs_event != null:
 		close_command_window()
-		AudioManager.play_sfx("stairs")
 		field_ui.hide_hud()
 		await field_ui.play_dialogue(event.stairs_event, {
 			"wait_for_continuation": false,

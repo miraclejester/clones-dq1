@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=26 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_1cupo"]
 [ext_resource type="PackedScene" uid="uid://bhv5omt5ndy0j" path="res://field/encounters/zones/zone_0.tscn" id="4_i82r6"]
+[ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="4_k4jyk"]
 [ext_resource type="PackedScene" uid="uid://daiiups5m4xub" path="res://field/encounters/zones/zone_1.tscn" id="5_byy11"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="5_vgvkh"]
 [ext_resource type="PackedScene" uid="uid://docgsj3htjkpn" path="res://field/encounters/zones/zone_2.tscn" id="6_1y0in"]
 [ext_resource type="PackedScene" uid="uid://bgkfkewhdhq1m" path="res://field/encounters/zones/zone_3.tscn" id="7_wcjq1"]
 [ext_resource type="PackedScene" uid="uid://dpnsdxkrmyw7c" path="res://field/encounters/zones/zone_4.tscn" id="8_f04px"]
@@ -36,6 +38,23 @@ play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
 
+[sub_resource type="Resource" id="Resource_x82gt"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(0, -1)
+
+[sub_resource type="Resource" id="Resource_d0dkc"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(1, 0)
+
+[sub_resource type="Resource" id="Resource_kjhxu"]
+script = ExtResource("5_vgvkh")
+map_key = "cave_west_of_kol"
+load_params = SubResource("Resource_d0dkc")
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 
@@ -61,6 +80,15 @@ position = Vector2(-648, -648)
 map_key = "garinham"
 load_params = SubResource("Resource_oej2l")
 
+[node name="ToKol" parent="EventParent" index="3" instance=ExtResource("2_6dvip")]
+position = Vector2(1000, -520)
+map_key = "kol"
+load_params = SubResource("Resource_x82gt")
+
+[node name="ToCaveWestOfKol" parent="EventParent" index="4" instance=ExtResource("4_k4jyk")]
+position = Vector2(632, -664)
+stairs_event = SubResource("Resource_kjhxu")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -75,6 +103,15 @@ position = Vector2(88, 88)
 
 [node name="garinham" type="Node2D" parent="SpawnPoints" index="3"]
 position = Vector2(-648, -648)
+
+[node name="kol" type="Node2D" parent="SpawnPoints" index="4"]
+position = Vector2(1000, -520)
+
+[node name="cave_west_of_kol" type="Node2D" parent="SpawnPoints" index="5"]
+position = Vector2(632, -664)
+
+[node name="EncounterData" parent="." index="5"]
+visible = false
 
 [node name="Zone0" parent="EncounterData" index="0" instance=ExtResource("4_i82r6")]
 position = Vector2(-200, -200)

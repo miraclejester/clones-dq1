@@ -15,8 +15,9 @@ class_name EncounterZone
 var chances_dict: Dictionary = {}
 
 func _ready() -> void:
-	for entry in encounter_chances.chances:
-		chances_dict[entry.battle_id] = entry.chance
+	if not Engine.is_editor_hint():
+		for entry in encounter_chances.chances:
+			chances_dict[entry.battle_id] = entry.chance
 
 
 func _process(_delta: float) -> void:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://b1phrxbcr5gde"]
+[gd_scene load_steps=41 format=3 uid="uid://b1phrxbcr5gde"]
 
 [ext_resource type="Script" path="res://singleton/player_manager/player_manager.gd" id="1_xsi76"]
 [ext_resource type="Script" path="res://unit_data/player/experience/experience_chart_entry.gd" id="2_2ottu"]
 [ext_resource type="Resource" uid="uid://3q37agavxk4d" path="res://unit_data/spells/player_spells/spell_heal.tres" id="3_u0sis"]
 [ext_resource type="Resource" uid="uid://da5tkr6g8bc2j" path="res://unit_data/spells/player_spells/spell_hurt.tres" id="4_y3xgr"]
 [ext_resource type="Resource" uid="uid://hcef5nmvhhto" path="res://unit_data/spells/player_spells/spell_sleep.tres" id="5_btvlr"]
+[ext_resource type="Resource" uid="uid://cpntgdfsacx84" path="res://unit_data/spells/player_spells/spell_radiant.tres" id="6_2ocv3"]
 [ext_resource type="Resource" uid="uid://cs1s5jupvl6ee" path="res://unit_data/spells/player_spells/spell_stopspell.tres" id="6_ujtoh"]
 [ext_resource type="Resource" uid="uid://1jojbmgi1bmq" path="res://unit_data/spells/player_spells/spell_healmore.tres" id="7_pea0l"]
 [ext_resource type="Resource" uid="uid://ct1rikw1mdsrm" path="res://unit_data/spells/player_spells/spell_hurtmore.tres" id="8_fbhrf"]
@@ -57,6 +58,7 @@ experience = 800
 script = ExtResource("2_2ottu")
 level = 9
 experience = 1300
+learned_spell = ExtResource("6_2ocv3")
 
 [sub_resource type="Resource" id="Resource_wrwcp"]
 script = ExtResource("2_2ottu")
