@@ -8,7 +8,9 @@
 script = ExtResource("1_8w2pc")
 sfx_key = "breathing"
 wait_for_sfx = false
+skip_window = false
 
 [resource]
 script = ExtResource("1_4hb7q")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_758jw"), ExtResource("2_yoeo4")])
+skip_window = false

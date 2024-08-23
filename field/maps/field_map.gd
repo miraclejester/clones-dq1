@@ -78,6 +78,12 @@ func find_event(pos: Vector2) -> MapEvent:
 	return event_dict.get(pos, null) as MapEvent
 
 
+func get_events() -> Array[MapEvent]:
+	var res: Array[MapEvent] = []
+	res.assign(event_dict.values())
+	return res
+
+
 func remove_event(pos: Vector2) -> void:
 	var event: MapEvent = find_event(pos)
 	if event != null:

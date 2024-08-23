@@ -84,6 +84,7 @@ func generate_save_data(keep_map_key: bool = false) -> void:
 	sd["map"] = {
 		"map_key": map_key
 	}
+	sd["map_data"] = save_dict.get("map_data", {})
 	
 	var save_handlers: Array[SaveDataHandler] = []
 	save_handlers.assign(get_tree().get_nodes_in_group("save_handler"))
@@ -112,8 +113,25 @@ func generate_new_save_data(hero_name: String, message_speed: int) -> void:
 		},
 		"settings": {
 			"message_speed": message_speed
-		}
+		},
+		"map_data": {}
 	}
+
+
+func save_map_data(map_key: String, data_key: String, data: Variant) -> void:
+	if not save_dict.has("map_data"):
+		save_dict["map_data"] = {}
+	if not (save_dict["map_data"] as Dictionary).has(map_key):
+		save_dict["map_data"][map_key] = {}
+	save_dict["map_data"][map_key][data_key] = data
+
+
+func get_map_data(map_key: String, data_key: String, default: Variant) -> Variant:
+	return ((save_dict.get("map_data", {}) as Dictionary).get(map_key, {}) as Dictionary).get(data_key, default)
+
+
+func get_map_bool(map_key: String, data_key: String) -> bool:
+	return get_map_data(map_key, data_key, false) as bool
 
 
 func load_save_from_slot(idx: int) -> void:

@@ -84,13 +84,21 @@ func load_map(path: String, params: MapLoadParams) -> void:
 		PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)
 	)
 	
+	get_tree().paused = true
 	if field_map.map_start_event != null and params.play_starting_event:
 		await get_tree().process_frame
-		get_tree().paused = true
 		await field_ui.play_dialogue(field_map.map_start_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
 		})
-		get_tree().paused = false
+	
+	for event in field_map.get_events():
+		if event.map_start_event != null:
+			await field_ui.play_dialogue(event.map_start_event, {
+				"map": field_map,
+				"make_window_visible": false
+			})
+	
+	get_tree().paused = false
 	hero_character.set_process(true)
 
 
@@ -224,8 +232,7 @@ func on_item_data_selected(item: ItemData) -> void:
 		clean = false
 	await field_ui.play_dialogue(item.field_action, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
-		"map_controller": self,
-		"wait_for_continuation": not item.field_action.skip_window
+		"map_controller": self
 	}, clean)
 	close_command_window()
 

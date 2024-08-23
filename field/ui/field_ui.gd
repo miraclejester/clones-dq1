@@ -138,7 +138,7 @@ func play_dialogue(dialogue: DialogueEvent, params: Dictionary = {}, clean_windo
 	if clean_window:
 		dialogue_window.clean_window()
 	await dialogue_window.start_dialogue([DialogueEventParams.fromData(dialogue, params)])
-	if params.get("wait_for_continuation", true):
+	if params.get("wait_for_continuation", not dialogue.skip_window):
 		await dialogue_window.wait_for_continuation(false)
 	dialogue_window.visible = false
 

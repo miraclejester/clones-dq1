@@ -6,6 +6,7 @@ class_name MapEvent
 @export var door_event: DialogueEvent
 @export var stairs_event: DialogueEvent
 @export var step_event: DialogueEvent
+@export var map_start_event: DialogueEvent
 
 @onready var take_params: Node = %TakeParams
 @onready var door_params: Node = %DoorParams
