@@ -324,6 +324,14 @@ func on_spell_data_selected(spell: SpellData) -> void:
 
 
 func on_move_finished() -> void:
+	var out_event: DialogueEvent = field_map.out_of_bounds_event
+	if out_event != null and field_map.is_out_of_bounds(hero_character.position):
+		await field_ui.play_dialogue(out_event, {
+			"make_window_visible": false,
+			"map_controller": self
+		})
+		return
+	
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.step_event != null:
 		await field_ui.play_dialogue(event.step_event, {

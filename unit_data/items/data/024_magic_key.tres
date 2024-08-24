@@ -16,3 +16,4 @@ buy_price = 53
 sell_price = 26
 consumable = true
 field_action = SubResource("Resource_c1das")
+tags = Array[int]([])

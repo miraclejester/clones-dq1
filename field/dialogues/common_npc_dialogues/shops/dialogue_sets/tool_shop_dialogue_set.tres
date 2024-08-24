@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=17 format=3 uid="uid://v82bfc6ty8tq"]
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=18 format=3 uid="uid://v82bfc6ty8tq"]
 
 [ext_resource type="Resource" uid="uid://ca1rc01y5wsy5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_buy_again.tres" id="1_jsekb"]
 [ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_ueiy7"]
@@ -13,6 +13,17 @@
 [ext_resource type="Resource" uid="uid://d30xhb2oejmrl" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_confirm.tres" id="9_e84nt"]
 [ext_resource type="Resource" uid="uid://krx4wnewlhnn" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_buy.tres" id="10_fvequ"]
 [ext_resource type="Resource" uid="uid://cti3giohee85o" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_sell.tres" id="11_ishub"]
+
+[sub_resource type="Resource" id="Resource_b5xd5"]
+script = ExtResource("3_0cph3")
+text = "I cannot buy it"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_jh3v1"]
 script = ExtResource("3_0cph3")
@@ -56,3 +67,4 @@ sell_again_dialogue = ExtResource("8_77vpi")
 no_sellable_items_dialogue = ExtResource("5_xyhyc")
 what_sell_dialogue = ExtResource("11_ishub")
 cursed_item_dialogue = SubResource("Resource_shlwp")
+cannot_buy_dialogue = SubResource("Resource_b5xd5")

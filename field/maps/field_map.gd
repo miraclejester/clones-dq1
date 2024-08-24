@@ -4,6 +4,7 @@ class_name FieldMap
 @export var map_bgm: String
 @export var is_dark: bool
 @export var map_start_event: DialogueEvent
+@export var out_of_bounds_event: DialogueEvent
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
@@ -11,6 +12,8 @@ class_name FieldMap
 @onready var spawn_points: Node2D = $SpawnPoints
 @onready var building_npc_parent: Node2D = %BuildingNPCParent
 @onready var encounter_data: Node2D = %EncounterData
+@onready var bound_start: Node2D = %BoundStart
+@onready var bound_end: Node2D = %BoundEnd
 
 
 var char_dict: Dictionary #Vector2 to NPCCharacter
@@ -54,12 +57,14 @@ func move_character_register(old_pos: Vector2, character: FieldCharacter) -> voi
 	char_dict[character.position] = character
 
 
-func request_move(target: Vector2, origin: Vector2, skip_step_events: bool = false) -> bool:
+func request_move(target: Vector2, origin: Vector2, skip_step_events: bool = false, skip_out_of_bounds: bool = false) -> bool:
 	var is_available: bool = field_tile_map.request_move(target) and not is_pos_reserved(target)
 	if skip_step_events:
 		var event: MapEvent = find_event(target)
 		if event != null:
 			is_available = event.step_event == null
+	if skip_out_of_bounds:
+		is_available = not is_out_of_bounds(target)
 	if is_available:
 		char_dict[origin] = null
 		char_dict[target] = null
@@ -129,3 +134,11 @@ func get_tile_battle_id(pos: Vector2) -> EncounterChanceEntry.TileBattleID:
 
 func get_tile_damage(pos: Vector2) -> int:
 	return field_tile_map.get_tile_damage(pos)
+
+
+func is_out_of_bounds(pos: Vector2) -> bool:
+	var out_left: bool = pos.x < bound_start.position.x
+	var out_right: bool = pos.x > bound_end.position.x
+	var out_up: bool = pos.y < bound_start.position.y
+	var out_down: bool = pos.y > bound_end.position.y
+	return out_left or out_right or out_up or out_down

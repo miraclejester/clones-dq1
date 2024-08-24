@@ -19,3 +19,7 @@ class_name ShopDialogueSet
 @export var no_sellable_items_dialogue: DialogueEvent
 @export var what_sell_dialogue: DialogueEvent
 @export var cursed_item_dialogue: DialogueEvent
+@export var cannot_buy_dialogue: DialogueEvent
+
+@export_group("Single Item Dialogues")
+@export var cannot_sell_more_dialogue: DialogueEvent

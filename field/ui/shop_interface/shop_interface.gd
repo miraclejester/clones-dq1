@@ -17,6 +17,16 @@ func _ready() -> void:
 func start(d: ShopData) -> void:
 	data = d
 	dialogue_window.clean_window()
+	
+	if data.is_single_item_shop:
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.initial_dialogue, {
+				PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [data.single_item_price]
+			})
+		])
+		dialogue_window.prompt_yes_no(buy_single_item_selected, exit_shop)
+		return
+	
 	await dialogue_window.start_dialogue([
 		DialogueEventParams.fromData(data.dialogues.initial_dialogue)
 	])
@@ -24,6 +34,29 @@ func start(d: ShopData) -> void:
 		buy_sell_question()
 	else:
 		product_showcase_question()
+
+
+func buy_single_item_selected() -> void:
+	if PlayerManager.hero.inventory.get_item_amount(data.single_item.item_id) >= data.single_item_limit:
+		await dialogue_window.show_newline()
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.cannot_sell_more_dialogue)
+		])
+		exit_shop()
+	elif PlayerManager.hero.gold >= data.single_item_price:
+		PlayerManager.hero.spend_gold(data.single_item_price)
+		PlayerManager.hero.inventory.add_item(data.single_item)
+		await dialogue_window.show_newline()
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.item_bought_dialogue)
+		])
+		dialogue_window.prompt_yes_no(buy_single_item_selected, exit_shop)
+	else:
+		await dialogue_window.show_newline()
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.not_enough_money_dialogue)
+		])
+		exit_shop()
 
 
 func buy_intention_selected() -> void:
@@ -210,6 +243,13 @@ func item_to_sell_selected(item: ItemData) -> void:
 	await MenuStack.pop_stack()
 	item_window.visible = false
 	await dialogue_window.show_newline()
+	
+	if not item.sellable:
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.cannot_buy_dialogue)
+		])
+		await sell_again_flow()
+		return
 	
 	await dialogue_window.start_dialogue([
 		DialogueEventParams.fromData(data.dialogues.sell_confirm_dialogue, {

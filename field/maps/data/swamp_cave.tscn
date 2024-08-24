@@ -44,9 +44,11 @@ position = Vector2(24, 488)
 
 [node name="DungeonZone1" parent="EncounterData" index="0" instance=ExtResource("4_sx4ky")]
 position = Vector2(24, 24)
-is_dark = null
 
 [node name="EndPosition" parent="EncounterData/DungeonZone1" index="1"]
 position = Vector2(88, 472)
+
+[node name="BoundEnd" parent="." index="7"]
+position = Vector2(152, 536)
 
 [editable path="EncounterData/DungeonZone1"]

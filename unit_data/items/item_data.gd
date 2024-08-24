@@ -10,6 +10,7 @@ enum ItemTag {
 @export var buy_price: int
 @export var sell_price: int
 @export var consumable: bool
+@export var sellable: bool = true
 @export var use_dialogue: DialogueEvent
 @export var battle_action: ActionData
 @export var field_action: DialogueEvent

@@ -46,6 +46,14 @@ func find_stack(id: int) -> ItemStack:
 	return null
 
 
+func get_item_amount(id: int) -> int:
+	var stack: ItemStack = find_stack(id)
+	if stack != null:
+		return stack.amount
+	else:
+		return 0
+
+
 func has_item(item: ItemData) -> bool:
 	return find_stack(item.item_id) != null
 

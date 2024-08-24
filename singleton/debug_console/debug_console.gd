@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var command_window: CommandWindow = %CommandWindow
 @onready var player_hud: PlayerHUD = %PlayerHud
 
+var start_index: int = 0
+var end_index: int = 0
+var page_size: int = 11
+
 enum DebugContext {
 	MAIN, TELEPORT, SET_STATS, ADD_ITEM
 }
@@ -39,6 +43,8 @@ func show_window() -> void:
 
 func show_main_commands() -> void:
 	debug_context = DebugContext.MAIN
+	start_index = 0
+	end_index = 0
 	var commands: Array[CommandData] = [
 		CommandData.new("Teleport", teleport_selected),
 		CommandData.new("Set Stats", set_stats_selected),
@@ -52,9 +58,24 @@ func teleport_selected() -> void:
 	await get_tree().process_frame
 	debug_context = DebugContext.TELEPORT
 	var commands: Array[CommandData] = []
-	for key in GameDataManager.get_all_map_keys():
+	var keys: Array[String] = GameDataManager.get_all_map_keys()
+	var bound: int = start_index + page_size
+	for key in keys.slice(start_index, bound):
 		commands.append(CommandData.new(key, teleport_to_map.bind(key)))
+	if bound <= keys.size(): 
+		commands.append(CommandData.new("Next", next_selected.bind(teleport_selected)))
+	if start_index > 0:
+		commands.append(CommandData.new("Prev", prev_selected.bind(teleport_selected)))
 	command_window.initialize_commands(commands, 1)
+
+
+func next_selected(menu_call: Callable) -> void:
+	start_index += page_size
+	menu_call.call()
+
+func prev_selected(menu_call: Callable) -> void:
+	start_index -= page_size
+	menu_call.call()
 
 
 func add_item_selected() -> void:

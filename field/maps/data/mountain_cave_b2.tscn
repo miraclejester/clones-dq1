@@ -229,6 +229,9 @@ position = Vector2(216, 216)
 [node name="DungeonZone2" parent="EncounterData" index="0" instance=ExtResource("25_2347a")]
 position = Vector2(24, 24)
 
+[node name="BoundEnd" parent="." index="7"]
+position = Vector2(280, 280)
+
 [editable path="EventParent/FighterRingChest"]
 [editable path="EventParent/TorchChest"]
 [editable path="EventParent/SmallGoldChest"]

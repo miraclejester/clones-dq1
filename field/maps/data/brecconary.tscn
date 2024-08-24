@@ -553,6 +553,9 @@ starting_face_dir = Vector2(-1, 0)
 [node name="ProjectNpcBehaviour" parent="BuildingNPCParent/ToolShop/Behaviours" index="0" instance=ExtResource("16_rkmqo")]
 project_dir = Vector2(-1, 0)
 
+[node name="BoundEnd" parent="." index="7"]
+position = Vector2(552, 504)
+
 [editable path="NPCParent/WeaponArmorShop"]
 [editable path="NPCParent/OldManSwampAdvice"]
 [editable path="NPCParent/MerchantPleaseSave"]

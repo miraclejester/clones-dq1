@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=31 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -80,6 +80,12 @@ play_starting_event = false
 spawn_point_key = "lower_entrance"
 spawn_direction = Vector2(1, 0)
 
+[sub_resource type="Resource" id="Resource_lt3du"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(-1, 0)
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 
@@ -133,6 +139,11 @@ position = Vector2(984, 104)
 map_key = "swamp_cave"
 load_params = SubResource("Resource_tdoum")
 
+[node name="ToRimuldar" parent="EventParent" index="9" instance=ExtResource("2_6dvip")]
+position = Vector2(952, 472)
+map_key = "rimuldar"
+load_params = SubResource("Resource_lt3du")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -166,274 +177,220 @@ position = Vector2(984, 24)
 [node name="swamp_cave_lower" type="Node2D" parent="SpawnPoints" index="9"]
 position = Vector2(984, 104)
 
+[node name="rimuldar" type="Node2D" parent="SpawnPoints" index="10"]
+position = Vector2(952, 472)
+
 [node name="EncounterData" parent="." index="5"]
 visible = false
 
 [node name="Zone0" parent="EncounterData" index="0" instance=ExtResource("4_i82r6")]
 position = Vector2(-200, -200)
-is_dark = null
 metadata/_edit_group_ = true
 
 [node name="Zone0Right" parent="EncounterData" index="1" instance=ExtResource("4_i82r6")]
 position = Vector2(40, -200)
-is_dark = null
 metadata/_edit_group_ = true
 
 [node name="Zone1_1" parent="EncounterData" index="2" instance=ExtResource("5_byy11")]
 position = Vector2(-200, -440)
-is_dark = null
 
 [node name="Zone1_2" parent="EncounterData" index="3" instance=ExtResource("5_byy11")]
 position = Vector2(-440, -200)
-is_dark = null
 
 [node name="Zone1_3" parent="EncounterData" index="4" instance=ExtResource("5_byy11")]
 position = Vector2(-440, 40)
-is_dark = null
 
 [node name="Zone1_4" parent="EncounterData" index="5" instance=ExtResource("5_byy11")]
 position = Vector2(-200, 40)
-is_dark = null
 
 [node name="Zone2_1" parent="EncounterData" index="6" instance=ExtResource("6_1y0in")]
 position = Vector2(40, -440)
-is_dark = null
 
 [node name="Zone2_2" parent="EncounterData" index="7" instance=ExtResource("6_1y0in")]
 position = Vector2(40, -680)
-is_dark = null
 
 [node name="Zone2_3" parent="EncounterData" index="8" instance=ExtResource("6_1y0in")]
 position = Vector2(-200, -680)
-is_dark = null
 
 [node name="Zone2_4" parent="EncounterData" index="9" instance=ExtResource("6_1y0in")]
 position = Vector2(-440, -440)
-is_dark = null
 
 [node name="Zone2_5" parent="EncounterData" index="10" instance=ExtResource("6_1y0in")]
 position = Vector2(280, -200)
-is_dark = null
 
 [node name="Zone3_1" parent="EncounterData" index="11" instance=ExtResource("7_wcjq1")]
 position = Vector2(-440, -680)
-is_dark = null
 
 [node name="Zone3_2" parent="EncounterData" index="12" instance=ExtResource("7_wcjq1")]
 position = Vector2(-680, -680)
-is_dark = null
 
 [node name="Zone3_3" parent="EncounterData" index="13" instance=ExtResource("7_wcjq1")]
 position = Vector2(-680, -440)
-is_dark = null
 
 [node name="Zone3_4" parent="EncounterData" index="14" instance=ExtResource("7_wcjq1")]
 position = Vector2(280, -440)
-is_dark = null
 
 [node name="Zone3_5" parent="EncounterData" index="15" instance=ExtResource("7_wcjq1")]
 position = Vector2(280, -680)
-is_dark = null
 
 [node name="Zone3_6" parent="EncounterData" index="16" instance=ExtResource("7_wcjq1")]
 position = Vector2(520, -440)
-is_dark = null
 
 [node name="Zone3_7" parent="EncounterData" index="17" instance=ExtResource("7_wcjq1")]
 position = Vector2(520, -200)
-is_dark = null
 
 [node name="Zone4_1" parent="EncounterData" index="18" instance=ExtResource("8_f04px")]
 position = Vector2(-680, -200)
-is_dark = null
 
 [node name="Zone4_2" parent="EncounterData" index="19" instance=ExtResource("8_f04px")]
 position = Vector2(-200, 280)
-is_dark = null
 
 [node name="Zone4_3" parent="EncounterData" index="20" instance=ExtResource("8_f04px")]
 position = Vector2(760, -200)
-is_dark = null
 
 [node name="Zone4_4" parent="EncounterData" index="21" instance=ExtResource("8_f04px")]
 position = Vector2(760, -440)
-is_dark = null
 
 [node name="Zone4_5" parent="EncounterData" index="22" instance=ExtResource("8_f04px")]
 position = Vector2(760, -680)
-is_dark = null
 
 [node name="Zone5_1" parent="EncounterData" index="23" instance=ExtResource("9_7n481")]
 position = Vector2(-440, 280)
-is_dark = null
 
 [node name="Zone5_2" parent="EncounterData" index="24" instance=ExtResource("9_7n481")]
 position = Vector2(-680, 280)
-is_dark = null
 
 [node name="Zone5_3" parent="EncounterData" index="25" instance=ExtResource("9_7n481")]
 position = Vector2(-680, 40)
-is_dark = null
 
 [node name="Zone5_4" parent="EncounterData" index="26" instance=ExtResource("9_7n481")]
 position = Vector2(520, -680)
-is_dark = null
 
 [node name="Zone5_5" parent="EncounterData" index="27" instance=ExtResource("9_7n481")]
 position = Vector2(1000, -680)
-is_dark = null
 
 [node name="EndPosition" parent="EncounterData/Zone5_5" index="1"]
 position = Vector2(248, 232)
 
 [node name="Zone5_6" parent="EncounterData" index="28" instance=ExtResource("9_7n481")]
 position = Vector2(1000, -440)
-is_dark = null
 
 [node name="EndPosition" parent="EncounterData/Zone5_6" index="1"]
 position = Vector2(248, 232)
 
 [node name="Zone5_7" parent="EncounterData" index="29" instance=ExtResource("9_7n481")]
 position = Vector2(1000, -200)
-is_dark = null
 
 [node name="EndPosition" parent="EncounterData/Zone5_7" index="1"]
 position = Vector2(248, 232)
 
 [node name="Zone6_1" parent="EncounterData" index="30" instance=ExtResource("10_sxlqu")]
 position = Vector2(1000, 40)
-is_dark = null
 
 [node name="Zone6_2" parent="EncounterData" index="31" instance=ExtResource("10_sxlqu")]
 position = Vector2(760, 40)
-is_dark = null
 
 [node name="Zone6_3" parent="EncounterData" index="32" instance=ExtResource("10_sxlqu")]
 position = Vector2(520, 40)
-is_dark = null
 
 [node name="Zone6_4" parent="EncounterData" index="33" instance=ExtResource("10_sxlqu")]
 position = Vector2(280, 40)
-is_dark = null
 
 [node name="Zone7_1" parent="EncounterData" index="34" instance=ExtResource("11_p6jt1")]
 position = Vector2(1000, 280)
-is_dark = null
 
 [node name="Zone7_2" parent="EncounterData" index="35" instance=ExtResource("11_p6jt1")]
 position = Vector2(760, 280)
-is_dark = null
 
 [node name="Zone7_3" parent="EncounterData" index="36" instance=ExtResource("11_p6jt1")]
 position = Vector2(520, 280)
-is_dark = null
 
 [node name="Zone7_4" parent="EncounterData" index="37" instance=ExtResource("11_p6jt1")]
 position = Vector2(1000, 520)
-is_dark = null
 
 [node name="EndPosition" parent="EncounterData/Zone7_4" index="1"]
 position = Vector2(248, 232)
 
 [node name="Zone8_1" parent="EncounterData" index="38" instance=ExtResource("12_vawmw")]
 position = Vector2(760, 520)
-is_dark = null
 
 [node name="Zone8_2" parent="EncounterData" index="39" instance=ExtResource("12_vawmw")]
 position = Vector2(1000, 760)
-is_dark = null
 
 [node name="Zone8_3" parent="EncounterData" index="40" instance=ExtResource("12_vawmw")]
 position = Vector2(-200, 520)
-is_dark = null
 
 [node name="Zone9_1" parent="EncounterData" index="41" instance=ExtResource("13_j038n")]
 position = Vector2(760, 760)
-is_dark = null
 
 [node name="Zone9_2" parent="EncounterData" index="42" instance=ExtResource("13_j038n")]
 position = Vector2(760, 1000)
-is_dark = null
 
 [node name="Zone9_3" parent="EncounterData" index="43" instance=ExtResource("13_j038n")]
 position = Vector2(1000, 1000)
-is_dark = null
 
 [node name="Zone9_4" parent="EncounterData" index="44" instance=ExtResource("13_j038n")]
 position = Vector2(-440, 520)
-is_dark = null
 
 [node name="Zone10_1" parent="EncounterData" index="45" instance=ExtResource("14_1mej7")]
 position = Vector2(-680, 520)
-is_dark = null
 
 [node name="Zone10_2" parent="EncounterData" index="46" instance=ExtResource("14_1mej7")]
 position = Vector2(-680, 760)
-is_dark = null
 
 [node name="Zone10_3" parent="EncounterData" index="47" instance=ExtResource("14_1mej7")]
 position = Vector2(-440, 760)
-is_dark = null
 
 [node name="Zone11_1" parent="EncounterData" index="48" instance=ExtResource("15_hocvs")]
 position = Vector2(-680, 1000)
-is_dark = null
 
 [node name="Zone11_2" parent="EncounterData" index="49" instance=ExtResource("15_hocvs")]
 position = Vector2(-440, 1000)
-is_dark = null
 
 [node name="Zone11_3" parent="EncounterData" index="50" instance=ExtResource("15_hocvs")]
 position = Vector2(-200, 760)
-is_dark = null
 
 [node name="Zone12_1" parent="EncounterData" index="51" instance=ExtResource("10_yevhr")]
 position = Vector2(40, 40)
-is_dark = null
 
 [node name="Zone12_2" parent="EncounterData" index="52" instance=ExtResource("10_yevhr")]
 position = Vector2(40, 280)
-is_dark = null
 
 [node name="Zone12_3" parent="EncounterData" index="53" instance=ExtResource("10_yevhr")]
 position = Vector2(-200, 1000)
-is_dark = null
 
 [node name="Zone12_4" parent="EncounterData" index="54" instance=ExtResource("10_yevhr")]
 position = Vector2(40, 760)
-is_dark = null
 
 [node name="Zone12_5" parent="EncounterData" index="55" instance=ExtResource("10_yevhr")]
 position = Vector2(40, 520)
-is_dark = null
 
 [node name="Zone12_6" parent="EncounterData" index="56" instance=ExtResource("10_yevhr")]
 position = Vector2(280, 520)
-is_dark = null
 
 [node name="Zone12_7" parent="EncounterData" index="57" instance=ExtResource("10_yevhr")]
 position = Vector2(520, 520)
-is_dark = null
 
 [node name="Zone12_8" parent="EncounterData" index="58" instance=ExtResource("10_yevhr")]
 position = Vector2(520, 1000)
-is_dark = null
 
 [node name="Zone13_1" parent="EncounterData" index="59" instance=ExtResource("17_tae7m")]
 position = Vector2(280, 760)
-is_dark = null
 
 [node name="Zone13_2" parent="EncounterData" index="60" instance=ExtResource("17_tae7m")]
 position = Vector2(520, 760)
-is_dark = null
 
 [node name="Zone13_3" parent="EncounterData" index="61" instance=ExtResource("17_tae7m")]
 position = Vector2(40, 1000)
-is_dark = null
 
 [node name="Zone13_4" parent="EncounterData" index="62" instance=ExtResource("17_tae7m")]
 position = Vector2(280, 1000)
-is_dark = null
+
+[node name="BoundStart" parent="." index="6"]
+position = Vector2(-744, -728)
+
+[node name="BoundEnd" parent="." index="7"]
+position = Vector2(1352, 1272)
 
 [editable path="EncounterData/Zone0"]
 [editable path="EncounterData/Zone0Right"]

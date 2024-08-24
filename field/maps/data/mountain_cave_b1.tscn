@@ -89,4 +89,7 @@ position = Vector2(216, 216)
 [node name="DungeonZone1" parent="EncounterData" index="0" instance=ExtResource("8_or7y1")]
 position = Vector2(24, 24)
 
+[node name="BoundEnd" parent="." index="7"]
+position = Vector2(280, 264)
+
 [editable path="EventParent/HerbChest"]

@@ -10,4 +10,6 @@ item_id = 32
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = false
 field_action = ExtResource("1_gxtgo")
+tags = Array[int]([])
