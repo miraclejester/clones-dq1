@@ -366,6 +366,7 @@ func start_battle(encounter: EncounterData, zone: EncounterZone) -> void:
 	var config: BattleConfig = BattleConfig.new()
 	config.field_bgm = field_map.map_bgm
 	config.battle_bg = zone.battle_bg
+	config.is_dark = zone.is_dark
 	battle_controller.set_visibility(true)
 	battle_controller.position.x = hero_character.position.x - (8*17)
 	battle_controller.position.y = hero_character.position.y - (7*16)

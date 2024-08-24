@@ -12,6 +12,8 @@ enum BattleEndStatus {
 @onready var enemy_controller: EnemyController = %Enemy
 @onready var battle_ui: BattleUI = $BattleUI
 @onready var dragonlord_layer: CanvasLayer = $DragonlordLayer
+@onready var darkness: Sprite2D = %Darkness
+
 
 
 var battle_update_queue: Array[BattleUpdate] = []
@@ -28,6 +30,7 @@ func _ready() -> void:
 	battle_ui.run_selected.connect(run_selected)
 	battle_ui.item_selected.connect(item_selected)
 	battle_ui.visible = false
+	darkness.visible = false
 
 
 func start_battle(ec: EncounterData, c: BattleConfig) -> void:
@@ -57,6 +60,7 @@ func start_battle(ec: EncounterData, c: BattleConfig) -> void:
 	
 	battle_bg.set_bg_texture(config.battle_bg)
 	await battle_bg.start_appear_animation()
+	darkness.visible = config.is_dark
 	
 	enemy_controller.visible = true
 	var callables: Array[Callable] = []
@@ -191,6 +195,7 @@ func command_menu_cancelled() -> void:
 
 func finish_battle(status: BattleEndStatus) -> void:
 	await get_tree().process_frame
+	darkness.visible = false
 	if encounter_data.after_victory_event:
 		await battle_ui.play_dialogue(encounter_data.after_victory_event)
 	battle_finished.emit(status)

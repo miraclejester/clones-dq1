@@ -13,4 +13,5 @@
 encounter_chances = ExtResource("2_2i7nc")
 encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_dtw7e"), ExtResource("4_v73r6"), ExtResource("5_004l5"), ExtResource("6_sjvon"), ExtResource("7_ny2jl")])
 battle_bg = ExtResource("8_wnlx0")
+is_dark = true
 highlight_color = Color(0.518946, 0.223499, 0.565032, 0.690196)

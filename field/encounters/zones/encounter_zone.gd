@@ -5,6 +5,7 @@ class_name EncounterZone
 @export var encounter_chances: EncounterChanceChart
 @export var encounters: Array[EncounterData]
 @export var battle_bg: Texture2D
+@export var is_dark: bool = false
 
 @export_group("Editor")
 @export var highlight_color: Color

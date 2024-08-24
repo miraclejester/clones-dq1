@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3pdkdcgcir3x"]
+[gd_scene load_steps=9 format=3 uid="uid://b3pdkdcgcir3x"]
 
 [ext_resource type="Script" path="res://battle/battle_controller.gd" id="1_l0qdc"]
 [ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="2_52olo"]
 [ext_resource type="PackedScene" uid="uid://drm6makbg70s2" path="res://battle/battle.tscn" id="2_rs3lt"]
 [ext_resource type="PackedScene" uid="uid://bl6v6yue35hf1" path="res://battle/bgs/battle_bg.tscn" id="3_jflq8"]
+[ext_resource type="Texture2D" uid="uid://xq1p1yenybo6" path="res://field/characters/hero/darkness.png" id="3_x4kvp"]
 [ext_resource type="PackedScene" uid="uid://cbkfjldfklook" path="res://battle/controllers/enemy_controller.tscn" id="4_7jigr"]
 [ext_resource type="PackedScene" uid="uid://bte60ddj418ss" path="res://battle/ui/battle_ui.tscn" id="6_wgrpo"]
 [ext_resource type="Texture2D" uid="uid://cuekxp8hsihnj" path="res://unit_data/enemies/39_true_dragonlord/39_true_dragonlord.png" id="9_wu6ci"]
@@ -12,6 +13,11 @@
 script = ExtResource("1_l0qdc")
 
 [node name="Battle" parent="." instance=ExtResource("2_rs3lt")]
+
+[node name="Darkness" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(127, 112)
+texture = ExtResource("3_x4kvp")
 
 [node name="Enemy" parent="." groups=["enemy_spell_effect", "spell_effect"] instance=ExtResource("4_7jigr")]
 unique_name_in_owner = true
