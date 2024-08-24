@@ -108,8 +108,10 @@ func transition_to_map(path: String, params: MapLoadParams) -> void:
 	get_tree().paused = true
 	AudioManager.play_sfx("stairs")
 	field_ui.hide_hud()
+	await MenuStack.clear_menu_stack()
 	await GlobalVisuals.fade_out()
 	field_ui.dialogue_window.visible = false
+	field_ui.command_window.visible = false
 	await load_map(path, params)
 	get_tree().paused = false
 
@@ -146,8 +148,8 @@ func on_talk_selected() -> void:
 		await field_ui.play_dialogue(npc.talk_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
 			"shop_interface": field_ui.shop_interface,
-			"wait_for_continuation": not npc.talk_event is StartShopDialogueEvent,
-			"field_map": field_map
+			"field_map": field_map,
+			"map_controller": self
 		})
 	else:
 		await field_ui.play_dialogue(talk_default_dialogue)

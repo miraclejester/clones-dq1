@@ -76,13 +76,16 @@ skip_window = false
 [sub_resource type="Resource" id="Resource_3rsn0"]
 script = ExtResource("8_0lyil")
 can_sell = false
+is_single_item_shop = false
+single_item_price = 53
+single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("9_ryeft"), ExtResource("10_paksb"), ExtResource("11_ie1cx"), ExtResource("12_da280"), ExtResource("13_rbfuc"), ExtResource("14_qcyam")])
 dialogues = ExtResource("8_2fyps")
 
 [sub_resource type="Resource" id="Resource_xrrtg"]
 script = ExtResource("7_wyemw")
 shop_data = SubResource("Resource_3rsn0")
-skip_window = false
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_mu31w"]
 script = ExtResource("3_op2on")
@@ -357,13 +360,16 @@ skip_window = false
 [sub_resource type="Resource" id="Resource_18tot"]
 script = ExtResource("8_0lyil")
 can_sell = true
+is_single_item_shop = false
+single_item_price = 53
+single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("34_yo7oq"), ExtResource("35_4ixai"), ExtResource("36_iuxxi")])
 dialogues = ExtResource("31_7kc27")
 
 [sub_resource type="Resource" id="Resource_gkeon"]
 script = ExtResource("7_wyemw")
 shop_data = SubResource("Resource_18tot")
-skip_window = false
+skip_window = true
 
 [node name="Brecconary" instance=ExtResource("1_fhpbb")]
 map_bgm = "town"

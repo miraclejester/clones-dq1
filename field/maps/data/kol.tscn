@@ -94,13 +94,16 @@ skip_window = false
 [sub_resource type="Resource" id="Resource_tg2m6"]
 script = ExtResource("18_6a6v3")
 can_sell = false
+is_single_item_shop = false
+single_item_price = 53
+single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("13_yxsnd"), ExtResource("14_h08a5"), ExtResource("15_krc61"), ExtResource("16_s637i"), ExtResource("17_56oiv")])
 dialogues = ExtResource("12_5sj3d")
 
 [sub_resource type="Resource" id="Resource_qdqtb"]
 script = ExtResource("11_odbhr")
 shop_data = SubResource("Resource_tg2m6")
-skip_window = false
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_bj4p1"]
 script = ExtResource("4_hsyge")
@@ -280,13 +283,16 @@ skip_window = false
 [sub_resource type="Resource" id="Resource_7a3tk"]
 script = ExtResource("18_6a6v3")
 can_sell = true
+is_single_item_shop = false
+single_item_price = 53
+single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("25_wjwtx"), ExtResource("26_d76e1"), ExtResource("27_3fpv4"), ExtResource("28_elwjv")])
 dialogues = ExtResource("24_kckpb")
 
 [sub_resource type="Resource" id="Resource_vnjy5"]
 script = ExtResource("11_odbhr")
 shop_data = SubResource("Resource_7a3tk")
-skip_window = false
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_bxmn6"]
 script = ExtResource("4_vpdcv")

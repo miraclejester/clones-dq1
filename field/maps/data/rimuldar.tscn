@@ -174,7 +174,7 @@ dialogues = ExtResource("16_bx168")
 [sub_resource type="Resource" id="Resource_06m67"]
 script = ExtResource("8_x7i4b")
 shop_data = SubResource("Resource_fsovy")
-skip_window = false
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_kpjh0"]
 script = ExtResource("5_mojal")
@@ -366,7 +366,7 @@ dialogues = ExtResource("9_xkdkm")
 [sub_resource type="Resource" id="Resource_ho5c5"]
 script = ExtResource("8_x7i4b")
 shop_data = SubResource("Resource_id50c")
-skip_window = false
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_n1c8d"]
 script = ExtResource("5_mojal")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=32 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -86,6 +86,12 @@ play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(-1, 0)
 
+[sub_resource type="Resource" id="Resource_c1yjv"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(1, 0)
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 
@@ -144,6 +150,12 @@ position = Vector2(952, 472)
 map_key = "rimuldar"
 load_params = SubResource("Resource_lt3du")
 
+[node name="ToHolyShrine" parent="EventParent" index="10" instance=ExtResource("2_6dvip")]
+position = Vector2(1064, 1064)
+map_key = "holy_shrine"
+load_params = SubResource("Resource_c1yjv")
+is_stairs = true
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -179,6 +191,9 @@ position = Vector2(984, 104)
 
 [node name="rimuldar" type="Node2D" parent="SpawnPoints" index="10"]
 position = Vector2(952, 472)
+
+[node name="holy_shrine" type="Node2D" parent="SpawnPoints" index="11"]
+position = Vector2(1064, 1064)
 
 [node name="EncounterData" parent="." index="5"]
 visible = false

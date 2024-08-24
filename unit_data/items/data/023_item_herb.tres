@@ -42,6 +42,7 @@ item_id = 23
 buy_price = 24
 sell_price = 12
 consumable = true
+sellable = true
 use_dialogue = SubResource("Resource_xulle")
 battle_action = SubResource("Resource_qq4jm")
 field_action = SubResource("Resource_lpmgt")

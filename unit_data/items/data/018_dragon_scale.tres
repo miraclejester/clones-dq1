@@ -17,6 +17,7 @@ item_id = 18
 buy_price = 20
 sell_price = 10
 consumable = false
+sellable = true
 battle_action = SubResource("Resource_d1b6y")
 field_action = ExtResource("2_ulyuu")
 tags = Array[int]([])
