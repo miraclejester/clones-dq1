@@ -20,7 +20,8 @@ offset_bottom = 40.0
 [node name="PlayerHud" parent="VisualsParent" instance=ExtResource("1_m88t5")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = -24.0
+offset_left = 8.0
+offset_right = -32.0
 offset_bottom = -16.0
 
 [node name="CommandWindow" parent="VisualsParent" instance=ExtResource("2_j82m1")]

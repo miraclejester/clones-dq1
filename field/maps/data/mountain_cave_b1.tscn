@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwyikwdxng6tc"]
+[gd_scene load_steps=14 format=3 uid="uid://cwyikwdxng6tc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_4hix2"]
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="2_k1fr4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="4_cv58l"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="4_pudmc"]
 [ext_resource type="Resource" uid="uid://5m0qcirywe8w" path="res://unit_data/items/data/023_item_herb.tres" id="5_03x4l"]
+[ext_resource type="PackedScene" uid="uid://dysyktbnvqlsi" path="res://field/encounters/zones/dungeon_zone_1.tscn" id="8_or7y1"]
 
 [sub_resource type="Resource" id="Resource_27kbp"]
 script = ExtResource("4_cu8qy")
@@ -84,5 +85,8 @@ position = Vector2(120, 104)
 
 [node name="stairs_c" type="Node2D" parent="SpawnPoints" index="3"]
 position = Vector2(216, 216)
+
+[node name="DungeonZone1" parent="EncounterData" index="0" instance=ExtResource("8_or7y1")]
+position = Vector2(24, 24)
 
 [editable path="EventParent/HerbChest"]

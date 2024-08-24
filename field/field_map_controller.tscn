@@ -93,7 +93,7 @@ play_starting_event = false
 spawn_point_key = "throne"
 spawn_direction = Vector2(0, -1)
 
-[node name="FieldMapController" type="Node2D" groups=["map_controller", "player_hurt_shake"]]
+[node name="FieldMapController" type="Node2D" groups=["map_controller"]]
 script = ExtResource("1_wpht4")
 base_map_path = "res://field/maps/data"
 talk_default_dialogue = ExtResource("2_xsj18")
@@ -108,7 +108,7 @@ spell_default_dialogue = ExtResource("4_wmlf5")
 non_field_spell_dialogue = ExtResource("5_hffhm")
 starting_map_load_params = SubResource("Resource_b0e4t")
 
-[node name="FieldMapContainer" type="Node2D" parent="."]
+[node name="FieldMapContainer" type="Node2D" parent="." groups=["player_hurt_shake"]]
 
 [node name="HeroCharacter" parent="." instance=ExtResource("5_xgior")]
 unique_name_in_owner = true

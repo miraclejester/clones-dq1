@@ -3,6 +3,8 @@ class_name EnemyController
 
 signal on_appear_finished()
 
+@export var appear_material: ShaderMaterial
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var enemy_data: EnemyData
@@ -15,6 +17,7 @@ func set_data(d: EnemyData) -> void:
 
 
 func play_appear_animation(anim_speed: float = 1.0) -> void:
+	material = appear_material
 	animation_player.play("appear", -1, anim_speed)
 	await animation_player.animation_finished
 

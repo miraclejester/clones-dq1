@@ -93,6 +93,7 @@ _data = {
 material = ExtResource("1_35yvl")
 texture = ExtResource("1_s6g5a")
 script = ExtResource("3_w4iwb")
+appear_material = ExtResource("1_35yvl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

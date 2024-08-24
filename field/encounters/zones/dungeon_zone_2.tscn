@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4hoxhtjo1rqu"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_wt242"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_2i7nc"]
+[ext_resource type="Resource" uid="uid://b8cgt63ki3xgm" path="res://unit_data/enemies/08_poltergeist/encounter_poltergeist.tres" id="3_dtw7e"]
+[ext_resource type="Resource" uid="uid://dddtqa1dxpiex" path="res://unit_data/enemies/09_droll/encounter_droll.tres" id="4_v73r6"]
+[ext_resource type="Resource" uid="uid://gd0ioqeuydep" path="res://unit_data/enemies/10_drackeema/encounter_drackeema.tres" id="5_004l5"]
+[ext_resource type="Resource" uid="uid://b8xtefm7rvort" path="res://unit_data/enemies/11_skeleton/encounter_skeleton.tres" id="6_sjvon"]
+[ext_resource type="Resource" uid="uid://dt67g60axoh6x" path="res://unit_data/enemies/12_warlock/encounter_warlock.tres" id="7_ny2jl"]
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="8_wnlx0"]
+
+[node name="DungeonZone2" instance=ExtResource("1_wt242")]
+encounter_chances = ExtResource("2_2i7nc")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_dtw7e"), ExtResource("4_v73r6"), ExtResource("5_004l5"), ExtResource("6_sjvon"), ExtResource("7_ny2jl")])
+battle_bg = ExtResource("8_wnlx0")
+highlight_color = Color(0.518946, 0.223499, 0.565032, 0.690196)

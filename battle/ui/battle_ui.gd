@@ -41,7 +41,11 @@ func initialize() -> void:
 
 func set_hero_data(hero: BattleUnit) -> void:
 	player_hud.set_hero(hero)
-	spell_window.set_spells(hero.spells)
+	var spells: Array[SpellData] = []
+	for spell in hero.spells:
+		if spell.spell_effects.size() > 0:
+			spells.append(spell)
+	spell_window.set_spells(spells)
 
 
 func refresh_inventory(hero: HeroUnit) -> void:

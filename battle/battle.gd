@@ -179,13 +179,16 @@ func item_action(item: ItemData, user: BattleUnit, target: BattleUnit) -> void:
 
 
 func roll_initiative() -> void:
-	if speed_roll():
+	if speed_roll(true):
 		turn_order = [hero, enemy]
 	else:
 		turn_order = [enemy, hero]
 
 
-func speed_roll() -> bool:
+func speed_roll(is_initiative: bool = false) -> bool:
+	var enemy_mult: float = enemy.get_group_factor()
+	if is_initiative:
+		enemy_mult = 0.25
 	var hero_roll: int = hero.stats.get_stat(UnitStats.StatKey.AGI) * randi_range(0, 255)
-	var enemy_roll: int = floor(enemy.stats.get_stat(UnitStats.StatKey.AGI) * randi_range(0, 255) * enemy.get_group_factor())
+	var enemy_roll: int = floor(enemy.stats.get_stat(UnitStats.StatKey.AGI) * randi_range(0, 255) * enemy_mult)
 	return enemy_roll <= hero_roll
