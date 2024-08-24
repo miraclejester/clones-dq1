@@ -34,6 +34,7 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_y8jbq"]

@@ -25,6 +25,11 @@ func move(delta: float) -> void:
 		moving = false
 
 
+func cancel_move() -> void:
+	old_pos = user.position
+	moving = false
+
+
 func request_move(target: Vector2, skip_step_events: bool = false) -> bool:
 	if not user.current_map.request_move(target, user.position, skip_step_events):
 		return false

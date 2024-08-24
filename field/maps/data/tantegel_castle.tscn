@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=48 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="13_s00wy"]
 [ext_resource type="Resource" uid="uid://5piqufaqxh1x" path="res://field/dialogues/common_npc_dialogues/merchant_killed_by_dragonlord.tres" id="14_aq8kv"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="18_8577f"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/player_bool_status_dialogue_condition.gd" id="19_8fiwi"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/set_paused_dialogue_event.gd" id="20_oqvae"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="20_uy2bo"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_window_visibility_dialogue_event.gd" id="20_yb87d"]
 
 [sub_resource type="Resource" id="Resource_ujfi2"]
 script = ExtResource("2_i2oon")
@@ -27,6 +31,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_idvpr"]
 script = ExtResource("2_i2oon")
@@ -36,6 +42,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_y3oa7"]
 script = ExtResource("2_i2oon")
@@ -45,6 +53,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_6t1kx"]
 script = ExtResource("2_i2oon")
@@ -54,10 +64,13 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_b7kf8"]
 script = ExtResource("3_01fyj")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_y3oa7"), SubResource("Resource_6t1kx")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_on40w"]
 script = ExtResource("2_i2oon")
@@ -67,6 +80,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_5kfsi"]
 script = ExtResource("2_i2oon")
@@ -76,10 +91,13 @@ is_speech = true
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_hlill"]
 script = ExtResource("10_urqlu")
 effect = 0
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_0ynif"]
 script = ExtResource("11_22ilt")
@@ -87,10 +105,12 @@ key = 0
 min_val = 0
 max_val = 0
 id = 0
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_nk56y"]
 script = ExtResource("3_01fyj")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill"), SubResource("Resource_0ynif")])
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_wtwap"]
 script = ExtResource("2_i2oon")
@@ -100,6 +120,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_cyq65"]
 script = ExtResource("2_i2oon")
@@ -109,6 +131,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_ncws1"]
 script = ExtResource("2_i2oon")
@@ -118,6 +142,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_f8va7"]
 script = ExtResource("2_i2oon")
@@ -127,6 +153,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")
@@ -138,12 +166,61 @@ spawn_direction = Vector2(-1, 0)
 script = ExtResource("4_76sow")
 map_key = "tantegel_throne"
 load_params = SubResource("Resource_8k2m6")
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_8iojy"]
 script = ExtResource("3_eu1uo")
 play_starting_event = false
 spawn_point_key = "tantegel"
 spawn_direction = Vector2(0, 1)
+
+[sub_resource type="Resource" id="Resource_mitx3"]
+script = ExtResource("19_8fiwi")
+condition_to_check = 0
+
+[sub_resource type="Resource" id="Resource_7x8wh"]
+script = ExtResource("20_oqvae")
+pause = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_f4hbk"]
+script = ExtResource("20_yb87d")
+make_visible = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_xpq5s"]
+script = ExtResource("2_i2oon")
+text = "Cursed one, be gone!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_vwxkg"]
+script = ExtResource("3_eu1uo")
+play_starting_event = false
+spawn_point_key = "tantegel"
+spawn_direction = Vector2(0, 1)
+
+[sub_resource type="Resource" id="Resource_6gsbi"]
+script = ExtResource("4_76sow")
+map_key = "overworld"
+load_params = SubResource("Resource_vwxkg")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dubfg"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_7x8wh"), SubResource("Resource_f4hbk"), SubResource("Resource_xpq5s"), SubResource("Resource_6gsbi")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_pgl3j"]
+script = ExtResource("20_uy2bo")
+condition = SubResource("Resource_mitx3")
+condition_true_event = SubResource("Resource_dubfg")
+skip_window = false
 
 [node name="TantegelCastle" instance=ExtResource("1_6o5ni")]
 map_bgm = "tantegel_castle"
@@ -261,6 +338,14 @@ position = Vector2(216, 488)
 map_key = "overworld"
 load_params = SubResource("Resource_8iojy")
 
+[node name="CursedBegone" parent="EventParent" index="7" instance=ExtResource("2_5jjpx")]
+position = Vector2(200, 456)
+step_event = SubResource("Resource_pgl3j")
+
+[node name="CursedBegone2" parent="EventParent" index="8" instance=ExtResource("2_5jjpx")]
+position = Vector2(184, 456)
+step_event = SubResource("Resource_pgl3j")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -268,7 +353,7 @@ metadata/_edit_lock_ = true
 position = Vector2(136, 136)
 
 [node name="entrance" type="Node2D" parent="SpawnPoints" index="1"]
-position = Vector2(184, 488)
+position = Vector2(200, 488)
 
 [editable path="NPCParent/LoreVillager1"]
 [editable path="NPCParent/LoreVillager2"]

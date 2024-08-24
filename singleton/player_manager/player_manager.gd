@@ -29,7 +29,8 @@ func generate_save_data() -> Dictionary:
 		"mp": hero.stats.get_stat(UnitStats.StatKey.MP),
 		"items": hero.inventory.generate_save_data(),
 		"equipment": hero.equipment.generate_save_data(),
-		"spells": hero.spells.map(func (spell: SpellData): return spell.spell_id)
+		"spells": hero.spells.map(func (spell: SpellData): return spell.spell_id),
+		"is_cursed": hero.is_cursed
 	}
 
 
@@ -40,6 +41,7 @@ func load_from_data(data: Dictionary) -> void:
 	hero.experience = data.get("experience", 0)
 	hero.stats.set_stat(UnitStats.StatKey.HP, data.get("hp", 15))
 	hero.stats.set_stat(UnitStats.StatKey.MP, data.get("mp", 0))
+	hero.is_cursed = data.get("is_cursed", false)
 	
 	var items: Array[Dictionary] = []
 	items.assign(data.get("items", []))

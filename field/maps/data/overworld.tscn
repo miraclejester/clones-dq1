@@ -81,25 +81,21 @@ metadata/_edit_lock_ = true
 position = Vector2(8, 8)
 map_key = "tantegel_castle"
 load_params = SubResource("Resource_8u7du")
-is_stairs = false
 
 [node name="ToBrecconary" parent="EventParent" index="1" instance=ExtResource("2_6dvip")]
 position = Vector2(88, -24)
 map_key = "brecconary"
 load_params = SubResource("Resource_vsh5g")
-is_stairs = false
 
 [node name="ToGarinham" parent="EventParent" index="2" instance=ExtResource("2_6dvip")]
 position = Vector2(-648, -648)
 map_key = "garinham"
 load_params = SubResource("Resource_oej2l")
-is_stairs = false
 
 [node name="ToKol" parent="EventParent" index="3" instance=ExtResource("2_6dvip")]
 position = Vector2(1000, -520)
 map_key = "kol"
 load_params = SubResource("Resource_x82gt")
-is_stairs = false
 
 [node name="ToCaveWestOfKol" parent="EventParent" index="4" instance=ExtResource("4_k4jyk")]
 position = Vector2(632, -664)
@@ -109,13 +105,11 @@ stairs_event = SubResource("Resource_kjhxu")
 position = Vector2(-232, -488)
 map_key = "erdrick_cave"
 load_params = SubResource("Resource_mgnvp")
-is_stairs = false
 
 [node name="ToMountainCave" parent="EventParent" index="6" instance=ExtResource("2_6dvip")]
 position = Vector2(-216, 232)
 map_key = "mountain_cave_b1"
 load_params = SubResource("Resource_t3h6d")
-is_stairs = false
 
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true

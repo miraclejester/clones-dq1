@@ -22,6 +22,7 @@ var equipment: HeroEquipment
 var level: int = 1
 var gold: int = 0
 var experience: int = 0
+var is_cursed: bool = false
 
 
 func _ready() -> void:

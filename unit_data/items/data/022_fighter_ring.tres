@@ -19,3 +19,4 @@ sell_price = 15
 consumable = false
 battle_action = SubResource("Resource_tq5fe")
 field_action = ExtResource("2_rlnx7")
+tags = Array[int]([])

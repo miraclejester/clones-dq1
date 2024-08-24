@@ -104,10 +104,12 @@ func load_map(path: String, params: MapLoadParams) -> void:
 
 func transition_to_map(path: String, params: MapLoadParams) -> void:
 	hero_character.set_process(false)
+	hero_character.cancel_move()
 	get_tree().paused = true
 	AudioManager.play_sfx("stairs")
 	field_ui.hide_hud()
 	await GlobalVisuals.fade_out()
+	field_ui.dialogue_window.visible = false
 	await load_map(path, params)
 	get_tree().paused = false
 
@@ -232,7 +234,8 @@ func on_item_data_selected(item: ItemData) -> void:
 		clean = false
 	await field_ui.play_dialogue(item.field_action, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
-		"map_controller": self
+		"map_controller": self,
+		"default_bgm": field_map.map_bgm
 	}, clean)
 	close_command_window()
 

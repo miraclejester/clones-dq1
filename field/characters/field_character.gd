@@ -56,3 +56,7 @@ func face_towards(pos: Vector2) -> void:
 
 func get_facing_tile_position() -> Vector2:
 	return position + facing_dir * 16
+
+
+func cancel_move() -> void:
+	field_move_component.cancel_move()

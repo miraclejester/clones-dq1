@@ -12,6 +12,7 @@ enum ParagraphEventKeys {
 @export var wait_for_input: bool = false
 @export var use_format_vars: bool = true
 @export var format_var_idxs: Array[int]
+@export var wait_for_dialogue: bool = true
 
 func execute(window: DialogueWindow, params: Dictionary) -> void:
 	var word_wrap_length: int = params.get(ParagraphEventKeys.WORD_WRAP_LENGTH, 177)
@@ -28,11 +29,14 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 				final_format_vars.append(format_vars[idx])
 		else:
 			final_format_vars.assign(format_vars)
-
-	await paragraph.play_paragraph(self, final_format_vars, word_wrap_length)
+			
+	if wait_for_dialogue:
+		await paragraph.play_paragraph(self, final_format_vars, word_wrap_length)
+	else:
+		paragraph.play_paragraph(self, final_format_vars, word_wrap_length)
 	if wait_for_input:
 		await window.wait_for_continuation(true)
-	else:
+	elif wait_for_dialogue:
 		await window.get_tree().create_timer(0.15).timeout
 
 

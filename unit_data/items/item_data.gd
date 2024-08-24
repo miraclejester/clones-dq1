@@ -1,6 +1,10 @@
 extends Resource
 class_name ItemData
 
+enum ItemTag {
+	CURSED
+}
+
 @export var item_name: String
 @export var item_id: int
 @export var buy_price: int
@@ -9,3 +13,4 @@ class_name ItemData
 @export var use_dialogue: DialogueEvent
 @export var battle_action: ActionData
 @export var field_action: DialogueEvent
+@export var tags: Array[ItemTag]

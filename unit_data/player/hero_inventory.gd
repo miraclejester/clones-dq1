@@ -25,6 +25,20 @@ func remove_item(item: ItemData) -> void:
 		stack.add_to_stack(-1)
 
 
+func remove_stack(item: ItemData) -> void:
+	var stack: ItemStack = find_stack(item.item_id)
+	if stack != null:
+		items.erase(stack)
+
+
+func find_items_by_tag(tag: ItemData.ItemTag) -> Array[ItemData]:
+	var res: Array[ItemData] = []
+	for stack in items:
+		if stack.item.tags.has(tag):
+			res.append(stack.item)
+	return res
+
+
 func find_stack(id: int) -> ItemStack:
 	for stack in items:
 		if stack.item.item_id == id:

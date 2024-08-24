@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=9 format=3 uid="uid://xhgam6htjuqc"]
+
+[ext_resource type="Resource" uid="uid://dqnff28qp6tp6" path="res://unit_data/items/item_events/cursed_necklace_cursed_equip.tres" id="1_u4lny"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="2_8sryh"]
+[ext_resource type="Resource" uid="uid://dot3ync7lg6qi" path="res://unit_data/items/item_events/cursed_item_body_squeeze.tres" id="4_r6yd5"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_bgm_dialogue_event.gd" id="5_2pklk"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="6_yi4jy"]
+
+[sub_resource type="Resource" id="Resource_4vdcj"]
+script = ExtResource("2_8sryh")
+key = 6
+min_val = 0
+max_val = 0
+id = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_gyt7y"]
+script = ExtResource("5_2pklk")
+bgm_key = "cursed"
+wait_for_bgm = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_a4hbk"]
+script = ExtResource("5_2pklk")
+bgm_key = ""
+wait_for_bgm = false
+skip_window = false
+
+[resource]
+script = ExtResource("6_yi4jy")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("1_u4lny"), SubResource("Resource_4vdcj"), ExtResource("4_r6yd5"), SubResource("Resource_gyt7y"), SubResource("Resource_a4hbk")])
+skip_window = false

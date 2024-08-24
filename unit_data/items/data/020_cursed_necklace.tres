@@ -1,6 +1,21 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://s045g1f8s3dj"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://s045g1f8s3dj"]
 
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/player_bool_status_dialogue_condition.gd" id="1_25t76"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="1_fj8h8"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_hosoa"]
+[ext_resource type="Resource" uid="uid://xhgam6htjuqc" path="res://unit_data/items/item_events/cursed_necklace_sequence.tres" id="2_wuej0"]
+[ext_resource type="Resource" uid="uid://dot3ync7lg6qi" path="res://unit_data/items/item_events/cursed_item_body_squeeze.tres" id="4_pm223"]
+
+[sub_resource type="Resource" id="Resource_gxcgc"]
+script = ExtResource("1_25t76")
+condition_to_check = 0
+
+[sub_resource type="Resource" id="Resource_kkln4"]
+script = ExtResource("1_fj8h8")
+condition = SubResource("Resource_gxcgc")
+condition_true_event = ExtResource("4_pm223")
+condition_false_event = ExtResource("2_wuej0")
+skip_window = false
 
 [resource]
 script = ExtResource("1_hosoa")
@@ -9,3 +24,5 @@ item_id = 20
 buy_price = -1
 sell_price = 1250
 consumable = false
+field_action = SubResource("Resource_kkln4")
+tags = Array[int]([0])

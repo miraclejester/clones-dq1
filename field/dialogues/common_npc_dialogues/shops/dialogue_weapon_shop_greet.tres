@@ -11,6 +11,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_2otkl"]
 script = ExtResource("1_0y8wl")
@@ -20,7 +22,10 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [resource]
 script = ExtResource("1_v2ydf")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wmkvm"), SubResource("Resource_2otkl")])
+skip_window = false

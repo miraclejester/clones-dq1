@@ -1,11 +1,28 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://co4hs8p7fnr2s"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://co4hs8p7fnr2s"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_7xvua"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/player_bool_status_dialogue_condition.gd" id="1_ic45o"]
+[ext_resource type="Resource" uid="uid://bgnvwkdwkv8pn" path="res://unit_data/items/item_events/cursed_belt_sequence.tres" id="2_ianmv"]
+[ext_resource type="Resource" uid="uid://dot3ync7lg6qi" path="res://unit_data/items/item_events/cursed_item_body_squeeze.tres" id="3_befbf"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="4_e3aor"]
+
+[sub_resource type="Resource" id="Resource_edu6s"]
+script = ExtResource("1_ic45o")
+condition_to_check = 0
+
+[sub_resource type="Resource" id="Resource_iuxct"]
+script = ExtResource("4_e3aor")
+condition = SubResource("Resource_edu6s")
+condition_true_event = ExtResource("3_befbf")
+condition_false_event = ExtResource("2_ianmv")
+skip_window = false
 
 [resource]
 script = ExtResource("1_7xvua")
 item_name = "Cursed Belt"
 item_id = 19
 buy_price = -1
-sell_price = -1
+sell_price = 180
 consumable = false
+field_action = SubResource("Resource_iuxct")
+tags = Array[int]([0])

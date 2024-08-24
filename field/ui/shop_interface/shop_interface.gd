@@ -184,6 +184,10 @@ func sell_selected() -> void:
 		])
 		exit_shop()
 		return
+	if PlayerManager.hero.is_cursed:
+		await dialogue_window.start_dialogue([DialogueEventParams.fromData(data.dialogues.cursed_item_dialogue)])
+		exit_shop()
+		return
 	await dialogue_window.start_dialogue([
 		DialogueEventParams.fromData(data.dialogues.what_sell_dialogue)
 	])
@@ -206,6 +210,7 @@ func item_to_sell_selected(item: ItemData) -> void:
 	await MenuStack.pop_stack()
 	item_window.visible = false
 	await dialogue_window.show_newline()
+	
 	await dialogue_window.start_dialogue([
 		DialogueEventParams.fromData(data.dialogues.sell_confirm_dialogue, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [item.item_name, item.sell_price]

@@ -1,16 +1,45 @@
-[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=12 format=3 uid="uid://v82bfc6ty8tq"]
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=17 format=3 uid="uid://v82bfc6ty8tq"]
 
 [ext_resource type="Resource" uid="uid://ca1rc01y5wsy5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_buy_again.tres" id="1_jsekb"]
 [ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_ueiy7"]
 [ext_resource type="Resource" uid="uid://d1c5qrxttqe71" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_item_selected.tres" id="2_ai4cn"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_0cph3"]
 [ext_resource type="Resource" uid="uid://dmuq0ph4wqvx5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_goodbye.tres" id="3_uyfwx"]
 [ext_resource type="Resource" uid="uid://b4u1qm14q3yb8" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_greet.tres" id="4_dts6x"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_uudh6"]
 [ext_resource type="Resource" uid="uid://bx8q8jsb3kt03" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_no_possessions.tres" id="5_xyhyc"]
 [ext_resource type="Resource" uid="uid://cyejs7tch82h6" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_not_enough_money.tres" id="6_jkn36"]
 [ext_resource type="Resource" uid="uid://c1iqqvpn12aiy" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_again.tres" id="8_77vpi"]
 [ext_resource type="Resource" uid="uid://d30xhb2oejmrl" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_sell_confirm.tres" id="9_e84nt"]
 [ext_resource type="Resource" uid="uid://krx4wnewlhnn" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_buy.tres" id="10_fvequ"]
 [ext_resource type="Resource" uid="uid://cti3giohee85o" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_what_sell.tres" id="11_ishub"]
+
+[sub_resource type="Resource" id="Resource_jh3v1"]
+script = ExtResource("3_0cph3")
+text = "I am sorry."
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_t5bsk"]
+script = ExtResource("3_0cph3")
+text = "A curse is upon thy body"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_shlwp"]
+script = ExtResource("4_uudh6")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_jh3v1"), SubResource("Resource_t5bsk")])
+skip_window = false
 
 [resource]
 script = ExtResource("1_ueiy7")
@@ -26,3 +55,4 @@ sell_confirm_dialogue = ExtResource("9_e84nt")
 sell_again_dialogue = ExtResource("8_77vpi")
 no_sellable_items_dialogue = ExtResource("5_xyhyc")
 what_sell_dialogue = ExtResource("11_ishub")
+cursed_item_dialogue = SubResource("Resource_shlwp")

@@ -11,6 +11,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_dcd6x"]
 script = ExtResource("1_heij6")
@@ -20,6 +22,8 @@ is_speech = true
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0, 1])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_p13r4"]
 script = ExtResource("1_heij6")
@@ -29,7 +33,10 @@ is_speech = true
 wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [resource]
 script = ExtResource("1_ew0rn")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_yf3jb"), SubResource("Resource_dcd6x"), SubResource("Resource_p13r4")])
+skip_window = false
