@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d04xdrv2wnejk"]
+
+[ext_resource type="Texture2D" uid="uid://ce26cyo55bwky" path="res://field/tilemap/temp_overworld1.png" id="1_r53nn"]
+
+[node name="MapReference" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.396078)
+position = Vector2(128, 128)
+texture = ExtResource("1_r53nn")

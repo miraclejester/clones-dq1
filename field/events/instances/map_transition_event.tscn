@@ -7,3 +7,4 @@
 script = ExtResource("2_ub38c")
 map_key = ""
 load_params = null
+is_stairs = false

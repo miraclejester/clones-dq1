@@ -1,61 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpe0qd36t3ahi"]
+[gd_scene load_steps=6 format=3 uid="uid://dpe0qd36t3ahi"]
 
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="1_ude6i"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="2_bfbbm"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="3_e2gfu"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="4_whrjv"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/integer_format_var_provider.gd" id="5_bctn7"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="6_atpyq"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_gold_dialogue_event.gd" id="7_cd3ej"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="8_gobsc"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="9_f5iq1"]
+[ext_resource type="Resource" uid="uid://bw42lkeif5yqe" path="res://field/events/instances/gold_chest_event.tres" id="2_5ue0a"]
 [ext_resource type="Resource" uid="uid://cc322kgljkfi0" path="res://field/events/common_dialogues/chest_search_dialogue.tres" id="10_5q8gy"]
 [ext_resource type="PackedScene" uid="uid://6dih381y4dgh" path="res://field/events/param_providers/event_position_param_provider.tscn" id="10_us4w2"]
 [ext_resource type="PackedScene" uid="uid://j26ha6vsb2to" path="res://field/events/param_providers/integer_event_param_provider.tscn" id="11_6m7pm"]
 
-[sub_resource type="Resource" id="Resource_cdut6"]
-script = ExtResource("2_bfbbm")
-sfx_key = "treasure"
-wait_for_sfx = false
-
-[sub_resource type="Resource" id="Resource_m6d17"]
-script = ExtResource("3_e2gfu")
-target_pos = Vector2(0, 0)
-tile_key = "brick"
-
-[sub_resource type="Resource" id="Resource_54jic"]
-script = ExtResource("4_whrjv")
-text = "Of GOLD thou hast gained %d"
-in_quotes = false
-is_speech = false
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_r1p06"]
-script = ExtResource("5_bctn7")
-value = 0
-
-[sub_resource type="Resource" id="Resource_y86h2"]
-script = ExtResource("6_atpyq")
-dialogue = SubResource("Resource_54jic")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_r1p06")])
-
-[sub_resource type="Resource" id="Resource_rdyeh"]
-script = ExtResource("7_cd3ej")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_1tcnu"]
-script = ExtResource("8_gobsc")
-target_pos = Vector2(0, 0)
-operation = 0
-
-[sub_resource type="Resource" id="Resource_gs0rg"]
-script = ExtResource("9_f5iq1")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_cdut6"), SubResource("Resource_m6d17"), SubResource("Resource_y86h2"), SubResource("Resource_rdyeh"), SubResource("Resource_1tcnu")])
-
 [node name="GoldChestEvent" instance=ExtResource("1_ude6i")]
-take_event = SubResource("Resource_gs0rg")
+take_event = ExtResource("2_5ue0a")
 search_event = ExtResource("10_5q8gy")
 
 [node name="EventPositionParamProvider" parent="TakeParams" index="0" instance=ExtResource("10_us4w2")]

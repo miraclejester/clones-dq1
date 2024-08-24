@@ -1,11 +1,21 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bb11yw4i4mybk"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bb11yw4i4mybk"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_1nqy4"]
+[ext_resource type="Script" path="res://unit_data/abilities/ability_data.gd" id="1_p40w6"]
+[ext_resource type="Resource" uid="uid://dgskb46sxsbck" path="res://unit_data/items/item_events/fighter_ring_dialogue_event.tres" id="2_rlnx7"]
+
+[sub_resource type="Resource" id="Resource_tq5fe"]
+script = ExtResource("1_p40w6")
+use_dialogue = ExtResource("2_rlnx7")
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])
 
 [resource]
 script = ExtResource("1_1nqy4")
 item_name = "Fighter`s Ring"
 item_id = 22
 buy_price = -1
-sell_price = -1
+sell_price = 15
 consumable = false
+battle_action = SubResource("Resource_tq5fe")
+field_action = ExtResource("2_rlnx7")

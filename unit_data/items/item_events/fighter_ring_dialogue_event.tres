@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=6 format=3 uid="uid://dgskb46sxsbck"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/accessory_equipped_dialogue_condition.gd" id="1_hefl8"]
+[ext_resource type="Resource" uid="uid://d0m0yafxp1pgq" path="res://unit_data/items/item_events/fighter_ring_equipped_event.tres" id="2_3gpdc"]
+[ext_resource type="Resource" uid="uid://kfqw5wtcvl11" path="res://unit_data/items/item_events/fighter_ring_already_equipped_event.tres" id="3_6ssnn"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="4_epmaq"]
+
+[sub_resource type="Resource" id="Resource_fanxs"]
+script = ExtResource("1_hefl8")
+accessory_id = 22
+
+[resource]
+script = ExtResource("4_epmaq")
+condition = SubResource("Resource_fanxs")
+condition_true_event = ExtResource("3_6ssnn")
+condition_false_event = ExtResource("2_3gpdc")
+skip_window = false

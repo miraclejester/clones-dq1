@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=6 format=3 uid="uid://d0m0yafxp1pgq"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_384f2"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="2_2mje3"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="3_pbx1u"]
+
+[sub_resource type="Resource" id="Resource_xuwr0"]
+script = ExtResource("1_384f2")
+text = "%s put on the Fighter`s Ring."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_arc7a"]
+script = ExtResource("2_2mje3")
+key = 3
+min_val = 0
+max_val = 0
+id = 22
+skip_window = false
+
+[resource]
+script = ExtResource("3_pbx1u")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_xuwr0"), SubResource("Resource_arc7a")])
+skip_window = false

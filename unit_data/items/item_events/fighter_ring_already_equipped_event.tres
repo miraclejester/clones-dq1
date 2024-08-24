@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://kfqw5wtcvl11"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_8st6o"]
+
+[resource]
+script = ExtResource("1_8st6o")
+text = "%s adjusted the position of the Fighter`s Ring."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+skip_window = false
