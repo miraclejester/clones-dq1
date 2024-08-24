@@ -59,11 +59,11 @@ func move_character_register(old_pos: Vector2, character: FieldCharacter) -> voi
 
 func request_move(target: Vector2, origin: Vector2, skip_step_events: bool = false, skip_out_of_bounds: bool = false) -> bool:
 	var is_available: bool = field_tile_map.request_move(target) and not is_pos_reserved(target)
-	if skip_step_events:
+	if skip_step_events and is_available:
 		var event: MapEvent = find_event(target)
 		if event != null:
 			is_available = event.step_event == null
-	if skip_out_of_bounds:
+	if skip_out_of_bounds and is_available:
 		is_available = not is_out_of_bounds(target)
 	if is_available:
 		char_dict[origin] = null
