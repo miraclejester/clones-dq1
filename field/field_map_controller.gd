@@ -23,6 +23,16 @@ class_name FieldMapController
 
 var field_map: FieldMap
 var current_map_key: String
+var damage_effect_dict: Dictionary = {
+	2: {
+		"sfx": "tile_hit",
+		"effect": GlobalVisuals.map_hurt_effect
+	},
+	15: {
+		"sfx": "barrier_hit",
+		"effect": GlobalVisuals.map_barrier_effect
+	}
+}
 
 
 func _ready() -> void:
@@ -105,14 +115,24 @@ func load_map(path: String, params: MapLoadParams) -> void:
 func transition_to_map(path: String, params: MapLoadParams) -> void:
 	hero_character.set_process(false)
 	hero_character.cancel_move()
+	
 	get_tree().paused = true
-	AudioManager.play_sfx("stairs")
+	
+	var transition_sfx: String = "stairs"
+	if params.transition_sound != "":
+		transition_sfx = params.transition_sound
+	AudioManager.play_sfx(transition_sfx)
+	
 	field_ui.hide_hud()
 	await MenuStack.clear_menu_stack()
+	
 	await GlobalVisuals.fade_out()
+	
 	field_ui.dialogue_window.visible = false
 	field_ui.command_window.visible = false
+	
 	await load_map(path, params)
+	
 	get_tree().paused = false
 
 
@@ -239,6 +259,8 @@ func on_item_data_selected(item: ItemData) -> void:
 		"map_controller": self,
 		"default_bgm": field_map.map_bgm
 	}, clean)
+	if item.consumable:
+		PlayerManager.hero.inventory.remove_item(item)
 	close_command_window()
 
 
@@ -326,6 +348,8 @@ func on_spell_data_selected(spell: SpellData) -> void:
 
 
 func on_move_finished() -> void:
+	PlayerManager.hero.on_step()
+	
 	var out_event: DialogueEvent = field_map.out_of_bounds_event
 	if out_event != null and field_map.is_out_of_bounds(hero_character.position):
 		await field_ui.play_dialogue(out_event, {
@@ -346,9 +370,10 @@ func on_move_finished() -> void:
 	var damage: int = field_map.get_tile_damage(hero_character.position)
 	if damage > 0:
 		get_tree().paused = true
+		var effect_dict: Dictionary = damage_effect_dict.get(damage, {})
 		PlayerManager.hero.deal_damage(damage)
-		AudioManager.play_sfx("tile_hit")
-		await GlobalVisuals.map_hurt_effect()
+		AudioManager.play_sfx(effect_dict.get("sfx", "tile_hit"))
+		await (effect_dict.get("effect", GlobalVisuals.map_hurt_effect) as Callable).call()
 		GlobalVisuals.determine_ui_colors(
 			PlayerManager.hero.stats.get_stat(UnitStats.StatKey.HP),
 			PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP)

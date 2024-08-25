@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://kxnbev8636mn"]
+
+[ext_resource type="Shader" path="res://materials/palette_swap/black_white_palette_swap.gdshader" id="1_2b2jo"]
+
+[resource]
+shader = ExtResource("1_2b2jo")
+shader_parameter/highlight_color = Color(0.988235, 0.988235, 0.988235, 1)
+shader_parameter/highlight_replace = Color(0.988235, 0.454902, 0.376471, 1)
+shader_parameter/general_replace = Color(0.988235, 0.454902, 0.376471, 1)

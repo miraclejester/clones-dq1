@@ -9,3 +9,5 @@ item_id = 29
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = false
+tags = Array[int]([])

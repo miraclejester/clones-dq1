@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3 uid="uid://pmul2aon7n63"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_v25xv"]
+
+[resource]
+script = ExtResource("1_v25xv")
+spell_id = 7
+spell_name = "OUTSIDE"
+mp_cost = 6
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])

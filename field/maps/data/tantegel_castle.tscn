@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=72 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -17,17 +17,25 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="11_22ilt"]
 [ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="13_s00wy"]
 [ext_resource type="Resource" uid="uid://5piqufaqxh1x" path="res://field/dialogues/common_npc_dialogues/merchant_killed_by_dragonlord.tres" id="14_aq8kv"]
+[ext_resource type="PackedScene" uid="uid://3aljw8c4qutb" path="res://field/characters/npcs/npc_variations/npc_red_soldier.tscn" id="17_1mmy3"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="18_8577f"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/start_shop_dialogue_event.gd" id="18_cloi5"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/player_bool_status_dialogue_condition.gd" id="19_8fiwi"]
+[ext_resource type="Resource" uid="uid://tdh68cnnxiix" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/key_shop_dialogue_set.tres" id="19_8xdsn"]
+[ext_resource type="Script" path="res://field/ui/shop_interface/shop_data.gd" id="20_ctc4b"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/set_paused_dialogue_event.gd" id="20_oqvae"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="20_uy2bo"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_window_visibility_dialogue_event.gd" id="20_yb87d"]
+[ext_resource type="Resource" uid="uid://blspedvgbct2w" path="res://unit_data/items/data/024_magic_key.tres" id="21_tv5qf"]
+[ext_resource type="PackedScene" uid="uid://bbke138x0s7m3" path="res://field/events/instances/door_event.tscn" id="23_b02l3"]
+[ext_resource type="PackedScene" uid="uid://vdgayc14he0m" path="res://field/events/instances/random_gold_chest_event.tscn" id="24_d6wkc"]
 
 [sub_resource type="Resource" id="Resource_n5lh4"]
 script = ExtResource("3_eu1uo")
 play_starting_event = false
 spawn_point_key = "tantegel"
 spawn_direction = Vector2(0, 1)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_wn5b2"]
 script = ExtResource("4_76sow")
@@ -168,11 +176,141 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_c8swc"]
+script = ExtResource("2_i2oon")
+text = "Never does a brave person steal"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_4p8wb"]
+script = ExtResource("2_i2oon")
+text = "When the sun and rain meet, a Rainbox Bridge shall appear"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qyjsw"]
+script = ExtResource("2_i2oon")
+text = "It`s a legend"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dnsio"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_4p8wb"), SubResource("Resource_qyjsw")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_nl5qj"]
+script = ExtResource("2_i2oon")
+text = "I am looking for the castle cellar"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_677kl"]
+script = ExtResource("2_i2oon")
+text = "I heard it is not easily found"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ya2un"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_nl5qj"), SubResource("Resource_677kl")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_mrenx"]
+script = ExtResource("2_i2oon")
+text = "If thy Hit Points are high enough, by all means, enter"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_0gq8w"]
+script = ExtResource("2_i2oon")
+text = "In Garinham, look for the grave of Garin. Thou must push on a wall of darkness there"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_vckwn"]
+script = ExtResource("2_i2oon")
+text = "Let us wish the warrior well!"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_w80v3"]
+script = ExtResource("2_i2oon")
+text = "May the light be thy strength!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_tjhrk"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_vckwn"), SubResource("Resource_w80v3")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ggole"]
+script = ExtResource("20_ctc4b")
+can_sell = false
+is_single_item_shop = true
+single_item_price = 85
+single_item = ExtResource("21_tv5qf")
+single_item_limit = 5
+items = Array[Resource("res://unit_data/items/item_data.gd")]([])
+dialogues = ExtResource("19_8xdsn")
+
+[sub_resource type="Resource" id="Resource_er8ts"]
+script = ExtResource("18_cloi5")
+shop_data = SubResource("Resource_ggole")
+skip_window = true
+
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")
 play_starting_event = false
 spawn_point_key = "stairs"
 spawn_direction = Vector2(-1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_nr3d1"]
 script = ExtResource("4_76sow")
@@ -185,6 +323,7 @@ script = ExtResource("3_eu1uo")
 play_starting_event = false
 spawn_point_key = "tantegel"
 spawn_direction = Vector2(0, 1)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_mitx3"]
 script = ExtResource("19_8fiwi")
@@ -216,6 +355,7 @@ script = ExtResource("3_eu1uo")
 play_starting_event = false
 spawn_point_key = "tantegel"
 spawn_direction = Vector2(0, 1)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_6gsbi"]
 script = ExtResource("4_76sow")
@@ -233,6 +373,13 @@ script = ExtResource("20_uy2bo")
 condition = SubResource("Resource_mitx3")
 condition_true_event = SubResource("Resource_dubfg")
 skip_window = false
+
+[sub_resource type="Resource" id="Resource_53hgn"]
+script = ExtResource("3_eu1uo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [node name="TantegelCastle" instance=ExtResource("1_6o5ni")]
 map_bgm = "tantegel_castle"
@@ -314,6 +461,47 @@ position = Vector2(216, 456)
 talk_event = SubResource("Resource_f8va7")
 starting_face_dir = Vector2(-1, 0)
 
+[node name="GoldGuard" parent="NPCParent" index="13" instance=ExtResource("2_1blbo")]
+position = Vector2(56, 200)
+talk_event = SubResource("Resource_c8swc")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/GoldGuard/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="QuestLore" parent="NPCParent" index="14" instance=ExtResource("7_lyggg")]
+position = Vector2(456, 104)
+talk_event = SubResource("Resource_dnsio")
+
+[node name="CellarLooker" parent="NPCParent" index="15" instance=ExtResource("17_1mmy3")]
+position = Vector2(440, 216)
+talk_event = SubResource("Resource_ya2un")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/CellarLooker/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="DamageTileWarner" parent="NPCParent" index="16" instance=ExtResource("2_1blbo")]
+position = Vector2(440, 264)
+talk_event = SubResource("Resource_mrenx")
+starting_face_dir = Vector2(0, -1)
+
+[node name="GarinhamHint" parent="NPCParent" index="17" instance=ExtResource("17_1mmy3")]
+position = Vector2(392, 360)
+talk_event = SubResource("Resource_0gq8w")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/GarinhamHint/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="WellWishes" parent="NPCParent" index="18" instance=ExtResource("9_btpew")]
+position = Vector2(280, 216)
+talk_event = SubResource("Resource_tjhrk")
+metadata/_edit_group_ = true
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/WellWishes/Behaviours" index="0" instance=ExtResource("6_o05dn")]
+
+[node name="KeyShop" parent="NPCParent" index="19" instance=ExtResource("13_s00wy")]
+position = Vector2(408, 40)
+talk_event = SubResource("Resource_er8ts")
+
+[node name="ProjectNpcBehaviour" parent="NPCParent/KeyShop/Behaviours" index="0" instance=ExtResource("10_y5ubs")]
+project_dir = Vector2(0, 1)
+
 [node name="EventParent" parent="." index="2"]
 metadata/_edit_lock_ = true
 
@@ -359,6 +547,46 @@ step_event = SubResource("Resource_pgl3j")
 position = Vector2(184, 456)
 step_event = SubResource("Resource_pgl3j")
 
+[node name="DoorToTreasure" parent="EventParent" index="9" instance=ExtResource("23_b02l3")]
+position = Vector2(88, 232)
+
+[node name="RandomGoldChestEvent" parent="EventParent" index="10" instance=ExtResource("24_d6wkc")]
+position = Vector2(40, 232)
+
+[node name="RandomGoldAmountProvider" parent="EventParent/RandomGoldChestEvent/TakeParams" index="2"]
+min_value = 6
+max_value = 13
+
+[node name="RandomGoldChestEvent2" parent="EventParent" index="11" instance=ExtResource("24_d6wkc")]
+position = Vector2(56, 248)
+
+[node name="RandomGoldAmountProvider" parent="EventParent/RandomGoldChestEvent2/TakeParams" index="2"]
+min_value = 6
+max_value = 13
+
+[node name="RandomGoldChestEvent3" parent="EventParent" index="12" instance=ExtResource("24_d6wkc")]
+position = Vector2(72, 264)
+
+[node name="RandomGoldAmountProvider" parent="EventParent/RandomGoldChestEvent3/TakeParams" index="2"]
+min_value = 6
+max_value = 13
+
+[node name="RandomGoldChestEvent4" parent="EventParent" index="13" instance=ExtResource("24_d6wkc")]
+position = Vector2(40, 264)
+
+[node name="RandomGoldAmountProvider" parent="EventParent/RandomGoldChestEvent4/TakeParams" index="2"]
+min_value = 6
+max_value = 13
+
+[node name="DoorToMore" parent="EventParent" index="14" instance=ExtResource("23_b02l3")]
+position = Vector2(312, 120)
+
+[node name="ToB1" parent="EventParent" index="15" instance=ExtResource("18_8577f")]
+position = Vector2(488, 488)
+map_key = "tantegel_castle_b1"
+load_params = SubResource("Resource_53hgn")
+is_stairs = true
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -367,6 +595,9 @@ position = Vector2(136, 136)
 
 [node name="entrance" type="Node2D" parent="SpawnPoints" index="1"]
 position = Vector2(200, 488)
+
+[node name="b1_stairs" type="Node2D" parent="SpawnPoints" index="2"]
+position = Vector2(488, 488)
 
 [node name="BoundStart" parent="." index="6"]
 position = Vector2(8, 8)
@@ -381,3 +612,12 @@ position = Vector2(488, 488)
 [editable path="NPCParent/LoreMerchant"]
 [editable path="NPCParent/LoreMerchant2"]
 [editable path="NPCParent/HintGuard"]
+[editable path="NPCParent/GoldGuard"]
+[editable path="NPCParent/CellarLooker"]
+[editable path="NPCParent/GarinhamHint"]
+[editable path="NPCParent/WellWishes"]
+[editable path="NPCParent/KeyShop"]
+[editable path="EventParent/RandomGoldChestEvent"]
+[editable path="EventParent/RandomGoldChestEvent2"]
+[editable path="EventParent/RandomGoldChestEvent3"]
+[editable path="EventParent/RandomGoldChestEvent4"]

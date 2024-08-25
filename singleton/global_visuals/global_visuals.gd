@@ -3,6 +3,7 @@ extends Node
 @export var spell_effect_material: ShaderMaterial
 @export var ambient_hurt_material: ShaderMaterial
 @export var ambient_death_material: ShaderMaterial
+@export var ambient_barrier_material: ShaderMaterial
 @export var darken_material: ShaderMaterial
 @export var darken_hurt_material: ShaderMaterial
 
@@ -35,6 +36,11 @@ var death_effect_callables: Array[Callable] = [
 var map_hurt_callables: Array[Callable] = [
 	set_death_effect_enabled.bind(true),
 	set_death_effect_enabled.bind(false)
+]
+
+var map_barrier_callables: Array[Callable] = [
+	set_barrier_effect_enabled.bind(true),
+	set_barrier_effect_enabled.bind(false)
 ]
 
 var darken_callables: Array[Callable] = [
@@ -77,6 +83,10 @@ func map_hurt_effect() -> void:
 	await play_effect(map_hurt_callables, get_tree().get_nodes_in_group("player_death_effect"), 0.1, 1)
 
 
+func map_barrier_effect() -> void:
+	await play_effect(map_barrier_callables, get_tree().get_nodes_in_group("player_death_effect"), 0.1, 1)
+
+
 func fade_out() -> void:
 	await play_effect(darken_callables, get_tree().get_nodes_in_group("darken"), 0.1, 1)
 
@@ -101,6 +111,15 @@ func set_death_effect_enabled(node: Node, enabled: bool) -> void:
 		(node as CanvasItem).material = ambient_death_material
 	elif ambient_hurt_enabled:
 		(node as CanvasItem).material = ambient_hurt_material
+	else:
+		(node as CanvasItem).material = null
+
+
+func set_barrier_effect_enabled(node: Node, enabled: bool) -> void:
+	if enabled:
+		(node as CanvasItem).material = ambient_barrier_material
+	elif ambient_hurt_enabled:
+		(node as CanvasItem).material = ambient_barrier_material
 	else:
 		(node as CanvasItem).material = null
 

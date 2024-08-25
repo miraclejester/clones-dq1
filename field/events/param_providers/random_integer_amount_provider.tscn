@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47tdptyishcd"]
+
+[ext_resource type="Script" path="res://field/events/param_providers/random_integer_event_param_provider.gd" id="1_l8uie"]
+
+[node name="RandomGoldAmountProvider" type="Node"]
+script = ExtResource("1_l8uie")
+min_value = 10
+max_value = 17
+keys = Array[String](["integer_provider_value", "grant_gold_amount"])

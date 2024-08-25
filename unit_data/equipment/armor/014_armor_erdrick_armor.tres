@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="EquipmentData" load_steps=7 format=3 uid="uid://bs5jm57olrih8"]
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=9 format=3 uid="uid://bs5jm57olrih8"]
 
 [ext_resource type="Script" path="res://unit_data/equipment/damage_modifier_data.gd" id="1_btbr5"]
 [ext_resource type="Script" path="res://unit_data/equipment/equipment_data.gd" id="1_mye42"]
 [ext_resource type="Script" path="res://unit_data/equipment/resistance_modifier_data.gd" id="2_i4jaj"]
+[ext_resource type="Script" path="res://unit_data/equipment/step_effects/heal_step_effect.gd" id="4_61k1v"]
 
 [sub_resource type="Resource" id="Resource_6yqyq"]
 script = ExtResource("1_btbr5")
@@ -20,6 +21,11 @@ resistance_type = 1
 modifier = 1.0
 base = 1.0
 
+[sub_resource type="Resource" id="Resource_pjlfv"]
+script = ExtResource("4_61k1v")
+num_steps = 1
+heal_amount = 1
+
 [resource]
 script = ExtResource("1_mye42")
 equipment_type = 1
@@ -27,8 +33,11 @@ attack_power = 0
 defense_power = 28
 damage_multipliers = Array[ExtResource("1_btbr5")]([SubResource("Resource_6yqyq"), SubResource("Resource_akupe")])
 resistance_modifiers = Array[ExtResource("2_i4jaj")]([SubResource("Resource_y0ajf")])
+step_effect = SubResource("Resource_pjlfv")
 item_name = "Erdrick`s Armor"
 item_id = 14
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = true
+tags = Array[int]([])

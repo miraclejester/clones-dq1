@@ -10,3 +10,4 @@ enum EquipmentType {
 @export var defense_power: int
 @export var damage_multipliers: Array[DamageModifierData]
 @export var resistance_modifiers: Array[ResistanceModifierData]
+@export var step_effect: StepEffect

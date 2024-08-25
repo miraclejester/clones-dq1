@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2oxir5rcqcn1"]
+[gd_scene load_steps=8 format=3 uid="uid://d2oxir5rcqcn1"]
 
 [ext_resource type="Script" path="res://singleton/global_visuals/global_visuals.gd" id="1_lpqev"]
 [ext_resource type="Material" uid="uid://br6gicj3a81o0" path="res://materials/palette_swap/spell_effect.tres" id="2_t8dn0"]
 [ext_resource type="Material" uid="uid://b87plluf4uhb" path="res://materials/palette_swap/ambient_hurt.tres" id="3_8mr3j"]
 [ext_resource type="Material" uid="uid://cvvj6sehd80" path="res://materials/palette_swap/player_death_color_replace.tres" id="4_hdds7"]
+[ext_resource type="Material" uid="uid://kxnbev8636mn" path="res://materials/palette_swap/player_barrier_color_replace.tres" id="5_mtem4"]
 [ext_resource type="Material" uid="uid://dn4tgoayvt671" path="res://materials/palette_swap/darken_swap.tres" id="5_srfp3"]
 [ext_resource type="Material" uid="uid://d2cydjqh54jr6" path="res://materials/palette_swap/darken_hurt_swap.tres" id="6_142dn"]
 
@@ -13,5 +14,6 @@ script = ExtResource("1_lpqev")
 spell_effect_material = ExtResource("2_t8dn0")
 ambient_hurt_material = ExtResource("3_8mr3j")
 ambient_death_material = ExtResource("4_hdds7")
+ambient_barrier_material = ExtResource("5_mtem4")
 darken_material = ExtResource("5_srfp3")
 darken_hurt_material = ExtResource("6_142dn")

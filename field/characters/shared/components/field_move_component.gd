@@ -30,8 +30,8 @@ func cancel_move() -> void:
 	moving = false
 
 
-func request_move(target: Vector2, skip_step_events: bool = false, skip_out_of_bounds: bool = false) -> bool:
-	if not user.current_map.request_move(target, user.position, skip_step_events, skip_out_of_bounds):
+func request_move(target: Vector2, move_params: MapMoveParams = MapMoveParams.new()) -> bool:
+	if not user.current_map.request_move(target, user.position, move_params):
 		return false
 	old_pos = user.position
 	target_pos = target

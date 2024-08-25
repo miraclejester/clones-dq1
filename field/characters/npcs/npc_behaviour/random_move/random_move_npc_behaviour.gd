@@ -22,7 +22,8 @@ func check_move() -> void:
 	if dir != Vector2.ZERO:
 		var target: Vector2 = user.position + dir * 16
 		user.set_face_dir(dir)
-		var successful_request = user.field_move_component.request_move(target, true, true)
+		var move_params: MapMoveParams = MapMoveParams.new(true, true, true)
+		var successful_request = user.field_move_component.request_move(target, move_params)
 		if successful_request:
 			await user.field_move_component.move_finished
 	wait_timer.start(wait_time)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://vdgayc14he0m"]
+
+[ext_resource type="PackedScene" uid="uid://dpe0qd36t3ahi" path="res://field/events/instances/gold_chest_event.tscn" id="1_k57h3"]
+[ext_resource type="PackedScene" uid="uid://c47tdptyishcd" path="res://field/events/param_providers/random_integer_amount_provider.tscn" id="2_lfi54"]
+
+[node name="RandomGoldChestEvent" instance=ExtResource("1_k57h3")]
+
+[node name="GoldAmountProvider" parent="TakeParams" index="1"]
+keys = Array[String]([])
+
+[node name="RandomGoldAmountProvider" parent="TakeParams" index="2" instance=ExtResource("2_lfi54")]

@@ -25,30 +25,35 @@ script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(0, -1)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_vsh5g"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_oej2l"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_x82gt"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(0, -1)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_d0dkc"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_kjhxu"]
 script = ExtResource("5_vgvkh")
@@ -61,36 +66,42 @@ script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_t3h6d"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_bf1tx"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "upper_entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_tdoum"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "lower_entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_lt3du"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(-1, 0)
+transition_sound = ""
 
 [sub_resource type="Resource" id="Resource_c1yjv"]
 script = ExtResource("3_1cupo")
 play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
+transition_sound = ""
 
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
@@ -194,6 +205,9 @@ position = Vector2(952, 472)
 
 [node name="holy_shrine" type="Node2D" parent="SpawnPoints" index="11"]
 position = Vector2(1064, 1064)
+
+[node name="landing" type="Node2D" parent="SpawnPoints" index="12"]
+position = Vector2(-8, 8)
 
 [node name="EncounterData" parent="." index="5"]
 visible = false

@@ -101,3 +101,10 @@ func get_equip(key: EquipmentData.EquipmentType) -> EquipmentData:
 
 func has_equip(key: EquipmentData.EquipmentType) -> bool:
 	return eq_dict.has(key)
+
+
+func on_step(step_amount: int) -> void:
+	for equipment in eq_dict.values():
+		var eq: EquipmentData = equipment as EquipmentData
+		if eq.step_effect != null:
+			eq.step_effect.on_step(step_amount)

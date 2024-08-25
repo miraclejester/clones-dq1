@@ -23,6 +23,7 @@ var level: int = 1
 var gold: int = 0
 var experience: int = 0
 var is_cursed: bool = false
+var step_counter: int = 0
 
 
 func _ready() -> void:
@@ -200,3 +201,14 @@ func spend_gold(val: int) -> void:
 
 func get_unit_name() -> String:
 	return hero_name
+
+
+func on_step() -> void:
+	step_counter += 1
+	equipment.on_step(step_counter)
+	if step_counter >= 256:
+		step_counter = 0
+
+
+func on_map_transition() -> void:
+	step_counter = 0
