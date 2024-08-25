@@ -14,7 +14,7 @@ script = ExtResource("1_l0qdc")
 
 [node name="Battle" parent="." instance=ExtResource("2_rs3lt")]
 
-[node name="Darkness" type="Sprite2D" parent="."]
+[node name="Darkness" type="Sprite2D" parent="." groups=["spell_effect"]]
 unique_name_in_owner = true
 position = Vector2(127, 112)
 texture = ExtResource("3_x4kvp")

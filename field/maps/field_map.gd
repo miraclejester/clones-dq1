@@ -16,7 +16,7 @@ class_name FieldMap
 @onready var bound_end: Node2D = %BoundEnd
 
 
-var char_dict: Dictionary #Vector2 to NPCCharacter
+var char_dict: Dictionary #Vector2 to FieldCharacter
 var event_dict: Dictionary #Vector2 to MapEvent
 
 

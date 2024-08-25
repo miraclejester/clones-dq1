@@ -396,30 +396,48 @@ func on_move_finished() -> void:
 		var tile_id: EncounterChanceEntry.TileBattleID = field_map.get_tile_battle_id(hero_character.position)
 		var encounter: EncounterData = zone.roll_for_battle(tile_id)
 		if encounter != null:
-			start_battle(encounter, zone)
+			start_battle_from_zone(encounter, zone)
 
 
-func start_battle(encounter: EncounterData, zone: EncounterZone) -> void:
-	field_ui.visible = false
-	get_tree().paused = true
+func start_battle_from_zone(encounter: EncounterData, zone: EncounterZone) -> void:
 	var config: BattleConfig = BattleConfig.new()
 	config.field_bgm = field_map.map_bgm
 	config.battle_bg = zone.battle_bg
 	config.is_dark = zone.is_dark
+	start_battle(encounter, config)
+
+
+func start_battle(encounter: EncounterData, config: BattleConfig) -> void:
+	field_ui.visible = false
+	get_tree().paused = true
 	battle_controller.set_visibility(true)
 	battle_controller.position.x = hero_character.position.x - (8*17)
 	battle_controller.position.y = hero_character.position.y - (7*16)
 	battle_controller.start_battle(encounter, config)
 
 
-func on_battle_finished(status: BattleController.BattleEndStatus) -> void:
+func on_battle_finished(status: BattleController.BattleEndStatus, config: BattleConfig) -> void:
 	match status:
-		BattleController.BattleEndStatus.VICTORY, BattleController.BattleEndStatus.RUN:
-			get_tree().paused = false
-			field_ui.visible = true
-			battle_controller.set_visibility(false)
+		BattleController.BattleEndStatus.VICTORY:
+			if config.victory_event != null:
+				await field_ui.play_dialogue(config.victory_event, {
+					"map": field_map,
+					"map_controller": self
+				})
+		BattleController.BattleEndStatus.RUN:
+			if config.run_event != null:
+				await field_ui.play_dialogue(config.run_event, {
+					"map_controller": self
+				})
 		_:
 			pass
+	back_from_battle()
+
+
+func back_from_battle() -> void:
+	get_tree().paused = false
+	field_ui.visible = true
+	battle_controller.set_visibility(false)
 
 
 func get_global_format_vars() -> Array:

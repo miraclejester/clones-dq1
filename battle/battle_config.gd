@@ -1,6 +1,8 @@
-extends RefCounted
+extends Resource
 class_name BattleConfig
 
-var field_bgm: String = ""
-var battle_bg: Texture2D
-var is_dark: bool
+@export var field_bgm: String = ""
+@export var battle_bg: Texture2D
+@export var is_dark: bool
+@export var victory_event: DialogueEvent
+@export var run_event: DialogueEvent

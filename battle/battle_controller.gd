@@ -1,7 +1,7 @@
 extends Node2D
 class_name BattleController
 
-signal battle_finished(status: BattleEndStatus)
+signal battle_finished(status: BattleEndStatus, config: BattleConfig)
 
 enum BattleEndStatus {
 	VICTORY, DEFEAT, RUN
@@ -196,9 +196,7 @@ func command_menu_cancelled() -> void:
 func finish_battle(status: BattleEndStatus) -> void:
 	await get_tree().process_frame
 	darkness.visible = false
-	if encounter_data.after_victory_event:
-		await battle_ui.play_dialogue(encounter_data.after_victory_event)
-	battle_finished.emit(status)
+	battle_finished.emit(status, config)
 
 
 func reprise_battle_bgm() -> void:
