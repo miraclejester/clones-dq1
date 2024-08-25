@@ -1,14 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://cmpfk48ahdmaa"]
+[gd_scene load_steps=25 format=3 uid="uid://cmpfk48ahdmaa"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_8ytya"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="3_psog5"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_74oco"]
 [ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="5_ddcut"]
-[ext_resource type="Resource" uid="uid://pvjxd0w7h5io" path="res://field/events/instances/key_item_chest_sequence.tres" id="5_wacer"]
 [ext_resource type="Resource" uid="uid://bb11yw4i4mybk" path="res://unit_data/items/data/022_fighter_ring.tres" id="6_sg8of"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="7_2pbeq"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="13_0v2gh"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="15_o7r0e"]
+[ext_resource type="PackedScene" uid="uid://b42jx7kvm8ubg" path="res://field/events/key_item_chest_event.tscn" id="14_8bppr"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="16_pv5dx"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="17_fc6ci"]
 [ext_resource type="Resource" uid="uid://b5rs1qc4vl5ym" path="res://unit_data/items/data/025_torch.tres" id="19_p5ukg"]
@@ -48,39 +45,6 @@ spawn_point_key = "stairs_c"
 spawn_direction = Vector2(-1, 0)
 transition_sound = ""
 
-[sub_resource type="Resource" id="Resource_2lkj5"]
-script = ExtResource("15_o7r0e")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("5_wacer")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_on6et"]
-script = ExtResource("16_pv5dx")
-map_key = "mountain_cave_b2"
-data_key = "fighter_ring_chest"
-
-[sub_resource type="Resource" id="Resource_lcsvr"]
-script = ExtResource("7_2pbeq")
-target_pos = Vector2(56, 56)
-tile_key = "brick"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_uvvlb"]
-script = ExtResource("13_0v2gh")
-target_pos = Vector2(56, 56)
-operation = 0
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_m0qf3"]
-script = ExtResource("15_o7r0e")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_lcsvr"), SubResource("Resource_uvvlb")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_8ipgd"]
-script = ExtResource("17_fc6ci")
-condition = SubResource("Resource_on6et")
-condition_true_event = SubResource("Resource_m0qf3")
-skip_window = true
-
 [sub_resource type="Resource" id="Resource_323p2"]
 script = ExtResource("16_pv5dx")
 map_key = "mountain_cave_b2"
@@ -88,7 +52,7 @@ data_key = "death_necklace_obtained"
 
 [sub_resource type="Resource" id="Resource_hp1bm"]
 script = ExtResource("22_hxmsr")
-chance = 1.0
+chance = 0.031
 
 [sub_resource type="Resource" id="Resource_tabvs"]
 script = ExtResource("17_fc6ci")
@@ -131,21 +95,13 @@ map_key = "mountain_cave_b1"
 load_params = SubResource("Resource_t2tn1")
 is_stairs = true
 
-[node name="FighterRingChest" parent="EventParent" index="3" instance=ExtResource("5_ddcut")]
-position = Vector2(56, 56)
-take_event = SubResource("Resource_2lkj5")
-map_start_event = SubResource("Resource_8ipgd")
-
-[node name="ItemEventParamProvider" parent="EventParent/FighterRingChest/TakeParams" index="1"]
-item = ExtResource("6_sg8of")
-
-[node name="TorchChest" parent="EventParent" index="4" instance=ExtResource("5_ddcut")]
+[node name="TorchChest" parent="EventParent" index="3" instance=ExtResource("5_ddcut")]
 position = Vector2(72, 56)
 
 [node name="ItemEventParamProvider" parent="EventParent/TorchChest/TakeParams" index="1"]
 item = ExtResource("19_p5ukg")
 
-[node name="SmallGoldChest" parent="EventParent" index="5" instance=ExtResource("20_ioaon")]
+[node name="SmallGoldChest" parent="EventParent" index="4" instance=ExtResource("20_ioaon")]
 position = Vector2(184, 168)
 
 [node name="GoldAmountProvider" parent="EventParent/SmallGoldChest/TakeParams" index="1"]
@@ -154,7 +110,7 @@ keys = Array[String]([])
 
 [node name="RandomGoldAmountProvider" parent="EventParent/SmallGoldChest/TakeParams" index="2" instance=ExtResource("20_1symn")]
 
-[node name="DeathNecklaceChest" parent="EventParent" index="6" instance=ExtResource("20_ioaon")]
+[node name="DeathNecklaceChest" parent="EventParent" index="5" instance=ExtResource("20_ioaon")]
 position = Vector2(40, 120)
 take_event = SubResource("Resource_atqhb")
 
@@ -167,6 +123,12 @@ script = ExtResource("21_hqu8p")
 min_value = 100
 max_value = 131
 keys = Array[String](["integer_provider_value", "grant_gold_amount"])
+
+[node name="FighterRingChest" parent="EventParent" index="6" instance=ExtResource("14_8bppr")]
+position = Vector2(56, 56)
+key_item = ExtResource("6_sg8of")
+map_key = "mountain_cave_b2"
+data_key = "fighter_ring_chest"
 
 [node name="stairs_a" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(24, 24)
@@ -183,7 +145,6 @@ position = Vector2(24, 24)
 [node name="BoundEnd" parent="." index="7"]
 position = Vector2(280, 280)
 
-[editable path="EventParent/FighterRingChest"]
 [editable path="EventParent/TorchChest"]
 [editable path="EventParent/SmallGoldChest"]
 [editable path="EventParent/DeathNecklaceChest"]

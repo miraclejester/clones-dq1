@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://bxqbwtj6xo1pu"]
+
+[ext_resource type="Resource" uid="uid://k41sbu7m3si8" path="res://unit_data/enemies/20_drollmagi/20_drollmagi.tres" id="1_frxpe"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_hujsy"]
+
+[resource]
+script = ExtResource("2_hujsy")
+enemy = ExtResource("1_frxpe")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

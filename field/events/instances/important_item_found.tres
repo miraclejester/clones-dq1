@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://q7vyb3r6gu81"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_1qqpn"]
+
+[resource]
+script = ExtResource("1_1qqpn")
+text = "Fortune smiles upon thee, %s. Thou hast found the %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false

@@ -13,6 +13,8 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_eyvip"]
 script = ExtResource("3_h6l40")
@@ -31,6 +33,8 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [resource]
 script = ExtResource("4_unskt")
@@ -39,5 +43,8 @@ item_id = 28
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = true
+stack_size = 1
 use_dialogue = SubResource("Resource_1bqbu")
 battle_action = SubResource("Resource_lfyuy")
+tags = Array[int]([])

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=10 format=3 uid="uid://l1m86qjinsn3"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="1_s5g8j"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="2_1ew5w"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="3_3nxuo"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_76xcv"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_mnrdr"]
+
+[sub_resource type="Resource" id="Resource_qan1i"]
+script = ExtResource("1_s5g8j")
+map_key = "erdrick_cave_b2"
+data_key = "tablet_chest"
+
+[sub_resource type="Resource" id="Resource_0b8ku"]
+script = ExtResource("2_1ew5w")
+target_pos = Vector2(168, 72)
+tile_key = "brick"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_rfgyn"]
+script = ExtResource("3_3nxuo")
+target_pos = Vector2(168, 72)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_efi8y"]
+script = ExtResource("4_76xcv")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_0b8ku"), SubResource("Resource_rfgyn")])
+skip_window = true
+
+[resource]
+script = ExtResource("5_mnrdr")
+condition = SubResource("Resource_qan1i")
+condition_true_event = SubResource("Resource_efi8y")
+skip_window = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtmekjh2txsly"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_nllko"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_5i7dg"]
+[ext_resource type="Resource" uid="uid://blicdpj3twhkc" path="res://unit_data/enemies/17_specter/encounter_specter.tres" id="3_rjy21"]
+[ext_resource type="Resource" uid="uid://12g4h1pegn" path="res://unit_data/enemies/18_wolflord/encounter_wolflord.tres" id="4_7twl6"]
+[ext_resource type="Resource" uid="uid://ctksc44gbtnng" path="res://unit_data/enemies/19_druinlord/encounter_druinlord.tres" id="5_l3hfp"]
+[ext_resource type="Resource" uid="uid://bxqbwtj6xo1pu" path="res://unit_data/enemies/20_drollmagi/encounter_drollmagi.tres" id="6_xlh5f"]
+[ext_resource type="Resource" uid="uid://smhyrrmkpghk" path="res://unit_data/enemies/23_wraith_knight/encounter_wraith_knight.tres" id="7_v8kcm"]
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="8_6s8ut"]
+
+[node name="DungeonZone3" instance=ExtResource("1_nllko")]
+encounter_chances = ExtResource("2_5i7dg")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_rjy21"), ExtResource("4_7twl6"), ExtResource("5_l3hfp"), ExtResource("6_xlh5f"), ExtResource("7_v8kcm")])
+battle_bg = ExtResource("8_6s8ut")
+is_dark = true
+highlight_color = Color(0.364246, 0.126903, 0.451818, 0.690196)

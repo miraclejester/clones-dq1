@@ -28,4 +28,5 @@ buy_price = 7700
 sell_price = 3850
 consumable = false
 sellable = true
+stack_size = 1
 tags = Array[int]([])

@@ -104,7 +104,6 @@ script = ExtResource("18_6a6v3")
 can_sell = false
 is_single_item_shop = false
 single_item_price = 53
-single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("13_yxsnd"), ExtResource("14_h08a5"), ExtResource("15_krc61"), ExtResource("16_s637i"), ExtResource("17_56oiv")])
 dialogues = ExtResource("12_5sj3d")
 
@@ -293,7 +292,6 @@ script = ExtResource("18_6a6v3")
 can_sell = true
 is_single_item_shop = false
 single_item_price = 53
-single_item_limit = 0
 items = Array[Resource("res://unit_data/items/item_data.gd")]([ExtResource("25_wjwtx"), ExtResource("26_d76e1"), ExtResource("27_3fpv4"), ExtResource("28_elwjv")])
 dialogues = ExtResource("24_kckpb")
 
@@ -406,6 +404,7 @@ skip_window = true
 
 [node name="Kol" instance=ExtResource("1_t7hxy")]
 map_bgm = "town"
+map_tags = Array[int]([0])
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 0.513726)

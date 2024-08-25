@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://ctksc44gbtnng"]
+
+[ext_resource type="Resource" uid="uid://e7akj3ubd5nr" path="res://unit_data/enemies/19_druinlord/19_druinlord.tres" id="1_vku65"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_ideko"]
+
+[resource]
+script = ExtResource("2_ideko")
+enemy = ExtResource("1_vku65")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

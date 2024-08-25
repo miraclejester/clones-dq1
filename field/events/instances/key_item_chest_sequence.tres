@@ -58,11 +58,11 @@ target_pos = Vector2(0, 0)
 operation = 0
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_tan7a"]
+[sub_resource type="Resource" id="Resource_rxqce"]
 script = ExtResource("10_k1y85")
 value = true
-map_key = "erdrick_cave_b2"
-data_key = "tablet_chest"
+map_key = "garin_tomb_b3"
+data_key = "cursed_belt_chest"
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_drpc0"]
@@ -78,7 +78,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_bkm78"]
 script = ExtResource("12_2e8f1")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_bave5"), SubResource("Resource_ry5y2"), SubResource("Resource_tan7a"), SubResource("Resource_drpc0")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_bave5"), SubResource("Resource_ry5y2"), SubResource("Resource_rxqce"), SubResource("Resource_drpc0")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_0ehhr"]

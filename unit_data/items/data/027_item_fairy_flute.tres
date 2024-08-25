@@ -76,6 +76,7 @@ buy_price = -1
 sell_price = -1
 consumable = false
 sellable = false
+stack_size = 1
 use_dialogue = SubResource("Resource_vn8vv")
 battle_action = SubResource("Resource_t8ysl")
 field_action = SubResource("Resource_c601v")

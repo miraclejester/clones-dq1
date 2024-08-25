@@ -1,19 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvr7l07jp6uti"]
+[gd_scene load_steps=11 format=3 uid="uid://cvr7l07jp6uti"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_5r1pd"]
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="3_0vo1k"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_tx0r6"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="5_7ovnf"]
-[ext_resource type="Resource" uid="uid://pvjxd0w7h5io" path="res://field/events/instances/key_item_chest_sequence.tres" id="6_gnykw"]
-[ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="6_rc6dk"]
+[ext_resource type="PackedScene" uid="uid://b42jx7kvm8ubg" path="res://field/events/key_item_chest_event.tscn" id="5_lwicq"]
 [ext_resource type="Resource" uid="uid://dtay22cogb680" path="res://unit_data/items/data/032_erdrick_tablet.tres" id="7_1plrw"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="8_xbbvq"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="14_0otr0"]
 [ext_resource type="Resource" uid="uid://bonojmqtjv4b6" path="res://unit_data/items/item_events/tablet_dialogue.tres" id="15_4lfry"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="16_kl827"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="17_jha7k"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="19_rdies"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="20_8mrkp"]
 
 [sub_resource type="Resource" id="Resource_4k11u"]
 script = ExtResource("4_tx0r6")
@@ -35,48 +28,6 @@ map_key = "erdrick_cave"
 load_params = SubResource("Resource_d5jhf")
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_hm2h5"]
-script = ExtResource("17_jha7k")
-
-[sub_resource type="Resource" id="Resource_a1j0k"]
-script = ExtResource("20_8mrkp")
-condition = SubResource("Resource_hm2h5")
-condition_true_event = ExtResource("15_4lfry")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_b515g"]
-script = ExtResource("16_kl827")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("6_gnykw"), SubResource("Resource_a1j0k")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_qan1i"]
-script = ExtResource("19_rdies")
-map_key = "erdrick_cave_b2"
-data_key = "tablet_chest"
-
-[sub_resource type="Resource" id="Resource_0b8ku"]
-script = ExtResource("8_xbbvq")
-target_pos = Vector2(168, 72)
-tile_key = "brick"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_rfgyn"]
-script = ExtResource("14_0otr0")
-target_pos = Vector2(168, 72)
-operation = 0
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_efi8y"]
-script = ExtResource("16_kl827")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_0b8ku"), SubResource("Resource_rfgyn")])
-skip_window = true
-
-[sub_resource type="Resource" id="Resource_lg6rr"]
-script = ExtResource("20_8mrkp")
-condition = SubResource("Resource_qan1i")
-condition_true_event = SubResource("Resource_efi8y")
-skip_window = true
-
 [node name="ErdrickCaveB2" instance=ExtResource("1_5r1pd")]
 map_bgm = "underworld_2"
 is_dark = true
@@ -90,15 +41,12 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 0, 851969, 65536, 0, 851970,
 position = Vector2(152, 168)
 stairs_event = SubResource("Resource_6hq08")
 
-[node name="ErdrickTabletChest" parent="EventParent" index="1" instance=ExtResource("6_rc6dk")]
+[node name="TabletChest" parent="EventParent" index="1" instance=ExtResource("5_lwicq")]
 position = Vector2(168, 72)
-take_event = SubResource("Resource_b515g")
-map_start_event = SubResource("Resource_lg6rr")
-
-[node name="ItemEventParamProvider" parent="EventParent/ErdrickTabletChest/TakeParams" index="1"]
-item = ExtResource("7_1plrw")
+key_item = ExtResource("7_1plrw")
+map_key = "erdrick_cave_b2"
+data_key = "tablet_chest"
+post_take_event = ExtResource("15_4lfry")
 
 [node name="to_b1" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(152, 168)
-
-[editable path="EventParent/ErdrickTabletChest"]
