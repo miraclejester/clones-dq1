@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://deqogcy8ksr02"]
+[gd_scene load_steps=82 format=3 uid="uid://deqogcy8ksr02"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_t7hxy"]
 [ext_resource type="Texture2D" uid="uid://ce26cyo55bwky" path="res://field/tilemap/temp_overworld1.png" id="2_fm1cx"]
@@ -30,6 +30,14 @@
 [ext_resource type="Resource" uid="uid://b5rs1qc4vl5ym" path="res://unit_data/items/data/025_torch.tres" id="26_d76e1"]
 [ext_resource type="Resource" uid="uid://dff1bpkdw8feg" path="res://unit_data/items/data/018_dragon_scale.tres" id="27_3fpv4"]
 [ext_resource type="Resource" uid="uid://g0ndby5lc7xe" path="res://unit_data/items/data/026_wings.tres" id="28_elwjv"]
+[ext_resource type="PackedScene" uid="uid://bbke138x0s7m3" path="res://field/events/instances/door_event.tscn" id="31_4203q"]
+[ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="32_wud4e"]
+[ext_resource type="Resource" uid="uid://cd43nkk22kbkh" path="res://unit_data/items/data/027_item_fairy_flute.tres" id="33_3g3oq"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="34_74b2c"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="35_ewhjb"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="36_jbt5c"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="37_yngx1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="38_rleqo"]
 
 [sub_resource type="Resource" id="Resource_kschk"]
 script = ExtResource("4_hsyge")
@@ -294,12 +302,107 @@ script = ExtResource("11_odbhr")
 shop_data = SubResource("Resource_7a3tk")
 skip_window = true
 
+[sub_resource type="Resource" id="Resource_poen6"]
+script = ExtResource("4_hsyge")
+text = "Hast thou found the flute?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wytma"]
+script = ExtResource("4_hsyge")
+text = "Howard had it, but he went to Rimuldar and never returned"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_mke6o"]
+script = ExtResource("4_hsyge")
+text = "Go to the town of Cantlin"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_3gd8q"]
+script = ExtResource("23_hdkpr")
+yes_event = SubResource("Resource_mke6o")
+no_event = SubResource("Resource_wytma")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_m2ycn"]
+script = ExtResource("7_108ru")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_poen6"), SubResource("Resource_3gd8q")])
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_bxmn6"]
 script = ExtResource("4_vpdcv")
 play_starting_event = false
 spawn_point_key = "kol"
 spawn_direction = Vector2(0, 1)
 transition_sound = ""
+
+[sub_resource type="Resource" id="Resource_ya2yf"]
+script = ExtResource("4_hsyge")
+text = "%s discovers the Fairy Flute."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ruiw0"]
+script = ExtResource("34_74b2c")
+item = ExtResource("33_3g3oq")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_f8l0t"]
+script = ExtResource("35_ewhjb")
+value = true
+map_key = "kol"
+data_key = "fairy_flute"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_15xu1"]
+script = ExtResource("37_yngx1")
+target_pos = Vector2(168, 120)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_jl1um"]
+script = ExtResource("7_108ru")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ya2yf"), SubResource("Resource_ruiw0"), SubResource("Resource_f8l0t"), SubResource("Resource_15xu1")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_a7itj"]
+script = ExtResource("36_jbt5c")
+map_key = "kol"
+data_key = "fairy_flute"
+
+[sub_resource type="Resource" id="Resource_lm466"]
+script = ExtResource("37_yngx1")
+target_pos = Vector2(168, 120)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_edlwj"]
+script = ExtResource("38_rleqo")
+condition = SubResource("Resource_a7itj")
+condition_true_event = SubResource("Resource_lm466")
+skip_window = true
 
 [node name="Kol" instance=ExtResource("1_t7hxy")]
 map_bgm = "town"
@@ -399,6 +502,12 @@ starting_face_dir = Vector2(-1, 0)
 
 [node name="ProjectNpcBehaviour" parent="NPCParent/ToolShop/Behaviours" index="0" instance=ExtResource("19_bk4od")]
 project_dir = Vector2(-1, 0)
+
+[node name="FluteHint" parent="NPCParent" index="15" instance=ExtResource("3_vj2l5")]
+position = Vector2(40, 200)
+talk_event = SubResource("Resource_m2ycn")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/FluteHint/Behaviours" index="0" instance=ExtResource("5_dok7k")]
 
 [node name="OverworldExits" type="Node2D" parent="EventParent" index="0"]
 
@@ -632,6 +741,17 @@ position = Vector2(8, 72)
 map_key = "overworld"
 load_params = SubResource("Resource_bxmn6")
 
+[node name="DoorEvent" parent="EventParent" index="1" instance=ExtResource("31_4203q")]
+position = Vector2(136, 216)
+
+[node name="DoorEvent2" parent="EventParent" index="2" instance=ExtResource("31_4203q")]
+position = Vector2(40, 248)
+
+[node name="FairyFlute" parent="EventParent" index="3" instance=ExtResource("32_wud4e")]
+position = Vector2(168, 120)
+search_event = SubResource("Resource_jl1um")
+map_start_event = SubResource("Resource_edlwj")
+
 [node name="entrance" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(328, 392)
 
@@ -649,3 +769,4 @@ position = Vector2(440, 440)
 [editable path="NPCParent/AskForProof"]
 [editable path="NPCParent/SouthIslandLore2"]
 [editable path="NPCParent/ToolShop"]
+[editable path="NPCParent/FluteHint"]

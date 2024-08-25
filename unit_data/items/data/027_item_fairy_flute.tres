@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://cd43nkk22kbkh"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=15 format=3 uid="uid://cd43nkk22kbkh"]
 
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_yglf0"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_81uyd"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/fairy_flute_spell_effect.gd" id="3_cj5k1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_bgm_dialogue_event.gd" id="4_4cmwg"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="4_mxtm1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="5_wcad7"]
 
 [sub_resource type="Resource" id="Resource_cb8fa"]
 script = ExtResource("2_81uyd")
@@ -13,6 +15,8 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_qg7r4"]
 script = ExtResource("2_81uyd")
@@ -22,6 +26,8 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_kimxg"]
 script = ExtResource("3_cj5k1")
@@ -34,6 +40,23 @@ script = ExtResource("1_yglf0")
 target_type = 1
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_kimxg")])
 
+[sub_resource type="Resource" id="Resource_8r4cl"]
+script = ExtResource("4_4cmwg")
+bgm_key = "fairy_flute"
+wait_for_bgm = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qikaw"]
+script = ExtResource("4_4cmwg")
+bgm_key = ""
+wait_for_bgm = false
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_c601v"]
+script = ExtResource("5_wcad7")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_8r4cl"), SubResource("Resource_qikaw")])
+skip_window = true
+
 [sub_resource type="Resource" id="Resource_vn8vv"]
 script = ExtResource("2_81uyd")
 text = "%s blew the Fairies`s Flute."
@@ -42,6 +65,8 @@ is_speech = false
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [resource]
 script = ExtResource("4_mxtm1")
@@ -50,5 +75,8 @@ item_id = 27
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = false
 use_dialogue = SubResource("Resource_vn8vv")
 battle_action = SubResource("Resource_t8ysl")
+field_action = SubResource("Resource_c601v")
+tags = Array[int]([])

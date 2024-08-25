@@ -203,7 +203,11 @@ func on_search_selected() -> void:
 	
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.search_event != null:
-		await field_ui.play_dialogue(event.search_event, {}, false)
+		await field_ui.play_dialogue(event.search_event, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : [PlayerManager.hero.get_unit_name()],
+			"map_controller": self,
+			"map": field_map
+		}, false)
 	else:
 		await field_ui.play_dialogue(search_default_dialogue, {}, false)
 	close_command_window()
