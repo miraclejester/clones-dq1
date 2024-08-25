@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=81 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cufe444qc7nam" path="res://field/dialogues/common_npc_dialogues/dialogue_where_gwaelin.tres" id="8_mvfv1"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="9_btpew"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="10_urqlu"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="10_wpp7o"]
 [ext_resource type="PackedScene" uid="uid://4ntxmiusytft" path="res://field/characters/npcs/npc_behaviour/project/project_npc_behaviour.tscn" id="10_y5ubs"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="11_22ilt"]
 [ext_resource type="PackedScene" uid="uid://3h0mxwd211hb" path="res://field/characters/npcs/npc_variations/npc_merchant.tscn" id="13_s00wy"]
@@ -92,6 +93,29 @@ script = ExtResource("3_01fyj")
 events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_y3oa7"), SubResource("Resource_6t1kx")])
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_8b421"]
+script = ExtResource("10_wpp7o")
+map_key = "tantegel_throne"
+data_key = "princess_rescued"
+
+[sub_resource type="Resource" id="Resource_fr8a2"]
+script = ExtResource("2_i2oon")
+text = "Thank you for rescuing the Princess"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_35cdu"]
+script = ExtResource("20_uy2bo")
+condition = SubResource("Resource_8b421")
+condition_true_event = SubResource("Resource_fr8a2")
+condition_false_event = ExtResource("8_mvfv1")
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_on40w"]
 script = ExtResource("2_i2oon")
 text = "When entering the cave, take with thee a torch"
@@ -101,6 +125,45 @@ wait_for_input = false
 use_format_vars = false
 format_var_idxs = Array[int]([])
 wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_cvwem"]
+script = ExtResource("10_wpp7o")
+map_key = "tantegel_throne"
+data_key = "princess_rescued"
+
+[sub_resource type="Resource" id="Resource_tpxs6"]
+script = ExtResource("2_i2oon")
+text = "Oh, my dearest Gwaelin!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_g7h0f"]
+script = ExtResource("2_i2oon")
+text = "I hate thee, %s"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qvlwy"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_tpxs6"), SubResource("Resource_g7h0f")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_luqtt"]
+script = ExtResource("20_uy2bo")
+condition = SubResource("Resource_cvwem")
+condition_true_event = SubResource("Resource_qvlwy")
+condition_false_event = ExtResource("8_mvfv1")
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_5kfsi"]
@@ -405,7 +468,7 @@ talk_event = SubResource("Resource_b7kf8")
 
 [node name="LoreVillager2" parent="NPCParent" index="3" instance=ExtResource("7_lyggg")]
 position = Vector2(152, 232)
-talk_event = ExtResource("8_mvfv1")
+talk_event = SubResource("Resource_35cdu")
 
 [node name="RandomMoveNpcBehaviour" parent="NPCParent/LoreVillager2/Behaviours" index="0" instance=ExtResource("6_o05dn")]
 
@@ -417,7 +480,7 @@ talk_event = SubResource("Resource_on40w")
 
 [node name="WorriedGuard" parent="NPCParent" index="5" instance=ExtResource("2_1blbo")]
 position = Vector2(264, 344)
-talk_event = ExtResource("8_mvfv1")
+talk_event = SubResource("Resource_luqtt")
 starting_face_dir = Vector2(1, 0)
 
 [node name="MPHealer" parent="NPCParent" index="6" instance=ExtResource("9_btpew")]

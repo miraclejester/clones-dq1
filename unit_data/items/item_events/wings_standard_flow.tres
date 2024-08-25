@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=10 format=3 uid="uid://ctyb4mvpc60t8"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_lft2h"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="2_a6wof"]
+[ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_a2e0d"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="4_bk7jo"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="5_dyuf5"]
+
+[sub_resource type="Resource" id="Resource_m1ptp"]
+script = ExtResource("1_lft2h")
+text = "%s threw The Wings of the Wyvern up into the sky"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_oiak5"]
+script = ExtResource("2_a6wof")
+effect = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_v3nf3"]
+script = ExtResource("3_a2e0d")
+play_starting_event = false
+spawn_point_key = "landing"
+spawn_direction = Vector2(0, 1)
+transition_sound = "wings"
+
+[sub_resource type="Resource" id="Resource_dq25v"]
+script = ExtResource("4_bk7jo")
+map_key = "overworld"
+load_params = SubResource("Resource_v3nf3")
+skip_window = false
+
+[resource]
+script = ExtResource("5_dyuf5")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_m1ptp"), SubResource("Resource_oiak5"), SubResource("Resource_dq25v")])
+skip_window = true

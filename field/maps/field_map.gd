@@ -1,12 +1,17 @@
 extends Node2D
 class_name FieldMap
 
+enum MapTag {
+	OUTDOORS
+}
+
 @export var map_bgm: String
 @export var is_dark: bool
 @export var map_start_event: DialogueEvent
 @export var out_of_bounds_event: DialogueEvent
 @export var outside_target: String
 @export var outside_map_params: MapLoadParams
+@export var map_tags: Array[MapTag]
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
@@ -155,3 +160,7 @@ func is_out_of_bounds(pos: Vector2) -> bool:
 	var out_up: bool = pos.y < bound_start.position.y
 	var out_down: bool = pos.y > bound_end.position.y
 	return out_left or out_right or out_up or out_down
+
+
+func has_tag(tag: MapTag) -> bool:
+	return map_tags.has(tag)

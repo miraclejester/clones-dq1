@@ -1,45 +1,38 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=12 format=3 uid="uid://g0ndby5lc7xe"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://g0ndby5lc7xe"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_fp8ac"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_ll4l0"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="2_ofthm"]
-[ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_6suog"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="4_462kx"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="5_2m8k7"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="1_ul1g8"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="1_ycr82"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_hu5nx"]
+[ext_resource type="Resource" uid="uid://ctyb4mvpc60t8" path="res://unit_data/items/item_events/wings_standard_flow.tres" id="3_7aoyj"]
 
-[sub_resource type="Resource" id="Resource_m1ptp"]
-script = ExtResource("1_ll4l0")
-text = "%s threw The Wings of the Wyvern up into the sky"
+[sub_resource type="Resource" id="Resource_vefuv"]
+script = ExtResource("1_ul1g8")
+status_check = 2
+tag = 0
+
+[sub_resource type="Resource" id="Resource_4k51s"]
+script = ExtResource("1_ul1g8")
+status_check = 2
+tag = 0
+
+[sub_resource type="Resource" id="Resource_nmomm"]
+script = ExtResource("2_hu5nx")
+text = "The Wings of the Wyvern cannot be used here."
 in_quotes = false
 is_speech = false
 wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([0])
+use_format_vars = false
+format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_oiak5"]
-script = ExtResource("2_ofthm")
-effect = 0
+[sub_resource type="Resource" id="Resource_ubxb0"]
+script = ExtResource("1_ycr82")
+condition = SubResource("Resource_4k51s")
+condition_true_event = ExtResource("3_7aoyj")
+condition_false_event = SubResource("Resource_nmomm")
 skip_window = false
-
-[sub_resource type="Resource" id="Resource_v3nf3"]
-script = ExtResource("3_6suog")
-play_starting_event = false
-spawn_point_key = "landing"
-spawn_direction = Vector2(0, 1)
-transition_sound = "wings"
-
-[sub_resource type="Resource" id="Resource_dq25v"]
-script = ExtResource("4_462kx")
-map_key = "overworld"
-load_params = SubResource("Resource_v3nf3")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_ki4d3"]
-script = ExtResource("5_2m8k7")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_m1ptp"), SubResource("Resource_oiak5"), SubResource("Resource_dq25v")])
-skip_window = true
 
 [resource]
 script = ExtResource("1_fp8ac")
@@ -49,5 +42,6 @@ buy_price = 70
 sell_price = 35
 consumable = true
 sellable = true
-field_action = SubResource("Resource_ki4d3")
+consumable_condition = SubResource("Resource_vefuv")
+field_action = SubResource("Resource_ubxb0")
 tags = Array[int]([])

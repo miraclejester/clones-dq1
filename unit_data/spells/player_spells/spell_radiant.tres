@@ -8,7 +8,8 @@
 
 [sub_resource type="Resource" id="Resource_tkkbe"]
 script = ExtResource("1_ekpir")
-status_check = 0
+status_check = null
+tag = null
 
 [sub_resource type="Resource" id="Resource_pjjv6"]
 script = ExtResource("2_lqnho")

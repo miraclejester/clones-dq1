@@ -274,13 +274,19 @@ func on_item_data_selected(item: ItemData) -> void:
 			"wait_for_continuation": false
 		})
 		clean = false
+	
+	var consumable_condition_eval: bool = true
+	if item.consumable_condition != null:
+		consumable_condition_eval = item.consumable_condition.evaluate(field_ui.dialogue_window, {
+			"map_controller": self
+		})
+	if item.consumable and consumable_condition_eval:
+		PlayerManager.hero.inventory.remove_item(item)
 	await field_ui.play_dialogue(item.field_action, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
 		"map_controller": self,
 		"default_bgm": field_map.map_bgm
 	}, clean)
-	if item.consumable:
-		PlayerManager.hero.inventory.remove_item(item)
 	close_command_window()
 
 
