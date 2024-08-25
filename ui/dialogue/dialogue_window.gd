@@ -44,11 +44,11 @@ func deactivate() -> void:
 
 
 func wait_for_continuation(cont_visible: bool) -> void:
+	if auto_continue:
+		auto_continue = false
+		return
 	await MenuStack.push_stack(self, activate.bind(cont_visible), deactivate)
-	if not auto_continue:
-		await continued
-	else:
-		continue_input()
+	await continued
 	await MenuStack.pop_stack()
 
 

@@ -1,9 +1,23 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://7d7eis141jc5"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=31 format=3 uid="uid://7d7eis141jc5"]
 
 [ext_resource type="Script" path="res://unit_data/action_data.gd" id="1_k6etx"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_kir26"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/silver_harp_spell_effect.gd" id="3_h6l40"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_bgm_dialogue_event.gd" id="4_mgk50"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="4_rr6ef"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="4_unskt"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_kdw1d"]
+[ext_resource type="Resource" uid="uid://cuxhv6isaxox1" path="res://ui/data/field_dialogues/field_dialogue_non_field_spell.tres" id="6_ibgjo"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="7_u6o8m"]
+[ext_resource type="Script" path="res://battle/battle_config.gd" id="8_jspql"]
+[ext_resource type="Resource" uid="uid://h4xmcgy0pfbg" path="res://unit_data/enemies/00_slime/slime_encounter.tres" id="9_npqlw"]
+[ext_resource type="Resource" uid="uid://c7at73ygaqhv0" path="res://unit_data/enemies/01_red_slime/red_slime_encounter.tres" id="10_3f218"]
+[ext_resource type="Resource" uid="uid://dsh03hg522v10" path="res://unit_data/enemies/02_drackee/drakee_encounter.tres" id="11_8msc7"]
+[ext_resource type="Resource" uid="uid://becydqw0koe5r" path="res://unit_data/enemies/03_ghost/ghost_encounter.tres" id="12_5eabr"]
+[ext_resource type="Resource" uid="uid://dhiijk8r01tx7" path="res://unit_data/enemies/04_magician/encounter_magician.tres" id="13_uhb7c"]
+[ext_resource type="Resource" uid="uid://c0vedpjcpwnic" path="res://unit_data/enemies/06_scorpion/encounter_scorpion.tres" id="14_41mwd"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/start_random_battle_dialogue_event.gd" id="15_xw5km"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="17_xnsdh"]
 
 [sub_resource type="Resource" id="Resource_jj4ww"]
 script = ExtResource("2_kir26")
@@ -25,6 +39,52 @@ script = ExtResource("1_k6etx")
 target_type = 1
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_eyvip")])
 
+[sub_resource type="Resource" id="Resource_tcgpg"]
+script = ExtResource("4_mgk50")
+bgm_key = "silver_harp"
+wait_for_bgm = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_scnwo"]
+script = ExtResource("4_rr6ef")
+status_check = 2
+tag = 1
+
+[sub_resource type="Resource" id="Resource_1eg1n"]
+script = ExtResource("4_mgk50")
+bgm_key = ""
+wait_for_bgm = false
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_yus4a"]
+script = ExtResource("17_xnsdh")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_1eg1n"), ExtResource("6_ibgjo")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_lpppy"]
+script = ExtResource("8_jspql")
+field_bgm = "overworld"
+battle_bg = ExtResource("7_u6o8m")
+is_dark = false
+
+[sub_resource type="Resource" id="Resource_871a5"]
+script = ExtResource("15_xw5km")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("9_npqlw"), ExtResource("10_3f218"), ExtResource("11_8msc7"), ExtResource("12_5eabr"), ExtResource("13_uhb7c"), ExtResource("14_41mwd")])
+config = SubResource("Resource_lpppy")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_okgkf"]
+script = ExtResource("5_kdw1d")
+condition = SubResource("Resource_scnwo")
+condition_true_event = SubResource("Resource_871a5")
+condition_false_event = SubResource("Resource_yus4a")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_hhot8"]
+script = ExtResource("17_xnsdh")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_tcgpg"), SubResource("Resource_okgkf")])
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_1bqbu"]
 script = ExtResource("2_kir26")
 text = "%s played a sweet melody on the harp."
@@ -32,9 +92,9 @@ in_quotes = false
 is_speech = false
 wait_for_input = false
 use_format_vars = true
-format_var_idxs = Array[int]([])
+format_var_idxs = Array[int]([0])
 wait_for_dialogue = true
-skip_window = false
+skip_window = true
 
 [resource]
 script = ExtResource("4_unskt")
@@ -43,8 +103,9 @@ item_id = 28
 buy_price = -1
 sell_price = -1
 consumable = false
-sellable = true
+sellable = false
 stack_size = 1
 use_dialogue = SubResource("Resource_1bqbu")
 battle_action = SubResource("Resource_lfyuy")
+field_action = SubResource("Resource_hhot8")
 tags = Array[int]([])

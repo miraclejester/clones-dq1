@@ -2,7 +2,8 @@ extends Node2D
 class_name FieldMap
 
 enum MapTag {
-	OUTDOORS
+	OUTDOORS,
+	OVERWORLD
 }
 
 @export var map_bgm: String
