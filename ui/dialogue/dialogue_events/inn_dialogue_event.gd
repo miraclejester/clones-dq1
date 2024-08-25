@@ -41,7 +41,7 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 		yes_sequence.events.append(FadeInDialogueEvent.new())
 		
 		var return_bgm_event: PlayBGMDialogueEvent = PlayBGMDialogueEvent.new()
-		return_bgm_event.bgm_key = (params.get("field_map") as FieldMap).map_bgm
+		return_bgm_event.bgm_key = (params.get("map") as FieldMap).map_bgm
 		return_bgm_event.wait_for_bgm = false
 		yes_sequence.events.append(return_bgm_event)
 		

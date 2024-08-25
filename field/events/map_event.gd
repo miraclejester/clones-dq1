@@ -1,6 +1,7 @@
 extends Node2D
 class_name MapEvent
 
+@export var talk_event: DialogueEvent
 @export var take_event: DialogueEvent
 @export var search_event: DialogueEvent
 @export var door_event: DialogueEvent

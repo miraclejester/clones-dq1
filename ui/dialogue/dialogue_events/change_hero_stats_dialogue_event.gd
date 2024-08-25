@@ -9,7 +9,9 @@ enum OperationKey {
 	FULL_HEAL,
 	MODIFY_MP,
 	ADD_CURSE,
-	REMOVE_CURSE
+	REMOVE_CURSE,
+	ADD_PRINCESS,
+	REMOVE_PRINCESS
 }
 
 @export var key: OperationKey
@@ -38,3 +40,7 @@ func execute(window: DialogueWindow, _params: Dictionary) -> void:
 			PlayerManager.hero.is_cursed = true
 		OperationKey.REMOVE_CURSE:
 			PlayerManager.hero.is_cursed = false
+		OperationKey.ADD_PRINCESS:
+			PlayerManager.hero.change_princess_status(true)
+		OperationKey.REMOVE_PRINCESS:
+			PlayerManager.hero.change_princess_status(false)

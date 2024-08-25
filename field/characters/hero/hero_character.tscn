@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtm3drykcn2lw"]
+[gd_scene load_steps=23 format=3 uid="uid://dtm3drykcn2lw"]
 
 [ext_resource type="Texture2D" uid="uid://dk7rdjy31f2xb" path="res://field/characters/hero/hero.png" id="1_6hfk0"]
 [ext_resource type="Script" path="res://field/characters/hero/hero_character.gd" id="1_jcmbw"]
@@ -72,6 +72,74 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [28, 29]
+}
+
+[sub_resource type="Animation" id="Animation_u3ltc"]
+resource_name = "princess_walk_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_y1vtq"]
+resource_name = "princess_walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_ph3iu"]
+resource_name = "princess_walk_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_8iufe"]
+resource_name = "princess_walk_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [36, 37]
 }
 
 [sub_resource type="Animation" id="Animation_ifius"]
@@ -216,6 +284,10 @@ _data = {
 "full_walk_left": SubResource("Animation_c2m8i"),
 "full_walk_right": SubResource("Animation_0c4vw"),
 "full_walk_up": SubResource("Animation_66kpc"),
+"princess_walk_down": SubResource("Animation_u3ltc"),
+"princess_walk_left": SubResource("Animation_y1vtq"),
+"princess_walk_right": SubResource("Animation_ph3iu"),
+"princess_walk_up": SubResource("Animation_8iufe"),
 "shield_walk_down": SubResource("Animation_ifius"),
 "shield_walk_left": SubResource("Animation_hfhf7"),
 "shield_walk_right": SubResource("Animation_hn0hr"),
@@ -237,7 +309,7 @@ use_parent_material = true
 texture = ExtResource("1_6hfk0")
 hframes = 8
 vframes = 5
-frame = 30
+frame = 36
 
 [node name="DarknessLayer" parent="." instance=ExtResource("3_np4h4")]
 unique_name_in_owner = true

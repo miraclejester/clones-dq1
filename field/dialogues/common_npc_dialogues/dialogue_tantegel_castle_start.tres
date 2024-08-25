@@ -11,6 +11,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_oc2oo"]
@@ -21,6 +22,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = true
 format_var_idxs = Array[int]([1])
+wait_for_dialogue = true
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_nsnv0"]
@@ -31,6 +33,7 @@ is_speech = true
 wait_for_input = true
 use_format_vars = false
 format_var_idxs = Array[int]([])
+wait_for_dialogue = true
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_7t7gj"]
@@ -41,6 +44,7 @@ is_speech = true
 wait_for_input = false
 use_format_vars = true
 format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
 skip_window = false
 
 [resource]

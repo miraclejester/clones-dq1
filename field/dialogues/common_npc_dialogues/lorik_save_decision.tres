@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="YesNoDecisionDialogueEvent" load_steps=8 format=3 uid="uid://6eh7jsdggyj1"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/yes_no_decision_dialogue_event.gd" id="1_a2cat"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_game_dialogue_event.gd" id="2_gb7we"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_m2v10"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_3fsh7"]
+
+[sub_resource type="Resource" id="Resource_hmd4i"]
+script = ExtResource("2_gb7we")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_0v1u1"]
+script = ExtResource("3_m2v10")
+text = "Thy deeds have been recorded on the Imperial Scrolls of Honor"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dlk32"]
+script = ExtResource("4_3fsh7")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_hmd4i"), SubResource("Resource_0v1u1")])
+skip_window = false
+
+[resource]
+script = ExtResource("1_a2cat")
+yes_event = SubResource("Resource_dlk32")
+skip_window = false

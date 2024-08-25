@@ -7,6 +7,7 @@ signal level_changed(new_val: int)
 signal gold_changed(new_val: int)
 signal exp_changed(new_val: int)
 signal item_equipped(eq: EquipmentData)
+signal princess_status_changed(rescuing: bool)
 
 @export_file var level_chart_path: String
 @export_file var letter_values_path: String
@@ -24,6 +25,7 @@ var gold: int = 0
 var experience: int = 0
 var is_cursed: bool = false
 var step_counter: int = 0
+var rescuing_princess: bool = false
 
 
 func _ready() -> void:
@@ -212,3 +214,8 @@ func on_step() -> void:
 
 func on_map_transition() -> void:
 	step_counter = 0
+
+
+func change_princess_status(rescuing: bool) -> void:
+	rescuing_princess = rescuing
+	princess_status_changed.emit(rescuing)

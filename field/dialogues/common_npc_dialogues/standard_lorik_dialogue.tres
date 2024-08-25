@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=9 format=3 uid="uid://drdw7n8sa1ipp"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_23dxs"]
+[ext_resource type="Resource" uid="uid://ba6k7j7u1cskn" path="res://field/dialogues/common_npc_dialogues/lorik_save_question.tres" id="2_ler0a"]
+[ext_resource type="Resource" uid="uid://6eh7jsdggyj1" path="res://field/dialogues/common_npc_dialogues/lorik_save_decision.tres" id="3_m5lyd"]
+[ext_resource type="Resource" uid="uid://du033f7sxaqf1" path="res://field/dialogues/common_npc_dialogues/lorik_continue_question.tres" id="4_tpp0y"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_y5ulu"]
+[ext_resource type="Resource" uid="uid://deqxra2thfm1x" path="res://field/dialogues/common_npc_dialogues/lorik_continue_decision.tres" id="5_w7d1x"]
+
+[sub_resource type="Resource" id="Resource_h531b"]
+script = ExtResource("1_23dxs")
+text = "I am greatly pleased that thou hast returned, %s"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([0])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dsn8b"]
+script = ExtResource("1_23dxs")
+text = "Before reaching thy next level of experience thou must gain %d points"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([1])
+wait_for_dialogue = true
+skip_window = false
+
+[resource]
+script = ExtResource("4_y5ulu")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_h531b"), SubResource("Resource_dsn8b"), ExtResource("2_ler0a"), ExtResource("3_m5lyd"), ExtResource("4_tpp0y"), ExtResource("5_w7d1x")])
+skip_window = false

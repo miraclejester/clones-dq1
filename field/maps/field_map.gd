@@ -5,6 +5,8 @@ class_name FieldMap
 @export var is_dark: bool
 @export var map_start_event: DialogueEvent
 @export var out_of_bounds_event: DialogueEvent
+@export var outside_target: String
+@export var outside_map_params: MapLoadParams
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
@@ -43,9 +45,18 @@ func register_events(p: Node2D) -> void:
 			register_events(event)
 
 
-func register_character(character: FieldCharacter) -> void:
-	if not char_dict.has(character.position):
+func register_character(character: FieldCharacter, force: bool = false) -> void:
+	if not char_dict.has(character.position) or force:
 		char_dict[character.position] = character
+
+
+func spawn_character(character_scene: PackedScene, pos: Vector2) -> void:
+	var character: NPCCharacter = character_scene.instantiate() as NPCCharacter
+	npc_parent.add_child(character)
+	character.position = pos
+	char_dict[character.position] = character
+	character.set_current_map(self)
+	character.activate_events()
 
 
 func place_character_spot(character: FieldCharacter, pos: Vector2) -> void:

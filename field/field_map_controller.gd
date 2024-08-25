@@ -84,6 +84,15 @@ func load_map(path: String, params: MapLoadParams) -> void:
 	
 	await get_tree().create_timer(1).timeout
 	AudioManager.play_bgm(field_map.map_bgm)
+	
+	for event in field_map.get_events():
+		if event.map_start_event != null:
+			await field_ui.play_dialogue(event.map_start_event, {
+				"map": field_map,
+				"make_window_visible": false,
+				"map_controller": self
+			})
+	
 	hero_character.visible = true
 	field_map.visible = true
 	await GlobalVisuals.fade_in()
@@ -100,13 +109,6 @@ func load_map(path: String, params: MapLoadParams) -> void:
 		await field_ui.play_dialogue(field_map.map_start_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars()
 		})
-	
-	for event in field_map.get_events():
-		if event.map_start_event != null:
-			await field_ui.play_dialogue(event.map_start_event, {
-				"map": field_map,
-				"make_window_visible": false
-			})
 	
 	get_tree().paused = false
 	hero_character.set_process(true)
@@ -168,11 +170,25 @@ func on_talk_selected() -> void:
 		await field_ui.play_dialogue(npc.talk_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
 			"shop_interface": field_ui.shop_interface,
-			"field_map": field_map,
+			"map": field_map,
 			"map_controller": self
 		})
-	else:
-		await field_ui.play_dialogue(talk_default_dialogue)
+		close_command_window()
+		return
+	
+	var event: MapEvent = field_map.find_event(hero_character.get_facing_tile_position())
+	if event != null and event.talk_event != null:
+		var params: Dictionary = {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
+			"map": field_map,
+			"map_controller": self,
+			"default_bgm": field_map.map_bgm
+		}
+		await field_ui.play_dialogue(event.talk_event, params)
+		close_command_window()
+		return
+	
+	await field_ui.play_dialogue(talk_default_dialogue)
 	close_command_window()
 
 

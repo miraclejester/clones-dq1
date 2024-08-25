@@ -43,6 +43,7 @@ func _ready() -> void:
 	field_move_component.move_finished.connect(on_move_finished)
 	
 	PlayerManager.hero.item_equipped.connect(on_item_equipped)
+	PlayerManager.hero.princess_status_changed.connect(on_princess_status_changed)
 
 
 func _process(_delta: float) -> void:
@@ -114,6 +115,8 @@ func get_move_anim_name(base: String) -> String:
 func get_pause_frame(base: String) -> int:
 	var base_frame: int = super(base)
 	match get_anim_prefix():
+		"princess_":
+			return base_frame + 32
 		"full_":
 			return base_frame + 24
 		"sword_":
@@ -128,7 +131,10 @@ func get_anim_prefix() -> String:
 	var has_weapon: bool = PlayerManager.hero.equipment.has_equip(EquipmentData.EquipmentType.WEAPON)
 	var has_shield: bool = PlayerManager.hero.equipment.has_equip(EquipmentData.EquipmentType.SHIELD)
 	var prefix: String = "basic_character_move/"
-	if has_weapon and has_shield:
+	
+	if PlayerManager.hero.rescuing_princess:
+		prefix = "princess_"
+	elif has_weapon and has_shield:
 		prefix = "full_"
 	elif has_weapon:
 		prefix = "sword_"
@@ -169,3 +175,7 @@ func illuminate(strength: int, battery: int = 0) -> void:
 func on_move_finished() -> void:
 	move_finished.emit()
 	darkness_layer.on_step()
+
+
+func on_princess_status_changed(_status: bool) -> void:
+	set_face_dir(facing_dir)

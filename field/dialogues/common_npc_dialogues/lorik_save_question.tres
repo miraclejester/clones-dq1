@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayParagraphDialogueEvent" load_steps=2 format=3 uid="uid://ba6k7j7u1cskn"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_76t26"]
+
+[resource]
+script = ExtResource("1_76t26")
+text = "Will thou tell me now of thy deeds so they won`t be forgotten?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
