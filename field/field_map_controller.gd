@@ -199,7 +199,8 @@ func on_take_selected() -> void:
 	if event != null and event.take_event != null:
 		var params: Dictionary = {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
-			"map" : field_map
+			"map" : field_map,
+			"map_controller": self
 		}
 		params.merge(event.get_take_params())
 		await field_ui.play_dialogue(event.take_event, params)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dsshlmnl1j4u3"]
+[gd_scene load_steps=29 format=3 uid="uid://dsshlmnl1j4u3"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_3k76m"]
 [ext_resource type="PackedScene" uid="uid://d04xdrv2wnejk" path="res://field/tilemap/map_reference.tscn" id="2_scrpd"]
@@ -12,14 +12,9 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="5_mkxv6"]
 [ext_resource type="Resource" uid="uid://cjpsec6vp01rp" path="res://field/dialogues/common_npc_dialogues/dialogue_take_stones.tres" id="6_rvp8f"]
 [ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="12_mxiv5"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="13_unryd"]
+[ext_resource type="Resource" uid="uid://pvjxd0w7h5io" path="res://field/events/instances/key_item_chest_sequence.tres" id="13_01ocu"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="14_uxcdl"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="15_n2m87"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="16_1nkgc"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="17_o5abn"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="18_1nltb"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="19_hobw2"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="20_ptbri"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="21_yvkwj"]
 
 [sub_resource type="Resource" id="Resource_08gsf"]
@@ -67,61 +62,9 @@ spawn_point_key = "b1_stairs"
 spawn_direction = Vector2(-1, 0)
 transition_sound = ""
 
-[sub_resource type="Resource" id="Resource_rtrw8"]
-script = ExtResource("13_unryd")
-sfx_key = "treasure"
-wait_for_sfx = false
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_c4ymo"]
-script = ExtResource("14_uxcdl")
-target_pos = Vector2(0, 0)
-tile_key = "brick"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_b8d8f"]
-script = ExtResource("4_7r1km")
-text = "Fortune smiles upon thee, %s. Thou hast found the %s."
-in_quotes = false
-is_speech = false
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_y8jbq"]
-script = ExtResource("15_n2m87")
-
-[sub_resource type="Resource" id="Resource_pwrrq"]
-script = ExtResource("16_1nkgc")
-
-[sub_resource type="Resource" id="Resource_c78rt"]
-script = ExtResource("17_o5abn")
-dialogue = SubResource("Resource_b8d8f")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_gdkjv"]
-script = ExtResource("18_1nltb")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_ljxwm"]
-script = ExtResource("19_hobw2")
-target_pos = Vector2(0, 0)
-operation = 0
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_jn3rg"]
-script = ExtResource("20_ptbri")
-value = true
-map_key = "tantegel_castle_b1"
-data_key = "stones_chest"
-skip_window = false
-
 [sub_resource type="Resource" id="Resource_e0knd"]
 script = ExtResource("5_83xej")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm"), SubResource("Resource_jn3rg")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("13_01ocu")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_c8am0"]

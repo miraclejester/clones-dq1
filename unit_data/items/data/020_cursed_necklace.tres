@@ -25,5 +25,6 @@ buy_price = -1
 sell_price = 1250
 consumable = false
 sellable = true
+stack_size = 1
 field_action = SubResource("Resource_kkln4")
 tags = Array[int]([0])

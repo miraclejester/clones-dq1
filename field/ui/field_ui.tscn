@@ -1,17 +1,121 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvrgbbcsw5bfy"]
+[gd_scene load_steps=25 format=3 uid="uid://cvrgbbcsw5bfy"]
 
 [ext_resource type="Script" path="res://field/ui/field_ui.gd" id="1_7y1k8"]
 [ext_resource type="PackedScene" uid="uid://cfxyt4ds50804" path="res://battle/ui/player_hud.tscn" id="1_356wy"]
+[ext_resource type="Resource" uid="uid://dabdubhjli4ts" path="res://field/dialogues/field_ui/inventory_full_initial_sequence.tres" id="2_a16g6"]
 [ext_resource type="PackedScene" uid="uid://b11wr6262jxgm" path="res://battle/ui/command_window.tscn" id="3_tjigo"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_vn8f5"]
 [ext_resource type="PackedScene" uid="uid://8mmvb346f7pf" path="res://ui/dialogue/dialogue_window.tscn" id="4_5wf1j"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="4_bua5y"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="5_3bwed"]
 [ext_resource type="PackedScene" uid="uid://cl07w4uuaew7u" path="res://ui/items/item_window.tscn" id="5_ubbot"]
 [ext_resource type="PackedScene" uid="uid://82u2w5c2svg4" path="res://field/ui/status_window/status_window.tscn" id="6_6nwqk"]
 [ext_resource type="PackedScene" uid="uid://dda03uudn1fl4" path="res://field/ui/shop_interface/shop_interface.tscn" id="7_xshpe"]
 [ext_resource type="PackedScene" uid="uid://h1hhhv63dbcv" path="res://ui/spells/spell_window.tscn" id="8_3huyb"]
 
+[sub_resource type="Resource" id="Resource_nqlph"]
+script = ExtResource("3_vn8f5")
+text = "What shall thou drop?"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_b3gf3"]
+script = ExtResource("3_vn8f5")
+text = "Thou hast dropped thy %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_m0mv6"]
+script = ExtResource("4_bua5y")
+
+[sub_resource type="Resource" id="Resource_g32hg"]
+script = ExtResource("5_3bwed")
+dialogue = SubResource("Resource_b3gf3")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_m0mv6")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_g7fja"]
+script = ExtResource("3_vn8f5")
+text = "And obtained the %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_6j8k0"]
+script = ExtResource("4_bua5y")
+
+[sub_resource type="Resource" id="Resource_g0uno"]
+script = ExtResource("5_3bwed")
+dialogue = SubResource("Resource_g7fja")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_6j8k0")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_cyag7"]
+script = ExtResource("3_vn8f5")
+text = "That is much too important to throw away."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_4sc4o"]
+script = ExtResource("3_vn8f5")
+text = "Thou hast given up thy %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_0ef5n"]
+script = ExtResource("4_bua5y")
+
+[sub_resource type="Resource" id="Resource_nxlnf"]
+script = ExtResource("5_3bwed")
+dialogue = SubResource("Resource_4sc4o")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_0ef5n")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_s3crs"]
+script = ExtResource("3_vn8f5")
+text = "Thou cannot hold more Herbs."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
 [node name="FieldUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_7y1k8")
+full_inventory_initial_dialogue = ExtResource("2_a16g6")
+full_inventory_what_drop = SubResource("Resource_nqlph")
+full_inventory_dropped_item_dialogue = SubResource("Resource_g32hg")
+full_inventory_obtained_item_dialogue = SubResource("Resource_g0uno")
+full_inventory_cannot_drop_dialogue = SubResource("Resource_cyag7")
+full_inventory_given_up_dialogue = SubResource("Resource_nxlnf")
+full_inventory_herb = SubResource("Resource_s3crs")
 
 [node name="VisualsParent" type="Control" parent="." groups=["ambient_hurt", "darken", "spell_effect"]]
 layout_mode = 3

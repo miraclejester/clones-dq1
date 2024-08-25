@@ -11,6 +11,15 @@ signal search_selected()
 signal take_selected()
 
 signal command_cancelled()
+signal full_inventory_flow_finished()
+
+@export var full_inventory_initial_dialogue: DialogueEvent
+@export var full_inventory_what_drop: DialogueEvent
+@export var full_inventory_dropped_item_dialogue: DialogueEvent
+@export var full_inventory_obtained_item_dialogue: DialogueEvent
+@export var full_inventory_cannot_drop_dialogue: DialogueEvent
+@export var full_inventory_given_up_dialogue: DialogueEvent
+@export var full_inventory_herb: DialogueEvent
 
 @onready var visuals_parent: Control = $VisualsParent
 @onready var player_hud: PlayerHUD = %PlayerHud
@@ -95,6 +104,60 @@ func show_item_window(item_selected_callback: Callable, on_close: Callable) -> v
 		selected_callable,
 		CONNECT_ONE_SHOT
 	)
+
+
+func full_inventory_flow(desired_item: ItemData) -> void:
+	if desired_item.item_id == 23:
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(full_inventory_herb)
+		])
+		full_inventory_flow_finished.emit()
+		return
+		
+	await dialogue_window.start_dialogue([
+		DialogueEventParams.fromData(full_inventory_initial_dialogue, {
+			"item_name_provider_item": desired_item
+		})
+	])
+	await dialogue_window.prompt_yes_no(full_inventory_choose_drop.bind(desired_item), full_inventory_give_up.bind(desired_item))
+
+
+func full_inventory_choose_drop(desired_item: ItemData) -> void:
+	await dialogue_window.start_dialogue([
+		DialogueEventParams.fromData(full_inventory_what_drop)
+	])
+	await show_item_window(full_inventory_item_dropped.bind(desired_item), full_inventory_give_up.bind(desired_item))
+
+
+func full_inventory_item_dropped(dropped_item: ItemData, desired_item: ItemData) -> void:
+	if not dropped_item.sellable:
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(full_inventory_cannot_drop_dialogue)
+		])
+		await full_inventory_choose_drop(desired_item)
+	else:
+		PlayerManager.hero.inventory.remove_item(dropped_item)
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(full_inventory_dropped_item_dialogue , {
+				"item_name_provider_item": dropped_item
+			})
+		])
+		PlayerManager.hero.inventory.add_item(desired_item)
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(full_inventory_obtained_item_dialogue , {
+				"item_name_provider_item": desired_item
+			})
+		])
+		full_inventory_flow_finished.emit()
+
+
+func full_inventory_give_up(desired_item: ItemData) -> void:
+	await dialogue_window.start_dialogue([
+		DialogueEventParams.fromData(full_inventory_given_up_dialogue , {
+			"item_name_provider_item": desired_item
+		})
+	])
+	full_inventory_flow_finished.emit()
 
 
 func show_spell_window(spell_selected_callback: Callable, on_close: Callable) -> void:

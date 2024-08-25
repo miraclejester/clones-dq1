@@ -22,6 +22,7 @@ func request_move(target: Vector2) -> bool:
 
 func set_tile(pos: Vector2, coords: Vector2i) -> void:
 	set_cell(0, local_to_map(pos), 0, coords)
+	set_cell(1, local_to_map(pos), 0, coords)
 
 
 func set_tile_key(pos: Vector2, key: String) -> void:

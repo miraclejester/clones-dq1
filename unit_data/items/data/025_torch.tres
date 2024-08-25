@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://b5rs1qc4vl5ym"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://b5rs1qc4vl5ym"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="1_725ww"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/illuminate_dialogue_event.gd" id="1_jvg3p"]
@@ -6,9 +6,15 @@
 [ext_resource type="Resource" uid="uid://bvu14yikhpya4" path="res://unit_data/spells/spell_dialogues/torch_default_use.tres" id="2_wocun"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="3_akput"]
 
+[sub_resource type="Resource" id="Resource_dj6he"]
+script = ExtResource("1_lxhuv")
+status_check = 0
+tag = 0
+
 [sub_resource type="Resource" id="Resource_ef7qv"]
 script = ExtResource("1_lxhuv")
 status_check = 0
+tag = 0
 
 [sub_resource type="Resource" id="Resource_7elcg"]
 script = ExtResource("1_jvg3p")
@@ -29,7 +35,8 @@ item_name = "Torch"
 item_id = 25
 buy_price = 8
 sell_price = 4
-consumable = false
+consumable = true
 sellable = true
+consumable_condition = SubResource("Resource_dj6he")
 field_action = SubResource("Resource_2ggtl")
 tags = Array[int]([])

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=9 format=3 uid="uid://b4crsnlc4pj8u"]
+
+[ext_resource type="Resource" uid="uid://s045g1f8s3dj" path="res://unit_data/items/data/020_cursed_necklace.tres" id="1_37eqh"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/player_bool_status_dialogue_condition.gd" id="1_265n0"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/full_inventory_dialogue_event.gd" id="2_o6pmr"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="3_m5odw"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="4_ddnyt"]
+
+[sub_resource type="Resource" id="Resource_dpl6v"]
+script = ExtResource("1_265n0")
+condition_to_check = 1
+item = ExtResource("1_37eqh")
+
+[sub_resource type="Resource" id="Resource_javcr"]
+script = ExtResource("2_o6pmr")
+item = ExtResource("1_37eqh")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_5crrh"]
+script = ExtResource("3_m5odw")
+item = ExtResource("1_37eqh")
+skip_window = false
+
+[resource]
+script = ExtResource("4_ddnyt")
+condition = SubResource("Resource_dpl6v")
+condition_true_event = SubResource("Resource_5crrh")
+condition_false_event = SubResource("Resource_javcr")
+skip_window = false

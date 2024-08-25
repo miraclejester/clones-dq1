@@ -11,6 +11,7 @@ enum ItemTag {
 @export var sell_price: int
 @export var consumable: bool
 @export var sellable: bool = true
+@export var stack_size: int = 1
 @export var consumable_condition: DialogueCondition
 @export var use_dialogue: DialogueEvent
 @export var battle_action: ActionData

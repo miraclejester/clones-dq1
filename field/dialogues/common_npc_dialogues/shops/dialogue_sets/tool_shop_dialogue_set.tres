@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=18 format=3 uid="uid://v82bfc6ty8tq"]
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=19 format=3 uid="uid://v82bfc6ty8tq"]
 
 [ext_resource type="Resource" uid="uid://ca1rc01y5wsy5" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_buy_again.tres" id="1_jsekb"]
 [ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_ueiy7"]
@@ -17,6 +17,17 @@
 [sub_resource type="Resource" id="Resource_b5xd5"]
 script = ExtResource("3_0cph3")
 text = "I cannot buy it"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_u7d34"]
+script = ExtResource("3_0cph3")
+text = "Thou cannot carry anymore"
 in_quotes = true
 is_speech = true
 wait_for_input = false
@@ -62,6 +73,7 @@ buy_again_dialogue = ExtResource("1_jsekb")
 item_selected_dialogue = ExtResource("2_ai4cn")
 buy_confirm_dialogue = ExtResource("2_ai4cn")
 item_bought_dialogue = ExtResource("2_ai4cn")
+cannot_carry_more = SubResource("Resource_u7d34")
 sell_confirm_dialogue = ExtResource("9_e84nt")
 sell_again_dialogue = ExtResource("8_77vpi")
 no_sellable_items_dialogue = ExtResource("5_xyhyc")

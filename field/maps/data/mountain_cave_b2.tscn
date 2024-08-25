@@ -1,19 +1,13 @@
-[gd_scene load_steps=49 format=3 uid="uid://cmpfk48ahdmaa"]
+[gd_scene load_steps=34 format=3 uid="uid://cmpfk48ahdmaa"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_8ytya"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="3_psog5"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_74oco"]
 [ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="5_ddcut"]
+[ext_resource type="Resource" uid="uid://pvjxd0w7h5io" path="res://field/events/instances/key_item_chest_sequence.tres" id="5_wacer"]
 [ext_resource type="Resource" uid="uid://bb11yw4i4mybk" path="res://unit_data/items/data/022_fighter_ring.tres" id="6_sg8of"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="6_xyl1y"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="7_2pbeq"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="8_h0fip"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="9_t2uxl"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="10_qd7bb"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="11_cakbt"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="12_4h6yn"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="13_0v2gh"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="14_7cqbb"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="15_o7r0e"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="16_pv5dx"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="17_fc6ci"]
@@ -54,61 +48,9 @@ spawn_point_key = "stairs_c"
 spawn_direction = Vector2(-1, 0)
 transition_sound = ""
 
-[sub_resource type="Resource" id="Resource_rtrw8"]
-script = ExtResource("6_xyl1y")
-sfx_key = "treasure"
-wait_for_sfx = false
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_c4ymo"]
-script = ExtResource("7_2pbeq")
-target_pos = Vector2(0, 0)
-tile_key = "brick"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_b8d8f"]
-script = ExtResource("8_h0fip")
-text = "Fortune smiles upon thee, %s. Thou hast found the %s."
-in_quotes = false
-is_speech = false
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_y8jbq"]
-script = ExtResource("9_t2uxl")
-
-[sub_resource type="Resource" id="Resource_pwrrq"]
-script = ExtResource("10_qd7bb")
-
-[sub_resource type="Resource" id="Resource_c78rt"]
-script = ExtResource("11_cakbt")
-dialogue = SubResource("Resource_b8d8f")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_gdkjv"]
-script = ExtResource("12_4h6yn")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_ljxwm"]
-script = ExtResource("13_0v2gh")
-target_pos = Vector2(0, 0)
-operation = 0
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_jpags"]
-script = ExtResource("14_7cqbb")
-value = true
-map_key = "mountain_cave_b2"
-data_key = "fighter_ring_chest"
-skip_window = false
-
 [sub_resource type="Resource" id="Resource_2lkj5"]
 script = ExtResource("15_o7r0e")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm"), SubResource("Resource_jpags")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("5_wacer")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_on6et"]
@@ -146,7 +88,7 @@ data_key = "death_necklace_obtained"
 
 [sub_resource type="Resource" id="Resource_hp1bm"]
 script = ExtResource("22_hxmsr")
-chance = 0.031
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_tabvs"]
 script = ExtResource("17_fc6ci")

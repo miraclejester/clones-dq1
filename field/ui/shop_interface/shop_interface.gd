@@ -37,7 +37,7 @@ func start(d: ShopData) -> void:
 
 
 func buy_single_item_selected() -> void:
-	if PlayerManager.hero.inventory.get_item_amount(data.single_item.item_id) >= data.single_item_limit:
+	if not PlayerManager.hero.inventory.item_fits_inventory(data.single_item):
 		await dialogue_window.show_newline()
 		await dialogue_window.start_dialogue([
 			DialogueEventParams.fromData(data.dialogues.cannot_sell_more_dialogue)
@@ -100,9 +100,16 @@ func product_selected(product: ItemData) -> void:
 
 func purchase_flow_for_selling(product: ItemData) -> void:
 	if product.buy_price > PlayerManager.hero.gold:
-		dialogue_window.show_newline()
+		await dialogue_window.show_newline()
 		await dialogue_window.start_dialogue([
 			DialogueEventParams.fromData(data.dialogues.not_enough_money_dialogue)
+		])
+		await dialogue_window.wait_for_continuation(true)
+		buy_again_flow()
+	elif not PlayerManager.hero.inventory.item_fits_inventory(product):
+		await dialogue_window.show_newline()
+		await dialogue_window.start_dialogue([
+			DialogueEventParams.fromData(data.dialogues.cannot_carry_more)
 		])
 		await dialogue_window.wait_for_continuation(true)
 		buy_again_flow()

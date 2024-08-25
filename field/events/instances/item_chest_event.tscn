@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://u77o377e6bjj"]
+[gd_scene load_steps=22 format=3 uid="uid://u77o377e6bjj"]
 
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="1_b78xh"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="2_bwyiv"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="5_hhatm"]
 [ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="6_kxo4w"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="7_1272b"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="8_10y3p"]
+[ext_resource type="Resource" uid="uid://b4crsnlc4pj8u" path="res://field/events/instances/full_inventory_conditional.tres" id="8_3ft1r"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="9_utyka"]
 [ext_resource type="PackedScene" uid="uid://6dih381y4dgh" path="res://field/events/param_providers/event_position_param_provider.tscn" id="11_apgfe"]
 [ext_resource type="Resource" uid="uid://cc322kgljkfi0" path="res://field/events/common_dialogues/chest_search_dialogue.tres" id="11_nqxf7"]
@@ -49,10 +49,6 @@ dialogue = SubResource("Resource_b8d8f")
 format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_gdkjv"]
-script = ExtResource("8_10y3p")
-skip_window = false
-
 [sub_resource type="Resource" id="Resource_ljxwm"]
 script = ExtResource("9_utyka")
 target_pos = Vector2(0, 0)
@@ -61,7 +57,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_n3u28"]
 script = ExtResource("4_ua5rh")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), ExtResource("8_3ft1r"), SubResource("Resource_ljxwm")])
 skip_window = false
 
 [node name="ItemChestEvent" instance=ExtResource("1_b78xh")]

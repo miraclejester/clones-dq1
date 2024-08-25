@@ -1,23 +1,17 @@
-[gd_scene load_steps=40 format=3 uid="uid://cvr7l07jp6uti"]
+[gd_scene load_steps=26 format=3 uid="uid://cvr7l07jp6uti"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_5r1pd"]
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="3_0vo1k"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_tx0r6"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="5_7ovnf"]
+[ext_resource type="Resource" uid="uid://pvjxd0w7h5io" path="res://field/events/instances/key_item_chest_sequence.tres" id="6_gnykw"]
 [ext_resource type="PackedScene" uid="uid://u77o377e6bjj" path="res://field/events/instances/item_chest_event.tscn" id="6_rc6dk"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="7_0s5bb"]
 [ext_resource type="Resource" uid="uid://dtay22cogb680" path="res://unit_data/items/data/032_erdrick_tablet.tres" id="7_1plrw"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="8_xbbvq"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="9_k1u1p"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="10_ftbcf"]
-[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="11_ocf8j"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="12_n1oxy"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="13_o4pql"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="14_0otr0"]
 [ext_resource type="Resource" uid="uid://bonojmqtjv4b6" path="res://unit_data/items/item_events/tablet_dialogue.tres" id="15_4lfry"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="15_bhgvb"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/newline_dialogue_event.gd" id="15_qierj"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="16_kl827"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="17_jha7k"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="19_rdies"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="20_8mrkp"]
 
@@ -41,72 +35,18 @@ map_key = "erdrick_cave"
 load_params = SubResource("Resource_d5jhf")
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_rtrw8"]
-script = ExtResource("7_0s5bb")
-sfx_key = "treasure"
-wait_for_sfx = false
+[sub_resource type="Resource" id="Resource_hm2h5"]
+script = ExtResource("17_jha7k")
+
+[sub_resource type="Resource" id="Resource_a1j0k"]
+script = ExtResource("20_8mrkp")
+condition = SubResource("Resource_hm2h5")
+condition_true_event = ExtResource("15_4lfry")
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_c4ymo"]
-script = ExtResource("8_xbbvq")
-target_pos = Vector2(0, 0)
-tile_key = "brick"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_b8d8f"]
-script = ExtResource("9_k1u1p")
-text = "Fortune smiles upon thee, %s. Thou hast found the %s."
-in_quotes = false
-is_speech = false
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_y8jbq"]
-script = ExtResource("10_ftbcf")
-
-[sub_resource type="Resource" id="Resource_pwrrq"]
-script = ExtResource("11_ocf8j")
-
-[sub_resource type="Resource" id="Resource_c78rt"]
-script = ExtResource("12_n1oxy")
-dialogue = SubResource("Resource_b8d8f")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_gdkjv"]
-script = ExtResource("13_o4pql")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_ljxwm"]
-script = ExtResource("14_0otr0")
-target_pos = Vector2(0, 0)
-operation = 0
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_erlet"]
-script = ExtResource("15_bhgvb")
-value = true
-map_key = "erdrick_cave_b2"
-data_key = "tablet_chest"
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_3bve0"]
-script = ExtResource("15_qierj")
-text = ""
-in_quotes = false
-is_speech = false
-wait_for_input = false
-use_format_vars = true
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_m0r87"]
+[sub_resource type="Resource" id="Resource_b515g"]
 script = ExtResource("16_kl827")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c4ymo"), SubResource("Resource_c78rt"), SubResource("Resource_gdkjv"), SubResource("Resource_ljxwm"), SubResource("Resource_erlet"), SubResource("Resource_3bve0"), ExtResource("15_4lfry")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([ExtResource("6_gnykw"), SubResource("Resource_a1j0k")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_qan1i"]
@@ -152,7 +92,7 @@ stairs_event = SubResource("Resource_6hq08")
 
 [node name="ErdrickTabletChest" parent="EventParent" index="1" instance=ExtResource("6_rc6dk")]
 position = Vector2(168, 72)
-take_event = SubResource("Resource_m0r87")
+take_event = SubResource("Resource_b515g")
 map_start_event = SubResource("Resource_lg6rr")
 
 [node name="ItemEventParamProvider" parent="EventParent/ErdrickTabletChest/TakeParams" index="1"]

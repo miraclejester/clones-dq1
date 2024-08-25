@@ -359,7 +359,6 @@ can_sell = false
 is_single_item_shop = true
 single_item_price = 85
 single_item = ExtResource("21_tv5qf")
-single_item_limit = 5
 items = Array[Resource("res://unit_data/items/item_data.gd")]([])
 dialogues = ExtResource("19_8xdsn")
 

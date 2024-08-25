@@ -12,6 +12,7 @@ class_name ShopDialogueSet
 @export var item_bought_dialogue: DialogueEvent
 @export var buy_cancelled_dialogue: DialogueEvent
 @export var rebuy_equipment_dialogue: DialogueEvent
+@export var cannot_carry_more: DialogueEvent
 
 @export_group("Sell Dialogues")
 @export var sell_confirm_dialogue: DialogueEvent

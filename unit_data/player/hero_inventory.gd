@@ -2,16 +2,29 @@ extends RefCounted
 class_name HeroInventory
 
 var items: Array[ItemStack] = []
+var max_stacks: int = 9
 
 func stack_count() -> int:
 	return items.size()
 
+
 func add_item(item: ItemData) -> void:
 	var stack: ItemStack = find_stack(item.item_id)
-	if stack == null:
+	if stack == null or stack.amount >= item.stack_size:
 		items.append(ItemStack.new(item, 1))
 	else:
 		stack.add_to_stack(1)
+
+
+func item_fits_inventory(item: ItemData) -> bool:
+	if item.stack_size > 1:
+		var stack: ItemStack = find_stack(item.item_id)
+		if stack == null:
+			return items.size() < max_stacks
+		return stack.amount < item.stack_size
+	else:
+		return items.size() < max_stacks
+		
 
 
 func remove_item(item: ItemData) -> void:

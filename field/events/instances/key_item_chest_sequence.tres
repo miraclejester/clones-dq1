@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=26 format=3 uid="uid://pvjxd0w7h5io"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_sfx_dialogue_event.gd" id="1_0otpb"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="2_7gvwx"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="3_wb0ur"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="4_c23xy"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="5_8ecy8"]
+[ext_resource type="Resource" uid="uid://b4crsnlc4pj8u" path="res://field/events/instances/full_inventory_conditional.tres" id="6_7kg4q"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="7_agq3g"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_tilemap_dialogue_event.gd" id="8_ivur2"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="9_i66c8"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="10_k1y85"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/newline_dialogue_event.gd" id="11_d6lni"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="12_2e8f1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="13_0cf4x"]
+
+[sub_resource type="Resource" id="Resource_rtrw8"]
+script = ExtResource("1_0otpb")
+sfx_key = "treasure"
+wait_for_sfx = false
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_b8d8f"]
+script = ExtResource("2_7gvwx")
+text = "Fortune smiles upon thee, %s. Thou hast found the %s."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_y8jbq"]
+script = ExtResource("3_wb0ur")
+
+[sub_resource type="Resource" id="Resource_pwrrq"]
+script = ExtResource("4_c23xy")
+
+[sub_resource type="Resource" id="Resource_c78rt"]
+script = ExtResource("5_8ecy8")
+dialogue = SubResource("Resource_b8d8f")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_y8jbq"), SubResource("Resource_pwrrq")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_q28vv"]
+script = ExtResource("7_agq3g")
+
+[sub_resource type="Resource" id="Resource_bave5"]
+script = ExtResource("8_ivur2")
+target_pos = Vector2(0, 0)
+tile_key = "brick"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ry5y2"]
+script = ExtResource("9_i66c8")
+target_pos = Vector2(0, 0)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_tan7a"]
+script = ExtResource("10_k1y85")
+value = true
+map_key = "erdrick_cave_b2"
+data_key = "tablet_chest"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_drpc0"]
+script = ExtResource("11_d6lni")
+text = ""
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_bkm78"]
+script = ExtResource("12_2e8f1")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_bave5"), SubResource("Resource_ry5y2"), SubResource("Resource_tan7a"), SubResource("Resource_drpc0")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_0ehhr"]
+script = ExtResource("13_0cf4x")
+condition = SubResource("Resource_q28vv")
+condition_true_event = SubResource("Resource_bkm78")
+skip_window = false
+
+[resource]
+script = ExtResource("12_2e8f1")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_rtrw8"), SubResource("Resource_c78rt"), ExtResource("6_7kg4q"), SubResource("Resource_0ehhr")])
+skip_window = false

@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=11 format=3 uid="uid://dabdubhjli4ts"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_2rgju"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="1_7pylg"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="2_5bume"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="3_mt3sb"]
+
+[sub_resource type="Resource" id="Resource_88ptr"]
+script = ExtResource("1_2rgju")
+text = "If thou would take the %s, thou must now discard some other item."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_oymc3"]
+script = ExtResource("2_5bume")
+
+[sub_resource type="Resource" id="Resource_y2uox"]
+script = ExtResource("3_mt3sb")
+dialogue = SubResource("Resource_88ptr")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_oymc3")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_53nsm"]
+script = ExtResource("1_2rgju")
+text = "Dost thou wish to have the %s?"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_rbiig"]
+script = ExtResource("2_5bume")
+
+[sub_resource type="Resource" id="Resource_7lepu"]
+script = ExtResource("3_mt3sb")
+dialogue = SubResource("Resource_53nsm")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_rbiig")])
+skip_window = false
+
+[resource]
+script = ExtResource("1_7pylg")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_y2uox"), SubResource("Resource_7lepu")])
+skip_window = false
