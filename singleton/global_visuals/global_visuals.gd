@@ -142,7 +142,8 @@ func determine_ui_colors(hp: int, max_hp: int) -> void:
 func cycle(nodes: Array[Node], callables: Array[Callable], step_wait: float) -> void:
 	for callable in callables:
 		for node in nodes:
-			callable.call(node)
+			if is_instance_valid(node):
+				callable.call(node)
 		await get_tree().create_timer(step_wait).timeout
 
 

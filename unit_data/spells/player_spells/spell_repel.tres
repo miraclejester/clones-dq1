@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3 uid="uid://d0klti2fdeiuw"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_rrjan"]
+
+[resource]
+script = ExtResource("1_rrjan")
+spell_id = 9
+spell_name = "REPEL"
+mp_cost = 2
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])

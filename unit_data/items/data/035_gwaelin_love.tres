@@ -1,6 +1,89 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b70wyvc2skiem"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=17 format=3 uid="uid://b70wyvc2skiem"]
 
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_81mtf"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_ojjyu"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="2_1wmd4"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/next_level_exp_format_var_provider.gd" id="2_sk46h"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="3_pcth6"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="4_sxge6"]
+
+[sub_resource type="Resource" id="Resource_m06po"]
+script = ExtResource("1_81mtf")
+text = "Heed my voice,"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_tek2p"]
+script = ExtResource("1_81mtf")
+text = "Alex, for this is Gwaelin"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_lxeiy"]
+script = ExtResource("1_81mtf")
+text = "To reach the next level thou must raise thy Experience Points by %d"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_8dgcm"]
+script = ExtResource("2_sk46h")
+
+[sub_resource type="Resource" id="Resource_5ingg"]
+script = ExtResource("2_1wmd4")
+dialogue = SubResource("Resource_lxeiy")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_8dgcm")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_phsyl"]
+script = ExtResource("1_81mtf")
+text = "My hope is with thee"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_i2amg"]
+script = ExtResource("1_81mtf")
+text = "I love thee, %s"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_8h5it"]
+script = ExtResource("4_sxge6")
+
+[sub_resource type="Resource" id="Resource_4swdo"]
+script = ExtResource("2_1wmd4")
+dialogue = SubResource("Resource_i2amg")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_8h5it")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_luukj"]
+script = ExtResource("3_pcth6")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_m06po"), SubResource("Resource_tek2p"), SubResource("Resource_5ingg"), SubResource("Resource_phsyl"), SubResource("Resource_4swdo")])
+skip_window = false
 
 [resource]
 script = ExtResource("1_ojjyu")
@@ -10,4 +93,6 @@ buy_price = -1
 sell_price = -1
 consumable = false
 sellable = false
+stack_size = 1
+field_action = SubResource("Resource_luukj")
 tags = Array[int]([])

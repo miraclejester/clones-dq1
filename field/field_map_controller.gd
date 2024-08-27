@@ -435,6 +435,7 @@ func start_battle_from_zone(encounter: EncounterData, zone: EncounterZone) -> vo
 
 func start_battle(encounter: EncounterData, config: BattleConfig) -> void:
 	field_ui.visible = false
+	get_tree().paused = true
 	battle_controller.set_visibility(true)
 	battle_controller.position.x = hero_character.position.x - (8*17)
 	battle_controller.position.y = hero_character.position.y - (7*16)

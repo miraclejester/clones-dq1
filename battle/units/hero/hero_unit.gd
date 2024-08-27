@@ -192,12 +192,12 @@ func add_exp(val: int, immediate_level_up: bool = false) -> void:
 
 
 func add_gold(val: int) -> void:
-	gold = clampi(gold + val, 0, 9999)
+	gold = clampi(gold + val, 0, 99999)
 	gold_changed.emit(gold)
 
 
 func spend_gold(val: int) -> void:
-	gold = clampi(gold - val, 0, 9999)
+	gold = clampi(gold - val, 0, 99999)
 	gold_changed.emit(gold)
 
 

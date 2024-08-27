@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=11 format=3 uid="uid://bte0tjjj86juw"]
+
+[ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_jqca5"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_pm7on"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_6n7ek"]
+[ext_resource type="Resource" uid="uid://ds04lq3bq25ep" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_shop_not_enough_money.tres" id="3_q1lov"]
+
+[sub_resource type="Resource" id="Resource_b2swe"]
+script = ExtResource("1_pm7on")
+text = "I am sorry, but I cannot sell thee anymore"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_bsxi3"]
+script = ExtResource("1_pm7on")
+text = "All the best to thee"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_pkhkh"]
+script = ExtResource("1_pm7on")
+text = "Will thou buy some Fairy Water for %d GOLD to keep the Dragonlord`s minions away?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wtbo1"]
+script = ExtResource("1_pm7on")
+text = "I thank thee"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_75ryl"]
+script = ExtResource("1_pm7on")
+text = "Won`t thou buy one more bottle?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qdhtt"]
+script = ExtResource("2_6n7ek")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wtbo1"), SubResource("Resource_75ryl")])
+skip_window = false
+
+[resource]
+script = ExtResource("1_jqca5")
+initial_dialogue = SubResource("Resource_pkhkh")
+goodbye_dialogue = SubResource("Resource_bsxi3")
+not_enough_money_dialogue = ExtResource("3_q1lov")
+item_bought_dialogue = SubResource("Resource_qdhtt")
+cannot_sell_more_dialogue = SubResource("Resource_b2swe")

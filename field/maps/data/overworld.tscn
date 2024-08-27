@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=52 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -8,15 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://daiiups5m4xub" path="res://field/encounters/zones/zone_1.tscn" id="5_byy11"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="5_vgvkh"]
 [ext_resource type="PackedScene" uid="uid://docgsj3htjkpn" path="res://field/encounters/zones/zone_2.tscn" id="6_1y0in"]
+[ext_resource type="Texture2D" uid="uid://bb1fxx28epc6i" path="res://battle/bgs/battle_bg.png" id="6_o3rkb"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/place_hero_character_dialogue_event.gd" id="7_1ycaj"]
 [ext_resource type="PackedScene" uid="uid://bgkfkewhdhq1m" path="res://field/encounters/zones/zone_3.tscn" id="7_wcjq1"]
 [ext_resource type="PackedScene" uid="uid://dpnsdxkrmyw7c" path="res://field/encounters/zones/zone_4.tscn" id="8_f04px"]
+[ext_resource type="Script" path="res://battle/battle_config.gd" id="8_m0uk4"]
 [ext_resource type="PackedScene" uid="uid://dssdf3n6hcldb" path="res://field/encounters/zones/zone_5.tscn" id="9_7n481"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="9_v5762"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/save_map_bool_dialogue_event.gd" id="10_lmcd3"]
 [ext_resource type="PackedScene" uid="uid://g47lrsfcupeg" path="res://field/encounters/zones/zone_6.tscn" id="10_sxlqu"]
 [ext_resource type="PackedScene" uid="uid://d2oaccpxel41i" path="res://field/encounters/zones/zone_12.tscn" id="10_yevhr"]
 [ext_resource type="PackedScene" uid="uid://bs3f2f8h6gvji" path="res://field/encounters/zones/zone_7.tscn" id="11_p6jt1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="11_th320"]
+[ext_resource type="Resource" uid="uid://dtxudsvurcaqi" path="res://unit_data/enemies/24_golem/encounter_golem.tres" id="12_sv3mr"]
 [ext_resource type="PackedScene" uid="uid://drtd7dh0lqju4" path="res://field/encounters/zones/zone_8.tscn" id="12_vawmw"]
 [ext_resource type="PackedScene" uid="uid://dkjycvrb03u6a" path="res://field/encounters/zones/zone_9.tscn" id="13_j038n"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/start_battle_dialogue_event.gd" id="13_s8oe3"]
 [ext_resource type="PackedScene" uid="uid://blkp1jpamh7qh" path="res://field/encounters/zones/zone_10.tscn" id="14_1mej7"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="14_gn4hb"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="15_flsyf"]
 [ext_resource type="PackedScene" uid="uid://dkaqp20hhb6g3" path="res://field/encounters/zones/zone_11.tscn" id="15_hocvs"]
 [ext_resource type="PackedScene" uid="uid://c8ixopnqefyei" path="res://field/encounters/zones/zone_13.tscn" id="17_tae7m"]
 
@@ -103,6 +113,67 @@ spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
 transition_sound = ""
 
+[sub_resource type="Resource" id="Resource_28ehl"]
+script = ExtResource("7_1ycaj")
+pos = Vector2(504, 904)
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_8nlnt"]
+script = ExtResource("9_v5762")
+target_pos = Vector2(504, 920)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_jrosk"]
+script = ExtResource("10_lmcd3")
+value = true
+map_key = "overworld"
+data_key = "golem_defeated"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_eyc7m"]
+script = ExtResource("11_th320")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_8nlnt"), SubResource("Resource_jrosk")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_a567p"]
+script = ExtResource("8_m0uk4")
+field_bgm = "overworld"
+battle_bg = ExtResource("6_o3rkb")
+is_dark = false
+victory_event = SubResource("Resource_eyc7m")
+run_event = SubResource("Resource_28ehl")
+
+[sub_resource type="Resource" id="Resource_s3ppr"]
+script = ExtResource("13_s8oe3")
+encounter = ExtResource("12_sv3mr")
+config = SubResource("Resource_a567p")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_at5m5"]
+script = ExtResource("14_gn4hb")
+map_key = "overworld"
+data_key = "golem_defeated"
+
+[sub_resource type="Resource" id="Resource_c12ko"]
+script = ExtResource("9_v5762")
+target_pos = Vector2(504, 920)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_voe3w"]
+script = ExtResource("15_flsyf")
+condition = SubResource("Resource_at5m5")
+condition_true_event = SubResource("Resource_c12ko")
+skip_window = true
+
+[sub_resource type="Resource" id="Resource_qxsq7"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(0, 1)
+transition_sound = ""
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 map_tags = Array[int]([0, 1])
@@ -168,6 +239,16 @@ map_key = "holy_shrine"
 load_params = SubResource("Resource_c1yjv")
 is_stairs = true
 
+[node name="GolemBattle" parent="EventParent" index="11" instance=ExtResource("4_k4jyk")]
+position = Vector2(504, 920)
+step_event = SubResource("Resource_s3ppr")
+map_start_event = SubResource("Resource_voe3w")
+
+[node name="ToCantlin" parent="EventParent" index="12" instance=ExtResource("2_6dvip")]
+position = Vector2(504, 952)
+map_key = "cantlin"
+load_params = SubResource("Resource_qxsq7")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -209,6 +290,9 @@ position = Vector2(1064, 1064)
 
 [node name="landing" type="Node2D" parent="SpawnPoints" index="12"]
 position = Vector2(-8, 8)
+
+[node name="cantlin" type="Node2D" parent="SpawnPoints" index="13"]
+position = Vector2(504, 952)
 
 [node name="EncounterData" parent="." index="5"]
 visible = false

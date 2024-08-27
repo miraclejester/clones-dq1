@@ -49,6 +49,7 @@ func show_main_commands() -> void:
 		CommandData.new("Teleport", teleport_selected),
 		CommandData.new("Set Stats", set_stats_selected),
 		CommandData.new("Add 100 Gold", add_gold.bind(100)),
+		CommandData.new("Add 1000 Gold", add_gold.bind(1000)),
 		CommandData.new("Add Item", add_item_selected)
 	]
 	command_window.initialize_commands(commands, 1)

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=11 format=3 uid="uid://cula1xi0n7pmm"]
+
+[ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_2k46w"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="1_77i5s"]
+[ext_resource type="Resource" uid="uid://cuxhv6isaxox1" path="res://ui/data/field_dialogues/field_dialogue_non_field_spell.tres" id="2_6pcc1"]
+[ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_x1aki"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="4_6grnn"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_fj1tk"]
+
+[sub_resource type="Resource" id="Resource_n7m8o"]
+script = ExtResource("1_77i5s")
+status_check = 2
+tag = 0
+
+[sub_resource type="Resource" id="Resource_5561u"]
+script = ExtResource("3_x1aki")
+play_starting_event = false
+spawn_point_key = "landing"
+spawn_direction = Vector2(0, 1)
+transition_sound = "wings"
+
+[sub_resource type="Resource" id="Resource_uicvb"]
+script = ExtResource("4_6grnn")
+map_key = "overworld"
+load_params = SubResource("Resource_5561u")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_12s0o"]
+script = ExtResource("5_fj1tk")
+condition = SubResource("Resource_n7m8o")
+condition_true_event = SubResource("Resource_uicvb")
+condition_false_event = ExtResource("2_6pcc1")
+skip_window = false
+
+[resource]
+script = ExtResource("1_2k46w")
+spell_id = 8
+spell_name = "RETURN"
+mp_cost = 8
+field_effect = SubResource("Resource_12s0o")
+target_type = 0
+spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])

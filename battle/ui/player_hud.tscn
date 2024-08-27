@@ -102,6 +102,7 @@ horizontal_alignment = 2
 [node name="Gold" type="HBoxContainer" parent="MarginContainer/Stats"]
 use_parent_material = true
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="GoldHeader" parent="MarginContainer/Stats/Gold" instance=ExtResource("2_7qtje")]
 layout_mode = 2
@@ -117,6 +118,7 @@ horizontal_alignment = 2
 [node name="Experience" type="HBoxContainer" parent="MarginContainer/Stats"]
 use_parent_material = true
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="ExpHeader" parent="MarginContainer/Stats/Experience" instance=ExtResource("2_7qtje")]
 layout_mode = 2

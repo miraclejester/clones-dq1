@@ -37,6 +37,7 @@ buy_price = 8
 sell_price = 4
 consumable = true
 sellable = true
+stack_size = 1
 consumable_condition = SubResource("Resource_dj6he")
 field_action = SubResource("Resource_2ggtl")
 tags = Array[int]([])

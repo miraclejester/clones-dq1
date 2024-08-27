@@ -1,12 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdu3mb6xc17k5"]
+[gd_scene load_steps=29 format=3 uid="uid://bdu3mb6xc17k5"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_oi71q"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="2_f70ia"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_up8kq"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="4_d6pus"]
+[ext_resource type="Resource" uid="uid://7d7eis141jc5" path="res://unit_data/items/data/028_item_silver_harp.tres" id="4_tpvat"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="5_fkdjf"]
 [ext_resource type="PackedScene" uid="uid://dt22g2ixke48n" path="res://field/events/map_event.tscn" id="5_qc2ij"]
+[ext_resource type="Resource" uid="uid://cjrh4f7mjq8k1" path="res://field/events/instances/staff_of_rain_sage_default.tres" id="6_0xxe7"]
+[ext_resource type="PackedScene" uid="uid://b42jx7kvm8ubg" path="res://field/events/key_item_chest_event.tscn" id="6_8lpkr"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="6_ql1j6"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="7_dgrcw"]
+[ext_resource type="Resource" uid="uid://kogcumfvij7b" path="res://unit_data/items/data/030_staff_of_rain.tres" id="7_mjtjs"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/remove_npc_dialogue_event.gd" id="8_bssn1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="8_svm7d"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="14_f1s2b"]
 
 [sub_resource type="Resource" id="Resource_70cfb"]
 script = ExtResource("6_ql1j6")
@@ -15,9 +23,13 @@ spawn_point_key = "cave_west_of_kol"
 spawn_direction = Vector2(0, 1)
 transition_sound = ""
 
-[sub_resource type="Resource" id="Resource_0wjq4"]
+[sub_resource type="Resource" id="Resource_db4c5"]
+script = ExtResource("5_fkdjf")
+item = ExtResource("4_tpvat")
+
+[sub_resource type="Resource" id="Resource_52cgx"]
 script = ExtResource("3_up8kq")
-text = "Thy bravery must be proven"
+text = "Thou hast brought the harp. Good"
 in_quotes = true
 is_speech = true
 wait_for_input = true
@@ -26,9 +38,9 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_5bm6p"]
+[sub_resource type="Resource" id="Resource_pj0tj"]
 script = ExtResource("3_up8kq")
-text = "Thus, I propose a test"
+text = "I have been waiting long for one such as thee"
 in_quotes = true
 is_speech = true
 wait_for_input = true
@@ -37,20 +49,9 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_6qub0"]
+[sub_resource type="Resource" id="Resource_1epga"]
 script = ExtResource("3_up8kq")
-text = "There is a Silver Harp that beckons to the creatures of the Dragonlord"
-in_quotes = true
-is_speech = true
-wait_for_input = true
-use_format_vars = false
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_fvbe7"]
-script = ExtResource("3_up8kq")
-text = "Bring this to me and I will reward thee with the Staff of Rain"
+text = "Take the Treasure Chest"
 in_quotes = true
 is_speech = true
 wait_for_input = false
@@ -59,9 +60,21 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_6gmbq"]
+[sub_resource type="Resource" id="Resource_dcmxq"]
+script = ExtResource("8_bssn1")
+pos = Vector2(72, 72)
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_plyb7"]
 script = ExtResource("4_d6pus")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_0wjq4"), SubResource("Resource_5bm6p"), SubResource("Resource_6qub0"), SubResource("Resource_fvbe7")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_52cgx"), SubResource("Resource_pj0tj"), SubResource("Resource_1epga"), SubResource("Resource_dcmxq")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dxshq"]
+script = ExtResource("8_svm7d")
+condition = SubResource("Resource_db4c5")
+condition_true_event = SubResource("Resource_plyb7")
+condition_false_event = ExtResource("6_0xxe7")
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_jnybc"]
@@ -77,6 +90,22 @@ map_key = "overworld"
 load_params = SubResource("Resource_jnybc")
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_2duo3"]
+script = ExtResource("14_f1s2b")
+map_key = "cave_west_of_kol"
+data_key = "staff_chest"
+
+[sub_resource type="Resource" id="Resource_45aeu"]
+script = ExtResource("8_bssn1")
+pos = Vector2(72, 72)
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_inq2m"]
+script = ExtResource("8_svm7d")
+condition = SubResource("Resource_2duo3")
+condition_true_event = SubResource("Resource_45aeu")
+skip_window = true
+
 [node name="CaveWestOfKol" instance=ExtResource("1_oi71q")]
 map_bgm = "tantegel_castle"
 outside_target = "overworld"
@@ -87,12 +116,22 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 0, 851969, 65536, 0, 851970,
 
 [node name="StaffOfRainSage" parent="NPCParent" index="0" instance=ExtResource("2_f70ia")]
 position = Vector2(72, 72)
-talk_event = SubResource("Resource_6gmbq")
+talk_event = SubResource("Resource_dxshq")
 starting_face_dir = Vector2(1, 0)
 
 [node name="ToOverworld" parent="EventParent" index="0" instance=ExtResource("5_qc2ij")]
 position = Vector2(72, 152)
 stairs_event = SubResource("Resource_xlrk7")
+
+[node name="StaffOfRainChest" parent="EventParent" index="1" instance=ExtResource("6_8lpkr")]
+position = Vector2(56, 72)
+key_item = ExtResource("7_mjtjs")
+map_key = "cave_west_of_kol"
+data_key = "staff_chest"
+
+[node name="RemoveSage" parent="EventParent" index="2" instance=ExtResource("5_qc2ij")]
+position = Vector2(56, -24)
+map_start_event = SubResource("Resource_inq2m")
 
 [node name="entrance" type="Node2D" parent="SpawnPoints" index="0"]
 position = Vector2(72, 152)

@@ -94,6 +94,15 @@ func find_npc(pos: Vector2) -> NPCCharacter:
 	return find_character(pos) as NPCCharacter
 
 
+func remove_npc(pos: Vector2) -> void:
+	var npc: NPCCharacter = find_character(pos)
+	if npc != null:
+		for key in char_dict.keys():
+			if char_dict.get(key) == npc:
+				char_dict.erase(key)
+		npc.queue_free()
+
+
 func find_character(pos: Vector2) -> FieldCharacter:
 	return char_dict.get(pos, null) as FieldCharacter
 

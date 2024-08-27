@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_8v5kw"]
 script = ExtResource("7_6ui54")
 play_starting_event = false
-spawn_point_key = "garin_tomb"
+spawn_point_key = "tomb_stairs"
 spawn_direction = Vector2(0, 1)
 transition_sound = ""
 
