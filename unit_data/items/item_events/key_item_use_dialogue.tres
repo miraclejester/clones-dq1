@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="PlayCustomParagraphEvent" load_steps=8 format=3 uid="uid://btb0hgriplffa"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_ssals"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="1_tcb3c"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="2_nioyw"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/item_name_format_var_provider.gd" id="3_iypx1"]
+
+[sub_resource type="Resource" id="Resource_grdve"]
+script = ExtResource("1_ssals")
+text = "%s held the Staff of Rain tightly."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_u3688"]
+script = ExtResource("2_nioyw")
+
+[sub_resource type="Resource" id="Resource_bqmf7"]
+script = ExtResource("3_iypx1")
+
+[resource]
+script = ExtResource("1_tcb3c")
+dialogue = SubResource("Resource_grdve")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_u3688"), SubResource("Resource_bqmf7")])
+skip_window = false

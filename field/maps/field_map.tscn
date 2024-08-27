@@ -141,7 +141,7 @@ sources/0 = SubResource("TileSetAtlasSource_p52ro")
 material = ExtResource("1_qw758")
 script = ExtResource("1_ywggj")
 
-[node name="FieldTileMap" type="TileMap" parent="." groups=["ambient_hurt", "darken", "player_death_effect", "spell_effect"]]
+[node name="FieldTileMap" type="TileMap" parent="." groups=["ambient_hurt", "darken", "player_death_effect", "rainbow_drop", "spell_effect"]]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_q7mn3")
 format = 2

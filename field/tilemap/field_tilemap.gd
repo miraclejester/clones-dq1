@@ -2,7 +2,8 @@ extends TileMap
 class_name FieldTileMap
 
 var known_tiles: Dictionary = {
-	"brick" : Vector2i(3, 0)
+	"brick" : Vector2i(3, 0),
+	"bridge": Vector2i(10, 1)
 }
 
 var layer_id_dict: Dictionary = {

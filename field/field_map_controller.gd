@@ -290,6 +290,7 @@ func on_item_data_selected(item: ItemData) -> void:
 	await field_ui.play_dialogue(item.field_action, {
 		PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [PlayerManager.hero.get_unit_name()],
 		"map_controller": self,
+		"map": field_map,
 		"default_bgm": field_map.map_bgm
 	}, clean)
 	close_command_window()

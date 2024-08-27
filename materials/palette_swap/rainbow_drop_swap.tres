@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://kwnvffmnai5b"]
+
+[ext_resource type="Shader" path="res://materials/palette_swap/index_palette_swap.gdshader" id="1_aasu2"]
+[ext_resource type="Texture2D" uid="uid://cs6odbsl6rhp3" path="res://materials/palettes/rainbow_drop_palette.png" id="2_hrxj6"]
+
+[resource]
+shader = ExtResource("1_aasu2")
+shader_parameter/color_index = null
+shader_parameter/palette = ExtResource("2_hrxj6")

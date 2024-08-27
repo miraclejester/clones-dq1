@@ -6,6 +6,7 @@ extends Node
 @export var ambient_barrier_material: ShaderMaterial
 @export var darken_material: ShaderMaterial
 @export var darken_hurt_material: ShaderMaterial
+@export var rainbow_drop_material: ShaderMaterial
 
 
 var shake_step: int = 2
@@ -57,6 +58,21 @@ var lighten_callables: Array[Callable] = [
 	set_darken.bind(0)
 ]
 
+var rainbow_drop_callables: Array[Callable] = [
+	set_rainbow_drop.bind(1),
+	set_rainbow_drop.bind(2),
+	set_rainbow_drop.bind(3),
+	set_rainbow_drop.bind(4),
+	set_rainbow_drop.bind(5),
+	set_rainbow_drop.bind(6),
+	set_rainbow_drop.bind(7),
+	set_rainbow_drop.bind(8),
+	set_rainbow_drop.bind(9),
+	set_rainbow_drop.bind(10),
+	set_rainbow_drop.bind(11),
+	set_rainbow_drop.bind(12)
+]
+
 
 func play_effect(callables: Array[Callable], nodes: Array[Node], step_wait: float, num_cycles: int = 4) -> void:
 	for i in range(num_cycles):
@@ -95,6 +111,15 @@ func fade_in() -> void:
 	await play_effect(lighten_callables, get_tree().get_nodes_in_group("darken"), 0.1, 1)
 
 
+func play_rainbow_drop() -> void:
+	var nodes: Array[Node] = []
+	nodes.assign(get_tree().get_nodes_in_group("rainbow_drop"))
+	await play_effect(rainbow_drop_callables, nodes, 0.05, 4)
+	for node in nodes:
+		reset_material(node)
+	
+
+
 func dark_out() -> void:
 	for node in get_tree().get_nodes_in_group("darken"):
 		set_darken(node, 4)
@@ -130,6 +155,15 @@ func set_darken(node: Node, index: int) -> void:
 		mat = darken_hurt_material
 	(node as CanvasItem).material = mat
 	mat.set_shader_parameter("color_index", index)
+
+
+func set_rainbow_drop(node: Node, index: int) -> void:
+	(node as CanvasItem).material = rainbow_drop_material
+	rainbow_drop_material.set_shader_parameter("color_index", index)
+
+
+func reset_material(node: Node) -> void:
+	(node as CanvasItem).material = null
 
 
 func determine_ui_colors(hp: int, max_hp: int) -> void:

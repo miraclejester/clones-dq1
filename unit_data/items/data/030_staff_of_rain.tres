@@ -1,6 +1,29 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://kogcumfvij7b"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://kogcumfvij7b"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_6rt1o"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_phdrx"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="2_3aahr"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="3_ut1pv"]
+
+[sub_resource type="Resource" id="Resource_grdve"]
+script = ExtResource("1_phdrx")
+text = "%s held the Staff of Rain tightly."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_u3688"]
+script = ExtResource("2_3aahr")
+
+[sub_resource type="Resource" id="Resource_idcvo"]
+script = ExtResource("3_ut1pv")
+dialogue = SubResource("Resource_grdve")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_u3688")])
+skip_window = false
 
 [resource]
 script = ExtResource("1_6rt1o")
@@ -11,4 +34,5 @@ sell_price = -1
 consumable = false
 sellable = true
 stack_size = 1
+field_action = SubResource("Resource_idcvo")
 tags = Array[int]([1])

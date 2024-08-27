@@ -1,6 +1,29 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b06jegs5yofha"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://b06jegs5yofha"]
 
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_4xsbr"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="2_rrntd"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="3_l50gi"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="4_0h6qm"]
+
+[sub_resource type="Resource" id="Resource_grdve"]
+script = ExtResource("1_4xsbr")
+text = "%s held the Stones of Sunlight tightly."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_u3688"]
+script = ExtResource("2_rrntd")
+
+[sub_resource type="Resource" id="Resource_l3ql4"]
+script = ExtResource("3_l50gi")
+dialogue = SubResource("Resource_grdve")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_u3688")])
+skip_window = false
 
 [resource]
 script = ExtResource("4_0h6qm")
@@ -11,4 +34,5 @@ sell_price = -1
 consumable = false
 sellable = false
 stack_size = 1
+field_action = SubResource("Resource_l3ql4")
 tags = Array[int]([1])
