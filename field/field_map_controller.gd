@@ -407,7 +407,7 @@ func on_move_finished() -> void:
 		})
 		return
 	
-	var damage: int = field_map.get_tile_damage(hero_character.position) * PlayerManager.hero.equipment.tile_damage_multiplier
+	var damage: int = floor(field_map.get_tile_damage(hero_character.position) * PlayerManager.hero.equipment.tile_damage_multiplier)
 	if damage > 0:
 		get_tree().paused = true
 		var effect_dict: Dictionary = damage_effect_dict.get(damage, {})
@@ -470,6 +470,8 @@ func on_battle_finished(status: BattleController.BattleEndStatus, config: Battle
 				await field_ui.play_dialogue(config.run_event, {
 					"map_controller": self
 				})
+		BattleController.BattleEndStatus.DEFEAT:
+			get_tree().quit()
 		_:
 			pass
 	back_from_battle()
