@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=12 format=3 uid="uid://cpjrrbwylmkkm"]
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=14 format=3 uid="uid://cpjrrbwylmkkm"]
 
 [ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_a4g3h"]
 [ext_resource type="Resource" uid="uid://cp263d7igr0ol" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_again.tres" id="1_ng6fe"]
 [ext_resource type="Resource" uid="uid://43tefcpr8qgw" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_cancel.tres" id="2_ope5w"]
 [ext_resource type="Resource" uid="uid://c2l6n0y64a1up" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_buy_confirm.tres" id="3_acjpi"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="4_pyv5m"]
 [ext_resource type="Resource" uid="uid://7y73d6h2tamo" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_goodbye.tres" id="4_tfmeh"]
 [ext_resource type="Resource" uid="uid://dr2gsf1jash3f" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_greet.tres" id="5_nnd7b"]
 [ext_resource type="Resource" uid="uid://cfuqlrj07bjof" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_item_bought.tres" id="6_16nmb"]
@@ -11,6 +12,17 @@
 [ext_resource type="Resource" uid="uid://ds04lq3bq25ep" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_shop_not_enough_money.tres" id="8_2ffbp"]
 [ext_resource type="Resource" uid="uid://iu4dt1imuxer" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_rebuy.tres" id="9_2duwa"]
 [ext_resource type="Resource" uid="uid://rk1jtwoahqry" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_weapon_shop_what_buy.tres" id="11_nexxn"]
+
+[sub_resource type="Resource" id="Resource_iug6y"]
+script = ExtResource("4_pyv5m")
+text = "Sorry, but I cannot buy your current equipment"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
 
 [resource]
 script = ExtResource("1_a4g3h")
@@ -24,3 +36,4 @@ buy_confirm_dialogue = ExtResource("3_acjpi")
 item_bought_dialogue = ExtResource("6_16nmb")
 buy_cancelled_dialogue = ExtResource("2_ope5w")
 rebuy_equipment_dialogue = ExtResource("9_2duwa")
+cannot_buy_dialogue = SubResource("Resource_iug6y")

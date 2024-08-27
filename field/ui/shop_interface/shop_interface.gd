@@ -138,6 +138,12 @@ func purchase_flow_for_non_selling(product: ItemData) -> void:
 		var cur_equip: EquipmentData = PlayerManager.hero.equipment.get_equip(product.equipment_type)
 		if product is EquipmentData:
 			if cur_equip != null:
+				if not cur_equip.sellable:
+					await dialogue_window.start_dialogue([
+						DialogueEventParams.fromData(data.dialogues.cannot_buy_dialogue)
+					])
+					buy_again_flow()
+					return
 				await dialogue_window.start_dialogue([
 					DialogueEventParams.fromData(data.dialogues.rebuy_equipment_dialogue, {
 						PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [
