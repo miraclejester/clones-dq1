@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=21 format=3 uid="uid://ct3ngkqhw2gpt"]
+
+[ext_resource type="Resource" uid="uid://b06jegs5yofha" path="res://unit_data/items/data/029_stones_of_sunlight.tres" id="1_qan8e"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="2_1kfrg"]
+[ext_resource type="Resource" uid="uid://kogcumfvij7b" path="res://unit_data/items/data/030_staff_of_rain.tres" id="3_opi8f"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/and_dialogue_condition.gd" id="4_087b2"]
+[ext_resource type="Resource" uid="uid://brn6y87kxe8cy" path="res://field/dialogues/common_npc_dialogues/holy_shrine_sage_failure.tres" id="5_vt75k"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="6_0ad73"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="7_2o45k"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/remove_items_by_tag_dialogue_event.gd" id="8_o7kn0"]
+[ext_resource type="Resource" uid="uid://4h0u63qj6u27" path="res://unit_data/items/data/031_rainbow_drop.tres" id="9_pk23v"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="10_h3xcp"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="11_mt55k"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="12_sx7ak"]
+
+[sub_resource type="Resource" id="Resource_l6pkf"]
+script = ExtResource("2_1kfrg")
+item = ExtResource("1_qan8e")
+
+[sub_resource type="Resource" id="Resource_xkxap"]
+script = ExtResource("2_1kfrg")
+item = ExtResource("3_opi8f")
+
+[sub_resource type="Resource" id="Resource_sixgk"]
+script = ExtResource("4_087b2")
+conditions = Array[Resource("res://ui/dialogue/dialogue_conditions/dialogue_condition.gd")]([SubResource("Resource_l6pkf"), SubResource("Resource_xkxap")])
+
+[sub_resource type="Resource" id="Resource_jqsbk"]
+script = ExtResource("6_0ad73")
+text = "Now the sun and rain shall meet and the Rainbow Drop passes to thy keeping"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_7iyin"]
+script = ExtResource("7_2o45k")
+effect = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wo8om"]
+script = ExtResource("8_o7kn0")
+tag = 1
+remove_stack = false
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_x8ubx"]
+script = ExtResource("10_h3xcp")
+item = ExtResource("9_pk23v")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_cwwnq"]
+script = ExtResource("11_mt55k")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_jqsbk"), SubResource("Resource_7iyin"), SubResource("Resource_wo8om"), SubResource("Resource_x8ubx")])
+skip_window = false
+
+[resource]
+script = ExtResource("12_sx7ak")
+condition = SubResource("Resource_sixgk")
+condition_true_event = SubResource("Resource_cwwnq")
+condition_false_event = ExtResource("5_vt75k")
+skip_window = false

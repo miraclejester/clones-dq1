@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=68 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -28,7 +28,12 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="14_gn4hb"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="15_flsyf"]
 [ext_resource type="PackedScene" uid="uid://dkaqp20hhb6g3" path="res://field/encounters/zones/zone_11.tscn" id="15_hocvs"]
+[ext_resource type="Resource" uid="uid://dsnhrntbvemc" path="res://unit_data/items/data/033_erdrick_token.tres" id="16_ebd8p"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="16_eou2c"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/grant_item_dialogue_event.gd" id="17_5bm27"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="17_surdh"]
 [ext_resource type="PackedScene" uid="uid://c8ixopnqefyei" path="res://field/encounters/zones/zone_13.tscn" id="17_tae7m"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="18_iofph"]
 
 [sub_resource type="Resource" id="Resource_8u7du"]
 script = ExtResource("3_1cupo")
@@ -181,6 +186,66 @@ spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
 transition_sound = ""
 
+[sub_resource type="Resource" id="Resource_f86xt"]
+script = ExtResource("16_eou2c")
+text = "%s discovers the Erdrick`s Token."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_etpbb"]
+script = ExtResource("17_surdh")
+
+[sub_resource type="Resource" id="Resource_2bxkj"]
+script = ExtResource("18_iofph")
+dialogue = SubResource("Resource_f86xt")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_etpbb")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_dr6ng"]
+script = ExtResource("17_5bm27")
+item = ExtResource("16_ebd8p")
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_mvcr4"]
+script = ExtResource("10_lmcd3")
+value = true
+map_key = "overworld"
+data_key = "token"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_82u12"]
+script = ExtResource("9_v5762")
+target_pos = Vector2(648, 1128)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_vbvm6"]
+script = ExtResource("11_th320")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_2bxkj"), SubResource("Resource_dr6ng"), SubResource("Resource_mvcr4"), SubResource("Resource_82u12")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_h4wp5"]
+script = ExtResource("14_gn4hb")
+map_key = "overworld"
+data_key = "token"
+
+[sub_resource type="Resource" id="Resource_7cq6n"]
+script = ExtResource("9_v5762")
+target_pos = Vector2(648, 1128)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_m6phs"]
+script = ExtResource("15_flsyf")
+condition = SubResource("Resource_h4wp5")
+condition_true_event = SubResource("Resource_7cq6n")
+skip_window = true
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 map_tags = Array[int]([0, 1])
@@ -260,6 +325,11 @@ load_params = SubResource("Resource_qxsq7")
 position = Vector2(-264, 744)
 map_key = "hauksness"
 load_params = SubResource("Resource_uxco5")
+
+[node name="ErdrickToken" parent="EventParent" index="14" instance=ExtResource("4_k4jyk")]
+position = Vector2(648, 1128)
+search_event = SubResource("Resource_vbvm6")
+map_start_event = SubResource("Resource_m6phs")
 
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true

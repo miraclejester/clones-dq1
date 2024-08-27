@@ -2,7 +2,8 @@ extends Resource
 class_name ItemData
 
 enum ItemTag {
-	CURSED
+	CURSED,
+	RAINBOW_DROP_COMPONENT
 }
 
 @export var item_name: String

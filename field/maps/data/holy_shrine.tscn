@@ -1,28 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6ii0jkvicam1"]
+[gd_scene load_steps=14 format=3 uid="uid://b6ii0jkvicam1"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_gx15v"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="2_bxijl"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="3_bn25e"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="3_p3ek6"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="4_gkjmk"]
+[ext_resource type="Resource" uid="uid://4h0u63qj6u27" path="res://unit_data/items/data/031_rainbow_drop.tres" id="3_q2h1e"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/has_item_dialogue_condition.gd" id="4_7xe31"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="4_mwvyu"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="6_0v6xm"]
-[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="7_jwit6"]
+[ext_resource type="Resource" uid="uid://ct3ngkqhw2gpt" path="res://field/dialogues/common_npc_dialogues/holy_shrine_sage_check.tres" id="5_7x4ke"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="12_lcr46"]
 
-[sub_resource type="Resource" id="Resource_a35hk"]
-script = ExtResource("3_bn25e")
-text = "In thy task thou hast failed. Alas, I fear thou art not the one Erdrick predicted would save us"
-in_quotes = true
-is_speech = true
-wait_for_input = true
-use_format_vars = false
-format_var_idxs = Array[int]([])
-wait_for_dialogue = true
-skip_window = false
+[sub_resource type="Resource" id="Resource_mjybx"]
+script = ExtResource("4_7xe31")
+item = ExtResource("3_q2h1e")
 
-[sub_resource type="Resource" id="Resource_i5eep"]
+[sub_resource type="Resource" id="Resource_b2tfl"]
 script = ExtResource("3_bn25e")
-text = "Go now!"
+text = "Now go!"
 in_quotes = true
 is_speech = true
 wait_for_input = false
@@ -31,28 +25,12 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
-[sub_resource type="Resource" id="Resource_1rydp"]
-script = ExtResource("4_gkjmk")
-effect = 0
+[sub_resource type="Resource" id="Resource_5ljpr"]
+script = ExtResource("12_lcr46")
+condition = SubResource("Resource_mjybx")
+condition_true_event = SubResource("Resource_b2tfl")
+condition_false_event = ExtResource("5_7x4ke")
 skip_window = false
-
-[sub_resource type="Resource" id="Resource_dxodi"]
-script = ExtResource("4_mwvyu")
-play_starting_event = false
-spawn_point_key = "holy_shrine"
-spawn_direction = Vector2(0, 1)
-transition_sound = ""
-
-[sub_resource type="Resource" id="Resource_d4tnt"]
-script = ExtResource("6_0v6xm")
-map_key = "overworld"
-load_params = SubResource("Resource_dxodi")
-skip_window = false
-
-[sub_resource type="Resource" id="Resource_e6mu2"]
-script = ExtResource("7_jwit6")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_a35hk"), SubResource("Resource_i5eep"), SubResource("Resource_1rydp"), SubResource("Resource_d4tnt")])
-skip_window = true
 
 [sub_resource type="Resource" id="Resource_paoil"]
 script = ExtResource("4_mwvyu")
@@ -69,7 +47,7 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 0, 1, 65536, 0, 3, 65536, 0, 2, 6
 
 [node name="Sage" parent="NPCParent" index="0" instance=ExtResource("2_bxijl")]
 position = Vector2(72, 104)
-talk_event = SubResource("Resource_e6mu2")
+talk_event = SubResource("Resource_5ljpr")
 starting_face_dir = Vector2(-1, 0)
 
 [node name="ToOverworld" parent="EventParent" index="0" instance=ExtResource("3_p3ek6")]

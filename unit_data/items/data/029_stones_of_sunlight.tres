@@ -10,4 +10,5 @@ buy_price = -1
 sell_price = -1
 consumable = false
 sellable = false
-tags = Array[int]([])
+stack_size = 1
+tags = Array[int]([1])
