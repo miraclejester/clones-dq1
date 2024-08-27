@@ -1,11 +1,19 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=2 format=3 uid="uid://d0klti2fdeiuw"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://d0klti2fdeiuw"]
 
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/set_repel_dialogue_event.gd" id="1_ms5yj"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_rrjan"]
+
+[sub_resource type="Resource" id="Resource_ugc8f"]
+script = ExtResource("1_ms5yj")
+value = 128
+source = "REPEL"
+skip_window = false
 
 [resource]
 script = ExtResource("1_rrjan")
 spell_id = 9
 spell_name = "REPEL"
 mp_cost = 2
+field_effect = SubResource("Resource_ugc8f")
 target_type = 0
 spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])

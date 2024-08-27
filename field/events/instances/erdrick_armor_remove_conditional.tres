@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BranchDialogueEvent" load_steps=6 format=3 uid="uid://dxa7mg8kovp5f"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_bool_data_dialogue_condition.gd" id="1_e8ocb"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="2_fohj6"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="3_3dirm"]
+
+[sub_resource type="Resource" id="Resource_6rye8"]
+script = ExtResource("1_e8ocb")
+map_key = "hauksness"
+data_key = "erdrick_armor"
+
+[sub_resource type="Resource" id="Resource_afmkm"]
+script = ExtResource("2_fohj6")
+target_pos = Vector2(312, 216)
+operation = 0
+skip_window = false
+
+[resource]
+script = ExtResource("3_3dirm")
+condition = SubResource("Resource_6rye8")
+condition_true_event = SubResource("Resource_afmkm")
+skip_window = false

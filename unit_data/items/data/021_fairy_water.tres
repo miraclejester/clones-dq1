@@ -1,6 +1,42 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cl4mm4lm0brq8"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=12 format=3 uid="uid://cl4mm4lm0brq8"]
 
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_4g0lf"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_ylcwp"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="2_daf6b"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="3_h4kbc"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/set_repel_dialogue_event.gd" id="4_u65p2"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="5_2yykq"]
+
+[sub_resource type="Resource" id="Resource_w38d6"]
+script = ExtResource("1_ylcwp")
+text = "%s sprinkled the Fairy Water over his body,"
+in_quotes = false
+is_speech = false
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_u7khw"]
+script = ExtResource("2_daf6b")
+
+[sub_resource type="Resource" id="Resource_k804y"]
+script = ExtResource("3_h4kbc")
+dialogue = SubResource("Resource_w38d6")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_u7khw")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_vvm3k"]
+script = ExtResource("4_u65p2")
+value = 128
+source = "The Fairy Water"
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_21fl7"]
+script = ExtResource("5_2yykq")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_k804y"), SubResource("Resource_vvm3k")])
+skip_window = false
 
 [resource]
 script = ExtResource("1_4g0lf")
@@ -9,3 +45,7 @@ item_id = 21
 buy_price = 38
 sell_price = 19
 consumable = true
+sellable = true
+stack_size = 1
+field_action = SubResource("Resource_21fl7")
+tags = Array[int]([])

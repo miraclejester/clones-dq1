@@ -6,6 +6,7 @@ signal item_equipped(item: EquipmentData)
 var eq_dict: Dictionary = {}
 var accessories: Array[int] = []
 var permanent_defense_modifier: int = 0
+var tile_damage_multiplier: float = 1
 
 func get_attack_power() -> int:
 	var w: EquipmentData = eq_dict.get(EquipmentData.EquipmentType.WEAPON) as EquipmentData
@@ -84,6 +85,7 @@ func generate_save_data() -> Dictionary:
 	res["equips"] = equips
 	res["accessories"] = accessories
 	res["defense_modifier"] = permanent_defense_modifier
+	res["tile_damage_multiplier"] = tile_damage_multiplier
 	return res
 
 
@@ -93,6 +95,7 @@ func load_from_data(data: Dictionary) -> void:
 	for id in data.get("accessories", []):
 		equip_accessory(id)
 	permanent_defense_modifier = data.get("defense_modifier", 0)
+	tile_damage_multiplier = data.get("tile_damage_multiplier", 1)
 
 
 func get_equip(key: EquipmentData.EquipmentType) -> EquipmentData:

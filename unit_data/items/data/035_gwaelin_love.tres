@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=17 format=3 uid="uid://b70wyvc2skiem"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=22 format=3 uid="uid://b70wyvc2skiem"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_81mtf"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_ojjyu"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="2_1wmd4"]
 [ext_resource type="Script" path="res://ui/dialogue/format_var_providers/next_level_exp_format_var_provider.gd" id="2_sk46h"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="3_pcth6"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="4_f013v"]
 [ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="4_sxge6"]
+[ext_resource type="Resource" uid="uid://ccxfyokcql6n2" path="res://field/events/instances/gwaelin_love_distance.tres" id="5_ewm2o"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_s7uxt"]
 
 [sub_resource type="Resource" id="Resource_m06po"]
 script = ExtResource("1_81mtf")
@@ -60,6 +63,17 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_o15fw"]
+script = ExtResource("4_f013v")
+status_check = 2
+tag = 1
+
+[sub_resource type="Resource" id="Resource_5gtle"]
+script = ExtResource("5_s7uxt")
+condition = SubResource("Resource_o15fw")
+condition_true_event = ExtResource("5_ewm2o")
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_i2amg"]
 script = ExtResource("1_81mtf")
 text = "I love thee, %s"
@@ -82,7 +96,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_luukj"]
 script = ExtResource("3_pcth6")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_m06po"), SubResource("Resource_tek2p"), SubResource("Resource_5ingg"), SubResource("Resource_phsyl"), SubResource("Resource_4swdo")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_m06po"), SubResource("Resource_tek2p"), SubResource("Resource_5ingg"), SubResource("Resource_phsyl"), SubResource("Resource_5gtle"), SubResource("Resource_4swdo")])
 skip_window = false
 
 [resource]

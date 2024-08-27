@@ -6,4 +6,7 @@ class_name GrantItemDialogueEvent
 
 func execute(window: DialogueWindow, params: Dictionary) -> void:
 	await window.get_tree().process_frame
-	PlayerManager.hero.inventory.add_item(params.get("grant_item_item", item))
+	if item is EquipmentData:
+		PlayerManager.hero.equipment.equip(item as EquipmentData)
+	else:
+		PlayerManager.hero.inventory.add_item(params.get("grant_item_item", item))

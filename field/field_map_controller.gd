@@ -12,6 +12,7 @@ class_name FieldMapController
 @export var default_stairs_dialogue: DialogueEvent
 @export var spell_default_dialogue: DialogueEvent
 @export var non_field_spell_dialogue: DialogueEvent
+@export var repel_over_dialogue: DialogueEvent
 @export var starting_map_load_params: MapLoadParams
 
 
@@ -379,6 +380,15 @@ func on_spell_data_selected(spell: SpellData) -> void:
 
 func on_move_finished() -> void:
 	PlayerManager.hero.on_step()
+	var has_repel: bool = hero_character.repel_steps > 0
+	
+	hero_character.repel_steps = clampi(hero_character.repel_steps - 1, 0, 128)
+	if has_repel and hero_character.repel_steps <= 0:
+		get_tree().paused = true
+		await field_ui.play_dialogue(repel_over_dialogue, {
+			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS: [hero_character.repel_source]
+		})
+		get_tree().paused = false
 	
 	var out_event: DialogueEvent = field_map.out_of_bounds_event
 	if out_event != null and field_map.is_out_of_bounds(hero_character.position):
@@ -397,7 +407,7 @@ func on_move_finished() -> void:
 		})
 		return
 	
-	var damage: int = field_map.get_tile_damage(hero_character.position)
+	var damage: int = field_map.get_tile_damage(hero_character.position) * PlayerManager.hero.equipment.tile_damage_multiplier
 	if damage > 0:
 		get_tree().paused = true
 		var effect_dict: Dictionary = damage_effect_dict.get(damage, {})
@@ -422,7 +432,12 @@ func on_move_finished() -> void:
 		var tile_id: EncounterChanceEntry.TileBattleID = field_map.get_tile_battle_id(hero_character.position)
 		var encounter: EncounterData = zone.roll_for_battle(tile_id)
 		if encounter != null:
-			start_battle_from_zone(encounter, zone)
+			var is_overworld: bool = field_map.has_tag(FieldMap.MapTag.OVERWORLD)
+			var is_weaker_enemy: bool = encounter.enemy.stats.strength < PlayerManager.hero.get_defense()
+			var repelled: bool = has_repel and is_overworld and is_weaker_enemy
+			
+			if not repelled:
+				start_battle_from_zone(encounter, zone)
 
 
 func start_battle_from_zone(encounter: EncounterData, zone: EncounterZone) -> void:

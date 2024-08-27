@@ -11,13 +11,15 @@ enum OperationKey {
 	ADD_CURSE,
 	REMOVE_CURSE,
 	ADD_PRINCESS,
-	REMOVE_PRINCESS
+	REMOVE_PRINCESS,
+	SET_TILE_DAMAGE_MULTIPLIER
 }
 
 @export var key: OperationKey
 @export var min_val: int
 @export var max_val: int
 @export var id: int
+@export var float_val: float
 
 func execute(window: DialogueWindow, _params: Dictionary) -> void:
 	await window.get_tree().process_frame
@@ -44,3 +46,5 @@ func execute(window: DialogueWindow, _params: Dictionary) -> void:
 			PlayerManager.hero.change_princess_status(true)
 		OperationKey.REMOVE_PRINCESS:
 			PlayerManager.hero.change_princess_status(false)
+		OperationKey.SET_TILE_DAMAGE_MULTIPLIER:
+			PlayerManager.hero.equipment.tile_damage_multiplier = float_val

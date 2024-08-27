@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=53 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -174,6 +174,13 @@ spawn_point_key = "entrance"
 spawn_direction = Vector2(0, 1)
 transition_sound = ""
 
+[sub_resource type="Resource" id="Resource_uxco5"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(1, 0)
+transition_sound = ""
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 map_tags = Array[int]([0, 1])
@@ -249,6 +256,11 @@ position = Vector2(504, 952)
 map_key = "cantlin"
 load_params = SubResource("Resource_qxsq7")
 
+[node name="ToHauksness" parent="EventParent" index="13" instance=ExtResource("2_6dvip")]
+position = Vector2(-264, 744)
+map_key = "hauksness"
+load_params = SubResource("Resource_uxco5")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -293,6 +305,9 @@ position = Vector2(-8, 8)
 
 [node name="cantlin" type="Node2D" parent="SpawnPoints" index="13"]
 position = Vector2(504, 952)
+
+[node name="hauksness" type="Node2D" parent="SpawnPoints" index="14"]
+position = Vector2(-264, 744)
 
 [node name="EncounterData" parent="." index="5"]
 visible = false

@@ -10,6 +10,6 @@
 
 [node name="Zone13" instance=ExtResource("1_whjlu")]
 encounter_chances = ExtResource("2_jse3e")
-encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_421im"), ExtResource("4_plqs8"), ExtResource("5_0tg2y"), ExtResource("6_tphp0")])
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_421im"), ExtResource("4_plqs8"), ExtResource("5_0tg2y"), ExtResource("6_tphp0"), ExtResource("3_421im")])
 battle_bg = ExtResource("7_wob2f")
 highlight_color = Color(0, 0.25098, 0.501961, 0.690196)

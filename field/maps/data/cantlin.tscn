@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://r8704ke84e0x"]
+[gd_scene load_steps=92 format=3 uid="uid://r8704ke84e0x"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_607uq"]
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="2_mpbjn"]
@@ -362,6 +362,55 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_vybnj"]
+script = ExtResource("5_kpetw")
+text = "Let us wish the warrior well!"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_oa45a"]
+script = ExtResource("5_kpetw")
+text = "May the light be thy strength!"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_puxu1"]
+script = ExtResource("5_kpetw")
+text = "Thou may go and search"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_yol6o"]
+script = ExtResource("5_kpetw")
+text = "From Tantegel Castle travel 70 leagues to the south and 40 to the east"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_rsuu2"]
+script = ExtResource("21_cthfm")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_vybnj"), SubResource("Resource_oa45a"), SubResource("Resource_puxu1"), SubResource("Resource_yol6o")])
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_td83v"]
 script = ExtResource("30_mrq6l")
 entered = true
@@ -521,6 +570,12 @@ talk_event = SubResource("Resource_h3clv")
 
 [node name="ProjectNpcBehaviour" parent="NPCParent/ErdrickLore2/Behaviours" index="0" instance=ExtResource("16_1j5e2")]
 project_dir = Vector2(0, 1)
+
+[node name="TokenHint2" parent="NPCParent" index="17" instance=ExtResource("30_uhgfc")]
+position = Vector2(248, 472)
+talk_event = SubResource("Resource_rsuu2")
+
+[node name="RandomMoveNpcBehaviour" parent="NPCParent/TokenHint2/Behaviours" index="0" instance=ExtResource("6_2xbpc")]
 
 [node name="TinyEntrance" parent="EventParent" index="0" instance=ExtResource("29_tat5e")]
 position = Vector2(56, 56)
@@ -811,3 +866,4 @@ position = Vector2(488, 504)
 [editable path="NPCParent/WynnHint"]
 [editable path="NPCParent/MidWeaponShop"]
 [editable path="NPCParent/ErdrickLore2"]
+[editable path="NPCParent/TokenHint2"]

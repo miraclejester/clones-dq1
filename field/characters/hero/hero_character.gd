@@ -27,6 +27,8 @@ var move_state: MoveState = MoveState.IDLE
 var tracked_input: String
 var old_pos: Vector2
 var can_play_wall_sound: bool = true
+var repel_steps: int = 0
+var repel_source: String = ""
 
 var move_input_dict: Dictionary = {
 	"down" : Vector2.DOWN,

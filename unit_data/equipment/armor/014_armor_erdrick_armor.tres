@@ -39,5 +39,6 @@ item_id = 14
 buy_price = -1
 sell_price = -1
 consumable = false
-sellable = true
+sellable = false
+stack_size = 1
 tags = Array[int]([])
