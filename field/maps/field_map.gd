@@ -65,6 +65,13 @@ func spawn_character(character_scene: PackedScene, pos: Vector2) -> void:
 	character.activate_events()
 
 
+func spawn_event(event_scene: PackedScene, pos: Vector2) -> void:
+	var event: MapEvent = event_scene.instantiate() as MapEvent
+	event_parent.add_child(event)
+	event.position = pos
+	event_dict[pos] = event
+
+
 func place_character_spot(character: FieldCharacter, pos: Vector2) -> void:
 	char_dict[pos] = character
 

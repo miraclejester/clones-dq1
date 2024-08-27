@@ -1,0 +1,16 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhy3fx4ug1kkv"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_o5v56"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_1r13a"]
+[ext_resource type="Resource" uid="uid://d2p8xvfdmwpa4" path="res://unit_data/enemies/29_werewolf/encounter_werewolf.tres" id="3_8q78w"]
+[ext_resource type="Resource" uid="uid://bt8ttigtqf3kj" path="res://unit_data/enemies/30_green_dragon/encounter_green_dragon.tres" id="4_lvlxl"]
+[ext_resource type="Resource" uid="uid://myouo5k06k0i" path="res://unit_data/enemies/31_starwyvern/encounter_starwyvern.tres" id="5_kuh5d"]
+[ext_resource type="Resource" uid="uid://dle5ls667262n" path="res://unit_data/enemies/32_wizard/encounter_wizard.tres" id="6_w6m7a"]
+[ext_resource type="Resource" uid="uid://b46dltyv8cssy" path="res://unit_data/enemies/33_axe_knight/encounter_axe_knight.tres" id="7_ej4h4"]
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="8_3ujat"]
+
+[node name="CharlockZone1" instance=ExtResource("1_o5v56")]
+encounter_chances = ExtResource("2_1r13a")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_8q78w"), ExtResource("4_lvlxl"), ExtResource("5_kuh5d"), ExtResource("6_w6m7a"), ExtResource("7_ej4h4")])
+battle_bg = ExtResource("8_3ujat")
+highlight_color = Color(0.952941, 0.952941, 0.952941, 0.690196)

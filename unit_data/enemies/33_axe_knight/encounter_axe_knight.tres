@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=3 format=3 uid="uid://b46dltyv8cssy"]
+
+[ext_resource type="Resource" uid="uid://bcutl8ih17ha0" path="res://unit_data/enemies/33_axe_knight/33_axe_knight.tres" id="1_0seua"]
+[ext_resource type="Script" path="res://battle/data/encounter_data.gd" id="2_v11hq"]
+
+[resource]
+script = ExtResource("2_v11hq")
+enemy = ExtResource("1_0seua")
+bgm_key = "battle"
+reprise_key = "battle_reprise"
+show_spoils = true
+use_dragonlord_layer = false
+shake_on_hit = true

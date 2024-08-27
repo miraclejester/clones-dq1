@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b22egua86w8kc"]
+[gd_scene load_steps=73 format=3 uid="uid://b22egua86w8kc"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_dckkp"]
 [ext_resource type="PackedScene" uid="uid://gw0rqrda1ger" path="res://field/events/instances/map_transition_event.tscn" id="2_6dvip"]
@@ -264,6 +264,13 @@ condition = SubResource("Resource_vdfkx")
 condition_true_event = SubResource("Resource_ebeml")
 skip_window = true
 
+[sub_resource type="Resource" id="Resource_22b8v"]
+script = ExtResource("3_1cupo")
+play_starting_event = false
+spawn_point_key = "entrance"
+spawn_direction = Vector2(0, -1)
+transition_sound = ""
+
 [node name="Overworld" instance=ExtResource("1_dckkp")]
 map_bgm = "overworld"
 map_tags = Array[int]([0, 1])
@@ -352,6 +359,11 @@ map_start_event = SubResource("Resource_m6phs")
 [node name="RainbowDropUseCheck" parent="EventParent" index="15" instance=ExtResource("4_k4jyk")]
 position = Vector2(344, 104)
 map_start_event = SubResource("Resource_wej26")
+
+[node name="ToCharlock" parent="EventParent" index="16" instance=ExtResource("2_6dvip")]
+position = Vector2(88, 88)
+map_key = "charlock_castle"
+load_params = SubResource("Resource_22b8v")
 
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true

@@ -1,0 +1,16 @@
+[gd_scene load_steps=8 format=3 uid="uid://kg80fuxjvyp7"]
+
+[ext_resource type="PackedScene" uid="uid://d1cc83hsstqcl" path="res://field/encounters/zones/encounter_zone.tscn" id="1_8th06"]
+[ext_resource type="Resource" uid="uid://dbrdsqlf2bi77" path="res://field/encounters/standard_encounter_chance_chart.tres" id="2_6tjiy"]
+[ext_resource type="Resource" uid="uid://dle5ls667262n" path="res://unit_data/enemies/32_wizard/encounter_wizard.tres" id="3_6y0wb"]
+[ext_resource type="Texture2D" uid="uid://bl5to260hjac6" path="res://battle/bgs/battle_bg_dark.png" id="3_ptlip"]
+[ext_resource type="Resource" uid="uid://b46dltyv8cssy" path="res://unit_data/enemies/33_axe_knight/encounter_axe_knight.tres" id="4_08p17"]
+[ext_resource type="Resource" uid="uid://be7gchjbxhlg5" path="res://unit_data/enemies/34_blue_dragon/encounter_blue_dragon.tres" id="5_54ohu"]
+[ext_resource type="Resource" uid="uid://bu0pt2d32p5y4" path="res://unit_data/enemies/35_stoneman/encounter_stoneman.tres" id="6_yonyx"]
+
+[node name="CharlockZone2" instance=ExtResource("1_8th06")]
+encounter_chances = ExtResource("2_6tjiy")
+encounters = Array[Resource("res://battle/data/encounter_data.gd")]([ExtResource("3_6y0wb"), ExtResource("4_08p17"), ExtResource("5_54ohu"), ExtResource("5_54ohu"), ExtResource("6_yonyx")])
+battle_bg = ExtResource("3_ptlip")
+is_dark = true
+highlight_color = Color(0.368627, 0.368627, 0.368627, 0.690196)

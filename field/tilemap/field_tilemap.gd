@@ -3,7 +3,8 @@ class_name FieldTileMap
 
 var known_tiles: Dictionary = {
 	"brick" : Vector2i(3, 0),
-	"bridge": Vector2i(10, 1)
+	"bridge": Vector2i(10, 1),
+	"stairs_down": Vector2i(6, 0)
 }
 
 var layer_id_dict: Dictionary = {
