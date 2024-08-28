@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=105 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -31,6 +31,10 @@
 [ext_resource type="Resource" uid="uid://blspedvgbct2w" path="res://unit_data/items/data/024_magic_key.tres" id="21_tv5qf"]
 [ext_resource type="PackedScene" uid="uid://bbke138x0s7m3" path="res://field/events/instances/door_event.tscn" id="23_b02l3"]
 [ext_resource type="PackedScene" uid="uid://vdgayc14he0m" path="res://field/events/instances/random_gold_chest_event.tscn" id="24_d6wkc"]
+[ext_resource type="PackedScene" uid="uid://c2g5gs4sea1h6" path="res://field/characters/npcs/npc_variations/endgame_guard.tscn" id="25_d8blp"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="26_bixbf"]
+[ext_resource type="PackedScene" uid="uid://be37akkefhthi" path="res://field/events/instances/endgame_throne_stairs.tscn" id="27_bq6x1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/spawn_event_dialogue_event.gd" id="27_x0shb"]
 
 [sub_resource type="Resource" id="Resource_n5lh4"]
 script = ExtResource("3_eu1uo")
@@ -383,6 +387,34 @@ map_key = "tantegel_throne"
 load_params = SubResource("Resource_8k2m6")
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_r1t0s"]
+script = ExtResource("10_wpp7o")
+map_key = "overworld"
+data_key = "game_defeated"
+
+[sub_resource type="Resource" id="Resource_40sl8"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(136, 136)
+operation = 0
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_6esh0"]
+script = ExtResource("27_x0shb")
+event_scene = ExtResource("27_bq6x1")
+pos = Vector2(136, 136)
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_2gdw2"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_40sl8"), SubResource("Resource_6esh0")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_s77yo"]
+script = ExtResource("20_uy2bo")
+condition = SubResource("Resource_r1t0s")
+condition_true_event = SubResource("Resource_2gdw2")
+skip_window = true
+
 [sub_resource type="Resource" id="Resource_8iojy"]
 script = ExtResource("3_eu1uo")
 play_starting_event = false
@@ -445,6 +477,88 @@ play_starting_event = false
 spawn_point_key = "entrance"
 spawn_direction = Vector2(1, 0)
 transition_sound = ""
+
+[sub_resource type="Resource" id="Resource_mc2oo"]
+script = ExtResource("10_wpp7o")
+map_key = "overworld"
+data_key = "game_defeated"
+
+[sub_resource type="Resource" id="Resource_wu6c8"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(168, 168)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_pl1pu"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(168, 200)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ybrml"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(168, 232)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_h58x0"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(216, 168)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_xrhlj"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(216, 200)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_jmvnq"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(216, 232)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_p3nj1"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wu6c8"), SubResource("Resource_pl1pu"), SubResource("Resource_ybrml"), SubResource("Resource_h58x0"), SubResource("Resource_xrhlj"), SubResource("Resource_jmvnq")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_fnn4b"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(152, 152)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ebrop"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(152, 120)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ejxod"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(200, 200)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ac1sq"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(152, 232)
+operation = 3
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_yq6re"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_fnn4b"), SubResource("Resource_ebrop"), SubResource("Resource_ejxod"), SubResource("Resource_ac1sq")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_x1kqg"]
+script = ExtResource("20_uy2bo")
+condition = SubResource("Resource_mc2oo")
+condition_true_event = SubResource("Resource_yq6re")
+condition_false_event = SubResource("Resource_p3nj1")
+skip_window = true
 
 [node name="TantegelCastle" instance=ExtResource("1_6o5ni")]
 map_bgm = "tantegel_castle"
@@ -568,12 +682,40 @@ talk_event = SubResource("Resource_er8ts")
 [node name="ProjectNpcBehaviour" parent="NPCParent/KeyShop/Behaviours" index="0" instance=ExtResource("10_y5ubs")]
 project_dir = Vector2(0, 1)
 
+[node name="EndgameGuard" parent="NPCParent" index="20" instance=ExtResource("25_d8blp")]
+position = Vector2(168, 168)
+
+[node name="EndgameGuard2" parent="NPCParent" index="21" instance=ExtResource("25_d8blp")]
+position = Vector2(168, 200)
+
+[node name="EndgameGuard3" parent="NPCParent" index="22" instance=ExtResource("25_d8blp")]
+position = Vector2(168, 232)
+
+[node name="EndgameGuard4" parent="NPCParent" index="23" instance=ExtResource("25_d8blp")]
+position = Vector2(216, 168)
+
+[node name="Sprite2D" parent="NPCParent/EndgameGuard4" index="0"]
+flip_h = true
+
+[node name="EndgameGuard5" parent="NPCParent" index="24" instance=ExtResource("25_d8blp")]
+position = Vector2(216, 200)
+
+[node name="Sprite2D" parent="NPCParent/EndgameGuard5" index="0"]
+flip_h = true
+
+[node name="EndgameGuard6" parent="NPCParent" index="25" instance=ExtResource("25_d8blp")]
+position = Vector2(216, 232)
+
+[node name="Sprite2D" parent="NPCParent/EndgameGuard6" index="0"]
+flip_h = true
+
 [node name="EventParent" parent="." index="2"]
 metadata/_edit_lock_ = true
 
 [node name="ToThrone" parent="EventParent" index="0" instance=ExtResource("2_5jjpx")]
 position = Vector2(136, 136)
 stairs_event = SubResource("Resource_nr3d1")
+map_start_event = SubResource("Resource_s77yo")
 
 [node name="ToOverworld" parent="EventParent" index="1" instance=ExtResource("18_8577f")]
 position = Vector2(168, 488)
@@ -653,6 +795,9 @@ map_key = "tantegel_castle_b1"
 load_params = SubResource("Resource_53hgn")
 is_stairs = true
 
+[node name="EndgameInit" parent="EventParent" index="16" instance=ExtResource("2_5jjpx")]
+map_start_event = SubResource("Resource_x1kqg")
+
 [node name="SpawnPoints" parent="." index="3"]
 metadata/_edit_lock_ = true
 
@@ -683,6 +828,9 @@ position = Vector2(488, 488)
 [editable path="NPCParent/GarinhamHint"]
 [editable path="NPCParent/WellWishes"]
 [editable path="NPCParent/KeyShop"]
+[editable path="NPCParent/EndgameGuard4"]
+[editable path="NPCParent/EndgameGuard5"]
+[editable path="NPCParent/EndgameGuard6"]
 [editable path="EventParent/RandomGoldChestEvent"]
 [editable path="EventParent/RandomGoldChestEvent2"]
 [editable path="EventParent/RandomGoldChestEvent3"]

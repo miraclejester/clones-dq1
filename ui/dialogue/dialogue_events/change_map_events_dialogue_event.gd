@@ -4,7 +4,8 @@ class_name ChangeMapEventsDialogueEvent
 enum EventOperation {
 	REMOVE,
 	REMOVE_DOOR,
-	REMOVE_STEP
+	REMOVE_STEP,
+	REMOVE_NPC
 }
 
 @export var target_pos: Vector2
@@ -21,4 +22,6 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 			event.door_event = null
 		EventOperation.REMOVE_STEP:
 			event.step_event = null
+		EventOperation.REMOVE_NPC:
+			map.remove_npc(pos)
 	await window.get_tree().process_frame

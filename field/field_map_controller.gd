@@ -318,10 +318,15 @@ func on_stairs_selected() -> void:
 	await MenuStack.pop_stack()
 	var event: MapEvent = field_map.find_event(hero_character.position)
 	if event != null and event.stairs_event != null:
+		if event.stairs_event is PlayParagraphDialogueEvent:
+			await field_ui.play_dialogue(event.stairs_event)
+			close_command_window()
+			field_ui.hide_hud()
+			return
+		
 		close_command_window()
 		field_ui.hide_hud()
 		await field_ui.play_dialogue(event.stairs_event, {
-			"wait_for_continuation": false,
 			"map_controller": self,
 			"make_window_visible": false
 		}, false)

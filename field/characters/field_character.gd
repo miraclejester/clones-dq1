@@ -2,6 +2,7 @@ extends Node2D
 class_name FieldCharacter
 
 @export var starting_face_dir: Vector2 = Vector2.DOWN
+@export var static_char: bool = false
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sprite: Sprite2D = %Sprite2D
@@ -26,19 +27,27 @@ var pause_frame_dict: Dictionary = {
 
 
 func _ready() -> void:
-	set_face_dir(starting_face_dir)
+	set_face_dir(starting_face_dir, true)
 
 
 func set_current_map(map: FieldMap) -> void:
 	current_map = map
 
 
-func set_face_dir(dir: Vector2) -> void:
+func set_face_dir(dir: Vector2, force: bool = false) -> void:
+	if static_char and not force:
+		return
 	var base: String = dir_anim_dict.get(dir, "walk_down")
-	animation_player.play(get_move_anim_name(base))
+	
+	if not static_char:
+		animation_player.play(get_move_anim_name(base))
 	facing_dir = dir
-	if get_tree().paused:
+	if get_tree().paused or static_char:
 		sprite.frame = get_pause_frame(base)
+
+
+func play_custom_anim(anim_name: String) -> void:
+	animation_player.play(anim_name)
 
 
 func get_move_anim_name(base: String) -> String:
