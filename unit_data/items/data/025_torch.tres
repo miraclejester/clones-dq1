@@ -10,11 +10,13 @@
 script = ExtResource("1_lxhuv")
 status_check = 0
 tag = 0
+vec2_value = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ef7qv"]
 script = ExtResource("1_lxhuv")
 status_check = 0
 tag = 0
+vec2_value = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_7elcg"]
 script = ExtResource("1_jvg3p")
