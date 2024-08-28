@@ -28,3 +28,4 @@ stats = SubResource("Resource_nrrur")
 initiative_group = 3
 position_group = 11
 patterns = Array[Resource("res://battle/data/enemy_pattern_entry.gd")]([])
+tags = Array[int]([])

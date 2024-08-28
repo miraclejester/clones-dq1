@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3hdkb0bnwlmh"]
+[gd_scene load_steps=28 format=3 uid="uid://d3hdkb0bnwlmh"]
 
 [ext_resource type="Script" path="res://field/field_map_controller.gd" id="1_wpht4"]
 [ext_resource type="Resource" uid="uid://brxuynvybmeq4" path="res://field/dialogues/field_dialogue_talk_default.tres" id="2_xsj18"]
@@ -7,8 +7,11 @@
 [ext_resource type="Resource" uid="uid://bscyc5aswyaat" path="res://battle/data/dialogues/battle_dialogue_no_spells.tres" id="4_wmlf5"]
 [ext_resource type="Resource" uid="uid://cuxhv6isaxox1" path="res://ui/data/field_dialogues/field_dialogue_non_field_spell.tres" id="5_hffhm"]
 [ext_resource type="PackedScene" uid="uid://dtm3drykcn2lw" path="res://field/characters/hero/hero_character.tscn" id="5_xgior"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="6_kfmvs"]
 [ext_resource type="PackedScene" uid="uid://cvrgbbcsw5bfy" path="res://field/ui/field_ui.tscn" id="6_nc5xv"]
 [ext_resource type="PackedScene" uid="uid://b3pdkdcgcir3x" path="res://battle/battle_controller.tscn" id="7_jnlec"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="7_pvhwp"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="8_exn4g"]
 
 [sub_resource type="Resource" id="Resource_l04rv"]
 script = ExtResource("3_mhtmc")
@@ -98,6 +101,53 @@ format_var_idxs = Array[int]([])
 wait_for_dialogue = true
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_k8hbh"]
+script = ExtResource("3_mhtmc")
+text = "Hurrah!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_vhsd6"]
+script = ExtResource("3_mhtmc")
+text = "Hurrah!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_h7aaw"]
+script = ExtResource("3_mhtmc")
+text = "Long live %s!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wlubs"]
+script = ExtResource("6_kfmvs")
+
+[sub_resource type="Resource" id="Resource_mdjek"]
+script = ExtResource("7_pvhwp")
+dialogue = SubResource("Resource_h7aaw")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_wlubs")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ssy61"]
+script = ExtResource("8_exn4g")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_k8hbh"), SubResource("Resource_vhsd6"), SubResource("Resource_mdjek")])
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_b0e4t"]
 script = ExtResource("4_hvgwh")
 play_starting_event = true
@@ -119,6 +169,7 @@ default_stairs_dialogue = SubResource("Resource_vhygg")
 spell_default_dialogue = ExtResource("4_wmlf5")
 non_field_spell_dialogue = ExtResource("5_hffhm")
 repel_over_dialogue = SubResource("Resource_s6www")
+default_endgame_dialogue = SubResource("Resource_ssy61")
 starting_map_load_params = SubResource("Resource_b0e4t")
 
 [node name="FieldMapContainer" type="Node2D" parent="." groups=["player_hurt_shake"]]

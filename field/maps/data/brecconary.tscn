@@ -168,6 +168,7 @@ key = 7
 min_val = 0
 max_val = 0
 id = 0
+float_val = 0.0
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_7hpoa"]

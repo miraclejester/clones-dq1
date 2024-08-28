@@ -1,6 +1,29 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bq72egpn667sr"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://bq72egpn667sr"]
 
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_4nm1i"]
 [ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="1_4ptcs"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="2_k23i4"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="3_ahm1s"]
+
+[sub_resource type="Resource" id="Resource_5io3r"]
+script = ExtResource("1_4nm1i")
+text = "%s holds the Ball of Light tightly"
+in_quotes = false
+is_speech = false
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_t3h42"]
+script = ExtResource("2_k23i4")
+
+[sub_resource type="Resource" id="Resource_yipfd"]
+script = ExtResource("3_ahm1s")
+dialogue = SubResource("Resource_5io3r")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_t3h42")])
+skip_window = false
 
 [resource]
 script = ExtResource("1_4ptcs")
@@ -9,3 +32,7 @@ item_id = 34
 buy_price = -1
 sell_price = -1
 consumable = false
+sellable = true
+stack_size = 1
+field_action = SubResource("Resource_yipfd")
+tags = Array[int]([])

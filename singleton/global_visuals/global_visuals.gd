@@ -7,6 +7,7 @@ extends Node
 @export var darken_material: ShaderMaterial
 @export var darken_hurt_material: ShaderMaterial
 @export var rainbow_drop_material: ShaderMaterial
+@export var darken_local_material: ShaderMaterial
 
 
 var shake_step: int = 2
@@ -125,6 +126,11 @@ func dark_out() -> void:
 		set_darken(node, 4)
 
 
+func lighten_up() -> void:
+	for node in get_tree().get_nodes_in_group("darken"):
+		set_darken(node, 0)
+
+
 func set_ambient_hurt_enabled(enabled: bool) -> void:
 	ambient_hurt_enabled = enabled
 	for node in get_tree().get_nodes_in_group("ambient_hurt"):
@@ -155,6 +161,11 @@ func set_darken(node: Node, index: int) -> void:
 		mat = darken_hurt_material
 	(node as CanvasItem).material = mat
 	mat.set_shader_parameter("color_index", index)
+
+
+func darken_local() -> void:
+	for node in get_tree().get_nodes_in_group("darken_local"):
+		(node as CanvasItem).material = darken_local_material
 
 
 func set_rainbow_drop(node: Node, index: int) -> void:

@@ -12,13 +12,14 @@ func _ready() -> void:
 
 
 func play_bgm(key: String) -> void:
+	if key == "":
+		bgm_player.stop()
+		return
 	var new_bgm: AudioStream = load_bgm(key)
 	if new_bgm != bgm_player.stream:
 		bgm_player.stop()
 		bgm_player.stream = new_bgm
 		bgm_player.play()
-	elif key == "":
-		bgm_player.stop()
 
 
 func play_bgm_one_shot(key: String) -> void:

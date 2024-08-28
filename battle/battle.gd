@@ -70,7 +70,7 @@ func player_fight() -> void:
 
 
 func player_run() -> void:
-	if enemy.has_status(BattleUnit.StatusEffect.SLEEP) or speed_roll():
+	if not enemy.tags.has(EnemyData.EnemyTag.CANNOT_RUN) and (enemy.has_status(BattleUnit.StatusEffect.SLEEP) or speed_roll()):
 		updates.append(RunBattleUpdate.from_data(hero.get_unit_name(), RunBattleUpdate.RunResult.SUCCESS))
 		updates.append(FinishBattleUpdate.new(false, BattleController.BattleEndStatus.RUN))
 	else:
@@ -132,7 +132,7 @@ func fight_action(attacker: BattleUnit, defender: BattleUnit) -> void:
 		return
 		
 	var crit_roll: float = randf_range(0, 1)
-	if crit_roll < attacker.crit_chance:
+	if defender.can_be_crit() and crit_roll < attacker.crit_chance:
 		var d: int = attacker.get_crit_damage()
 		defender.deal_damage(d)
 		updates.append(AttackBattleUpdate.fromData(

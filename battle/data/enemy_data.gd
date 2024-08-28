@@ -9,6 +9,11 @@ enum BattlePositionGroup {
 	DRAGON, DRAGONLORD, TRUE_DRAGONLORD
 }
 
+enum EnemyTag {
+	CANNOT_BE_CRIT,
+	CANNOT_RUN
+}
+
 const POSITION_GROUP_MAP: Dictionary = {
 	EnemyData.BattlePositionGroup.SLIME: Vector2(137, 106),
 	EnemyData.BattlePositionGroup.DRACKY: Vector2(136, 105),
@@ -34,6 +39,7 @@ const POSITION_GROUP_MAP: Dictionary = {
 @export var initiative_group: int
 @export var position_group: BattlePositionGroup
 @export var patterns: Array[EnemyPatternEntry]
+@export var tags: Array[EnemyTag]
 
 
 func get_position_from_group() -> Vector2:

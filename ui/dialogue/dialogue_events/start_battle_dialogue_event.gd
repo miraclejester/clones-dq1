@@ -6,4 +6,6 @@ class_name StartBattleDialogueEvent
 
 func execute(window: DialogueWindow, params: Dictionary) -> void:
 	await window.get_tree().process_frame
-	(params.get("map_controller") as FieldMapController).start_battle(encounter, config)
+	var controller: FieldMapController  = params.get("map_controller") as FieldMapController
+	controller.close_command_window(false)
+	controller.start_battle(encounter, config)

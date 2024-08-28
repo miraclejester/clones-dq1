@@ -13,6 +13,7 @@ enum MapTag {
 @export var outside_target: String
 @export var outside_map_params: MapLoadParams
 @export var map_tags: Array[MapTag]
+@export var endgame_talk: DialogueEvent
 
 @onready var field_tile_map: FieldTileMap = %FieldTileMap
 @onready var npc_parent: Node2D = %NPCParent
@@ -22,6 +23,8 @@ enum MapTag {
 @onready var encounter_data: Node2D = %EncounterData
 @onready var bound_start: Node2D = %BoundStart
 @onready var bound_end: Node2D = %BoundEnd
+@onready var darkness_layer: Node2D = $DarknessLayer
+
 
 
 var char_dict: Dictionary #Vector2 to FieldCharacter
@@ -181,3 +184,7 @@ func is_out_of_bounds(pos: Vector2) -> bool:
 
 func has_tag(tag: MapTag) -> bool:
 	return map_tags.has(tag)
+
+
+func show_darkness() -> void:
+	darkness_layer.visible = true

@@ -12,7 +12,8 @@ enum OperationKey {
 	REMOVE_CURSE,
 	ADD_PRINCESS,
 	REMOVE_PRINCESS,
-	SET_TILE_DAMAGE_MULTIPLIER
+	SET_TILE_DAMAGE_MULTIPLIER,
+	HEAL_ALL
 }
 
 @export var key: OperationKey
@@ -48,3 +49,6 @@ func execute(window: DialogueWindow, _params: Dictionary) -> void:
 			PlayerManager.hero.change_princess_status(false)
 		OperationKey.SET_TILE_DAMAGE_MULTIPLIER:
 			PlayerManager.hero.equipment.tile_damage_multiplier = float_val
+		OperationKey.HEAL_ALL:
+			PlayerManager.hero.stats.set_stat(UnitStats.StatKey.HP, PlayerManager.hero.stats.get_base(UnitStats.StatKey.HP))
+			PlayerManager.hero.stats.set_stat(UnitStats.StatKey.MP, PlayerManager.hero.stats.get_base(UnitStats.StatKey.MP))

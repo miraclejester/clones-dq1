@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2oxir5rcqcn1"]
+[gd_scene load_steps=10 format=3 uid="uid://d2oxir5rcqcn1"]
 
 [ext_resource type="Script" path="res://singleton/global_visuals/global_visuals.gd" id="1_lpqev"]
 [ext_resource type="Material" uid="uid://br6gicj3a81o0" path="res://materials/palette_swap/spell_effect.tres" id="2_t8dn0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://dn4tgoayvt671" path="res://materials/palette_swap/darken_swap.tres" id="5_srfp3"]
 [ext_resource type="Material" uid="uid://d2cydjqh54jr6" path="res://materials/palette_swap/darken_hurt_swap.tres" id="6_142dn"]
 [ext_resource type="Material" uid="uid://kwnvffmnai5b" path="res://materials/palette_swap/rainbow_drop_swap.tres" id="8_y7ujj"]
+[ext_resource type="Material" uid="uid://csperfvcqjuy2" path="res://materials/palette_swap/darken_swap_local.tres" id="9_4bpr5"]
 
 [node name="GlobalVisuals" type="Node"]
 process_mode = 3
@@ -19,3 +20,4 @@ ambient_barrier_material = ExtResource("5_mtem4")
 darken_material = ExtResource("5_srfp3")
 darken_hurt_material = ExtResource("6_142dn")
 rainbow_drop_material = ExtResource("8_y7ujj")
+darken_local_material = ExtResource("9_4bpr5")

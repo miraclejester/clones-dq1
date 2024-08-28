@@ -115,3 +115,8 @@ func get_attack_sfx_key() -> String:
 
 func play_spell_effect() -> void:
 	await GlobalVisuals.spell_effect()
+	
+
+
+func can_be_crit() -> bool:
+	return true

@@ -22,6 +22,7 @@ var reprise_key: String
 var show_spoils: bool = true
 var encounter_data: EncounterData
 var config: BattleConfig
+var running: bool = false
 
 
 func _ready() -> void:
@@ -34,6 +35,8 @@ func _ready() -> void:
 
 
 func start_battle(ec: EncounterData, c: BattleConfig) -> void:
+	running = true
+	
 	encounter_data = ec
 	config = c
 	
@@ -194,8 +197,13 @@ func command_menu_cancelled() -> void:
 
 
 func finish_battle(status: BattleEndStatus) -> void:
+	running = false
 	await get_tree().process_frame
 	darkness.visible = false
+	if config.wait_for_end_dialogue:
+		await battle_ui.wait_for_dialogue_continuation(encounter_data.after_victory_event != null)
+	if status == BattleEndStatus.VICTORY and encounter_data.after_victory_event != null:
+		await battle_ui.play_dialogue(encounter_data.after_victory_event)
 	battle_finished.emit(status, config)
 
 

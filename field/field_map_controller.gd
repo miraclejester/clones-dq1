@@ -13,6 +13,7 @@ class_name FieldMapController
 @export var spell_default_dialogue: DialogueEvent
 @export var non_field_spell_dialogue: DialogueEvent
 @export var repel_over_dialogue: DialogueEvent
+@export var default_endgame_dialogue: DialogueEvent
 @export var starting_map_load_params: MapLoadParams
 
 
@@ -20,7 +21,6 @@ class_name FieldMapController
 @onready var field_ui: FieldUI = $FieldUI
 @onready var field_map_container: Node2D = $FieldMapContainer
 @onready var battle_controller: BattleController = $BattleController
-
 
 var field_map: FieldMap
 var current_map_key: String
@@ -130,6 +130,7 @@ func transition_to_map(path: String, params: MapLoadParams) -> void:
 	await MenuStack.clear_menu_stack()
 	
 	await GlobalVisuals.fade_out()
+	battle_controller.set_visibility(false)
 	
 	field_ui.dialogue_window.visible = false
 	field_ui.command_window.visible = false
@@ -171,7 +172,13 @@ func on_talk_selected() -> void:
 	var npc: NPCCharacter = field_map.find_npc(hero_character.get_facing_tile_position())
 	if npc != null and npc.talk_event != null:
 		npc.face_towards(hero_character.position)
-		await field_ui.play_dialogue(npc.talk_event, {
+		var talk_event = npc.talk_event
+		if GameDataManager.get_map_bool("overworld", "game_defeated"):
+			if field_map.endgame_talk != null:
+				talk_event = field_map.endgame_talk
+			else:
+				talk_event = default_endgame_dialogue
+		await field_ui.play_dialogue(talk_event, {
 			PlayParagraphDialogueEvent.ParagraphEventKeys.FORMAT_VARS : get_global_format_vars(),
 			"shop_interface": field_ui.shop_interface,
 			"map": field_map,
@@ -429,7 +436,8 @@ func on_move_finished() -> void:
 		get_tree().paused = false
 	
 	var zone: EncounterZone = field_map.get_encounter_zone(hero_character.position)
-	if zone != null:
+	var game_defeated: bool = GameDataManager.get_map_bool("overworld", "game_defeated")
+	if not game_defeated and zone != null:
 		var tile_id: EncounterChanceEntry.TileBattleID = field_map.get_tile_battle_id(hero_character.position)
 		var encounter: EncounterData = zone.roll_for_battle(tile_id)
 		if encounter != null:
@@ -479,6 +487,8 @@ func on_battle_finished(status: BattleController.BattleEndStatus, config: Battle
 
 
 func back_from_battle() -> void:
+	if battle_controller.running:
+		return
 	get_tree().paused = false
 	field_ui.visible = true
 	battle_controller.set_visibility(false)

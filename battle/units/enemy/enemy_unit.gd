@@ -111,3 +111,7 @@ func get_group_factor() -> float:
 			return 0.5
 		3, _:
 			return 1
+
+
+func can_be_crit() -> bool:
+	return not data.tags.has(EnemyData.EnemyTag.CANNOT_BE_CRIT)

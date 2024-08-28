@@ -40,3 +40,4 @@ stats = SubResource("Resource_tmqny")
 initiative_group = 0
 position_group = 3
 patterns = Array[ExtResource("4_sxmqi")]([SubResource("Resource_uvjkj")])
+tags = Array[int]([])

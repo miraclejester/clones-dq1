@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://biukci6btqhp"]
+
+[ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="1_xihjr"]
+[ext_resource type="Texture2D" uid="uid://b2mdlryh76651" path="res://field/characters/npcs/npc_dragonlord.png" id="2_n8inm"]
+
+[node name="NPCDragonlord" instance=ExtResource("1_xihjr")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_n8inm")

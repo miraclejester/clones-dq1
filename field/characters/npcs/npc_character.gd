@@ -2,6 +2,8 @@ extends FieldCharacter
 class_name NPCCharacter
 
 @export var talk_event: DialogueEvent
+@export var use_endgame_dialogue: bool = true
+
 @onready var behaviours: Node = %Behaviours
 
 

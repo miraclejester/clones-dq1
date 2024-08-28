@@ -149,6 +149,7 @@ battle_bg = ExtResource("6_o3rkb")
 is_dark = false
 victory_event = SubResource("Resource_eyc7m")
 run_event = SubResource("Resource_28ehl")
+wait_for_end_dialogue = true
 
 [sub_resource type="Resource" id="Resource_s3ppr"]
 script = ExtResource("13_s8oe3")

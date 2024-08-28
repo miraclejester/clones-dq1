@@ -10,6 +10,7 @@
 script = ExtResource("1_ekpir")
 status_check = null
 tag = null
+vec2_value = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_pjjv6"]
 script = ExtResource("2_lqnho")
