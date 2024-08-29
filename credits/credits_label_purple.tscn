@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76yehp18jxpm"]
+
+[ext_resource type="FontFile" uid="uid://dvgiis2dvndf5" path="res://credits/credits_font_purple.png" id="1_sc0gm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldhk8"]
+line_spacing = 8.0
+font = ExtResource("1_sc0gm")
+font_size = 8
+
+[node name="CreditsLabelPurple" type="Label" groups=["darken"]]
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 24.0
+text = "CONGRATULATIONS!"
+label_settings = SubResource("LabelSettings_ldhk8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

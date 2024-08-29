@@ -17,6 +17,9 @@ class_name LorikEndgameDialogueEvent
 @export var hero_initial_pos: Vector2
 @export var guard_positions: Array[Vector2]
 
+@export_group("Leaving")
+@export var target_scene: PackedScene
+
 var accepted: bool = false
 
 func execute(window: DialogueWindow, params: Dictionary) -> void:
@@ -94,6 +97,8 @@ func execute(window: DialogueWindow, params: Dictionary) -> void:
 	AudioManager.play_bgm("ending")
 	await window.get_tree().create_timer(10.75).timeout
 	await GlobalVisuals.fade_out()
+	
+	window.get_tree().change_scene_to_packed(target_scene)
 
 
 func accepted_princess() -> void:

@@ -1,0 +1,699 @@
+[gd_scene load_steps=9 format=3 uid="uid://bq3opy3kgp8a3"]
+
+[ext_resource type="PackedScene" uid="uid://b76yehp18jxpm" path="res://credits/credits_label_purple.tscn" id="1_qwf6c"]
+[ext_resource type="Script" path="res://credits/credits.gd" id="1_ujbwx"]
+[ext_resource type="Script" path="res://credits/credits_header.gd" id="2_2u7sr"]
+[ext_resource type="PackedScene" uid="uid://dw5g66f0px2tk" path="res://credits/credits_label_orange.tscn" id="2_sbs6n"]
+[ext_resource type="PackedScene" uid="uid://cano8xegr76ki" path="res://credits/credits_label_green.tscn" id="3_a7jet"]
+[ext_resource type="PackedScene" uid="uid://ccyg36pnfmfu4" path="res://credits/credits_label_white.tscn" id="6_qpv4r"]
+[ext_resource type="Texture2D" uid="uid://dn627wxpo3i2g" path="res://credits/enix_logo.png" id="7_o0rrs"]
+[ext_resource type="Texture2D" uid="uid://jmfsji3eqqxd" path="res://credits/the_end.png" id="8_y32a0"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ujbwx")
+
+[node name="Header" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+script = ExtResource("2_2u7sr")
+duration = 16.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple" parent="Header/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelOrange" parent="Header/VBoxContainer/VBoxContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "THOU HAST RESTORED"
+
+[node name="CreditsLabelOrange2" parent="Header/VBoxContainer/VBoxContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "PEACE UNTO THE WORLD!"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Header/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelOrange" parent="Header/VBoxContainer/VBoxContainer2" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "BUT THERE ARE MANY ROADS"
+
+[node name="CreditsLabelOrange2" parent="Header/VBoxContainer/VBoxContainer2" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "YET TO TRAVEL."
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Header/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelOrange" parent="Header/VBoxContainer/VBoxContainer3" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "MAY THE LIGHT"
+
+[node name="CreditsLabelOrange2" parent="Header/VBoxContainer/VBoxContainer3" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "SHINE UPON THEE."
+
+[node name="Header2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelGreen" parent="Header2/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header2/VBoxContainer/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = " STAFF"
+
+[node name="Header3" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header3"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple2" parent="Header3/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+text = "SCENARIO WRITTEN BY"
+
+[node name="CreditsLabelWhite" parent="Header3/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+
+[node name="Header4" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header4"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelOrange3" parent="Header4/VBoxContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "CHARACTER DESIGNED BY"
+
+[node name="CreditsLabelWhite" parent="Header4/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = " AKIRA TORIYAMA"
+
+[node name="Header5" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header5"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelGreen2" parent="Header5/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "MUSIC COMPOSED BY"
+
+[node name="CreditsLabelWhite" parent="Header5/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = " KOICHI SUGIYAMA"
+
+[node name="Header6" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+script = ExtResource("2_2u7sr")
+duration = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header6"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple2" parent="Header6/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+text = " PROGRAMED BY"
+
+[node name="CreditsLabelWhite" parent="Header6/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "KOICHI NAKAMURA"
+
+[node name="CreditsLabelWhite2" parent="Header6/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "KOJI YOSHIDA"
+
+[node name="CreditsLabelWhite3" parent="Header6/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "TAKENORI YAMAMORI"
+
+[node name="Header7" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+duration = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header7"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelOrange3" parent="Header7/VBoxContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "CG DESIGNED BY"
+
+[node name="CreditsLabelWhite" parent="Header7/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "TAKASHI YASUNO"
+
+[node name="Header8" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+duration = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header8"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelGreen2" parent="Header8/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = " SCENARIO ASSISTED BY"
+
+[node name="CreditsLabelWhite" parent="Header8/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "HIROSHI MIYAOKA"
+
+[node name="Header9" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+script = ExtResource("2_2u7sr")
+duration = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header9"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple2" parent="Header9/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+text = "ASSISTED BY"
+
+[node name="CreditsLabelWhite" parent="Header9/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "RIKA SUZUKI"
+
+[node name="CreditsLabelWhite2" parent="Header9/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "TADASHI FUKUZAWA"
+
+[node name="Header10" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+duration = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header10"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple2" parent="Header10/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+text = "SPECIAL THANKS TO"
+
+[node name="CreditsLabelWhite" parent="Header10/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "KAZUHIKO TORISHIMA"
+
+[node name="Header11" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header11"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelGreen" parent="Header11/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "TRANSLATION"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header11/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header11/VBoxContainer/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = " STAFF"
+
+[node name="Header12" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 56
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header12"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header12/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header12/VBoxContainer/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "       TRANSLATED BY"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header12/VBoxContainer/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "TOSHIKO WATSON"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Header12/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header12/VBoxContainer/VBoxContainer2" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "       REVISED TEXT BY"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header12/VBoxContainer/VBoxContainer2" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "         SCOTT PELLAND"
+horizontal_alignment = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Header12/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header12/VBoxContainer/VBoxContainer3" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "       TECHNICAL SUPPORT BY"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header12/VBoxContainer/VBoxContainer3" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "         DOUG BAKER"
+horizontal_alignment = 0
+
+[node name="Header13" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+script = ExtResource("2_2u7sr")
+duration = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header13"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelPurple2" parent="Header13/VBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+text = "       PROGRAMED BY
+
+"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header13/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "KENICHI MASUTA"
+
+[node name="CreditsLabelWhite2" parent="Header13/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "         MANABU YAMANA"
+horizontal_alignment = 0
+
+[node name="Header14" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header14"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header14/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelOrange" parent="Header14/VBoxContainer/VBoxContainer" instance=ExtResource("2_sbs6n")]
+layout_mode = 2
+text = "    CG DESIGNED BY"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header14/VBoxContainer/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "SATOSHI FUDABA"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Header14/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsLabelGreen2" parent="Header14/VBoxContainer/VBoxContainer2" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "    SPECIAL THANKS TO"
+horizontal_alignment = 0
+
+[node name="CreditsLabelWhite" parent="Header14/VBoxContainer/VBoxContainer2" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "         HOWARD PHILLIPS"
+horizontal_alignment = 0
+
+[node name="Header15" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header15"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelOrange3" parent="Header15/VBoxContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+text = "DIRECTED BY"
+
+[node name="CreditsLabelWhite" parent="Header15/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = "KOICHI NAKAMURA"
+
+[node name="Header16" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header16"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsLabelGreen" parent="Header16/VBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "PRODUCED BY"
+
+[node name="CreditsLabelWhite" parent="Header16/VBoxContainer" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+text = " YUKINOBU CHIDA"
+
+[node name="Header17" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 24
+script = ExtResource("2_2u7sr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header17"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header17/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header17/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CreditsLabelGreen" parent="Header17/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = "      BASED ON"
+
+[node name="CreditsLabelPurple" parent="Header17/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qwf6c")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DRAGON QUEST"
+horizontal_alignment = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Header17/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsLabelGreen" parent="Header17/VBoxContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("3_a7jet")]
+layout_mode = 2
+text = " COPYRIGHT"
+
+[node name="MarginContainer" type="MarginContainer" parent="Header17/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 16
+
+[node name="GridContainer" type="GridContainer" parent="Header17/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="CreditsLabelWhite" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("6_qpv4r")]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ARMOR PROJECT"
+horizontal_alignment = 0
+
+[node name="CreditsLabelOrange" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1986"
+
+[node name="CreditsLabelOrange2" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1989"
+
+[node name="CreditsLabelWhite2" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("6_qpv4r")]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BIRD STUDIO"
+horizontal_alignment = 0
+
+[node name="CreditsLabelOrange3" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1986"
+
+[node name="CreditsLabelOrange4" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1989"
+
+[node name="CreditsLabelWhite3" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("6_qpv4r")]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "KOICHI SUGIYAMA"
+horizontal_alignment = 0
+autowrap_mode = 0
+
+[node name="CreditsLabelOrange5" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1986"
+
+[node name="CreditsLabelOrange6" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1989"
+
+[node name="CreditsLabelWhite4" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("6_qpv4r")]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CHUN SOFT"
+horizontal_alignment = 0
+
+[node name="CreditsLabelOrange7" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1986"
+
+[node name="CreditsLabelOrange8" parent="Header17/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_sbs6n")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "1989"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Header17/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Header17/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Header17/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="CreditsLabelWhite" parent="Header17/VBoxContainer/MarginContainer2/HBoxContainer4" instance=ExtResource("6_qpv4r")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "        ENIX"
+
+[node name="CreditsLabelOrange" parent="Header17/VBoxContainer/MarginContainer2/HBoxContainer4" instance=ExtResource("2_sbs6n")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1986 1989"
+
+[node name="Header18" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 112
+theme_override_constants/margin_top = 80
+script = ExtResource("2_2u7sr")
+
+[node name="TextureRect" type="TextureRect" parent="Header18" groups=["darken"]]
+layout_mode = 2
+texture = ExtResource("7_o0rrs")
+stretch_mode = 2
+
+[node name="Header19" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 88
+script = ExtResource("2_2u7sr")
+fade_out = false
+
+[node name="TextureRect" type="TextureRect" parent="Header19" groups=["darken"]]
+layout_mode = 2
+texture = ExtResource("8_y32a0")
+stretch_mode = 2

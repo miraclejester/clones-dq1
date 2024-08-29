@@ -44,13 +44,13 @@ export/convert_text_resources_to_binary=false
 
 font_data_image={
 "character_margin": Rect2i(0, 0, 0, 0),
-"character_ranges": PackedStringArray("\'A\'-\'Z\'", "45", "\'\'\'", "\'!\'", "\'?\'", "\'(\'", "\')\'", "\'a\'-\'z\'", "\',\'", "\'.\'", "\'0\'-\'9\'", "\' \'", "\'`\'", "\'~\'"),
-"columns": 8,
+"character_ranges": PackedStringArray("\'A\'-\'Z\'", "\'0\'-\'9\'", "\'!\'", "\'.\'", "45", "\'>\'", "\'c\'", "\' \'"),
+"columns": 14,
 "compress": true,
 "fallbacks": [],
 "image_margin": Rect2i(0, 0, 0, 0),
-"rows": 10,
-"scaling_mode": 1
+"rows": 3,
+"scaling_mode": 2
 }
 
 [input]

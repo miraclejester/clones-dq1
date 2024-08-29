@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cano8xegr76ki"]
+
+[ext_resource type="FontFile" uid="uid://7cf34roo8oqu" path="res://credits/credits_font_green.png" id="1_hy08s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1t51"]
+line_spacing = 8.0
+font = ExtResource("1_hy08s")
+font_size = 8
+
+[node name="CreditsLabelGreen" type="Label" groups=["darken"]]
+text = "DRAGON WARRIOR"
+label_settings = SubResource("LabelSettings_t1t51")
+horizontal_alignment = 1
+vertical_alignment = 1

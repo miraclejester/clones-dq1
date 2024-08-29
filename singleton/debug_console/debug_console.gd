@@ -50,7 +50,8 @@ func show_main_commands() -> void:
 		CommandData.new("Set Stats", set_stats_selected),
 		CommandData.new("Add 100 Gold", add_gold.bind(100)),
 		CommandData.new("Add 1000 Gold", add_gold.bind(1000)),
-		CommandData.new("Add Item", add_item_selected)
+		CommandData.new("Add Item", add_item_selected),
+		CommandData.new("Activate Endgame", GameDataManager.save_map_data.bind("overworld", "game_defeated", true))
 	]
 	command_window.initialize_commands(commands, 1)
 

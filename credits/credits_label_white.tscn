@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccyg36pnfmfu4"]
+
+[ext_resource type="FontFile" uid="uid://cbdmcoqss2q3f" path="res://credits/credits_font_white.png" id="1_4lafr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_762j1"]
+line_spacing = 8.0
+font = ExtResource("1_4lafr")
+font_size = 8
+
+[node name="CreditsLabelWhite" type="Label" groups=["darken"]]
+text = " YUJI HORII"
+label_settings = SubResource("LabelSettings_762j1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

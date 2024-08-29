@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=135 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="27_htis2"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/spawn_event_dialogue_event.gd" id="27_x0shb"]
 [ext_resource type="PackedScene" uid="uid://dndpdx1qf04cu" path="res://field/characters/npcs/npc_variations/princess_gwaelin.tscn" id="28_qr6ml"]
+[ext_resource type="PackedScene" uid="uid://bq3opy3kgp8a3" path="res://credits/credits.tscn" id="30_fhoeb"]
 
 [sub_resource type="Resource" id="Resource_n5lh4"]
 script = ExtResource("3_eu1uo")
@@ -591,7 +592,8 @@ princess_move_target = Vector2(184, 136)
 princess_scene = ExtResource("28_qr6ml")
 hero_initial_pos = Vector2(200, 152)
 guard_positions = Array[Vector2]([Vector2(168, 168), Vector2(168, 200), Vector2(168, 232), Vector2(216, 168), Vector2(216, 200), Vector2(216, 232)])
-skip_window = false
+target_scene = ExtResource("30_fhoeb")
+skip_window = true
 
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")

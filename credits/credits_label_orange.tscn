@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw5g66f0px2tk"]
+
+[ext_resource type="FontFile" uid="uid://dcbdd604172l8" path="res://credits/credits_font_orange.png" id="1_lkphd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rarwk"]
+line_spacing = 8.0
+font = ExtResource("1_lkphd")
+font_size = 8
+
+[node name="CreditsLabelOrange" type="Label" groups=["darken"]]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 216.0
+offset_bottom = 59.0
+text = "THOU HAST RESTORED PEACE UNTO THE WORLD!"
+label_settings = SubResource("LabelSettings_rarwk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
