@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=134 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -32,9 +32,14 @@
 [ext_resource type="PackedScene" uid="uid://bbke138x0s7m3" path="res://field/events/instances/door_event.tscn" id="23_b02l3"]
 [ext_resource type="PackedScene" uid="uid://vdgayc14he0m" path="res://field/events/instances/random_gold_chest_event.tscn" id="24_d6wkc"]
 [ext_resource type="PackedScene" uid="uid://c2g5gs4sea1h6" path="res://field/characters/npcs/npc_variations/endgame_guard.tscn" id="25_d8blp"]
+[ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="26_3mpoi"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_map_events_dialogue_event.gd" id="26_bixbf"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/lorik_endgame_dialogue_event.gd" id="26_mnujg"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/player_name_format_var_provider.gd" id="26_yy07g"]
 [ext_resource type="PackedScene" uid="uid://be37akkefhthi" path="res://field/events/instances/endgame_throne_stairs.tscn" id="27_bq6x1"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="27_htis2"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/spawn_event_dialogue_event.gd" id="27_x0shb"]
+[ext_resource type="PackedScene" uid="uid://dndpdx1qf04cu" path="res://field/characters/npcs/npc_variations/princess_gwaelin.tscn" id="28_qr6ml"]
 
 [sub_resource type="Resource" id="Resource_n5lh4"]
 script = ExtResource("3_eu1uo")
@@ -374,6 +379,220 @@ script = ExtResource("18_cloi5")
 shop_data = SubResource("Resource_ggole")
 skip_window = true
 
+[sub_resource type="Resource" id="Resource_evxn0"]
+script = ExtResource("2_i2oon")
+text = "May I travel as thy companion?"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_m6nmm"]
+script = ExtResource("2_i2oon")
+text = "I wish to go with thee on thy journey"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_ul4rb"]
+script = ExtResource("2_i2oon")
+text = "Gwaelin said:"
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_bft0n"]
+script = ExtResource("2_i2oon")
+text = "Please, wait"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qnwav"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ul4rb"), SubResource("Resource_bft0n")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_qdrd4"]
+script = ExtResource("2_i2oon")
+text = "But thou must"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wci5s"]
+script = ExtResource("2_i2oon")
+text = "I`m so happy!"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_1ucnr"]
+script = ExtResource("2_i2oon")
+text = "The legends have proven true"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_hikrg"]
+script = ExtResource("2_i2oon")
+text = "Thou art indeed of the line of Erdrick"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_745uk"]
+script = ExtResource("2_i2oon")
+text = "It is thy right to rule over this land"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_wrgyd"]
+script = ExtResource("2_i2oon")
+text = "Will thou take my place?"
+in_quotes = true
+is_speech = true
+wait_for_input = true
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_33gcg"]
+script = ExtResource("2_i2oon")
+text = "%s thought carefully before answering."
+in_quotes = false
+is_speech = false
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_pq013"]
+script = ExtResource("26_yy07g")
+
+[sub_resource type="Resource" id="Resource_othtr"]
+script = ExtResource("27_htis2")
+dialogue = SubResource("Resource_33gcg")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_pq013")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_nssba"]
+script = ExtResource("2_i2oon")
+text = "I cannot,"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_xh2qm"]
+script = ExtResource("2_i2oon")
+text = "said %s."
+in_quotes = false
+is_speech = false
+wait_for_input = true
+use_format_vars = true
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_weyw6"]
+script = ExtResource("26_yy07g")
+
+[sub_resource type="Resource" id="Resource_uo5d2"]
+script = ExtResource("27_htis2")
+dialogue = SubResource("Resource_xh2qm")
+format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_weyw6")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_g737e"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_nssba"), SubResource("Resource_uo5d2")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_nuhdn"]
+script = ExtResource("2_i2oon")
+text = "If ever I am to rule a country, it must be a land that I myself find"
+in_quotes = true
+is_speech = true
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_843pj"]
+script = ExtResource("3_01fyj")
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_1ucnr"), SubResource("Resource_hikrg"), SubResource("Resource_745uk"), SubResource("Resource_wrgyd"), SubResource("Resource_othtr"), SubResource("Resource_g737e"), SubResource("Resource_nuhdn")])
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_knoxb"]
+script = ExtResource("2_i2oon")
+text = "And thus the tale comes to an end|| unless the dragons return again."
+in_quotes = false
+is_speech = false
+wait_for_input = false
+use_format_vars = false
+format_var_idxs = Array[int]([])
+wait_for_dialogue = true
+skip_window = false
+
+[sub_resource type="Resource" id="Resource_6c26n"]
+script = ExtResource("26_mnujg")
+initial_dialogue = SubResource("Resource_843pj")
+gwaelin_initial_dialogue = SubResource("Resource_qnwav")
+gwaelin_go_wish = SubResource("Resource_m6nmm")
+gwaelin_go_question = SubResource("Resource_evxn0")
+gwaelin_insistence = SubResource("Resource_qdrd4")
+gwaelin_so_happy = SubResource("Resource_wci5s")
+tale_end_dialogue = SubResource("Resource_knoxb")
+princess_spawn_pos = Vector2(136, 136)
+princess_move_target = Vector2(184, 136)
+princess_scene = ExtResource("28_qr6ml")
+hero_initial_pos = Vector2(200, 152)
+guard_positions = Array[Vector2]([Vector2(168, 168), Vector2(168, 200), Vector2(168, 232), Vector2(216, 168), Vector2(216, 200), Vector2(216, 232)])
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_8k2m6"]
 script = ExtResource("3_eu1uo")
 play_starting_event = false
@@ -519,9 +738,15 @@ target_pos = Vector2(216, 232)
 operation = 3
 skip_window = false
 
+[sub_resource type="Resource" id="Resource_eq1hp"]
+script = ExtResource("26_bixbf")
+target_pos = Vector2(200, 136)
+operation = 3
+skip_window = false
+
 [sub_resource type="Resource" id="Resource_p3nj1"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wu6c8"), SubResource("Resource_pl1pu"), SubResource("Resource_ybrml"), SubResource("Resource_h58x0"), SubResource("Resource_xrhlj"), SubResource("Resource_jmvnq")])
+events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wu6c8"), SubResource("Resource_pl1pu"), SubResource("Resource_ybrml"), SubResource("Resource_h58x0"), SubResource("Resource_xrhlj"), SubResource("Resource_jmvnq"), SubResource("Resource_eq1hp")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_fnn4b"]
@@ -709,6 +934,17 @@ position = Vector2(216, 232)
 [node name="Sprite2D" parent="NPCParent/EndgameGuard6" index="0"]
 flip_h = true
 
+[node name="EndgameLorik" parent="NPCParent" index="26" instance=ExtResource("2_1blbo")]
+position = Vector2(200, 136)
+talk_event = SubResource("Resource_6c26n")
+use_endgame_dialogue = false
+changes_face_dir = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="NPCParent/EndgameLorik" index="0"]
+texture = ExtResource("26_3mpoi")
+hframes = 2
+
 [node name="EventParent" parent="." index="2"]
 metadata/_edit_lock_ = true
 
@@ -831,6 +1067,7 @@ position = Vector2(488, 488)
 [editable path="NPCParent/EndgameGuard4"]
 [editable path="NPCParent/EndgameGuard5"]
 [editable path="NPCParent/EndgameGuard6"]
+[editable path="NPCParent/EndgameLorik"]
 [editable path="EventParent/RandomGoldChestEvent"]
 [editable path="EventParent/RandomGoldChestEvent2"]
 [editable path="EventParent/RandomGoldChestEvent3"]

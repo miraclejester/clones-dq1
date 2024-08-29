@@ -173,7 +173,7 @@ func on_talk_selected() -> void:
 	if npc != null and npc.talk_event != null:
 		npc.face_towards(hero_character.position)
 		var talk_event = npc.talk_event
-		if GameDataManager.get_map_bool("overworld", "game_defeated"):
+		if GameDataManager.get_map_bool("overworld", "game_defeated") and npc.use_endgame_dialogue:
 			if field_map.endgame_talk != null:
 				talk_event = field_map.endgame_talk
 			else:

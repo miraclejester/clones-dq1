@@ -3,6 +3,7 @@ class_name FieldCharacter
 
 @export var starting_face_dir: Vector2 = Vector2.DOWN
 @export var static_char: bool = false
+@export var changes_face_dir: bool = true
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sprite: Sprite2D = %Sprite2D
@@ -35,6 +36,8 @@ func set_current_map(map: FieldMap) -> void:
 
 
 func set_face_dir(dir: Vector2, force: bool = false) -> void:
+	if not changes_face_dir:
+		return
 	if static_char and not force:
 		return
 	var base: String = dir_anim_dict.get(dir, "walk_down")
@@ -48,6 +51,10 @@ func set_face_dir(dir: Vector2, force: bool = false) -> void:
 
 func play_custom_anim(anim_name: String) -> void:
 	animation_player.play(anim_name)
+
+
+func set_frame(frame: int) -> void:
+	sprite.frame = frame
 
 
 func get_move_anim_name(base: String) -> String:

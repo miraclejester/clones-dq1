@@ -3,6 +3,7 @@ class_name DialogueWindow
 
 signal current_dialogue_finished()
 signal continued()
+signal yes_no_responded()
 
 @export var paragraph_scene: PackedScene
 @export var continuator_scene: PackedScene
@@ -130,15 +131,17 @@ func prompt_yes_no(on_yes: Callable, on_no: Callable) -> void:
 		CommandData.new("YES", func():
 			await cleanup_callable.call()
 			await on_yes.call()
+			yes_no_responded.emit()
 			),
 		CommandData.new("NO", func():
 			await cleanup_callable.call()
 			await on_no.call()
+			yes_no_responded.emit()
 			),
 	], 1)
 	yes_no_window.visible = true
 	AudioManager.play_sfx("decision")
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.2).timeout
 	await MenuStack.push_stack(
 		yes_no_window,
 		yes_no_window.activate.bind(false),
