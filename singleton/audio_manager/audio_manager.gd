@@ -33,9 +33,9 @@ func load_bgm(key: String) -> AudioStream:
 
 func play_sfx(key: String) -> void:
 	var poly: AudioStreamPlaybackPolyphonic = sfx_player.get_stream_playback() as AudioStreamPlaybackPolyphonic
-	var stream_id: int = poly.play_stream(load_sfx(key))
-	while poly.is_stream_playing(stream_id):
-		await get_tree().process_frame
+	var audio: AudioStream = load_sfx(key)
+	poly.play_stream(audio)
+	await get_tree().create_timer(audio.get_length()).timeout
 
 
 func load_sfx(key: String) -> AudioStream:
