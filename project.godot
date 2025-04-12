@@ -15,6 +15,11 @@ run/main_scene="res://ui/title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+driver/output_latency.web=100
+
 [autoload]
 
 FileUtils="*res://singleton/file_utils.gd"

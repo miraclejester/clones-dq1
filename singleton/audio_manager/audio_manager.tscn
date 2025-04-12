@@ -18,3 +18,4 @@ volume_db = -12.18
 unique_name_in_owner = true
 stream = SubResource("AudioStreamPolyphonic_qpl2e")
 volume_db = -12.18
+max_polyphony = 32
