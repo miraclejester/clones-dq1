@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=9 format=3 uid="uid://pmul2aon7n63"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=10 format=3 uid="uid://pmul2aon7n63"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_v25xv"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="1_wa5b1"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="2_ea41s"]
 [ext_resource type="Resource" uid="uid://cuxhv6isaxox1" path="res://ui/data/field_dialogues/field_dialogue_non_field_spell.tres" id="2_jyg8m"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/go_outside_dialogue_event.gd" id="3_jbbrs"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/spell_effect.gd" id="6_e05di"]
 
 [sub_resource type="Resource" id="Resource_fur00"]
 script = ExtResource("1_wa5b1")
@@ -30,4 +31,4 @@ spell_name = "OUTSIDE"
 mp_cost = 6
 field_effect = SubResource("Resource_wuis2")
 target_type = 0
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])
+spell_effects = Array[ExtResource("6_e05di")]([])

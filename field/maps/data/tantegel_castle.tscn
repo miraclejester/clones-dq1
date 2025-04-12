@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://bujxitnfdmsre"]
+[gd_scene load_steps=138 format=3 uid="uid://bujxitnfdmsre"]
 
 [ext_resource type="PackedScene" uid="uid://dfx3d12fftfmt" path="res://field/maps/field_map.tscn" id="1_6o5ni"]
 [ext_resource type="PackedScene" uid="uid://cskx10vtevct0" path="res://field/characters/npcs/npc_character.tscn" id="2_1blbo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c83poqvc248ik" path="res://field/characters/npcs/npc_variations/npc_male_villager.tscn" id="4_c1p3n"]
 [ext_resource type="PackedScene" uid="uid://dh1e55af28xf8" path="res://field/characters/npcs/npc_behaviour/random_move/random_move_npc_behaviour.tscn" id="6_o05dn"]
 [ext_resource type="PackedScene" uid="uid://cbjcm8nmv6mne" path="res://field/characters/npcs/npc_variations/npc_female_villager.tscn" id="7_lyggg"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/dialogue_event.gd" id="8_27asp"]
 [ext_resource type="Resource" uid="uid://cufe444qc7nam" path="res://field/dialogues/common_npc_dialogues/dialogue_where_gwaelin.tres" id="8_mvfv1"]
 [ext_resource type="PackedScene" uid="uid://ckrmxxbwr5lsd" path="res://field/characters/npcs/npc_variations/npc_old_man.tscn" id="9_btpew"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_effect_dialogue_event.gd" id="10_urqlu"]
@@ -30,6 +31,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_window_visibility_dialogue_event.gd" id="20_yb87d"]
 [ext_resource type="Resource" uid="uid://blspedvgbct2w" path="res://unit_data/items/data/024_magic_key.tres" id="21_tv5qf"]
 [ext_resource type="PackedScene" uid="uid://bbke138x0s7m3" path="res://field/events/instances/door_event.tscn" id="23_b02l3"]
+[ext_resource type="Script" path="res://unit_data/items/item_data.gd" id="24_ag2f4"]
 [ext_resource type="PackedScene" uid="uid://vdgayc14he0m" path="res://field/events/instances/random_gold_chest_event.tscn" id="24_d6wkc"]
 [ext_resource type="PackedScene" uid="uid://c2g5gs4sea1h6" path="res://field/characters/npcs/npc_variations/endgame_guard.tscn" id="25_d8blp"]
 [ext_resource type="Texture2D" uid="uid://bw46fd2sp2ueo" path="res://field/characters/npcs/npc_king_lorik.png" id="26_3mpoi"]
@@ -40,6 +42,7 @@
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_custom_paragraph_event.gd" id="27_htis2"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/spawn_event_dialogue_event.gd" id="27_x0shb"]
 [ext_resource type="PackedScene" uid="uid://dndpdx1qf04cu" path="res://field/characters/npcs/npc_variations/princess_gwaelin.tscn" id="28_qr6ml"]
+[ext_resource type="Script" path="res://ui/dialogue/format_var_providers/format_var_provider.gd" id="28_x3r6c"]
 [ext_resource type="PackedScene" uid="uid://bq3opy3kgp8a3" path="res://credits/credits.tscn" id="30_fhoeb"]
 
 [sub_resource type="Resource" id="Resource_n5lh4"]
@@ -101,7 +104,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_b7kf8"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_y3oa7"), SubResource("Resource_6t1kx")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_y3oa7"), SubResource("Resource_6t1kx")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_8b421"]
@@ -167,7 +170,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_qvlwy"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_tpxs6"), SubResource("Resource_g7h0f")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_tpxs6"), SubResource("Resource_g7h0f")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_luqtt"]
@@ -205,7 +208,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_nk56y"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill"), SubResource("Resource_0ynif")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_5kfsi"), SubResource("Resource_hlill"), SubResource("Resource_0ynif")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_wtwap"]
@@ -287,7 +290,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_dnsio"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_4p8wb"), SubResource("Resource_qyjsw")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_4p8wb"), SubResource("Resource_qyjsw")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_nl5qj"]
@@ -314,7 +317,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_ya2un"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_nl5qj"), SubResource("Resource_677kl")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_nl5qj"), SubResource("Resource_677kl")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_mrenx"]
@@ -363,7 +366,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_tjhrk"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_vckwn"), SubResource("Resource_w80v3")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_vckwn"), SubResource("Resource_w80v3")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_ggole"]
@@ -372,7 +375,7 @@ can_sell = false
 is_single_item_shop = true
 single_item_price = 85
 single_item = ExtResource("21_tv5qf")
-items = Array[Resource("res://unit_data/items/item_data.gd")]([])
+items = Array[ExtResource("24_ag2f4")]([])
 dialogues = ExtResource("19_8xdsn")
 
 [sub_resource type="Resource" id="Resource_er8ts"]
@@ -426,7 +429,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_qnwav"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_ul4rb"), SubResource("Resource_bft0n")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_ul4rb"), SubResource("Resource_bft0n")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_qdrd4"]
@@ -512,7 +515,7 @@ script = ExtResource("26_yy07g")
 [sub_resource type="Resource" id="Resource_othtr"]
 script = ExtResource("27_htis2")
 dialogue = SubResource("Resource_33gcg")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_pq013")])
+format_var_providers = Array[ExtResource("28_x3r6c")]([SubResource("Resource_pq013")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_nssba"]
@@ -543,12 +546,12 @@ script = ExtResource("26_yy07g")
 [sub_resource type="Resource" id="Resource_uo5d2"]
 script = ExtResource("27_htis2")
 dialogue = SubResource("Resource_xh2qm")
-format_var_providers = Array[Resource("res://ui/dialogue/format_var_providers/format_var_provider.gd")]([SubResource("Resource_weyw6")])
+format_var_providers = Array[ExtResource("28_x3r6c")]([SubResource("Resource_weyw6")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_g737e"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_nssba"), SubResource("Resource_uo5d2")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_nssba"), SubResource("Resource_uo5d2")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_nuhdn"]
@@ -564,7 +567,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_843pj"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_1ucnr"), SubResource("Resource_hikrg"), SubResource("Resource_745uk"), SubResource("Resource_wrgyd"), SubResource("Resource_othtr"), SubResource("Resource_g737e"), SubResource("Resource_nuhdn")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_1ucnr"), SubResource("Resource_hikrg"), SubResource("Resource_745uk"), SubResource("Resource_wrgyd"), SubResource("Resource_othtr"), SubResource("Resource_g737e"), SubResource("Resource_nuhdn")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_knoxb"]
@@ -627,7 +630,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_2gdw2"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_40sl8"), SubResource("Resource_6esh0")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_40sl8"), SubResource("Resource_6esh0")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_s77yo"]
@@ -683,7 +686,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_dubfg"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_7x8wh"), SubResource("Resource_f4hbk"), SubResource("Resource_xpq5s"), SubResource("Resource_6gsbi")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_7x8wh"), SubResource("Resource_f4hbk"), SubResource("Resource_xpq5s"), SubResource("Resource_6gsbi")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_pgl3j"]
@@ -748,7 +751,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_p3nj1"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_wu6c8"), SubResource("Resource_pl1pu"), SubResource("Resource_ybrml"), SubResource("Resource_h58x0"), SubResource("Resource_xrhlj"), SubResource("Resource_jmvnq"), SubResource("Resource_eq1hp")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_wu6c8"), SubResource("Resource_pl1pu"), SubResource("Resource_ybrml"), SubResource("Resource_h58x0"), SubResource("Resource_xrhlj"), SubResource("Resource_jmvnq"), SubResource("Resource_eq1hp")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_fnn4b"]
@@ -777,7 +780,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_yq6re"]
 script = ExtResource("3_01fyj")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_fnn4b"), SubResource("Resource_ebrop"), SubResource("Resource_ejxod"), SubResource("Resource_ac1sq")])
+events = Array[ExtResource("8_27asp")]([SubResource("Resource_fnn4b"), SubResource("Resource_ebrop"), SubResource("Resource_ejxod"), SubResource("Resource_ac1sq")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_x1kqg"]

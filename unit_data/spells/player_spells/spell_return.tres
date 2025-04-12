@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=11 format=3 uid="uid://cula1xi0n7pmm"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=12 format=3 uid="uid://cula1xi0n7pmm"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_2k46w"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_conditions/map_status_dialogue_condition.gd" id="1_77i5s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://field/maps/map_load_params.gd" id="3_x1aki"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/map_transition_dialogue_event.gd" id="4_6grnn"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/branch_dialogue_event.gd" id="5_fj1tk"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/spell_effect.gd" id="7_elhw4"]
 
 [sub_resource type="Resource" id="Resource_n7m8o"]
 script = ExtResource("1_77i5s")
@@ -40,4 +41,4 @@ spell_name = "RETURN"
 mp_cost = 8
 field_effect = SubResource("Resource_12s0o")
 target_type = 0
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([])
+spell_effects = Array[ExtResource("7_elhw4")]([])

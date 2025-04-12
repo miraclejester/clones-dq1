@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=5 format=3 uid="uid://5piqufaqxh1x"]
+[gd_resource type="Resource" script_class="SequenceDialogueEvent" load_steps=6 format=3 uid="uid://5piqufaqxh1x"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_7dtfr"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/dialogue_event.gd" id="1_pixxj"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_erdyr"]
 
 [sub_resource type="Resource" id="Resource_h17qp"]
@@ -27,5 +28,5 @@ skip_window = false
 
 [resource]
 script = ExtResource("2_erdyr")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_h17qp"), SubResource("Resource_nubnt")])
+events = Array[ExtResource("1_pixxj")]([SubResource("Resource_h17qp"), SubResource("Resource_nubnt")])
 skip_window = false

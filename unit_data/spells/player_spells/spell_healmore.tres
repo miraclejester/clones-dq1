@@ -1,7 +1,18 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://1jojbmgi1bmq"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=7 format=3 uid="uid://1jojbmgi1bmq"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_601s7"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/change_hero_stats_dialogue_event.gd" id="1_w6qag"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/heal_spell_effect.gd" id="2_7lmud"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/spell_effect.gd" id="2_2241h"]
+
+[sub_resource type="Resource" id="Resource_r3brk"]
+script = ExtResource("1_w6qag")
+key = 1
+min_val = 85
+max_val = 100
+id = 0
+float_val = 0.0
+skip_window = false
 
 [sub_resource type="Resource" id="Resource_o4ck6"]
 script = ExtResource("2_7lmud")
@@ -13,5 +24,6 @@ script = ExtResource("1_601s7")
 spell_id = 1
 spell_name = "HEALMORE"
 mp_cost = 10
+field_effect = SubResource("Resource_r3brk")
 target_type = 0
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_o4ck6")])
+spell_effects = Array[ExtResource("2_2241h")]([SubResource("Resource_o4ck6")])

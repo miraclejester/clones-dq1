@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=12 format=3 uid="uid://tdh68cnnxiix"]
+[gd_resource type="Resource" script_class="ShopDialogueSet" load_steps=13 format=3 uid="uid://tdh68cnnxiix"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/play_paragraph_dialogue_event.gd" id="1_dr8bp"]
 [ext_resource type="Script" path="res://field/dialogues/common_npc_dialogues/shops/dialogue_sets/shop_dialogue_set.gd" id="1_wc01b"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_events/sequence_dialogue_event.gd" id="2_a6vtg"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_events/dialogue_event.gd" id="2_b8yw1"]
 [ext_resource type="Resource" uid="uid://cyejs7tch82h6" path="res://field/dialogues/common_npc_dialogues/shops/tool_shop/dialogue_tool_shop_not_enough_money.tres" id="3_emcr6"]
 
 [sub_resource type="Resource" id="Resource_y1w1p"]
@@ -62,7 +63,7 @@ skip_window = false
 
 [sub_resource type="Resource" id="Resource_vubbp"]
 script = ExtResource("2_a6vtg")
-events = Array[Resource("res://ui/dialogue/dialogue_events/dialogue_event.gd")]([SubResource("Resource_s5ml0"), SubResource("Resource_nqge1"), SubResource("Resource_fon6i")])
+events = Array[ExtResource("2_b8yw1")]([SubResource("Resource_s5ml0"), SubResource("Resource_nqge1"), SubResource("Resource_fon6i")])
 skip_window = false
 
 [sub_resource type="Resource" id="Resource_dvo2t"]

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://hcef5nmvhhto"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=5 format=3 uid="uid://hcef5nmvhhto"]
 
 [ext_resource type="Script" path="res://unit_data/spells/spell_data.gd" id="1_8wqwo"]
 [ext_resource type="Script" path="res://unit_data/spells/spell_effects/sleep_spell_effect.gd" id="2_hy3pc"]
+[ext_resource type="Script" path="res://unit_data/spells/spell_effects/spell_effect.gd" id="2_pwpjb"]
 
 [sub_resource type="Resource" id="Resource_26gdr"]
 script = ExtResource("2_hy3pc")
@@ -12,4 +13,4 @@ spell_id = 4
 spell_name = "SLEEP"
 mp_cost = 2
 target_type = 1
-spell_effects = Array[Resource("res://unit_data/spells/spell_effects/spell_effect.gd")]([SubResource("Resource_26gdr")])
+spell_effects = Array[ExtResource("2_pwpjb")]([SubResource("Resource_26gdr")])
